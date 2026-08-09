@@ -151,11 +151,116 @@
   .activity-item { flex-direction: column; gap: 4px; padding: 14px 2px; }
   .activity-date { width: auto; padding-top: 0; }
 
-  .topic-meta { gap: 12px; }
-  .file-actions .btn { flex: 1; min-width: 0; }
-  .code-viewer pre { font-size: 0.8rem; }
-  .line-num { min-width: 34px; padding-right: 10px; margin-right: 10px; }
+  /* ========== TOPIC PAGE MOBILE FIXES ========== */
+  
+  /* Topic meta - stack vertically */
+  .topic-meta {
+    gap: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .topic-meta span { font-size: 0.8rem; }
 
+  /* Topic layout - sidebar moves above main content */
+  .topic-layout {
+    display: flex;
+    flex-direction: column;
+  }
+  .topic-side {
+    order: -1;
+  }
+
+  /* Sidebar action buttons - horizontal row on mobile */
+  .topic-side .side-card:first-child div[style*="flex-direction:column"] {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+  }
+  .topic-side .side-card:first-child .btn {
+    flex: 1;
+    min-width: calc(50% - 4px);
+    font-size: 0.82rem;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* File paths card - readable on small screen */
+  .topic-side .side-card:last-child .side-stat {
+    font-size: 0.68rem !important;
+    word-break: break-all;
+  }
+
+  /* File row - stack file info */
+  .file-row-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .file-name {
+    font-size: 0.85rem;
+    word-break: break-all;
+  }
+
+  /* File action buttons - fit on one row */
+  .file-actions {
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+  .file-actions .btn {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.75rem;
+    padding: 9px 6px;
+  }
+
+  /* Code viewer - THE CRITICAL FIX */
+  .code-viewer {
+    overflow: hidden;
+    border-radius: var(--radius);
+  }
+  .code-viewer pre {
+    font-size: 0.75rem;
+    line-height: 1.6;
+    max-height: 420px;
+    overflow-x: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+  .code-viewer pre code {
+    display: inline-block;
+    min-width: 100%;
+  }
+  .line-content {
+    white-space: pre;
+  }
+  .code-line {
+    padding-right: 12px;
+  }
+  .line-num {
+    min-width: 28px;
+    padding-right: 8px;
+    margin-right: 8px;
+    font-size: 0.7em;
+  }
+
+  /* Code toolbar - prevent overflow */
+  .code-toolbar {
+    padding: 9px 12px;
+    gap: 8px;
+  }
+  .code-toolbar .file-label {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .code-toolbar #copyCodeBtn {
+    flex: none;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    padding: 7px 10px;
+  }
+
+  /* Selection bar adjustments */
   .select-bar { flex-wrap: wrap; justify-content: center; gap: 10px; }
   .archive-layout { padding-bottom: 150px; }
 
@@ -178,6 +283,7 @@
   .card-foot { flex-wrap: wrap; }
   .topic-hero-top { gap: 8px; }
 }
+
 @media (max-width: 375px) {
   h1 { font-size: 1.9rem; }
   .stat-card { padding: 16px 10px; }
