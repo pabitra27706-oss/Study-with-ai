@@ -1,10 +1,10 @@
 {
   "metadata": {
     "siteName": "Learning Archive",
-    "lastUpdated": "2026-08-08T14:15:50.343Z",
+    "lastUpdated": "2026-08-10T15:53:39Z",
     "firstEntryDate": "2026-01-08",
-    "totalTopics": 65,
-    "totalFiles": 79,
+    "totalTopics": 68,
+    "totalFiles": 82,
     "languages": [
       "C",
       "Python",
@@ -12,6 +12,60 @@
     ]
   },
   "topics": [
+    {
+      "id": "c-multiplication-table",
+      "title": "Multiplication Table",
+      "language": "C",
+      "dateCreated": "2026-08-10",
+      "lastUpdated": "2026-08-10",
+      "fileCount": 1,
+      "tags": [
+        "for-loop",
+        "loops",
+        "iteration",
+        "printf",
+        "scanf"
+      ],
+      "description": "Iteration using for loops. Understanding loop initialization, condition, and increment/decrement.",
+      "topicFile": "data/topics/c/multiplication-table.json"
+    },
+    {
+      "id": "c-1-to-n-odd-even",
+      "title": "1 To N Odd Even",
+      "language": "C",
+      "dateCreated": "2026-08-10",
+      "lastUpdated": "2026-08-10",
+      "fileCount": 1,
+      "tags": [
+        "for-loop",
+        "loops",
+        "iteration",
+        "if-else",
+        "input",
+        "printf",
+        "scanf"
+      ],
+      "description": "Iteration using for loops. Understanding loop initialization, condition, and increment/decrement.",
+      "topicFile": "data/topics/c/1-to-n-odd-even.json"
+    },
+    {
+      "id": "c-1-to-n-number-print",
+      "title": "1 To N Number Print",
+      "language": "C",
+      "dateCreated": "2026-08-10",
+      "lastUpdated": "2026-08-10",
+      "fileCount": 1,
+      "tags": [
+        "for-loop",
+        "loops",
+        "iteration",
+        "scanf",
+        "printf",
+        "input"
+      ],
+      "description": "Iteration using for loops. Understanding loop initialization, condition, and increment/decrement.",
+      "topicFile": "data/topics/c/1-to-n-number-print.json"
+    },
     {
       "id": "c-for-loop-example",
       "title": "For Loop Example",
