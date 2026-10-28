@@ -1,0 +1,48 @@
+{
+  "topic": {
+    "id": "python-functions",
+    "title": "Functions in Python",
+    "language": "Python",
+    "dateCreated": "2026-03-05",
+    "lastUpdated": "2026-03-05",
+    "tags": [
+      "functions",
+      "python"
+    ],
+    "description": "Definitions, defaults, multiple returns, *args and kwargs, lambdas, map/filter, first-class functions and scope.",
+    "learningNotes": {
+      "whatILearned": "A function is a value — I can hand `square` to `apply` and it works exactly like handing over a number.",
+      "challenges": "My comments are only section headers. They tell me what each block is called, not why I reached for that mechanism.",
+      "nextSteps": "Go back through the file and give every section one comment that says why the mechanism exists, then write the scope question I skipped: what happens if I assign to `college` inside the function."
+    },
+    "source": "adopted"
+  },
+  "files": [
+    {
+      "id": "file-001",
+      "fileName": "functions.py",
+      "filePath": "content/python/functions.py",
+      "description": "Definitions, defaults, multiple returns, *args and kwargs, lambdas, map/filter, first-class functions and scope.",
+      "dateAdded": "2026-03-05"
+    }
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "correct",
+      "score": 85,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "A docstring that restates the name explains nothing — 'Return a greeting message for the given name' says less than `greet` already did",
+      "A section header is navigation, not explanation — it helps you find the code, it does not tell you why the code is right",
+      "Default parameters and *args solve different problems: one supplies a value when the caller says nothing, the other collects a variable number of them"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted and it was never in the catalogue, so there was nothing to grade it\nagainst. I graded the file on the three things that have always mattered\nhere:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 15 = 85%**\n\n**What is solid**\n\nI ran it. Every section produces the right output: `power(5)` is 25 and\n`power(2, 8)` is 256; `divide(17, 5)` unpacks to quotient 3 and remainder 2;\n`summary(1, 2, 3, subject=\"Python\", semester=3)` keeps the tuple and the\ndictionary apart; `map` adds five to every mark and `filter` keeps the five\nthat pass; `apply(square, 6)` returns 36. The scope section prints the local\nvalue and then the global one, which is the entire point of it.\n\nEight ideas, five lines each, and every one demonstrated by running it rather\nthan described. That is a good reference file.\n\n**Fix this first**\n\nYour comments are section headers — `# 1. Basic function with a docstring`,\n`# 6. map / filter with lambdas`. They are navigation: they help me find\nthe code. They do not say anything I could not read off the function name.\nThat is what the missing 15 points are.\n\nThe two docstrings get closest, and they still describe rather than explain.\n\n**Then this**\n\nEach section has one thing worth saying out loud:\n\n- `power(base, exponent=2)` — why is 2 a *default* rather than just the value\n  passed in? Because the common case should not have to be repeated.\n- `divide` returns a tuple — why does Python let you write `q, r = divide(...)`\n  at all, and what is that unpacking actually doing?\n- `apply(func, value)` — why can a function be handed to another function as\n  if it were a value? That is the idea the whole file is built around.\n\n**One thing to re-read**\n\nSection 8. `college` is global, `college_local` is local, and the function\nprints both without touching either. The comment on each line says which is\nwhich, but the interesting question is the one you did not ask: what happens\nif you try to *assign* to `college` inside the function. That is where Python\ndraws the line, and it is what this topic is really about.\n"
+  }
+}

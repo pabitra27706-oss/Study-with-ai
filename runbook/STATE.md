@@ -35,10 +35,12 @@ append-only record is [`HISTORY.md`](HISTORY.md).
 | Clone | `https://github.com/pabitra27706-oss/Study-with-ai.git` |
 | Canonical branch | `main` |
 | Working branch | `arena/42ceaa51-study-with-ai` (this session) |
-| Merged | **PR #10** — the `data-structures-c` topic pack and the authoring system, `6b155ca`. **PR #8** — merged as `e6973cd`, deployed to Pages, green. **PR #6** — merged as `a8add89`. **PRs #1–#4** merged. |
-| Closed, do not merge | **PR #5** (duplicate of #6), **PR #7** (superseded), **PR #9** (its content is folded into #10). Never merge any of them. |
+| Merged | **PR #14** — the `publish-moved-notice` fix, the sitemap, and the empty-topic copy, `f454790`. **PR #13** — the journal-date formatting, `4617614`. **PR #12** — the archive comes home, `c26be05`. **PR #10** — the `data-structures-c` topic pack and the authoring system, `6b155ca`. **PR #8** — merged as `e6973cd`, deployed to Pages, green. **PR #6** — merged as `a8add89`. **PRs #1–#4** merged. |
+| Closed, do not merge | **PR #5** (duplicate of #6), **PR #7** (superseded), **PR #9** (its content is folded into #10), **PR #11** (superseded by #12). Never merge any of them. |
 | The live PR ledger | `gh pr list --state all --limit 30` — **the truth.** The table below records the decisions that matter: which PRs are in, and which ones must never be merged. There is deliberately **no "open" row** — a merge is not worth an edit, so a row that changed on every merge would only make this file wrong. |
-| Archive | `archive/` in this repository — 69 topics, 82 files. Imported from `pabitrawriters06-oss/portfolio` with its history; that repository now points here. |
+| Archive | `archive/` in this repository — **74 topics, 86 files**. Imported from `pabitrawriters06-oss/portfolio` with its history. The old repository still serves the original site; the branch `move/archive-into-the-learning-engine` carries the landing page and the pointer README, and **the owner has one tap left: open the pull request at `https://github.com/pabitrawriters06-oss/portfolio/pull/new/move/archive-into-the-learning-engine`** |
+| The archive is an input too | The generator **adopts** any file written into `archive/content/<lang>/`: it finds the topic from the header the file carries, or gives it one, and it never overwrites an adopted topic afterwards. Five files were sitting there unseen — `functions.py`, `lists.py`, `arrays.js`, `dom-manipulation.js`, `ticket-price-calculator.c` — and all five are topics now, with verdicts, scores and notes. |
+| The archive's shape | `/archive` is **one page of cards that open in place**: the notes, the verdict, the misconceptions and the code, with the code **open by default**. `/archive/<topic>` is still a real page and is still what you share. The control that hides the code is a **box**, not a line of words. |
 | Deploy | Pages workflow committed by the owner at `414c6fe`; the hardened copy lives at `scripts/deploy-workflow.yml` |
 
 ## Where the learning actually stands

@@ -117,3 +117,36 @@ header and the accumulator update — even though one good block comment sat
 above them. One comment above a block does not explain every line inside it.
 
 Verdict given: `mostly-correct`, 62% (machine score 37%).
+
+---
+
+## The archive's own rubric — a file with no task sheet
+
+Most work in this system is a graded task, and it is graded by
+`runner/evidence.mjs` against a rubric of its own. A file in the Learning
+Archive is often not that: it is something written before the engine
+existed, or a script with no exercise behind it. There is no task sheet, so
+the task rubric does not apply.
+
+For those, the rubric is three questions:
+
+| Points | Question |
+|---|---|
+| **40** | **Does it run?** It compiles or interprets without an error. |
+| **30** | **Is it right?** The output is what it claims to produce. |
+| **30** | **Does it explain itself?** The comments say *why*, not *what*. |
+
+**Say which rubric you used.** A number without its rubric is decoration,
+and a reader has no way to know whether 85% meant "five of eight tasks
+passed" or "it ran, it was right, and it explained itself". The review opens
+with the rubric, then adds the three totals.
+
+**Run it, do not guess at it.** The 40 points are for a fact, not an
+opinion: compile it, run it, feed it input, read the output. The DOM file
+needs a browser, so it gets one. A file that cannot be run here is said to
+be unread, and loses the points it cannot be given.
+
+**The comment band is the same band as everywhere else.** A comment that
+names the line is not a comment. "Sorts in place" explains nothing; "the
+default sort compares characters, not numbers" is a why.
+

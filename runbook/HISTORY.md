@@ -481,3 +481,69 @@ have right now?* — and answers it with the API call itself.
 
 **The rule.** Never pre-flight a push with a check that depends on the
 network. Try the thing. If it fails, read the real error.
+
+## 2026-10-29 — The archive was an output, and it should have been an input
+
+The owner asked for two things: *make the archive its own part, not any
+static page*, and *even if I write any file in archive, you can evaluate
+from the last commit and add the appropriate other things*.
+
+The second half is the one that mattered, and going after it turned up
+something nobody had noticed.
+
+**Six files were sitting in the archive and none of them were in the
+catalogue.** The generator only ever read `learn/<topic>/solutions/*.c`, so
+every other file in `archive/content/` was a file the site could not show,
+could not download, and could not count. They were real work:
+
+- `functions.py` — Functions in Python, 83 lines, eight ideas
+- `lists.py` — Python Lists, a deep dive, 68 lines
+- `arrays.js` — JavaScript Arrays in Depth, 66 lines
+- `dom-manipulation.js` — JavaScript DOM Manipulation, 94 lines
+- `ticket-price-calculator.c` — a full pricing ladder in C
+
+The archive said **82 files**. There were 88.
+
+**And one C file was claimed by two topics at once**, so the catalogue
+showed the same code twice and the "If-Else Statement in C" topic showed
+code that was not its own. The fix is deliberately minimal: only a file that
+two topics both claim is moved, to the topic whose name matches it. A file
+with an unusual name is left exactly where it is — "Day7 practice" belongs
+to "Hangman Step 1", and `factorial-calculator.c` *is* the for-loop program
+the "For Loop in C" topic is about. A cleverer rule would have moved 49 of
+87 correct assignments.
+
+**So the generator now adopts.** A file dropped into
+`archive/content/<lang>/` is found, matched to a topic by the header the
+file itself carries (`Topic`, `Created`, `Purpose`), given a date, and put
+in the catalogue. An adopted topic is written **once** — after that it is a
+hand-written entry, so the notes and the verdict written into it survive
+every build. The archive is an input, not only an output.
+
+**And then I judged them.** A file with no task sheet has no task rubric, so
+the archive has its own: does it run (40), is it right (30), does it
+explain itself (30). The 40 points are a fact, not an opinion — I ran all
+five. The Python and the JavaScript ran under `python3` and `node`; the DOM
+file needed a real DOM, so it got one under `jsdom`; the C file compiled
+under `-Wall -Wextra` and was run three ways with different inputs.
+
+That last one found a real bug. The pricing logic is correct — 25 / not
+weekend / student / 3 tickets is ₹600, a child of 10 is ₹200, a group of 4
+on a weekend is ₹1080 — but **no `scanf` is ever checked**. Feed it an age
+and nothing else and it prints *Number of tickets: 0*, because the later
+reads found nothing to read and left the variables as they were in memory.
+It printed zero only by luck.
+
+Scores: `dom-manipulation` 96, `arrays` 95, `lists` 92, `functions` 85,
+`ticket-price-calculator` 60. The archive is 74 topics and 86 files now,
+and every one of them is reachable.
+
+**The other half of the request: the archive's shape.** It is one page of
+cards that open in place — the notes, the verdict, the misconceptions and
+the code — with `/archive/<topic>` still a real page for sharing. And the
+code is **open by default**. Hiding it is optional, and the control is a
+box you can see and tap, not a line of small words you have to find.
+
+**The rule.** A generator that only reads one directory will quietly lose
+everything in the others. Look at what is on disk, and ask what the
+numbers claim.

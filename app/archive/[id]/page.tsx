@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Download, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Card, Tag } from "@/components/ui";
+import { ArchiveCodeCard } from "@/components/archive-code";
 import {
   getArchiveTopic,
   getArchiveTopicIds,
@@ -13,7 +14,6 @@ import { archiveDate, archiveLanguageTone } from "@/lib/archive-shared";
 
 export const dynamic = "force-static";
 
-const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export function generateStaticParams() {
   return getArchiveTopicIds().map((id) => ({ id }));
@@ -87,7 +87,9 @@ export default async function ArchiveTopicPage({
         )}
         <p className="mt-3 font-mono text-[11px] text-faint">
           {archiveDate(topic.dateCreated)} · {files.length} file{files.length === 1 ? "" : "s"}
-          {engine?.tasks ? ` · ${engine.tasks} tasks` : ""}
+          {engine?.tasks
+            ? ` · ${engine.tasks} task${engine.tasks === 1 ? "" : "s"}`
+            : ""}
         </p>
         {topic.tags.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-1.5">
@@ -236,68 +238,7 @@ export default async function ArchiveTopicPage({
             {files.map((file) => {
               const code = getArchiveFileText(file.filePath);
               const html = highlightArchiveFile(file.fileName, code);
-              const passed = (file.passed ?? 0) > 0;
-              const allPassed = file.total ? file.passed === file.total : false;
-
-              return (
-                <Card key={file.id} className="overflow-hidden">
-                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-4 py-3">
-                    <div className="min-w-0">
-                      <p className="truncate font-mono text-[13px] text-ink">{file.fileName}</p>
-                      {file.description && (
-                        <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted">
-                          {file.description}
-                        </p>
-                      )}
-                    </div>
-                    <div className="flex shrink-0 items-center gap-2">
-                      {file.total ? (
-                        <span
-                          className={`rounded-full border px-2 py-0.5 font-mono text-[11px] ${
-                            allPassed
-                              ? "border-ok/40 text-ok"
-                              : passed
-                                ? "border-warn/40 text-warn"
-                                : "border-line text-faint"
-                          }`}
-                        >
-                          {file.passed}/{file.total} tests
-                        </span>
-                      ) : null}
-                      {file.maxPoints ? (
-                        <span className="font-mono text-[11px] text-faint">
-                          {file.maxPoints} pts
-                        </span>
-                      ) : null}
-                      <a
-                        href={`${BASE_PATH}/archive-content/${file.filePath.replace(/^content\//, "")}`}
-                        download
-                        className="flex items-center gap-1.5 rounded-lg border border-line px-2.5 py-1 text-[12px] text-muted transition hover:border-brand/40 hover:text-brand-soft"
-                      >
-                        <Download className="h-3.5 w-3.5" />
-                        download
-                      </a>
-                    </div>
-                  </div>
-                  {file.compileError && (
-                    <p className="border-b border-line bg-bad/10 px-4 py-2 font-mono text-[11.5px] text-bad">
-                      {file.compileError}
-                    </p>
-                  )}
-                  <details className="group">
-                    <summary className="cursor-pointer list-none px-4 py-2.5 font-mono text-[11.5px] text-faint transition hover:text-muted">
-                      <span className="group-open:hidden">show the code</span>
-                      <span className="hidden group-open:inline">hide the code</span>
-                    </summary>
-                    <pre className="overflow-x-auto border-t border-line-soft bg-panel-2 px-4 py-3 font-mono text-[12px] leading-relaxed text-muted">
-                      <code
-                        className="hljs"
-                        dangerouslySetInnerHTML={{ __html: html }}
-                      />
-                    </pre>
-                  </details>
-                </Card>
-              );
+              return <ArchiveCodeCard key={file.id} file={file} code={code} html={html} />;
             })}
           </div>
         )}

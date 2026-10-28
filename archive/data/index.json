@@ -3,8 +3,8 @@
     "siteName": "Learning Archive",
     "lastUpdated": "2026-10-29",
     "firstEntryDate": "2026-01-08",
-    "totalTopics": 69,
-    "totalFiles": 82,
+    "totalTopics": 74,
+    "totalFiles": 86,
     "languages": [
       "C",
       "JavaScript",
@@ -12,6 +12,96 @@
     ]
   },
   "topics": [
+    {
+      "id": "python-lists",
+      "title": "Python Lists - deep dive",
+      "language": "Python",
+      "dateCreated": "2026-03-28",
+      "lastUpdated": "2026-03-28",
+      "fileCount": 1,
+      "tags": [
+        "python",
+        "lists",
+        "deep",
+        "dive"
+      ],
+      "description": "Everything important about Python lists in one file: creating, indexing, slicing, methods, comprehensions and the aliasing pitfall.",
+      "topicFile": "data/topics/python/python-lists.json",
+      "source": "adopted",
+      "verdict": "correct",
+      "score": 92
+    },
+    {
+      "id": "python-functions",
+      "title": "Functions in Python",
+      "language": "Python",
+      "dateCreated": "2026-03-05",
+      "lastUpdated": "2026-03-05",
+      "fileCount": 1,
+      "tags": [
+        "functions",
+        "python"
+      ],
+      "description": "Definitions, defaults, multiple returns, *args and kwargs, lambdas, map/filter, first-class functions and scope.",
+      "topicFile": "data/topics/python/python-functions.json",
+      "source": "adopted",
+      "verdict": "correct",
+      "score": 85
+    },
+    {
+      "id": "javascript-dom-manipulation",
+      "title": "JavaScript DOM Manipulation",
+      "language": "JavaScript",
+      "dateCreated": "2026-05-14",
+      "lastUpdated": "2026-05-14",
+      "fileCount": 1,
+      "tags": [
+        "javascript",
+        "dom",
+        "manipulation"
+      ],
+      "description": "Core DOM skills: selecting elements, changing content/styles, handling events and creating new elements dynamically. Built as a tiny todo-list so every technique is used in a real way.",
+      "topicFile": "data/topics/javascript/javascript-dom-manipulation.json",
+      "source": "adopted",
+      "verdict": "correct",
+      "score": 96
+    },
+    {
+      "id": "javascript-arrays",
+      "title": "JavaScript Arrays in Depth",
+      "language": "JavaScript",
+      "dateCreated": "2026-06-20",
+      "lastUpdated": "2026-06-20",
+      "fileCount": 1,
+      "tags": [
+        "javascript",
+        "arrays",
+        "depth"
+      ],
+      "description": "map / filter / reduce, searching, sorting pitfalls, destructuring, spread, and arrays of objects.",
+      "topicFile": "data/topics/javascript/javascript-arrays.json",
+      "source": "adopted",
+      "verdict": "correct",
+      "score": 95
+    },
+    {
+      "id": "c-ticket-price-calculator",
+      "title": "Ticket Price Calculator",
+      "language": "C",
+      "dateCreated": "2026-08-06",
+      "lastUpdated": "2026-08-06",
+      "fileCount": 1,
+      "tags": [
+        "ticket",
+        "price",
+        "calculator"
+      ],
+      "description": "",
+      "topicFile": "data/topics/c/c-ticket-price-calculator.json",
+      "source": "adopted",
+      "verdict": "mostly-correct",
+      "score": 60
+    },
     {
       "id": "c-data-structures-c",
       "title": "Data Structures in C: linked lists, stacks, queues",
@@ -147,7 +237,7 @@
       "language": "C",
       "dateCreated": "2026-08-06",
       "lastUpdated": "2026-08-06",
-      "fileCount": 1,
+      "fileCount": 0,
       "tags": [
         "if-else",
         "conditional",

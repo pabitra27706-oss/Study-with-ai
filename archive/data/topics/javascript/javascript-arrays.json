@@ -1,0 +1,49 @@
+{
+  "topic": {
+    "id": "javascript-arrays",
+    "title": "JavaScript Arrays in Depth",
+    "language": "JavaScript",
+    "dateCreated": "2026-06-20",
+    "lastUpdated": "2026-06-20",
+    "tags": [
+      "javascript",
+      "arrays",
+      "depth"
+    ],
+    "description": "map / filter / reduce, searching, sorting pitfalls, destructuring, spread, and arrays of objects.",
+    "learningNotes": {
+      "whatILearned": "`.sort()` sorts strings unless you hand it a comparator. I showed the broken version on purpose so I could never forget it.",
+      "challenges": "Nothing here is wrong. The only thing missing is a comment on why `flat()` needs a depth at all.",
+      "nextSteps": "Add that one comment, then take the same file to TypeScript and see which of these mistakes the compiler would have caught for me."
+    },
+    "source": "adopted"
+  },
+  "files": [
+    {
+      "id": "file-001",
+      "fileName": "arrays.js",
+      "filePath": "content/javascript/arrays.js",
+      "description": "map / filter / reduce, searching, sorting pitfalls, destructuring, spread, and arrays of objects.",
+      "dateAdded": "2026-06-20"
+    }
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "correct",
+      "score": 95,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "The default sort compares characters, not numbers — `[100, 25, 7, 90].sort()` comes back in the order it went in",
+      "`sort()` mutates the array it is called on; the `[...marks]` spread is there so the original survives, not for style",
+      "`every` and `some` are not `filter` — they answer one question about the whole array instead of building a new one"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted and it was never in the catalogue, so there was nothing to grade it\nagainst. I graded the file on the three things that have always mattered\nhere:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 25 = 95%**\n\n**What is solid**\n\nI ran it under node and checked the arithmetic rather than eyeballing it.\n`grace` is every mark plus five, `passed` keeps the five at or above 70, the\ntotal is 489 and the average 81.50. `find` and `findIndex` both land on 92,\n`slice(1, 3)` is `[92, 65]`, `flat(Infinity)` is `[1, 2, 3, 4]`, and `toppers`\nis Pabitra and Riya. Nothing is off.\n\nThe sorting section is the part I would keep. You did not *describe* the\ndefault sort — you printed it, printed the broken order, and then printed\nthe right one next to it. A reader who forgets will still remember the\npicture.\n\n**Fix this first**\n\nOnly eight points, and there is one line to change.\n\n**Then this**\n\n`flat(Infinity)` is the one call with no reason attached. Why does `flat`\ntake a depth at all, and why does `Infinity` mean \"all the way down\"? That\nis the only place in the file where a reader has to guess.\n\n**One thing to re-read**\n\n`const combined = [...marks, 99, 100]`. The spread here is not decoration —\nit is what stops `combined` and `marks` being the same array. You use the\nsame trick in the sort two lines earlier, where the comment is not needed.\nHere it is.\n"
+  }
+}
