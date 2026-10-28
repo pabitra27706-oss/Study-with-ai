@@ -15,9 +15,9 @@
     ],
     "description": "Checks height and age for a rollercoaster ride, calculates ticket price, and offers a photo add-on. A practical multi-condition exercise.",
     "learningNotes": {
-      "whatILearned": "Nested if-elif-else statements and building a bill by accumulating costs conditionally.",
-      "challenges": "Correctly nesting conditions and keeping track of the running bill variable.",
-      "nextSteps": "Add more ride types and group discount logic."
+      "whatILearned": "The ticket price is one decision inside another — the height decides whether there is a ticket at all, the age decides which one.",
+      "challenges": "The nested rule is invisible in the code, and the photo question is buried inside the branch where it belongs but nobody can see that.",
+      "nextSteps": "Put a comment on the outer `if` saying that the whole ticket only exists if the height check passes."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Rollercoaster ticket price calculator.",
       "dateAdded": "2026-01-04T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 70,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "A nested `if` is only reached when the outer one is true — that is what makes the second question unnecessary, and it is worth saying",
+      "The photo charge belongs inside the ride branch, and it is there — which is the correct place and the least obvious one"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 0 = 70%**\n\n**What is solid**\n\nThe logic is exactly right, and the nesting is used for the reason nesting exists: you only get a ticket if you are tall enough, and only then does your age decide which ticket. I ran it with 150 cm, 20 years and a photo and it printed `$13` — 10 for the adult ticket plus 3 for the photo — which is correct. The photo question sits inside the ride branch, which is the subtle part, and it is in the right place.\n\n**What is not**\n\nNo comments, so the one thing that makes this file interesting — that the second decision only happens because the first passed — is not written down. The labels also drift (*Child ticket*, *abc ticket*, *Adult ticket*), and `abc` looks like a typo for *ABC*.\n\n**The one thing to fix first**\n\n```python\nif hight > 120:  # Only people over 120cm get a ticket at all.\n```\n\nOne line, and the nesting explains itself.\n"
+  }
 }

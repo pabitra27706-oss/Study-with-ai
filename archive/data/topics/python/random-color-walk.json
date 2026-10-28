@@ -15,9 +15,9 @@
     ],
     "description": "Extends the random walk by generating a random RGB color for each step. Introduces colormode(255) and dynamic color generation.",
     "learningNotes": {
-      "whatILearned": "Setting turtle.colormode(255) to use RGB values and generating three random integers (0–255) for each new color.",
-      "challenges": "Remembering to set colormode before using RGB tuples.",
-      "nextSteps": "Combine with varying step sizes for more organic patterns."
+      "whatILearned": "A random walk: pick a direction, move, pick a colour, and do it two hundred times.",
+      "challenges": "The colour function has the same name as the variable inside it, which makes the code harder to read than it needs to be.",
+      "nextSteps": "Rename the variable inside the function, and say in a comment why the walk uses only four directions."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Random walk with dynamically generated RGB colors.",
       "dateAdded": "2026-01-12T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 35,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`colormode(255)` is what lets you ask for a colour as three numbers from 0 to 255 instead of a name",
+      "A function that shares its name with the variable it returns is legal, and confusing"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**0 + 30 + 5 = 35%**\n\n**This file cannot be run here.** It needs `tkinter`, and this\nmachine has no display and no `tkinter` — so the 40 points for *it runs* are\nnot ones I can give, and they are not given. The other two bands are judged\nby reading the code, carefully, line by line.\n\nThere is a bigger point here, and it is worth saying plainly: **`tkinter`\ndoes not exist on Termux either.** These files cannot be run on the phone\nthis whole system is built around. They are not broken — they are stranded.\n\n**What is right, by reading**\n\nThe structure is right and it is the standard one: `colormode(255)`, a helper that returns three random numbers, a list of four headings, and a loop of 200 steps that colours the turtle, moves it 30 and turns it to a random direction. The turtle is also made 'fastest' with a thick pen, which is exactly what you want for a 200-step walk — otherwise it takes forever.\n\n**What is not**\n\nThe function `random_color()` builds a local variable also called `random_color` and returns it. It works, but the name now means two things in one breath.\n\nThere is also no comment anywhere, and one thing is worth writing down: the walk only ever goes *forward* and turns in quarter-turns, so it can never retrace its own steps — that is a deliberate constraint, not an accident of the code.\n\n**The one thing to fix first**\n\n```python\ndef random_color():\n    ...\n    return (r, g, b)   # a colour as three numbers, because colormode(255)\n```\n\nAnd one comment on the direction list: *only four headings, so the walk turns in right angles*.\n"
+  }
 }

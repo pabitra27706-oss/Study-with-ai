@@ -15,9 +15,9 @@
     ],
     "description": "Demonstrates setting up keyboard event listeners with screen.listen() and screen.onkey(). A foundation for building interactive turtle applications.",
     "learningNotes": {
-      "whatILearned": "Using screen.listen() to activate key listening and screen.onkey() to bind a function to a specific key press.",
-      "challenges": "Understanding that functions must be passed without parentheses as callbacks.",
-      "nextSteps": "Bind multiple keys for full directional control."
+      "whatILearned": "A window that listens for a key and does something when it hears it — `screen.listen()` and then `onkey`.",
+      "challenges": "I could not run it here at all, so I do not actually know that the space bar does what I think it does.",
+      "nextSteps": "Get one turtle file running somewhere with a display, and check the key binding by pressing it rather than by reading it."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Turtle moves forward when space key is pressed.",
       "dateAdded": "2026-01-13T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 30,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`screen.listen()` has to come before `onkey`, or the window never hears anything",
+      "The space bar's key name in Tk is 'space' — a guess here is a binding that never fires"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**0 + 30 + 0 = 30%**\n\n**This file cannot be run here.** It needs `tkinter`, and this\nmachine has no display and no `tkinter` — so the 40 points for *it runs* are\nnot ones I can give, and they are not given. The other two bands are judged\nby reading the code, carefully, line by line.\n\nThere is a bigger point here, and it is worth saying plainly: **`tkinter`\ndoes not exist on Termux either.** These files cannot be run on the phone\nthis whole system is built around. They are not broken — they are stranded.\n\n**What is right, by reading**\n\nThe sequence is the correct one: make a turtle, make a screen, define what should happen, call `screen.listen()`, bind the key, and end with `screen.exitonclick()` so the window stays open. The key name `\"space\"` is the right name for the space bar in Tk, and the `fun=` argument is spelled the way Tk wants it.\n\n**What is not**\n\nThere is no comment, and for a file whose whole content is *a binding between a key and an action*, that is the thing missing. There is also nothing that says how to close the window — `exitonclick()` closes it, but a reader would not know that from the code.\n\nAnd the honest truth: this has never been run.\n\n**The one thing to fix first**\n\nNot the code — the environment. Install a Python with `tkinter` on a machine with a screen, run it once, and press the space bar. Then the file becomes a file you have seen work.\n\n```python\nscreen.listen()  # From here on the window hears key presses.\n```\n"
+  }
 }

@@ -15,9 +15,9 @@
     ],
     "description": "Calculates Body Mass Index from height and weight and categorizes the result as underweight, normal, overweight, or obese. Combines arithmetic and multi-branch conditionals.",
     "learningNotes": {
-      "whatILearned": "Performing BMI formula calculations, using if-elif-else chains for ranges, and rounding results.",
-      "challenges": "Getting the condition ranges correct and handling zero-height edge cases.",
-      "nextSteps": "Add GUI or export results to a file."
+      "whatILearned": "BMI is the weight divided by the height squared — and the `**` operator is how you square it in Python.",
+      "challenges": "The formula is the one line that matters and it is not written down anywhere.",
+      "nextSteps": "Put the formula in a comment, and say what the number means — a BMI with no scale attached is not much of an answer."
     }
   },
   "files": [
@@ -42,5 +42,23 @@
       "description": "Refined BMI calculator with improved output.",
       "dateAdded": "2026-01-03T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 70,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`**` is the power operator in Python; `^` is the bitwise XOR and would give a completely wrong answer",
+      "A number without a scale is not information — the value of a BMI comes from knowing which band it falls in"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 0 = 70%**\n\n**What is solid**\n\nIt is right: a height of 1.8 m and a weight of 72 kg gives `22.22222222222222`, and 72 / 1.8² is 22.22. The formula is correct, and using `**` for the square is the right call — `^` would have been the bitwise operator and a completely different number.\n\n**What is not**\n\nTwo things, and they are related. The formula — the single most important line in the file — has no comment, so a reader has to know the BMI formula to check it. And the program prints the number and stops: there is no band, no message, nothing that turns 22.2 into something a person can use.\n\n**The one thing to fix first**\n\n```python\na = (hight ** 2)  # BMI = weight / (height in metres squared)\n```\n\nAnd then one `if` that says what the number means. The comment is what makes the file teach; the band is what makes it useful.\n"
+  }
 }

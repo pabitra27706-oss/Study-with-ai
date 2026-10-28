@@ -16,9 +16,9 @@
     ],
     "description": "Calculates the average height of a list of students using Python built-in functions sum() and len(). Demonstrates the power of built-in functions for clean code.",
     "learningNotes": {
-      "whatILearned": "Using sum() and len() together to compute an average in a single readable expression.",
-      "challenges": "None — demonstrates the simplest approach.",
-      "nextSteps": "Compare with a manual loop approach for deeper understanding."
+      "whatILearned": "Two built-ins do the whole job: `sum()` for the total and `len()` for the count.",
+      "challenges": "I truncate the average to a whole number and an empty list still divides by zero.",
+      "nextSteps": "Use `round()`, and check the list is not empty before you divide."
     }
   },
   "files": [
@@ -29,5 +29,23 @@
       "description": "Average height using sum() and len().",
       "dateAdded": "2026-01-05T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 65,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`int()` truncates rather than rounds, so an average of 176.67 is printed as 176",
+      "`sum()` and `len()` on an empty list make the division by zero"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 25 + 0 = 65%**\n\n**What is solid**\n\nThis is the same program as the one next to it, written the short way, and that is worth having side by side: `sum(student_heights)` for the total, `len(student_heights)` for the count, and the division in between. The input handling is the same and it is correct — split the string, then convert each piece to a number in place.\n\n**What is not**\n\nThe same two problems as the hand-written version, because this one was written after it: `int()` truncates the average instead of rounding it, and an empty list divides by zero. And neither file says which of the two is the better way to write it, even though one of them clearly is.\n\n**The one thing to fix first**\n\n```python\navg_student_hight = round(sum_of_hight / total_students_number)\n```\n\nAnd guard the empty list:\n\n```python\nif not student_heights:\n    print('No heights entered.')\n```\n"
+  }
 }

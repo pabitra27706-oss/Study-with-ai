@@ -15,9 +15,9 @@
     ],
     "description": "Customises a turtle by changing its shape and color before drawing. Introduces turtle appearance methods for more expressive graphics.",
     "learningNotes": {
-      "whatILearned": "Using turtle.shape() to change cursor appearance and turtle.color() to set pen and fill color.",
-      "challenges": "None — a short focused exploration of turtle appearance.",
-      "nextSteps": "Combine shape and color changes with movement to draw colored shapes."
+      "whatILearned": "A turtle is an object: it has a shape, a colour and a heading, and you change them by calling methods on it.",
+      "challenges": "I could not run it here, so the pink turtle and the 45-degree turn are things I read rather than things I saw.",
+      "nextSteps": "Run it once on a machine with a display, and add one comment saying what the four lines are doing."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Turtle shape and color customisation demo.",
       "dateAdded": "2026-01-11T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 30,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`right(45)` turns the turtle; it does not move it — `forward()` moves, `right()` turns",
+      "The screen has to be told to stay open, or the window closes the moment the script ends"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**0 + 30 + 0 = 30%**\n\n**This file cannot be run here.** It needs `tkinter`, and this\nmachine has no display and no `tkinter` — so the 40 points for *it runs* are\nnot ones I can give, and they are not given. The other two bands are judged\nby reading the code, carefully, line by line.\n\nThere is a bigger point here, and it is worth saying plainly: **`tkinter`\ndoes not exist on Termux either.** These files cannot be run on the phone\nthis whole system is built around. They are not broken — they are stranded.\n\n**What is right, by reading**\n\nEvery call is a real turtle method and the calls are in the right order: `shape('turtle')` draws the turtle as a turtle, `color('pink')` makes it pink, `forward(100)` moves it, `right(45)` turns it. The screen is created and `exitonclick()` is called, so the window stays open — this file does not have the disappearing-window problem.\n\n**What is not**\n\nNo comments at all, and no explanation of the difference between moving and turning — which is the idea a reader takes away from a turtle. There is no screen setup either, so the window appears at its default size and position rather than where the program means it to be.\n\n**The one thing to fix first**\n\nOne comment, on the line where the two ideas meet:\n\n```python\ntimmy_the_turtle.right(45)  # Turns the turtle; forward() is what moves it.\n```\n"
+  }
 }

@@ -406,7 +406,9 @@
       ],
       "description": "The very first Python program: printing a greeting and taking user input. Introduces the print() and input() functions with basic string usage.",
       "topicFile": "data/topics/python/hello-world.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-data-types",
@@ -423,7 +425,9 @@
       ],
       "description": "An introduction to Python data types: strings, integers, and type conversion. Demonstrates accessing characters by index and converting between types.",
       "topicFile": "data/topics/python/data-types-practice.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 60
     },
     {
       "id": "python-variable-swap",
@@ -439,7 +443,9 @@
       ],
       "description": "A classic beginner exercise that swaps the values of two variables using a temporary variable. Builds understanding of assignment and memory.",
       "topicFile": "data/topics/python/variable-swap-practice.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-life-in-weeks",
@@ -456,7 +462,9 @@
       ],
       "description": "Given an age, calculates remaining days, weeks, and months assuming a 90-year lifespan. Practices basic arithmetic and string output formatting.",
       "topicFile": "data/topics/python/life-in-weeks-calculator.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 55
     },
     {
       "id": "python-tip-calculator",
@@ -473,7 +481,9 @@
       ],
       "description": "Calculates how much each person should pay including a chosen tip percentage. Practices float arithmetic, rounding, and formatted output.",
       "topicFile": "data/topics/python/tip-calculator.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 60
     },
     {
       "id": "python-odd-even",
@@ -490,7 +500,9 @@
       ],
       "description": "A program that checks whether a given number is odd or even using the modulo operator. A foundational exercise in conditionals and operators.",
       "topicFile": "data/topics/python/odd-or-even-check.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-head-tail",
@@ -506,7 +518,9 @@
       ],
       "description": "Simulates a coin flip using random.randint and prints Head or Tail. Introduces the random module and simple conditional logic.",
       "topicFile": "data/topics/python/head-or-tail-coin-flip.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-bmi-calculator",
@@ -523,7 +537,9 @@
       ],
       "description": "Calculates Body Mass Index from height and weight and categorizes the result as underweight, normal, overweight, or obese. Combines arithmetic and multi-branch conditionals.",
       "topicFile": "data/topics/python/bmi-calculator.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-pizza-order",
@@ -540,7 +556,9 @@
       ],
       "description": "Calculates the total price of a pizza order based on size, pepperoni, and extra cheese selections. Reinforces if-elif-else logic and cumulative addition.",
       "topicFile": "data/topics/python/pizza-order-calculator.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 60
     },
     {
       "id": "python-love-calculator",
@@ -557,7 +575,9 @@
       ],
       "description": "A fun program that counts letters in \"true\" and \"love\" from two names and produces a love score. Practices string methods and conditionals.",
       "topicFile": "data/topics/python/love-calculator.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 60
     },
     {
       "id": "python-random-payer",
@@ -574,7 +594,9 @@
       ],
       "description": "Randomly selects a person from a comma-separated list of names to pay the bill. Introduces random.choice and string splitting.",
       "topicFile": "data/topics/python/random-bill-payer.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 75
     },
     {
       "id": "python-treasure-island",
@@ -591,7 +613,9 @@
       ],
       "description": "A text-based adventure game where choices determine whether the player finds treasure or meets their end. Solidifies understanding of nested if-else branching.",
       "topicFile": "data/topics/python/treasure-island-adventure.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-if-statement-practice",
@@ -608,7 +632,9 @@
       ],
       "description": "Checks height and age for a rollercoaster ride, calculates ticket price, and offers a photo add-on. A practical multi-condition exercise.",
       "topicFile": "data/topics/python/if-statement-practice.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-leap-year-check",
@@ -625,7 +651,9 @@
       ],
       "description": "Determines whether a year is a leap year using divisibility rules: divisible by 4, not by 100, unless also by 400. Teaches compound boolean expressions.",
       "topicFile": "data/topics/python/leap-year-check.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-treasure-map",
@@ -643,7 +671,9 @@
       ],
       "description": "Places a treasure marker on a 3×3 grid by converting user row/column input to list indices. Introduces 2D lists and index manipulation.",
       "topicFile": "data/topics/python/treasure-map-game.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 55
     },
     {
       "id": "python-list-introduction",
@@ -660,7 +690,9 @@
       ],
       "description": "Demonstrates creating a list of Indian states and accessing elements using both positive and negative indices. A clean introduction to Python lists.",
       "topicFile": "data/topics/python/list-introduction.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-sum-even-numbers",
@@ -678,7 +710,9 @@
       ],
       "description": "Calculates the sum of all even numbers from 1 to 100 using a for loop and modulo filtering. Combines loops with conditional logic.",
       "topicFile": "data/topics/python/sum-of-even-numbers.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 75
     },
     {
       "id": "python-average-height-builtin",
@@ -696,7 +730,9 @@
       ],
       "description": "Calculates the average height of a list of students using Python built-in functions sum() and len(). Demonstrates the power of built-in functions for clean code.",
       "topicFile": "data/topics/python/average-height-with-built-ins.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 65
     },
     {
       "id": "python-average-height-manual",
@@ -713,7 +749,9 @@
       ],
       "description": "Calculates average height manually using a loop accumulator without sum() or len(). Deepens understanding of how built-in functions work internally.",
       "topicFile": "data/topics/python/average-height-without-built-ins.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 65
     },
     {
       "id": "python-high-score",
@@ -953,7 +991,9 @@
       ],
       "description": "Explores Turtle module attributes: printing the turtle object reference and reading screen canvas dimensions. Builds familiarity with the turtle environment.",
       "topicFile": "data/topics/python/turtle-library-overview.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 40
     },
     {
       "id": "python-turtle-import-styles",
@@ -970,7 +1010,9 @@
       ],
       "description": "Demonstrates three ways to import the Turtle module: import turtle, from turtle import Turtle, and import turtle as t. Clarifies Python import mechanics.",
       "topicFile": "data/topics/python/turtle-import-styles.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "incomplete",
+      "score": 25
     },
     {
       "id": "python-turtle-shape-color",
@@ -987,7 +1029,9 @@
       ],
       "description": "Customises a turtle by changing its shape and color before drawing. Introduces turtle appearance methods for more expressive graphics.",
       "topicFile": "data/topics/python/turtle-shape-and-color.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 30
     },
     {
       "id": "python-turtle-square",
@@ -1004,7 +1048,9 @@
       ],
       "description": "Draws a square by repeating forward and right-turn movements in a for loop. A focused challenge connecting loop logic with turtle geometry.",
       "topicFile": "data/topics/python/turtle-square-challenge.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "incomplete",
+      "score": 20
     },
     {
       "id": "python-dash-line",
@@ -1021,7 +1067,9 @@
       ],
       "description": "Draws a dashed line by alternating penup() and pendown() calls inside a loop. Teaches pen control for non-continuous drawing.",
       "topicFile": "data/topics/python/dash-line-drawing.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 30
     },
     {
       "id": "python-drawing-shapes",
@@ -1038,7 +1086,9 @@
       ],
       "description": "Draws polygons from triangle to decagon, each with a random color. Applies the exterior angle formula (360 / sides) and nested loops.",
       "topicFile": "data/topics/python/drawing-different-shapes.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 35
     },
     {
       "id": "python-random-walk",
@@ -1055,7 +1105,9 @@
       ],
       "description": "A turtle that moves in random directions (up, down, left, right) producing an unpredictable colored path. Introduces algorithmic randomness in graphics.",
       "topicFile": "data/topics/python/random-walk.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 30
     },
     {
       "id": "python-random-color-walk",
@@ -1072,7 +1124,9 @@
       ],
       "description": "Extends the random walk by generating a random RGB color for each step. Introduces colormode(255) and dynamic color generation.",
       "topicFile": "data/topics/python/random-color-walk.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 35
     },
     {
       "id": "python-turtle-race",
@@ -1090,7 +1144,9 @@
       ],
       "description": "A turtle racing game where the user bets on a color and multiple turtles race across the screen with random step sizes. Introduces multiple turtle objects.",
       "topicFile": "data/topics/python/turtle-race.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "incomplete",
+      "score": 15
     },
     {
       "id": "python-turtle-events",
@@ -1107,7 +1163,9 @@
       ],
       "description": "Demonstrates setting up keyboard event listeners with screen.listen() and screen.onkey(). A foundation for building interactive turtle applications.",
       "topicFile": "data/topics/python/turtle-keyboard-events.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 30
     },
     {
       "id": "python-etch-a-sketch",
@@ -1124,7 +1182,9 @@
       ],
       "description": "A keyboard-controlled drawing app using W/A/S/D keys to move the turtle and C to clear the screen. A complete interactive turtle application.",
       "topicFile": "data/topics/python/etch-a-sketch-app.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "incomplete",
+      "score": 20
     },
     {
       "id": "python-spirograph",

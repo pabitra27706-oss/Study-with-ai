@@ -16,9 +16,9 @@
     ],
     "description": "Calculates the sum of all even numbers from 1 to 100 using a for loop and modulo filtering. Combines loops with conditional logic.",
     "learningNotes": {
-      "whatILearned": "Using range() with a for loop and the modulo operator to filter only even numbers into a running sum.",
-      "challenges": "Choosing between range(0,101,2) and a modulo check inside the loop.",
-      "nextSteps": "Generalize to sum multiples of any number in any range."
+      "whatILearned": "Checking every number from 1 to 100 and adding the even ones is the slow, obvious way — and the fast way is written underneath it.",
+      "challenges": "I used `sum` as the loop variable, which hides Python's own `sum` for the rest of the file.",
+      "nextSteps": "Rename the loop variable, and move the fast version out of the comments and into the file next to the slow one."
     }
   },
   "files": [
@@ -29,5 +29,23 @@
       "description": "Sums even numbers from 1 to 100.",
       "dateAdded": "2026-01-05T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 75,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`sum` is a built-in function — using it as a loop variable hides it for the whole file, and the file even has a second version that wants to call it",
+      "`range(2, 101, 2)` walks the even numbers directly, so the `if` is not needed at all"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 5 = 75%**\n\n**What is solid**\n\nIt is right: it prints `2550`, which is the sum of the even numbers from 1 to 100. The slow way is written clearly and the fast way — `for sum in range(2, 101, 2)` — is written underneath it in the comments. Having both is good practice, and the fast version is correct: stepping by two from 2 reaches exactly the even numbers.\n\n**What is not**\n\n**The loop variable is called `sum`.** That is Python's built-in sum function, and for the rest of the file the name means something else. The comment block below even wants to call the built-in — the two halves of the file are fighting over the same name.\n\nThe fast version is also only a comment, so the file cannot actually run the better answer.\n\n**The one thing to fix first**\n\nRename it to `number`, and then make the fast version real code — keep it as a second function, or a `# for the fast way:` comment above it, so both answers live in the file.\n"
+  }
 }

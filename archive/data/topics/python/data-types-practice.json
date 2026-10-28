@@ -15,9 +15,9 @@
     ],
     "description": "An introduction to Python data types: strings, integers, and type conversion. Demonstrates accessing characters by index and converting between types.",
     "learningNotes": {
-      "whatILearned": "Accessing individual characters in a string using index notation and converting strings to integers with int().",
-      "challenges": "Understanding zero-based indexing for the first time.",
-      "nextSteps": "Explore floats, booleans, and type checking."
+      "whatILearned": "A string can be indexed like a list, so the first character of a number is a number in its own right.",
+      "challenges": "I take the first two characters and add them without checking they are digits, and the program dies on anything but a number.",
+      "nextSteps": "Check the input is two digits before you use it, and say in a comment that indexing a string gives back a string."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Sum of digits using string indexing and type conversion.",
       "dateAdded": "2026-01-01T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 60,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`input()` raises `ValueError` when the text is not a number — the program has to be ready for the answer it does not get",
+      "Indexing a string gives a one-character *string*, not a number — `int()` is what turns it back into one"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 20 + 0 = 60%**\n\n**What is solid**\n\nThe idea is neat and it works: given `56` it prints `11`, because the first character is `5` and the second is `6`, and `int()` turns each back into a number before they are added.\n\n**What is not**\n\n**It crashes on anything that is not two digits.** I typed `ab` and it died with `ValueError: invalid literal for int()` — the program reaches for `two_digit_no[0]` and `[1]` and assumes both are numbers. It also assumes there *are* two characters: a single digit gives an `IndexError` on the second line.\n\nThe prompt says *Type a two digit no*, so the user is being asked to behave — but a program that dies when the user is wrong is a program that has to be defended.\n\n**The one thing to fix first**\n\n```python\nif len(two_digit_no) != 2 or not two_digit_no.isdigit():\n    print('Please type exactly two digits.')\nelse:\n    ...\n```\n\nOne check, and the file cannot be killed by typing.\n"
+  }
 }

@@ -15,9 +15,9 @@
     ],
     "description": "Demonstrates creating a list of Indian states and accessing elements using both positive and negative indices. A clean introduction to Python lists.",
     "learningNotes": {
-      "whatILearned": "Creating lists, accessing by positive index, and using negative indices to access from the end.",
-      "challenges": "None — a gentle introduction to list indexing.",
-      "nextSteps": "Learn list methods: append(), extend(), remove(), pop()."
+      "whatILearned": "A list is a row of values in order, and indexing counts from zero — which is why `-1` gives you the last one.",
+      "challenges": "I never check the number the user types, so a number that is not in the list stops the program.",
+      "nextSteps": "Check the index against the length of the list, and say in a comment that indexing starts at zero."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "List of states with positive and negative index access.",
       "dateAdded": "2026-01-05T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 70,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "Indexing starts at 0, so the 3rd state in the list is `state_of_india[2]` — the off-by-one is the classic first bug",
+      "A negative index counts from the end, so `-1` is the last item — a feature worth a comment rather than an accident"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 25 + 5 = 70%**\n\n**What is solid**\n\nThe list is right — all twenty-eight states, in order, spelled properly — and the program works: given `3` it prints *Bihar*, which is the third state. The comment at the end about negative indices (*If -x input then it will saw from last of the list*) is a real observation about how Python indexes, and it is the sort of thing worth writing down.\n\n**What is not**\n\n**The index is never checked.** Given `40` the program dies with `IndexError` — a number the user typed, on a program that invited them to type one. And there is a trap right next to the working part: the list starts at zero, so the third state is `state_of_india[2]`, and the number the user is asked for is a position, not an index. Given `3` it prints Bihar, which is the *fourth* state in the usual counting.\n\n**The one thing to fix first**\n\n```python\na = int(no_of_state)\nif not 0 <= a < len(state_of_india):\n    print('There are only', len(state_of_india), 'states.')\nelse:\n    ...\n```\n\nAnd one comment saying the list is zero-indexed, so the number asked for and the number used differ by one.\n"
+  }
 }

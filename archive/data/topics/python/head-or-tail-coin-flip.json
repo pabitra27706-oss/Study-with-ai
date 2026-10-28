@@ -14,9 +14,9 @@
     ],
     "description": "Simulates a coin flip using random.randint and prints Head or Tail. Introduces the random module and simple conditional logic.",
     "learningNotes": {
-      "whatILearned": "Importing the random module and using randint(0,1) with if-else for a binary outcome.",
-      "challenges": "Understanding why we import modules.",
-      "nextSteps": "Add multiple flips and track streaks."
+      "whatILearned": "`random.randint(0, 1)` gives you a coin, and one `if` turns the number into a name.",
+      "challenges": "There is no comment anywhere, and the file ends with a link instead of an explanation.",
+      "nextSteps": "Say in one comment why `randint(0, 1)` is a fair coin, and note that the link is about pseudorandom numbers."
     }
   },
   "files": [
@@ -27,5 +27,23 @@
       "description": "Coin flip simulation using random.",
       "dateAdded": "2026-01-02T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 70,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`random.randint(0, 1)` is a fair two-way choice because both ends are equally likely — that is the whole reason for the range",
+      "A random number generator is deterministic given its seed, which is why *pseudo*random is the accurate word"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 0 = 70%**\n\n**What is solid**\n\nIt is right and it is a complete little program: it flips a coin and prints *Head* or *Tail*. The generator is fair by construction — `randint(0, 1)` includes both ends, so there is no bias towards one side.\n\n**What is not**\n\nNo comments, and the file ends with a Khan Academy link about random versus pseudorandom numbers with no sentence saying why that link is there. For a reader it is an unexplained jump — but it is also the best part of the file, because it points at the idea underneath the code.\n\n**The one thing to fix first**\n\n```python\nr_int = random.randint(0, 1)  # Both ends included, so the coin is fair.\n```\n\nAnd one line above the link: *why* that article — the generator is pseudorandom, and knowing that is the interesting part.\n"
+  }
 }

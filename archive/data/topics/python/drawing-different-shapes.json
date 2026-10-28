@@ -15,9 +15,9 @@
     ],
     "description": "Draws polygons from triangle to decagon, each with a random color. Applies the exterior angle formula (360 / sides) and nested loops.",
     "learningNotes": {
-      "whatILearned": "Calculating exterior angles for regular polygons and using a nested loop to draw each shape in a different random color.",
-      "challenges": "Getting the angle formula right and understanding why 360 / n works for any regular polygon.",
-      "nextSteps": "Draw stars using different angle calculations."
+      "whatILearned": "A polygon with `i` sides needs `360 / i` degrees at each corner — the angle follows from the number of sides.",
+      "challenges": "The one comment in the file says what the line does, not why the angle is what it is.",
+      "nextSteps": "Write the rule down: the angles of a shape have to add up to 360, so each one is 360 divided by the number of sides."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Draws triangle to decagon with random colors.",
       "dateAdded": "2026-01-12T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 35,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "The exterior angle of a regular polygon is 360 divided by its number of sides — that single fact is the whole file",
+      "The shape is regular only because every side is the same length; the angle rule alone does not make a square"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**0 + 30 + 5 = 35%**\n\n**This file cannot be run here.** It needs `tkinter`, and this\nmachine has no display and no `tkinter` — so the 40 points for *it runs* are\nnot ones I can give, and they are not given. The other two bands are judged\nby reading the code, carefully, line by line.\n\nThere is a bigger point here, and it is worth saying plainly: **`tkinter`\ndoes not exist on Termux either.** These files cannot be run on the phone\nthis whole system is built around. They are not broken — they are stranded.\n\n**What is right, by reading**\n\nThe maths is right, and it is the maths that is the point. For a shape with `i` sides, each corner turns by `360 / i` — a triangle turns 120°, a pentagon 72°, a decagon 36° — and drawing `i` sides that way closes the shape exactly. The loop runs from 3 to 10 sides, so the file draws a triangle, a square, a pentagon and on up to a decagon, each in a random colour.\n\n**What is not**\n\nThe one comment says *Random color for each shape*, which describes the line it sits on and says nothing about the shape. The angle line — `angle = 360 / i` — is the most interesting line in the file and it has no explanation at all.\n\nThere is also no comment on why the inner loop counts to `i`, which is what makes the polygon close.\n\n**The one thing to fix first**\n\n```python\nangle = 360 / i  # The corners of a shape add up to 360, so each one is 360/i degrees.\n```\n\nOne line, and the file explains the geometry it is drawing.\n"
+  }
 }

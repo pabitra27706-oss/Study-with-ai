@@ -14,9 +14,9 @@
     ],
     "description": "A classic beginner exercise that swaps the values of two variables using a temporary variable. Builds understanding of assignment and memory.",
     "learningNotes": {
-      "whatILearned": "How assignment works in Python and why a temporary variable is needed for swapping values.",
-      "challenges": "Understanding why direct swap (a = b; b = a) fails without a temp variable.",
-      "nextSteps": "Learn Python tuple unpacking: a, b = b, a."
+      "whatILearned": "To swap two values you need somewhere to keep one of them while you overwrite the other.",
+      "challenges": "I used a third variable without saying why — the whole point of the exercise is invisible in the code.",
+      "nextSteps": "Put one comment on the third variable naming the reason it has to exist."
     }
   },
   "files": [
@@ -27,5 +27,22 @@
       "description": "Swaps two variables using a temporary variable.",
       "dateAdded": "2026-01-01T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 70,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "Swapping without a third variable means doing arithmetic on the values themselves — which is a later exercise, and a worse first one"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 0 = 70%**\n\n**What is solid**\n\nIt is right. Given `a` and `b` it prints `a=b` and `b=a` — the values have genuinely changed places. The three-step dance — copy, overwrite, copy back — is the standard answer and it is the right one to learn first.\n\n**What is not**\n\nThere is no comment, and this file is the clearest case in the folder of a comment that would earn its place: the reason the third variable exists is the entire lesson. `c = a` keeps `a` alive while `a` is overwritten, and that sentence is not visible anywhere in the code.\n\n**The one thing to fix first**\n\n```python\nc = a  # Keep a here, because the next line overwrites it.\n```\n\nOne line, and the file explains itself.\n"
+  }
 }

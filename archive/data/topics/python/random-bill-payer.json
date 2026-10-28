@@ -15,9 +15,9 @@
     ],
     "description": "Randomly selects a person from a comma-separated list of names to pay the bill. Introduces random.choice and string splitting.",
     "learningNotes": {
-      "whatILearned": "Splitting a string by delimiter into a list and using random.choice to pick a random element.",
-      "challenges": "Handling extra spaces after splitting.",
-      "nextSteps": "Add weighted probability so some people pay more often."
+      "whatILearned": "`split` turns one line of text into a list, and `random.choice` picks one of them.",
+      "challenges": "I left the comment saying *Split string merthod*, which names the method and explains nothing about why the split is on a comma.",
+      "nextSteps": "Rewrite the comment to say what the split is for, and strip the spaces so a name does not come out as ' Pabitra'."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Randomly selects a name from user-entered list.",
       "dateAdded": "2026-01-03T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 75,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`split(\",\")` splits on every comma, so a name with a space after the comma keeps that space — `strip()` on each name is the fix",
+      "A comment that names the method is a comment that repeats the code"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 5 = 75%**\n\n**What is solid**\n\nIt runs and it is right. Given `Pabitra,Riya` it prints `Today payment will given by Pabitra`. The split-then-pick shape is the whole trick and it is used correctly, and there is a comment — `#Split string merthod` — which at least points at the idea.\n\n**What is not**\n\nThe comment names the method instead of the reason. `split` is visible in the code; what is not visible is *why* a comma — the file assumes the reader already knows that a comma-separated list is the input format.\n\nThere is also a small trap waiting: if the user types `Pabitra, Riya` with a space, the second name becomes ` Riya` with a leading space, and the program will print it that way.\n\n**The one thing to fix first**\n\n```python\nnames = [name.strip() for name in name_string.split(\",\")]\n```\n\nAnd the comment, rewritten:\n\n```python\n# Split on commas because the names come in as one comma-separated line.\n```\n"
+  }
 }

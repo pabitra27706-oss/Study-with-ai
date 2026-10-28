@@ -15,9 +15,9 @@
     ],
     "description": "Calculates the total price of a pizza order based on size, pepperoni, and extra cheese selections. Reinforces if-elif-else logic and cumulative addition.",
     "learningNotes": {
-      "whatILearned": "Using elif for multiple choices and accumulating a running total.",
-      "challenges": "Organizing conditions to avoid redundant code paths.",
-      "nextSteps": "Add more toppings, combo deals, and discount logic."
+      "whatILearned": "Start the bill at zero and add each thing on it as it is confirmed — the shape is right.",
+      "challenges": "I compare the size with a capital letter, so a lowercase 's' is quietly charged as a large pizza.",
+      "nextSteps": "Uppercase the answer before you compare it, and refuse a size that is not S, M or L."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Pizza bill calculator with size and topping options.",
       "dateAdded": "2026-01-03T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 60,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "Comparing an answer to 'S' when the user typed 's' sends a small pizza down the large-pizza branch — nothing warns you",
+      "An `if / elif / else` where the `else` means *large* also means *anything else*, including a typo"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 20 + 0 = 60%**\n\n**What is solid**\n\nThe pricing is right. S is 15, M is 20, L is 25; pepperoni is 2 for a small and 3 for the other two; extra cheese is 1 on top of everything. Given `S`, `Y`, `Y` it printed `$18`, which is exactly right — 15 + 2 + 1.\n\n**What is not**\n\n**A lowercase letter is charged as a large pizza.** I typed `s` instead of `S` and it printed `$28` — the small pizza became a large one, with pepperoni, and the program said nothing. The `else` branch is doing double duty: it means *large*, and it also means *anything that is not S or M*, including a typo.\n\nThe commented-out *other way* at the bottom is a good instinct — you were thinking about the second shape of the same logic — but it is commented out, so it is a thought rather than code.\n\n**The one thing to fix first**\n\n```python\nsize = input('What size pizza do you want? S, M & L: ').strip().upper()\n```\n\nOne `.upper()` and the answer is compared the way a person would type it. Then change the `else` to check for `L` and let everything else be an error.\n"
+  }
 }
