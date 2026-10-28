@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { ArchiveBrowser } from "@/components/archive-browser";
-import { Stat } from "@/components/ui";
-import { getArchiveIndex } from "@/lib/archive";
-import { archiveDaysLearning } from "@/lib/archive-shared";
+import { Card, Stat } from "@/components/ui";
+import { getArchiveIndex, getArchivePending } from "@/lib/archive";
+import { archiveDate, archiveDaysLearning } from "@/lib/archive-shared";
 
 export const dynamic = "force-static";
 
@@ -23,6 +25,14 @@ export default function ArchivePage() {
   const days = archiveDaysLearning(index.metadata.firstEntryDate);
   const languages = index.metadata.languages.length;
   const graded = index.topics.filter((topic) => topic.source === "engine").length;
+  const pending = getArchivePending();
+
+  /* The newest thing in the archive. Not the first in the catalogue — the
+     catalogue is in the order things were added, which is not the order
+     they were written. */
+  const newest = [...index.topics]
+    .filter((topic) => topic.dateCreated)
+    .sort((a, b) => b.dateCreated.localeCompare(a.dateCreated))[0];
 
   return (
     <main className="mx-auto max-w-6xl px-5 py-14 sm:py-20">
@@ -40,6 +50,48 @@ export default function ArchivePage() {
           engine, so they are never out of date.
         </p>
       </header>
+
+      {/* ---- what is new, and what is waiting ----------------------------- */}
+      <section className="mb-12 grid gap-4 sm:grid-cols-2">
+        {newest && (
+          <Card className="p-5">
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-faint">
+              The newest
+            </p>
+            <Link
+              href={`/archive/${newest.id}`}
+              className="mt-2 block text-[16px] font-medium text-ink transition hover:text-brand-soft"
+            >
+              {newest.title}
+            </Link>
+            <p className="mt-1.5 font-mono text-[11px] text-faint">
+              {archiveDate(newest.dateCreated)} · {newest.language} ·{" "}
+              {newest.fileCount ?? 0} file{newest.fileCount === 1 ? "" : "s"}
+              {newest.score != null && ` · ${newest.score}%`}
+            </p>
+          </Card>
+        )}
+        <Card className="p-5">
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-faint">
+            Waiting to be judged
+          </p>
+          <p className="mt-2 text-[16px] font-medium text-ink">
+            {pending.count} topic{pending.count === 1 ? "" : "s"}
+          </p>
+          <p className="mt-1.5 text-[12.5px] leading-relaxed text-muted">
+            Real code with no review yet. Not broken — just not read.
+          </p>
+          {pending.count > 0 && (
+            <Link
+              href="/archive/pending"
+              className="mt-3 inline-flex items-center gap-1.5 font-mono text-[11px] text-brand-soft transition hover:text-ink"
+            >
+              see the queue
+              <ArrowUpRight className="h-3 w-3" />
+            </Link>
+          )}
+        </Card>
+      </section>
 
       <section className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Stat label="Topics" value={index.metadata.totalTopics} hint="Every one has real code in it." />

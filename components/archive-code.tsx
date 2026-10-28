@@ -1,5 +1,6 @@
 import { ChevronDown, Code2, Download } from "lucide-react";
 import { Card } from "@/components/ui";
+import { CopyCodeButton } from "@/components/copy-code-button";
 import type { ArchiveFile } from "@/lib/archive-shared";
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -66,6 +67,9 @@ export function ArchiveCodeCard({
             <Download className="h-3.5 w-3.5" />
             download
           </a>
+          <CopyCodeButton
+            url={`${BASE_PATH}/archive-content/${file.filePath.replace(/^content\//, "")}`}
+          />
         </div>
       </div>
 

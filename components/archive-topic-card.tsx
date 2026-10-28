@@ -28,11 +28,14 @@ export function ArchiveTopicCard({
   topic,
   dense = false,
   aside,
+  codeHit = false,
 }: {
   topic: ArchiveIndexEntry;
   dense?: boolean;
   /** Rendered in the top-right corner — used for the ZIP selection box. */
   aside?: React.ReactNode;
+  /** True when the search matched this topic's code rather than its title. */
+  codeHit?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const [payload, setPayload] = useState<ArchiveTopic | null>(null);
@@ -109,6 +112,11 @@ export function ArchiveTopicCard({
                 said quietly here and said properly on the topic's own
                 page, because a file that is never judged is a file that
                 gets forgotten. */}
+            {codeHit && (
+              <span className="rounded-full border border-brand/40 bg-brand/10 px-2 py-0.5 font-mono text-[11px] text-brand-soft">
+                in the code
+              </span>
+            )}
             {!topic.verdict && (topic.fileCount ?? 0) > 0 && (
               <span className="rounded-full border border-line-soft bg-panel-2 px-2 py-0.5 font-mono text-[11px] text-faint">
                 not judged
