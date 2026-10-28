@@ -105,13 +105,18 @@ I read the code and the answers too.
 
 ---
 
-## The seeded example
+## Where the examples live
 
-`solutions/t1.c` currently holds a worked reference answer for **t1**, and
-`answers.json` holds four sample answers, so the site has something real to
-show on the first run.
+- **The worked reference solutions** are in
+  [`curriculum/reference/c-loops/`](../../curriculum/reference/c-loops/) —
+  one per task, with the why-comments this topic asks for. Read them *after*
+  you have attempted the task, not before.
+- **`answers.json`** still holds the four sample answers the topic ships with.
+  They are the rubric's idea of a full-credit answer. Replace them with your
+  own — only then does the "answers" number on the scoreboard mean anything.
+- **`solutions/`** is yours. Only what you write in there is scored.
 
-Replace both with your own work. Then run:
+Your own work, then:
 
 ```bash
 bash scripts/collect.sh c-loops t1
@@ -132,5 +137,7 @@ and say **check c-loops**.
 | t5 | FizzBuzz | 20 | you test divisibility by 15 (or check FizzBuzz first) instead of testing 3 and 5 independently. |
 | t6 | Multiplication table | 25 | the counter runs 1..10 rather than 0..9. |
 
-The full prompts, the visible test cases, the hints and the reference solutions
+The full prompts, the visible test cases, the hints and the hidden edge cases
 live in [`curriculum/topics/c-loops.json`](../../curriculum/topics/c-loops.json).
+The worked reference solutions live in
+[`curriculum/reference/c-loops/`](../../curriculum/reference/c-loops/).

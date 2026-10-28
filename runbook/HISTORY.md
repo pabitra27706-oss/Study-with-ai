@@ -136,3 +136,56 @@ file moving around on the phone.
 `GitCredentialsStore` and feeds it to git through an askpass script (never into
 a remote URL), pushes the branch name explicitly, and has a **Publish to
 GitHub** flow that creates a repo through `POST /user/repos`.
+
+---
+
+## 2026-10-28 — PR #6 merged, PR #5 closed
+
+**Decided.** The owner's instruction was *"Please merge the pull request."*
+
+**Done.** PR #6 squashed into `main` as `a8add89` — matching the repository's
+existing convention, since `main` carries no merge commits, only squash
+merges. The Pages deployment for it returned `success`. PR #5 was closed as a
+duplicate: its only remaining diff was the `docs/` build output, which #6
+deliberately removed from version control, so merging it would have undone
+that.
+
+**Also done.** The runbook was updated to match reality. A runbook that still
+says "PR #6 is open" after it has merged is exactly the failure this folder
+exists to prevent.
+
+> *This entry was lost when the branch history was reset after the merge, and
+> restored by hand. The log is append-only — if a reset ever drops it again,
+> put it back.*
+
+---
+
+## 2026-10-28 — The first judgement of the learner's own work
+
+**What happened.** The learner wrote `learn/c-loops/solutions/t2.c` — a
+recursive factorial — and pushed it. That is the first submission in this
+project that was not written by me.
+
+**The verdict.** `incomplete`, 20% (machine 19%).
+
+**What the sensor found.** It compiles. Every value it computes is right:
+5! = 120, 0! = 1, 10! = 3628800, 20! = 2432902008176640000. It fails all four
+test cases because it prints `Enter an integer: Factorial of 5 = 120` where the
+test expects `120`. All three comments state what, not why.
+
+**What the judgement added.** The maths is right and the exercise is not done:
+this is a loops topic, and the task's comment requirement asks why an
+accumulator starts at 1 and why the boundary includes N — neither of which can
+exist in a recursive program. The correction is the *shape* of the solution and
+the *output contract*, not the arithmetic. The full solution was not handed
+over.
+
+**A measurement bug, found and fixed.** The scoreboard was crediting the
+learner with a passing task they never wrote: `learn/c-loops/solutions/t1.c`
+was byte-identical to `curriculum/reference/c-loops/t1.c`, the example the
+topic ships with. It was removed from the graded folder — the reference copy
+stays where it belongs — so the number now measures the learner's own work.
+That is why the score went *down* from 28% to 20% while the work went up.
+
+**Also.** `learn/c-loops/.fingerprint` was removed: it belonged to the deleted
+agent design and nothing read it.

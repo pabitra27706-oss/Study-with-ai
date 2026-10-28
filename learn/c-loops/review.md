@@ -1,30 +1,35 @@
 # Review — Loops in C
 
-**incomplete** · **28%** · judged 2026-10-28 17:23 by Claude
+**incomplete** · **20%** · judged 2026-10-28 17:57 by Claude
 
-**What is here right now**
+**What is solid**
 
-`solutions/t1.c` currently holds the seeded reference answer for t1 — the working example the topic ships with, not your work yet. It is correct, and the comments are exactly the kind this topic is asking for: `for (int i = 1; i <= n; i++)` carries the reason it is `<=` and not `<`, *n itself is a factor of n!*. That sentence is the difference between code you copied and code you own.
+The mathematics is right, and that is the hard part. `5! = 120`, `0! = 1`, `10! = 3628800`, `20! = 2432902008176640000` — every value correct. `unsigned long long` covers 20! with room to spare, `%llu` matches it, so there is no format bug. It compiles clean under `-Wall -Wextra`. And you reject a negative input before calling the function — the task never asked for that, and it is the right instinct.
 
 **Fix this first**
 
-Five of the six tasks are unwritten, and that is the whole of the gap. Do not spend another minute polishing t1 — it already passes every test, public and hidden. The next hour is better spent on t2, factorial, because it is the loop you already have plus one new idea: an accumulator that starts at 1 rather than 0.
+Your program prints three things the task did not ask for: a prompt, the words *Factorial of*, and the number N. The task says *print N!* — the answer, alone, on stdout. The test compares stdout exactly, so `Enter an integer: Factorial of 5 = 120` is not `120`. Two changes fix all four failures: drop the prompt line, and print only the number.
 
 **Then this**
 
-The four written answers are correct, but they are written to be marked rather than to be understood. *"Because initialising it inside the body resets it every iteration"* is the right reason; the next version would say what that reset **costs** — the previous total is thrown away and only the last iteration survives.
+This is a loops topic, and this task's comment asks why an *accumulator* starts at 1 and why the *boundary* includes N. Recursion has neither, so the comment you were asked to write cannot exist in this program. Recursion deserves its own topic — but as written, this never practises the thing you are here to learn.
 
 **One thing to re-read**
 
-Section 5, *Off-by-one: decide the range before you write the loop*. You already applied it in t1. It is the section that will cost you marks in t6 (the multiplication table, where the counter must run 1..10 and not 0..9) and in t4 (reverse a number, where the loop must stop when the number reaches 0) if you skip it.
+Section 3, *The four parts of a for loop — and the exact order they run*. Those four parts are exactly what the task's comment is about: the initialiser is where the accumulator starts at 1, the condition is where the boundary includes N. Write the loop header in English first, then explain those two parts.
 
-**How this gets better**
+**One number, honestly**
 
-Replace `solutions/t1.c` with your own version in CodeC, then `bash scripts/collect.sh c-loops t1`, then say **check c-loops** and I will read it, judge it and write the verdict back. The score below is the seeded example's, not yours.
+The score fell from 28% to 20% — not because your t2 got worse. The `t1.c` in your folder was the shipped example, byte-identical to the reference copy, and it was being counted as a task you had passed. You never wrote it, so I removed it. Your four written answers are still the shipped examples too.
 
+## Misconceptions to unlearn
+
+- A correct program is not the same as a correct submission — the task asked to print N!, and 'Factorial of 5 = 120' is not 120
+- A prompt for a human belongs on stderr, not stdout — with stdin piped there is no human, only noise in the answer
+- In a loops topic, recursion skips the thing being learned: the comment the task asks for can only exist if you wrote a loop
 
 ## Notes
 
-- **What I learned** — I can write a for-loop that gets the boundary right, and say why in the comment.
-- **What broke** — Only one of the six tasks is written — the other five are still blank.
-- **What is next** — Do t2 (factorial) next: it is the same loop, but with an accumulator that starts at 1.
+- **What I learned** — My factorial maths is right — 5! is 120 and 0! is 1 — but I printed the answer wrongly.
+- **What broke** — My program prints a prompt and a sentence instead of just the number, so it fails all four test cases.
+- **What is next** — Print only the number, then rewrite it as a for loop and say why the accumulator starts at 1 and why the loop stops at N.

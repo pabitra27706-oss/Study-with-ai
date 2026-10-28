@@ -1,5 +1,5 @@
 {
-  "whatILearned": "I can write a for-loop that gets the boundary right, and say why in the comment.",
-  "challenges": "Only one of the six tasks is written — the other five are still blank.",
-  "nextSteps": "Do t2 (factorial) next: it is the same loop, but with an accumulator that starts at 1."
+  "whatILearned": "My factorial maths is right — 5! is 120 and 0! is 1 — but I printed the answer wrongly.",
+  "challenges": "My program prints a prompt and a sentence instead of just the number, so it fails all four test cases.",
+  "nextSteps": "Print only the number, then rewrite it as a for loop and say why the accumulator starts at 1 and why the loop stops at N."
 }
