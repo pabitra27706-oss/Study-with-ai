@@ -1,9 +1,9 @@
 # The Learning Archive — moved
 
 > **This repository is now a pointer.** The Learning Archive lives inside
-> [`pabitrawriters06-oss/Study-with-ai`](https://github.com/pabitrawriters06-oss/Study-with-ai),
+> [`pabitra27706-oss/Study-with-ai`](https://github.com/pabitra27706-oss/Study-with-ai),
 > in the `archive/` folder, and it is published at
-> **[pabitrawriters06-oss.github.io/Study-with-ai/archive](https://pabitrawriters06-oss.github.io/Study-with-ai/archive)**.
+> **[pabitra27706-oss.github.io/Study-with-ai/archive](https://pabitra27706-oss.github.io/Study-with-ai/archive)**.
 
 ## Why it moved
 
@@ -11,7 +11,7 @@ This repository was a separate archive with its own site. Publishing into it
 meant:
 
 ```bash
-git clone https://github.com/pabitrawriters06-oss/portfolio.git ~/portfolio
+git clone https://github.com/pabitra27706-oss/portfolio.git ~/portfolio
 node scripts/export-to-portfolio.mjs ~/portfolio
 cd ~/portfolio && git status && git diff
 git commit -am "Add <topic> from the AI curriculum" && git push
@@ -88,7 +88,7 @@ The full documentation is preserved in [`HOW_TO_CHANGE_ANYTHING.md`](HOW_TO_CHAN
 
 | | |
 |---|---|
-| The archive | https://pabitrawriters06-oss.github.io/Study-with-ai/archive |
-| The progress map | https://pabitrawriters06-oss.github.io/Study-with-ai/progress |
-| The learning loop | https://pabitrawriters06-oss.github.io/Study-with-ai/learn |
-| The repository | https://github.com/pabitrawriters06-oss/Study-with-ai |
+| The archive | https://pabitra27706-oss.github.io/Study-with-ai/archive |
+| The progress map | https://pabitra27706-oss.github.io/Study-with-ai/progress |
+| The learning loop | https://pabitra27706-oss.github.io/Study-with-ai/learn |
+| The repository | https://github.com/pabitra27706-oss/Study-with-ai |

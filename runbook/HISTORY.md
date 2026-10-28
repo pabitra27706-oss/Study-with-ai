@@ -418,7 +418,7 @@ to become a pointer — a "moved" landing page and a README that says where
 everything went. The commit was prepared and the push was refused:
 
 ```
-remote: Permission to pabitrawriters06-oss/portfolio.git denied to pabitrawriters06-oss.
+remote: Permission to pabitra27706-oss/portfolio.git denied to pabitra27706-oss.
 ```
 
 **Why.** The token this session runs on is a **GitHub App installation token**,
@@ -547,3 +547,61 @@ box you can see and tap, not a line of small words you have to find.
 **The rule.** A generator that only reads one directory will quietly lose
 everything in the others. Look at what is on disk, and ask what the
 numbers claim.
+
+---
+
+## 2026-10-29 — The bugs that were hiding in the flow
+
+**Decided.** Hunt for what breaks the flow before it breaks in front of the
+owner, and fix it now rather than when it is noticed.
+
+**Found, and fixed.**
+
+- **The ZIP download was empty for 69 of the 74 topics.** The browser asked
+  for a topic's JSON under the *file's* name and the mirror wrote it under
+  the topic's *id*. The two names differ for every topic that came from the
+  old archive. A fetch that 404s returns nothing, so the ZIP came out with
+  silent holes in it. Both paths are tried now, the right one first.
+- **A topic in a language whose name is not a plain word could never
+  open.** The browser guessed the folder from the language — "HTML/CSS"
+  became "htmlcss" — while the folder is "html-css". The catalogue now
+  carries the folder name (`langSlug`), so the browser is told instead of
+  guessing. Any file dropped into `archive/content/html-css/` would have
+  shown an empty card for ever.
+- **The catalogue forgot every hand-written edit.** When the generator
+  rebuilt a catalogue entry for an adopted topic, it rebuilt it from what
+  the file's *header* said — not from the file. A description rewritten by
+  hand was quietly undone on the next build. The file on disk is the truth
+  now.
+- **A deleted file left a ghost card.** Delete a file from
+  `archive/content/` and the topic still claimed it, so the card opened to
+  an empty box and the download 404'd. The list is read from the disk now.
+- **Two GitHub accounts that do not exist were written across the
+  repository** — one of them on the live `/projects` page and in the
+  pointer README already published to the old `portfolio` repository. Every
+  account name in the repository is now checked against the API, and all
+  twelve of them resolve.
+- **A clock in the generator.** One date still fell back to "now", which
+  would rewrite the archive on every run and make `--check` useless.
+  Removed.
+- **The archive's page description said 69 topics.** It is written from the
+  catalogue now, so it cannot go stale again.
+- **The card showed its spinner and its content at the same time**, and
+  `undefined%` could appear where a score should be.
+
+**And the gap that started this.** A file written straight into the archive
+had no way to be judged: `runner/brief.mjs` only knew topic packs, and
+nothing anywhere listed the work that was waiting. Now it does.
+
+- `runner/brief.mjs --pending` — the queue.
+- `runner/brief.mjs --archive <file>` — the brief for a file with no task
+  sheet, under the archive rubric.
+- `runner/brief.mjs <archive-topic-id>` — the same, found by name.
+- `archive/data/archive-pending.json` — the queue itself, newest work first,
+  written by the generator on every build.
+- The archive's own pages say **waiting to be judged** instead of showing
+  nothing, and `scripts/check.sh` prints the queue before the brief.
+
+**The rule.** A feature that is invisible is a feature that does not
+exist. If work can arrive somewhere, that somewhere has to be able to say
+what is waiting in it.

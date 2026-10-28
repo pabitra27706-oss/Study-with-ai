@@ -91,7 +91,7 @@ export default async function ArchiveTopicPage({
             ? ` · ${engine.tasks} task${engine.tasks === 1 ? "" : "s"}`
             : ""}
         </p>
-        {topic.tags.length > 0 && (
+        {topic.tags && topic.tags.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-1.5">
             {topic.tags.map((tag) => (
               <Tag key={tag}>{tag}</Tag>
@@ -99,6 +99,24 @@ export default async function ArchiveTopicPage({
           </div>
         )}
       </header>
+
+      {/* ---- code with no verdict: said plainly, not left to be guessed -- */}
+      {!engine?.verdict && files.length > 0 && (
+        <section className="mb-10">
+          <Card className="border-warn/25 bg-warn/5 p-5">
+            <p className="font-mono text-[11px] uppercase tracking-wider text-warn">
+              Waiting to be judged
+            </p>
+            <p className="mt-2 text-[14px] leading-relaxed text-muted">
+              This code arrived in the archive, and nobody has judged it yet.
+              There is no verdict, no score and no review — not because
+              anything is wrong with it, but because it has not been looked
+              at. Say <span className="font-mono text-ink">&quot;check {topic.id}&quot;</span>{" "}
+              and it will be read, run and reviewed.
+            </p>
+          </Card>
+        </section>
+      )}
 
       {/* ---- the verdict, for topics the engine graded --------------------- */}
       {engine?.verdict && (
@@ -118,7 +136,7 @@ export default async function ArchiveTopicPage({
                     {engine.verdict.status}
                   </span>
                   <span className="font-mono text-3xl font-semibold text-ink">
-                    {engine.verdict.score}%
+                    {typeof engine.verdict.score === "number" ? `${engine.verdict.score}%` : "—"}
                   </span>
                   {engine.machine && (
                     <span className="font-mono text-[12px] text-faint">
@@ -141,7 +159,7 @@ export default async function ArchiveTopicPage({
               )}
             </div>
 
-            {engine.machine && (
+            {engine.machine && typeof engine.verdict.score === "number" && (
               <div className="mt-5 h-1.5 w-full overflow-hidden rounded-full bg-line-soft">
                 <div
                   className="h-full rounded-full bg-accent"

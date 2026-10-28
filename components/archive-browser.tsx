@@ -3,7 +3,7 @@
 import { useCallback, useMemo, useState, useSyncExternalStore } from "react";
 import { Download, Grid2X2, List, Rows3, Search, X } from "lucide-react";
 import type { ArchiveIndex, ArchiveIndexEntry } from "@/lib/archive-shared";
-import { archiveMonthLabel } from "@/lib/archive-shared";
+import { archiveLanguageSlug, archiveMonthLabel } from "@/lib/archive-shared";
 import { ArchiveTopicCard } from "@/components/archive-topic-card";
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -177,11 +177,28 @@ export function ArchiveBrowser({ index }: { index: ArchiveIndex }) {
   }
 
   async function fetchTopicFiles(topic: ArchiveIndexEntry) {
-    const response = await fetch(`${BASE_PATH}/archive-data/${topic.topicFile.replace(/^data\//, "")}`);
-    if (!response.ok) return [];
-    const payload = (await response.json()) as {
-      files?: Array<{ fileName: string; filePath: string }>;
-    };
+    /* The mirror writes each topic's JSON under its own id, in the folder
+       the topic lives in. Asking for the *file name* instead of the id
+       found nothing at all for 69 of the 74 topics, so the ZIP came out
+       empty without a word of explanation. Try the right one first, then
+       the old one, so nothing can be lost either way. */
+    const lang = topic.langSlug ?? archiveLanguageSlug(topic.language);
+    const urls = [
+      `${BASE_PATH}/archive-data/topics/${lang}/${topic.id}.json`,
+      `${BASE_PATH}/archive-data/${topic.topicFile.replace(/^data\//, "")}`,
+    ];
+
+    let payload: { files?: Array<{ fileName: string; filePath: string }> } | null = null;
+    for (const url of urls) {
+      const response = await fetch(url);
+      if (!response.ok) continue;
+      payload = (await response.json()) as {
+        files?: Array<{ fileName: string; filePath: string }>;
+      };
+      break;
+    }
+    if (!payload) return [];
+
     const out: Array<{ name: string; body: string }> = [];
     for (const file of payload.files ?? []) {
       const fileResponse = await fetch(

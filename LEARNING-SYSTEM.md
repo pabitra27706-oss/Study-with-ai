@@ -365,6 +365,18 @@ graded on the archive's own rubric — does it run (40), is it right (30),
 does it explain itself (30) — and the review says which rubric it used. The
 rules are in [`runbook/JUDGING.md`](runbook/JUDGING.md).
 
+**And nothing waits in silence.** A file that has code but no verdict is
+listed in `archive/data/archive-pending.json` — newest work first, the older
+backlog after it. The page says *waiting to be judged* instead of showing
+nothing, `scripts/check.sh` prints the queue before the brief, and the brief
+itself knows how to read an archive file:
+
+```bash
+node runner/brief.mjs --pending                          # the queue
+node runner/brief.mjs --archive archive/content/c/foo.c  # one file
+node runner/brief.mjs c-foo                             # by topic id
+```
+
 ---
 
 ## 9. Commands
@@ -372,8 +384,10 @@ rules are in [`runbook/JUDGING.md`](runbook/JUDGING.md).
 | Command | What it does |
 |---|---|
 | `bash scripts/collect.sh data-structures-c t1` | The CodeC bridge: copy in, check, commit, push |
-| `bash scripts/check.sh data-structures-c` | Print the judging brief |
+| `bash scripts/check.sh data-structures-c` | Print the queue, then the judging brief |
 | `node runner/brief.mjs data-structures-c --task t1` | One task only |
+| `node runner/brief.mjs --pending` | The archive work that has no verdict yet |
+| `node runner/brief.mjs --archive archive/content/c/foo.c` | The brief for a file with no task sheet |
 | `node runner/evidence.mjs` | Compile, test and score the comments; write `data/evidence.json` |
 | `node runner/apply-verdict.mjs data-structures-c` | Apply `verdict.json` to the repository |
 | `node scripts/build-archive.mjs` | Regenerate the Learning Archive from the engine |

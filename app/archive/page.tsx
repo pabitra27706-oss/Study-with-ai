@@ -4,13 +4,19 @@ import { Stat } from "@/components/ui";
 import { getArchiveIndex } from "@/lib/archive";
 import { archiveDaysLearning } from "@/lib/archive-shared";
 
-export const metadata: Metadata = {
-  title: "Archive",
-  description:
-    "Every topic learned, with the real code, the notes and the verdict. 69 topics across C, Python and JavaScript — browsable, searchable and downloadable.",
-};
-
 export const dynamic = "force-static";
+
+/* Written from the catalogue, never typed by hand. A number in a
+   description that says "69 topics" when the archive holds 74 is a small
+   lie on the front page of the whole archive. */
+export function generateMetadata(): Metadata {
+  const index = getArchiveIndex();
+  const languages = index.metadata.languages.join(", ") || "C, Python and JavaScript";
+  return {
+    title: "Archive",
+    description: `Every topic learned, with the real code, the notes and the verdict. ${index.metadata.totalTopics} topics across ${languages} — browsable, searchable and downloadable.`,
+  };
+}
 
 export default function ArchivePage() {
   const index = getArchiveIndex();

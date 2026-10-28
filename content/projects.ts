@@ -145,7 +145,7 @@ export const projects: Project[] = [
       "Every topic I have worked through, with the real code, my notes and the verdict I was given - generated from the learning engine, never hand-maintained.",
     status: "shipped",
     live: "https://pabitra27706-oss.github.io/Study-with-ai/archive",
-    repo: "https://github.com/pabitrawriters06-oss/Study-with-ai",
+    repo: "https://github.com/pabitra27706-oss/Study-with-ai",
     stack: ["Next.js", "TypeScript", "JSON", "GitHub Pages"],
     proves:
       "That I can design information architecture and ship something people can actually navigate - and that I can take a working static site and rebuild it inside a real framework without losing a single feature.",

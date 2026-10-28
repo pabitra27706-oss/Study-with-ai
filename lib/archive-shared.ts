@@ -24,6 +24,12 @@ export type ArchiveIndexEntry = {
   source?: string;
   verdict?: string | null;
   score?: number | null;
+  /**
+   * The directory the topic's own JSON lives in — "c", "python",
+   * "html-css". It is not always the language with the punctuation taken
+   * out, so the browser is told rather than left to guess.
+   */
+  langSlug?: string;
 };
 
 export type ArchiveIndex = {

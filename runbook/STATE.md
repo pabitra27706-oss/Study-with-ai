@@ -10,7 +10,7 @@ append-only record is [`HISTORY.md`](HISTORY.md).
 | | Login | ID | Public repos | Holds |
 |---|---|---|---|---|
 | **Primary** | `pabitra27706-oss` | 260086383 | 17 | The originals, both live sites, the Pages domain, `Jelet-prep`, `Termux-Mastery`, `matriq`, this repo |
-| **Second** | `pabi217` | 204871773 | 30 | `CodeC` (star 3), `AppFlow`, the Android apps, and ~20 forks and reference repos |
+| **Second** | `pabi277` | 204871773 | 30 | `CodeC` (star 3), `AppFlow`, the Android apps, and ~20 forks and reference repos |
 
 > **Do not type these.** Read them from the API (see `README.md`). A
 > transcription error produces a 404 that looks like a missing account.
@@ -22,11 +22,11 @@ append-only record is [`HISTORY.md`](HISTORY.md).
 | This site | `https://pabitra27706-oss.github.io/Study-with-ai/` |
 | The learn route | `https://pabitra27706-oss.github.io/Study-with-ai/learn` |
 | One topic | `https://pabitra27706-oss.github.io/Study-with-ai/learn/data-structures-c` |
-| The archive | `https://pabitrawriters06-oss.github.io/Study-with-ai/archive` — 74 topics, 86 files |
+| The archive | `https://pabitra27706-oss.github.io/Study-with-ai/archive` — 74 topics, 86 files |
 | The progress map | `https://pabitra27706-oss.github.io/Study-with-ai/progress` |
 | The Learning Archive | `https://pabitra27706-oss.github.io/Study-with-ai/archive` — now part of this site |
-| CodeC (Pages) | `https://pabi217.github.io/CodeC/` |
-| CodeC (source) | `https://github.com/pabi217/CodeC` |
+| CodeC (Pages) | `https://pabi277.github.io/CodeC/` |
+| CodeC (source) | `https://github.com/pabi277/CodeC` |
 
 ## The repository
 
@@ -34,12 +34,13 @@ append-only record is [`HISTORY.md`](HISTORY.md).
 |---|---|
 | Clone | `https://github.com/pabitra27706-oss/Study-with-ai.git` |
 | Canonical branch | `main` |
-| Working branch | `arena/42ceaa51-study-with-ai` (this session) |
-| Merged | **PR #14** — the `publish-moved-notice` fix, the sitemap, and the empty-topic copy, `f454790`. **PR #13** — the journal-date formatting, `4617614`. **PR #12** — the archive comes home, `c26be05`. **PR #10** — the `data-structures-c` topic pack and the authoring system, `6b155ca`. **PR #8** — merged as `e6973cd`, deployed to Pages, green. **PR #6** — merged as `a8add89`. **PRs #1–#4** merged. |
+| Working branch | `arena/0912db37-study-with-ai` (this session) |
+| Merged | **PR #16** — the archive becomes an input: files written into `archive/content/` are adopted, judged and shown; the code opens by default behind a box. `b57698e`. **PR #14** — the `publish-moved-notice` fix, the sitemap, and the empty-topic copy, `f454790`. **PR #13** — the journal-date formatting, `4617614`. **PR #12** — the archive comes home, `c26be05`. **PR #10** — the `data-structures-c` topic pack and the authoring system, `6b155ca`. **PR #8** — merged as `e6973cd`, deployed to Pages, green. **PR #6** — merged as `a8add89`. **PRs #1–#4** merged. |
 | Closed, do not merge | **PR #5** (duplicate of #6), **PR #7** (superseded), **PR #9** (its content is folded into #10), **PR #11** (superseded by #12). Never merge any of them. |
 | The live PR ledger | `gh pr list --state all --limit 30` — **the truth.** The table below records the decisions that matter: which PRs are in, and which ones must never be merged. There is deliberately **no "open" row** — a merge is not worth an edit, so a row that changed on every merge would only make this file wrong. |
-| Archive | `archive/` in this repository — **74 topics, 86 files**. Imported from `pabitrawriters06-oss/portfolio` with its history. The old repository still serves the original site; the branch `move/archive-into-the-learning-engine` carries the landing page and the pointer README, and **the owner has one tap left: open the pull request at `https://github.com/pabitrawriters06-oss/portfolio/pull/new/move/archive-into-the-learning-engine`** |
+| Archive | `archive/` in this repository — **74 topics, 86 files**. Imported from `pabitra27706-oss/portfolio` with its history. The old repository still serves the original site; the branch `move/archive-into-the-learning-engine` carries the landing page and the pointer README, and **the owner has one tap left: open the pull request at `https://github.com/pabitra27706-oss/portfolio/pull/new/move/archive-into-the-learning-engine`** |
 | The archive is an input too | The generator **adopts** any file written into `archive/content/<lang>/`: it finds the topic from the header the file carries, or gives it one, and it never overwrites an adopted topic afterwards. Five files were sitting there unseen — `functions.py`, `lists.py`, `arrays.js`, `dom-manipulation.js`, `ticket-price-calculator.c` — and all five are topics now, with verdicts, scores and notes. |
+| The pending queue | `archive/data/archive-pending.json` — every topic that has code and **no verdict yet**. New work first, the older backlog after it. `node runner/brief.mjs --pending` prints it; `scripts/check.sh` prints it before the brief; the archive's own pages say *waiting to be judged* instead of showing nothing. |
 | The archive's shape | `/archive` is **one page of cards that open in place**: the notes, the verdict, the misconceptions and the code, with the code **open by default**. `/archive/<topic>` is still a real page and is still what you share. The control that hides the code is a **box**, not a line of words. |
 | Deploy | Pages workflow committed by the owner at `414c6fe`; the hardened copy lives at `scripts/deploy-workflow.yml` |
 
@@ -70,6 +71,7 @@ append-only record is [`HISTORY.md`](HISTORY.md).
 | The archive generator | `scripts/build-archive.mjs` | Rebuilds the Learning Archive from the engine. Runs on every site build. Deterministic — a run changes nothing unless the work changed. |
 | The archive, on the site | `app/archive/`, `app/progress/` | `/archive`, `/archive/<topic>` and `/progress` — the catalogue and the history map. |
 | The bridge | `scripts/collect.sh` | Fallback for when CodeC cannot push: copy, check, commit, push. |
+| The archive brief | `runner/brief.mjs --archive <file>` | The same instrument for work that has no task sheet: the file, the archive rubric (40 runs, 30 right, 30 explains itself) and the rules. `--pending` lists the queue. `runner/brief.mjs <archive-topic-id>` finds it by name. |
 
 ## The authoring system
 
@@ -101,7 +103,7 @@ node scripts/check-topic.mjs --deep       # every topic pack
 - `node runner/evidence.mjs` — `data-structures-c  0/8 tasks · comments 0/100 · answers 0%`. An untouched topic honestly reads zero.
 - `node runner/evidence.mjs` against the reference folder — all 8 tasks pass, comments 100/100.
 - `node scripts/build-archive.mjs --check` — *the archive is in step with the engine*, and a second run is a no-op. The generator is deterministic: timestamps come from the source data, never the clock.
-- `NEXT_OUTPUT=export npm run build` — **88 static pages**, including `/archive`, 69 `/archive/<topic>` pages and `/progress`. Every archive download resolves.
+- `NEXT_OUTPUT=export npm run build` — **91 static pages**, including `/archive`, 74 `/archive/<topic>` pages and `/progress`. Every archive download resolves, and every topic's JSON is reachable at the path the browser asks for.
 - `node runner/brief.mjs data-structures-c --task t1` — the brief renders with the prompt, the tests and the rules.
 - PR #8 merged to `main` as `e6973cd`; the Pages deployment for it returned `success`.
 - The learner's own `t2.c` was judged end to end: brief → sensor → verdict → apply. The verdict (20%) and the machine score (19%) agree, and both are far above the old seeded 28% once the shipped example was removed from the graded folder.
