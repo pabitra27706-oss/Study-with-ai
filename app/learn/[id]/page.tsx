@@ -113,7 +113,7 @@ function TaskBlock({ task, result }: { task: CurriculumTask; result?: TaskEviden
               <code>{`input:  ${publicTests[0]?.stdin.trim() ?? "-"}\nexpect: ${publicTests[0]?.stdout ?? "-"}`}</code>
             </pre>
             <p className="mt-2 text-[11.5px] leading-relaxed text-faint">
-              {hidden} hidden edge case{hidden === 1 ? "" : "s"} run by the agent too.
+              {hidden} hidden edge case{hidden === 1 ? "" : "s"} I run before I judge.
             </p>
           </div>
 
@@ -170,9 +170,11 @@ export default async function LearnTopicPage({
     })),
   );
 
-  const score = verdict?.score ?? 0;
+  const judgement = verdict?.verdict;
+  const machine = verdict?.machine;
+  const score = judgement?.score ?? 0;
   const notes = verdict?.notes;
-  const reviewHtml = verdict?.review ? await renderMarkdown(verdict.review) : null;
+  const reviewHtml = judgement?.review ? await renderMarkdown(judgement.review) : null;
 
   return (
     <main className="mx-auto max-w-4xl px-5 py-12 sm:py-16">
@@ -189,9 +191,9 @@ export default async function LearnTopicPage({
           <Tag>{topic.language}</Tag>
           <Tag>{topic.category}</Tag>
           <Tag>{topic.difficulty}</Tag>
-          {verdict && (
-            <span className={`rounded-full border px-2 py-0.5 font-mono text-[11px] ${VERDICT_STYLE[verdict.status] ?? "border-line text-faint"}`}>
-              {verdict.status}
+          {judgement && (
+            <span className={`rounded-full border px-2 py-0.5 font-mono text-[11px] ${VERDICT_STYLE[judgement.status] ?? "border-line text-faint"}`}>
+              {judgement.status}
             </span>
           )}
         </div>
@@ -208,19 +210,20 @@ export default async function LearnTopicPage({
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line px-5 py-4">
               <div>
                 <p className="font-mono text-[11px] uppercase tracking-wider text-faint">
-                  the agent&apos;s verdict
+                  the verdict
                 </p>
                 <p className="mt-1.5 flex items-center gap-2.5">
-                  <span className={`rounded-md border px-2 py-0.5 font-mono text-[11px] ${VERDICT_STYLE[verdict.status] ?? "border-line text-faint"}`}>
-                    {verdict.status}
+                  <span className={`rounded-md border px-2 py-0.5 font-mono text-[11px] ${VERDICT_STYLE[judgement?.status ?? ""] ?? "border-line text-faint"}`}>
+                    {judgement?.status ?? "not judged"}
                   </span>
                   <span className="font-mono text-2xl font-semibold text-ink">{score}%</span>
                 </p>
               </div>
               <p className="font-mono text-[11px] leading-relaxed text-faint">
-                judged {verdict.lastRun?.slice(0, 16).replace("T", " ")}
-                {verdict.provider ? ` by ${verdict.provider}` : ""}
-                {verdict.tasksTotal ? ` · ${verdict.tasksPassed}/${verdict.tasksTotal} tasks` : ""}
+                {judgement
+                  ? `judged by ${judgement.by} · ${judgement.at.slice(0, 16).replace("T", " ")}`
+                  : "not judged yet"}
+                {machine ? ` · machine ${machine.score}%` : ""}
               </p>
             </div>
 
@@ -249,13 +252,13 @@ export default async function LearnTopicPage({
               </div>
             )}
 
-            {verdict.misconceptions && verdict.misconceptions.length > 0 && (
+            {judgement?.misconceptions && judgement.misconceptions.length > 0 && (
               <div className="border-t border-line px-5 py-5">
                 <p className="font-mono text-[11px] uppercase tracking-wider text-warn">
                   misconceptions to unlearn
                 </p>
                 <ul className="mt-3 space-y-1.5">
-                  {verdict.misconceptions.map((item, index) => (
+                  {judgement.misconceptions.map((item: string, index: number) => (
                     <li key={index} className="flex gap-2 text-[13px] leading-relaxed text-muted">
                       <span className="font-mono text-faint">·</span>
                       <span>{item}</span>
@@ -273,35 +276,23 @@ export default async function LearnTopicPage({
           <div className="flex items-center gap-2 border-b border-line px-4 py-2.5">
             <Terminal className="h-3.5 w-3.5 text-faint" />
             <span className="font-mono text-[11px] uppercase tracking-wider text-faint">
-              submit from anywhere
+              hand it over
             </span>
           </div>
           <div className="space-y-4 px-4 py-4">
             <p className="text-[13px] leading-relaxed text-muted">
-              You do not have to be in this repository, or on this machine. Write the
-              code wherever you like and push it here — or open an issue on GitHub and
-              paste it in. The agent picks it up either way and writes its notes back
-              into the repository.
+              Write the code in <span className="text-ink">CodeC</span>, save it, and
+              push it here. Then say <span className="font-mono text-ink">check {topic.id}</span> —
+              I read the brief, judge the work, and write the verdict and the notes back
+              into the repository. There is no model and no API key involved: the judge
+              is me, in the conversation.
             </p>
             <pre className="overflow-x-auto rounded-lg border border-line bg-panel-2 px-4 py-3 font-mono text-[12.5px] leading-relaxed text-muted">
-              <code>{`# A. push it
-nano learn/${topic.id}/solutions/t1.c
-nano learn/${topic.id}/answers.json
-git add -A && git commit -m "${topic.id}: t1" && git push
+              <code>{`# write it in CodeC, save it, then:
+bash scripts/collect.sh ${topic.id} t1
 
-# B. or open an issue — paste the code and the answers
-gh issue create --title "[${topic.id}] t1" --label "topic:${topic.id}" --body "$(cat <<'EOF'
-# Topic: ${topic.id}
-# Task: t1
-
-\`\`\`c
-// your code
-\`\`\`
-
-# Answers
-q1: your answer
-EOF
-)"`}</code>
+# that copies the file in, checks it, commits and pushes
+# then just say: "check ${topic.id}"`}</code>
             </pre>
           </div>
         </Card>
@@ -367,10 +358,35 @@ EOF
         )}
       </section>
 
+      {machine && (
+        <section className="mb-12">
+          <h2 className="mb-2 text-xl font-semibold text-ink">Machine facts</h2>
+          <p className="mb-5 text-[13.5px] leading-relaxed text-muted">
+            What the compiler measured. These are the facts the verdict is built on —
+            not the verdict itself.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-4">
+            {[
+              { label: "machine score", value: `${machine.score}%` },
+              { label: "tasks passing", value: `${machine.tasksPassed}/${machine.tasksTotal}` },
+              { label: "comments", value: `${machine.explain}/100` },
+              { label: "answers", value: `${machine.written}%` },
+            ].map((item) => (
+              <Card key={item.label} className="px-4 py-3">
+                <p className="font-mono text-lg font-semibold text-ink">{item.value}</p>
+                <p className="mt-0.5 text-[11px] uppercase tracking-wider text-faint">
+                  {item.label}
+                </p>
+              </Card>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="mb-12">
         <h2 className="mb-2 text-xl font-semibold text-ink">Tasks</h2>
         <p className="mb-5 text-[13.5px] leading-relaxed text-muted">
-          Attempt before you look at the hints. The agent runs the hidden edge cases
+          Attempt before you look at the hints. I run the hidden edge cases
           as well, and it will not accept a program that only works on the example.
         </p>
         <div className="space-y-4">
@@ -384,7 +400,7 @@ EOF
         <h2 className="mb-2 text-xl font-semibold text-ink">Written rubric</h2>
         <p className="mb-5 text-[13.5px] leading-relaxed text-muted">
           Four questions, four short answers. The keyword coverage below is a hint
-          for you; the agent judges the meaning itself.
+          for you; I judge the meaning myself.
         </p>
         <div className="space-y-3">
           {curriculum.rubric.written.map((item) => {
@@ -450,7 +466,7 @@ EOF
         <section className="mb-12">
           <h2 className="mb-2 text-xl font-semibold text-ink">Review history</h2>
           <p className="mb-4 text-[13.5px] leading-relaxed text-muted">
-            Every judgement the agent has made on this topic, newest last.
+            Every judgement made on this topic, newest last.
           </p>
           <ul className="space-y-1.5">
             {history.map((line, index) => (
@@ -470,7 +486,7 @@ EOF
           <ul className="mt-3 space-y-2 text-[13px] leading-relaxed text-muted">
             <li>
               <span className="text-ink">Minimal writing.</span> Four short answers — and
-              the agent writes the three notes lines, from what your code and answers
+              I write the three notes lines, from what your code and answers
               actually show.
             </li>
             <li>

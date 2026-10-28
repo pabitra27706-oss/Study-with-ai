@@ -1,8 +1,8 @@
 # The learning system
 
-> **The AI judges. The compiler only reports.** The agent reads your code, your
-> answers and the machine evidence, decides what it means, and writes its notes
-> back into the repository.
+> **You write it in CodeC. You push it to GitHub. I judge it.**
+> No model, no API key, no automated agent — the judge is me, in the
+> conversation, and the verdict is written back into the repository.
 
 This is the machine behind the `/learn` route. It exists because of one
 uncomfortable finding in the GitHub audit: **47 repositories, zero automated
@@ -13,49 +13,51 @@ notebook, not a learning system.
 
 ---
 
-## 1. The shape of it
+## 1. The loop
 
 ```
-   you write the code anywhere
-              │
-              ├── push it to learn/<topic>/solutions/
-              └── or paste it into a GitHub issue
-                          │
-                          ▼
-              ┌───────────────────────────┐
-              │  1. SENSE  (the compiler) │   compiles · runs the hidden tests
-              │     machine evidence      │   checks the comments · measures the answers
-              └─────────────┬─────────────┘
-                            │  data/evidence.json
-                            ▼
-              ┌───────────────────────────┐
-              │  2. JUDGE  (the AI)       │   reads the topic + your code + your
-              │     the verdict            │   answers + the evidence
-              └─────────────┬─────────────┘
-                            │  verdict · score · review · notes
-                            ▼
-              ┌───────────────────────────┐
-              │  3. NOTE + KEEP            │   writes learn/<topic>/notes.json
-              │     the agent keeps the    │   learn/<topic>/review.md
-              │     repository current     │   learn/<topic>/history.md
-              │                           │   curriculum/topics/<id>.json
-              │                           │   data/progress.json
-              └─────────────┬─────────────┘
-                            ▼
-                     commit → Pages rebuilds → the scoreboard moves
+  CodeC                          you write the code, on your phone
+    │
+    │  save it
+    ▼
+  scripts/collect.sh             copies it in, checks it, commits, pushes
+    │
+    ▼
+  GitHub                         learn/<topic>/solutions/t1.c
+    │
+    │  you say: "check c-loops"
+    ▼
+  runner/brief.mjs               what was taught · what was asked · the code
+                                 the machine facts · the written answers
+    │
+    │  I read it
+    ▼
+  learn/<topic>/verdict.json     my verdict, in a fixed shape
+    │
+    ▼
+  runner/apply-verdict.mjs       notes.json · review.md · history.md
+                                 progress.json · curriculum/topics/<id>.json
+    │
+    ▼
+  commit → push → Pages rebuilds → the scoreboard moves
 ```
 
-**Why the compiler is not the judge.** A test runner can tell you that a
-program failed on `n = 0`. It cannot tell you whether you understand why.
-Those two cases look identical to `gcc` and completely different to a teacher:
-one is a typo, the other is a broken mental model. The AI sees both the machine
-evidence *and* your comments *and* your written answers, and it says which one
-this is.
+**Why the judge is a conversation and not a service.** An automated agent
+judging in a CI log is a black box: you cannot argue with it, and it cannot
+notice that you were testing a boundary case on purpose. A judge you can talk
+to can. The loop is designed so that arguing is possible — the brief contains
+every fact, and you can correct me.
 
-**Why the notes are the AI's.** Your three lines should describe what your
-submission actually demonstrated — not what you intended. If you write them
-yourself, they drift towards what you hoped happened. The agent derives them
-from what actually ran.
+**Why the compiler is not the judge.** A test runner can tell you a program
+failed on `n = 0`. It cannot tell you whether you understand why. Those two
+cases look identical to `gcc` and completely different to a teacher: one is a
+typo, the other is a broken mental model. That distinction is the whole job,
+and it is exactly the kind of thing a conversation does better than a script.
+
+**Why the notes are written, not written by you.** Your three lines should
+describe what your submission actually demonstrated — not what you intended.
+Written by you they drift towards what you hoped happened. Derived from what
+actually ran, they stay honest.
 
 ---
 
@@ -65,19 +67,22 @@ from what actually ran.
 |---|---|---|
 | `curriculum/topics/*.json` | The **topic pack**: explanation, curated videos, tasks, rubric | AI |
 | `curriculum/reference/*/` | Worked solutions showing what a good answer looks like | AI |
-| `learn/<topic>/solutions/*.c` | **Your code** | You |
+| `learn/<topic>/solutions/*.c` | **Your code** (written in CodeC) | You |
 | `learn/<topic>/answers.json` | **Your four short answers** | You |
-| `learn/<topic>/notes.json` | **The notes the agent wrote about your work** | Agent |
-| `learn/<topic>/review.md` | **The written review** | Agent |
-| `learn/<topic>/history.md` | Every judgement, dated | Agent |
-| `runner/agent.mjs` | The judge, the note-taker, the keeper | — |
+| `learn/<topic>/verdict.json` | **My judgement**, in a fixed shape | Claude |
+| `learn/<topic>/notes.json` | The three notes lines | Claude |
+| `learn/<topic>/review.md` | The written review | Claude |
+| `learn/<topic>/history.md` | Every judgement, dated | Claude |
+| `runner/brief.mjs` | The judging brief — everything I read before a verdict | — |
 | `runner/evidence.mjs` | The sensor: compile, test, comment check | — |
-| `runner/lib/judge.mjs` | The prompt and the verdict parsing | — |
-| `runner/lib/providers/` | `gemini.mjs` (real) · `mock.mjs` (offline fallback) | — |
-| `data/evidence.json` | The machine facts | Agent |
-| `data/progress.json` | The verdict. Committed, so it survives and shows on the site | Agent |
-| `scripts/review-and-commit.sh` | The whole loop in one command | — |
-| `scripts/learn-workflow.yml` | CI that judges on every push and every issue | — |
+| `runner/apply-verdict.mjs` | Writes a verdict into the repository | — |
+| `runner/lib/explain.mjs` | The why-comment checker | — |
+| `runner/lib/rubric.mjs` | The keyword-coverage scorer (a hint, not a verdict) | — |
+| `runner/lib/sandbox.mjs` | Compile and run, with a timeout | — |
+| `data/evidence.json` | The machine facts | Claude |
+| `data/progress.json` | The verdict and the facts together | Claude |
+| `scripts/collect.sh` | The CodeC bridge: copy in, check, commit, push | — |
+| `scripts/check.sh` | Prints the brief | — |
 | `scripts/export-to-portfolio.mjs` | Publishes your work into the Learning Archive | — |
 
 ---
@@ -88,8 +93,8 @@ Everything else in this document is mechanics. These two are the point.
 
 ### Rule 1 — your writing is minimal, your code is not
 
-You write **four short answers** and that is all. The three notes lines are the
-agent's job.
+You write **four short answers** and that is all. The three notes lines are
+written for you, from what your code and answers actually show.
 
 **The code carries the explanation.** That is why the notes can be short.
 
@@ -115,118 +120,97 @@ the parts that are easy to get wrong. **Repeatable is what makes it a system.**
 
 ---
 
-## 4. Submitting from anywhere
+## 4. The loop, in practice
 
-You do not need this repository, this machine, or a terminal.
-
-### Push it
+### Write it in CodeC, then:
 
 ```bash
-nano learn/c-loops/solutions/t1.c
-nano learn/c-loops/answers.json
-git add -A && git commit -m "c-loops: t1" && git push
+bash scripts/collect.sh c-loops t1
 ```
 
-### Or open an issue and paste it
+That finds the file (in `~/codec-out/`, `~/storage/downloads/`, or wherever
+CodeC saves), copies it into `learn/c-loops/solutions/t1.c`, compiles it, runs
+the test cases, checks the comments, commits and pushes.
 
-```bash
-gh issue create --title "[c-loops] t1" --label "topic:c-loops" --body "$(cat <<'EOF'
-# Topic: c-loops
-# Task: t1
+You can also just paste the code into this conversation and I will write the
+file, check it and push it for you.
 
-```c
-// your code
-```
+### Then say:
 
-# Answers
-q1: your answer
-EOF
-)"
-```
+> check c-loops
 
-The agent reads the issue, stages the code into `learn/<topic>/solutions/`,
-merges the answers, judges, posts the review back as a comment, and writes the
-notes into the repository.
+### What I do:
 
-This is the path for work done in a notes app, on another machine, or in a
-browser — and it is the reason the agent exists rather than a local script.
+1. `node runner/brief.mjs c-loops` — read the topic, the task, your code, the
+   machine facts and your answers.
+2. Write `learn/c-loops/verdict.json` — the verdict, the score, the three notes
+   lines, the misconceptions and the written review.
+3. `node runner/apply-verdict.mjs c-loops` — everything lands in the repository.
+4. Commit, push. Pages rebuilds. The scoreboard moves.
 
----
-
-## 5. What the agent writes back
+### What you get back:
 
 | File | Contents |
 |---|---|
 | `learn/<topic>/notes.json` | The three notes lines, in your voice, derived from what your submission showed |
-| `learn/<topic>/review.md` | The written review: what is solid, what to fix first, what to fix next, the one section to re-read |
+| `learn/<topic>/review.md` | The written review: solid, fix this first, fix this next, the one section to re-read |
 | `learn/<topic>/history.md` | One dated line per judgement — the record of what you could do on which day |
-| `curriculum/topics/<id>.json` | The topic's `learningNotes` are refreshed with the same notes |
-| `data/progress.json` | The verdict, the score and the review |
-| `data/evidence.json` | The machine facts, for anyone who wants to check the agent's reasoning |
+| `curriculum/topics/<id>.json` | The topic's `learningNotes` are refreshed |
+| `data/progress.json` | The verdict, and the machine facts beside it |
 
 The notes are capped at 220 characters and forced onto one line. A note that
 needs a bullet list is a note that is not understood yet.
 
 ---
 
-## 6. The AI key (optional but recommended)
+## 5. The two scores
 
-The agent runs without a key — it falls back to the machine-only evaluation and
-says so in the review. But the difference is the whole point: without a key it
-tells you *what* happened; with a key it tells you *why*.
+The site shows both, and they are not the same thing.
 
-Get a free Gemini key at <https://aistudio.google.com/apikey>, then:
+| | What it is | Who sets it |
+|---|---|---|
+| **The verdict** | `correct` · `mostly-correct` · `incomplete` · `incorrect`, with a written review | Me |
+| **The machine facts** | compiles · test cases · comment check · keyword coverage | `runner/evidence.mjs` |
 
-```bash
-export GEMINI_API_KEY=...
-node runner/agent.mjs
-```
+The machine score is 70% tasks, 15% answers, 10% comments. It is deliberately
+not the whole story: it cannot tell a typo from a broken mental model. The
+verdict can, because it reads the code and the answers, not just the exit codes.
 
-Or add it as a repository secret named `GEMINI_API_KEY` and install the
-workflow (section 7) and it runs unattended.
-
-The prompt asks for JSON:
-
-```json
-{
-  "verdict": "correct | mostly-correct | incomplete | incorrect",
-  "score": 0,
-  "whatILearned": "one sentence, first person",
-  "challenges": "one sentence, first person",
-  "nextSteps": "one sentence, first person",
-  "misconceptions": ["..."],
-  "review": "150-300 words of markdown"
-}
-```
-
-And it is told, explicitly: *never hand over the full solution as a fix; give
-the correction, not the finished program.* You have to write the next one.
+Keyword coverage is a **hint for you, not the truth**. The rubric lists the key
+ideas an answer should contain; a correct idea that avoids the exact keyword
+still gets the mark.
 
 ---
 
-## 7. Installing the CI agent
+## 6. Adding a topic
 
-```bash
-cp scripts/learn-workflow.yml .github/workflows/learn.yml
-git add .github/workflows/learn.yml
-git commit -m "Add the learning agent workflow"
-git push
-```
+A topic pack is one JSON file. I write the teaching half; you write the doing
+half.
 
-After that:
+1. `topic` — id, title, language, category, difficulty, tags, description.
+2. `curriculum.explanation` — an array of `{h, md}` sections. **Write the whole
+   thing.** The order people get wrong, the bugs that cost marks, the idiomatic
+   choice. Not a teaser and not a summary.
+3. `curriculum.videos` — **each one needs a `why`.** A link without a reason is
+   a list; a link with a reason is a curriculum. Prefer specific videos over
+   channels. Say what each one is *for*.
+4. `curriculum.references` — text references for the parts videos gloss over.
+5. `curriculum.tasks` — prompt, starter code, `tests` (mark the visible ones
+   with `"public": true`), `explainTarget`, `hints`.
+6. `curriculum.rubric.written` — questions with `keywords` for the coverage hint.
+7. `curriculum.rules` — `writingMaxChars`, `commentPolicy`, `notePolicy`.
 
-- every push that touches `learn/` is judged and the notes are committed back;
-- every issue opened or edited is staged, judged, and the review is posted as
-  a comment;
-- `gh run watch` shows it happening.
+Then register it in `curriculum/index.json` and create `learn/<id>/` with empty
+`answers.json` and a `solutions/.gitkeep`.
 
-**The workflow will not loop.** The agent fingerprints each submission
-(SHA-256 of the code and the answers) and skips anything it has already judged,
-so its own commit does not trigger another judgement.
+**The `explainTarget` field is the one people skip.** It states, in one line,
+what the comment for that task has to explain. It is the difference between
+"write a factorial" and "write a factorial and say why the accumulator starts
+at 1".
 
 ---
 
-## 8. Publishing into the Learning Archive
+## 7. Publishing into the Learning Archive
 
 Your archive lives at `pabitra27706-oss/portfolio` — 68 topics, 82 files, and
 the only place people can read your code, preview it and download it.
@@ -239,41 +223,41 @@ git commit -am "Add loops in C from the AI curriculum" && git push
 ```
 
 That writes the topic in the archive's own schema, copies your actual code
-into `content/`, and refreshes `data/index.json` — including the agent's notes,
-so the archive shows your latest judgement, not a one-line summary.
+into `content/`, and refreshes `data/index.json` — including the notes, so the
+archive shows your latest judgement, not a one-line summary.
 
 ---
 
-## 9. Commands
+## 8. Commands
 
 | Command | What it does |
 |---|---|
-| `node runner/agent.mjs` | Sense, judge, note, keep |
-| `node runner/agent.mjs c-loops` | One topic |
-| `node runner/agent.mjs --issue` | Judge a submission that arrived as an issue |
-| `node runner/agent.mjs --force` | Re-judge even if the submission is unchanged |
-| `node runner/agent.mjs --dry-run` | Print the prompt the judge would receive |
-| `node runner/agent.mjs --provider mock` | Run without a key |
-| `bash scripts/review-and-commit.sh` | Judge, commit, push — the whole loop |
+| `bash scripts/collect.sh c-loops t1` | The CodeC bridge: copy in, check, commit, push |
+| `bash scripts/check.sh c-loops` | Print the judging brief |
+| `node runner/brief.mjs c-loops --task t1` | One task only |
+| `node runner/evidence.mjs` | Compile, test and score the comments; write `data/evidence.json` |
+| `node runner/apply-verdict.mjs c-loops` | Apply `verdict.json` to the repository |
 | `node scripts/export-to-portfolio.mjs ../portfolio` | Publish into the archive |
 | `npm run preview` | Serve the built site locally |
 
 ---
 
-## 10. Why it is built this way
+## 9. Why it is built this way
 
-- **The AI judges, because only a judge can distinguish a typo from a broken
-  mental model.** The compiler is kept, but demoted to a sensor.
-- **The notes are the agent's, because they must describe what happened, not
-  what you hoped happened.**
-- **The grader is local and free.** `clang` is a Termux package, so the whole
-  loop runs on the phone with no key and no network. A system that needs a paid
-  service is a system that stops.
-- **Everything comes back into the repository.** The agent writes its notes,
-  its review and a dated history line, so the repo is the memory and the site
-  is the scoreboard. Nothing lives in a chat window that is gone tomorrow.
+- **The judge is a conversation.** You can argue with a person. You cannot argue
+  with a CI log. And the whole point of the feedback loop is to change what you
+  do next.
+- **The compiler is kept, but demoted to a sensor.** It reports what happened.
+  It does not decide what it means.
+- **The notes are written for you, from the evidence.** Your own notes drift
+  towards what you hoped happened.
+- **Everything comes back into the repository.** The notes, the review and a
+  dated history line, so the repo is the memory and the site is the scoreboard.
+  Nothing lives in a chat window that is gone tomorrow.
 - **The score is committed.** Git history becomes the record of what you could
   do on which day. That is a CV line with receipts.
+- **No paid service, no key, no laptop.** `clang` is a Termux package, so the
+  checks run on the phone.
 
 ---
 

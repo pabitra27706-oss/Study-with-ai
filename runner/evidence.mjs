@@ -149,3 +149,36 @@ function safeJson(text) {
     return {};
   }
 }
+
+/* ------------------------------------------------------------------- CLI */
+/* `node runner/evidence.mjs` — write data/evidence.json and print a summary. */
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  const { readFileSync, writeFileSync, mkdirSync, existsSync } = await import("node:fs");
+  const { join, resolve, dirname } = await import("node:path");
+  const { fileURLToPath } = await import("node:url");
+
+  const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+  const index = JSON.parse(readFileSync(join(ROOT, "curriculum/index.json"), "utf8"));
+  const result = await collectEvidence({ root: ROOT, index });
+
+  if (!existsSync(join(ROOT, "data"))) mkdirSync(join(ROOT, "data"), { recursive: true });
+  writeFileSync(join(ROOT, "data/evidence.json"), `${JSON.stringify(result, null, 2)}\n`);
+
+  console.log("");
+  for (const topic of Object.values(result.topics)) {
+    const tasks = Object.values(topic.tasks);
+    const passed = tasks.filter((task) => task.status === "passed").length;
+    console.log(
+      `  ${topic.id}  ${passed}/${tasks.length} tasks  ·  comments ${topic.explain.score}/100  ·  answers ${topic.written.score}%`,
+    );
+    for (const task of tasks) {
+      if (task.status === "not-submitted") continue;
+      const mark = task.status === "passed" ? "PASS" : task.status === "compile-error" ? "ERR " : "FAIL";
+      console.log(`    ${mark} ${task.id}  ${task.passed}/${task.total} tests${task.compileError ? `  ${task.compileError}` : ""}`);
+    }
+  }
+  console.log("");
+  console.log("  written to data/evidence.json");
+  console.log("");
+}

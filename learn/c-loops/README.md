@@ -1,96 +1,119 @@
-# Loops in C — your workspace
+# Loops in C
 
-Read the topic first: **https://pabitrahews06-oss.github.io/Study-with-ai/learn/c-loops**
+> **You write it in CodeC. You push it here. I judge it.**
+> There is no model, no API key and no bot. I read the brief, decide, and write
+> the verdict back into the repository.
 
-> **Seeded example.** `solutions/t1.c`, `answers.json`, `notes.json`,
-> `review.md` and `history.md` in this folder are one attempt that has already
-> been judged, so you can see exactly what the agent writes back. **Overwrite
-> them with your own** — the agent notices the change and re-judges.
+---
 
-## Submit from anywhere
+## What this topic is
 
-You do not need this repository, this machine, or even a terminal. Write the
-code wherever you like and deliver it one of two ways.
+One idea: do a thing again until a condition stops being true.
 
-### A. Push it
+C gives you three spellings of it — `for`, `while`, `do...while` — and they are
+not equally good. This pack teaches the exact evaluation order of a `for` loop
+(the part everyone gets wrong), how to choose between the three forms, how to
+avoid off-by-one errors by deciding the range *before* you write the loop, and
+how `scanf` and loops interact — the single most common source of "my program
+skips my input" bugs.
+
+## The teaching material
+
+| | |
+|---|---|
+| **The explanation** | 10 sections, written out in full — not a teaser. The evaluation order of a `for` loop, the `scanf` trap, the four bugs to check for before you run anything. |
+| **The videos** | 6 links, each with a *reason* it is on the list. Nothing here is "a good channel" — every link is for a specific thing. |
+| **The references** | 2 text references for the parts the videos gloss over. |
+| **The tasks** | 6 programs, 100 points, each with **hidden edge cases** — zero, one, the boundary, leading zeros. |
+| **The rubric** | 4 written questions with the key ideas each answer must contain. |
+
+## The rules
+
+1. **Your code must explain itself.** Every loop header and every value that
+   changes each iteration needs a comment saying **why** — never **what**.
+   `// increment i` is worthless. `// i<=n not i<n: n itself is a factor` is
+   the thing that still makes sense to you in six months.
+2. **Four short answers.** Nothing else. The comments in your code carry the
+   reasoning.
+3. **You never see the hidden test cases.** That is the point of them.
+4. **You do not get the finished program.** You get the correction. The next
+   one is yours to write.
+
+---
+
+## The loop
+
+### 1 · Write it in CodeC
+
+Save the file. CodeC can put it anywhere — `~/codec-out/` or your Downloads
+folder both work.
+
+### 2 · Push it
 
 ```bash
-cd ~/Study-with-ai
-nano learn/c-loops/solutions/t1.c     # your code
-nano learn/c-loops/answers.json       # your four short answers
-git add -A && git commit -m "c-loops: t1" && git push
+bash scripts/collect.sh c-loops t1
 ```
 
-### B. Open an issue and paste it
+That copies the file into `solutions/t1.c`, compiles it, runs the test cases,
+checks the comments, commits and pushes. You can also just paste the code into
+this chat and I will do all of it.
 
-This is the path for when you wrote the code somewhere else — a notes app, a
-different machine, a browser.
+### 3 · Ask me to judge it
+
+> check c-loops
+
+### 4 · I write it back
+
+| File | What lands there |
+|---|---|
+| `notes.json` | Your three notes lines, in your voice, derived from what your submission actually showed |
+| `review.md` | The written review: what is solid, fix this first, fix this next, the one section to re-read |
+| `history.md` | A dated line per judgement — what you could do, and when |
+| `../data/progress.json` | The verdict, and the machine facts beside it |
+
+Then the site rebuilds and the scoreboard moves.
+
+---
+
+## The two scores
+
+| | What it measures | Who sets it |
+|---|---|---|
+| **The verdict** | `correct` · `mostly-correct` · `incomplete` · `incorrect`, with a written review | Me, in this conversation |
+| **The machine facts** | compiles · test cases · comment check · keyword coverage | `runner/evidence.mjs` |
+
+The machine score is 70% tasks, 15% answers, 10% comments. It is a sensor, not
+the verdict — it cannot tell a typo from a broken mental model. I can, because
+I read the code and the answers too.
+
+---
+
+## The seeded example
+
+`solutions/t1.c` currently holds a worked reference answer for **t1**, and
+`answers.json` holds four sample answers, so the site has something real to
+show on the first run.
+
+Replace both with your own work. Then run:
 
 ```bash
-gh issue create --title "[c-loops] t1" --label "topic:c-loops" --body "$(cat <<'EOF'
-# Topic: c-loops
-# Task: t1
-
-```c
-// your code
+bash scripts/collect.sh c-loops t1
 ```
 
-# Answers
-q1: your answer
-q2: your answer
-q3: your answer
-q4: your answer
-EOF
-)"
-```
+and say **check c-loops**.
 
-The agent reads the issue, stages the code, judges it, posts the review back as
-a comment, and writes the notes into the repository.
+---
 
-## What the agent does with it
+## The tasks
 
-1. **Sense** — compiles your C, runs the hidden test cases, checks that your
-   comments say *why*, measures which key ideas your answers contain.
-2. **Judge** — reads the topic, your code, your answers and that evidence, and
-   decides what it means. Correctness alone is not enough: a program that
-   passes every test and a wrong mental model in the answers look identical to
-   a test runner and completely different to a teacher.
-3. **Note** — writes your three notes lines, in your voice, from what your
-   submission actually shows.
-4. **Keep** — writes `notes.json`, `review.md` and a dated line in
-   `history.md` back into the repository, refreshes the topic, and updates
-   `data/progress.json`. The site picks it up on the next build.
+| Task | Title | Points | The comment has to explain |
+|---|---|---|---|
+| t1 | Print 1 to N | 10 | the loop starts at 1 and not at 0. |
+| t2 | Factorial of N | 15 | the accumulator starts at 1 and not at 0, and why the boundary includes N. |
+| t3 | Sum of digits | 15 | you take the remainder before dividing. |
+| t4 | Reverse a number | 15 | the accumulator is `rev * 10 + digit` and not `rev + digit`. |
+| t5 | FizzBuzz | 20 | you test divisibility by 15 (or check FizzBuzz first) instead of testing 3 and 5 independently. |
+| t6 | Multiplication table | 25 | the counter runs 1..10 rather than 0..9. |
 
-## Your two jobs
-
-### 1. Answer four questions
-
-One short answer each. The agent reads the *meaning*, not just keywords.
-
-### 2. Comment with why, never what
-
-Every loop header and every value that changes each iteration needs a comment
-**on it or on the line above it** — and it has to say why.
-
-```c
-/* ✗ restates the code */
-multi = i * multi;
-
-/* ✓ states the reason */
-multi = i * multi;   // multiply, not add: factorial is a product of 1..n
-```
-
-## If you get stuck
-
-- The topic page has **hints** under every task, and the starter code.
-- Each task says, in one line, **what your comment must explain**.
-- Watch one video from the topic page. Each link says why it is on the list.
-- Still stuck? **Ask the AI — but paste your attempt first.** A pasted answer
-  is an illusion of competence; a critique of your attempt is a lesson.
-
-## Look at a good answer
-
-`curriculum/reference/c-loops/` holds a worked solution for every task, with
-the comments written the way the agent wants them. **Look only after you have
-attempted it yourself.** Looking first is how you end up able to recognise code
-but not write it.
+The full prompts, the visible test cases, the hints and the reference solutions
+live in [`curriculum/topics/c-loops.json`](../../curriculum/topics/c-loops.json).

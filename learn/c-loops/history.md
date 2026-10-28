@@ -1,1 +1,1 @@
-- 2026-10-28 — **incomplete** (17%) · 1/6 tasks · the first task compiles and passes; the rest are not submitted yet
+- 2026-10-28 — **incomplete** (28%) · 1/6 tasks · Only one of the six tasks is written — the other five are still blank.

@@ -6,7 +6,7 @@ import { join } from "node:path";
  * explanation, curated videos, machine-checked tasks and a written rubric.
  *
  * The learner's own work lives in `learn/<topic>/`. The agent in
- * `runner/agent.mjs` senses it (runner/evidence.mjs), judges it with the AI,
+ * `runner/brief.mjs` gathers what is needed to judge it (runner/evidence.mjs),
  * and writes its verdict into `data/progress.json` and its notes back into
  * `learn/<topic>/notes.json`. The site reads both.
  */
@@ -185,28 +185,37 @@ export type Evidence = {
   >;
 };
 
-/** The agent's verdict. This is the one that counts. */
+/** The machine facts: what happened, without any judgement attached. */
 export type TopicProgress = {
   id: string;
   title: string;
   language: string;
-  status: string;
-  score: number;
-  provider?: string;
+  /** The human (or Claude) judgement — the one that counts. */
+  verdict?: {
+    status: string;
+    score: number;
+    by: string;
+    at: string;
+    review: string;
+    misconceptions: string[];
+  };
+  /** The deterministic numbers: compile, tests, comments, keyword coverage. */
+  machine?: {
+    score: number;
+    tasksPassed: number;
+    tasksTotal: number;
+    written: number;
+    explain: number;
+    compileErrors: number;
+  };
   notes?: { whatILearned: string; challenges: string; nextSteps: string };
-  misconceptions?: string[];
-  tasksPassed?: number;
-  tasksTotal?: number;
   reviewPath?: string;
-  review?: string;
-  error?: string;
   lastRun: string;
 };
 
 export type Progress = {
   generatedAt: string;
   compiler: { bin: string; version: string } | null;
-  provider?: string;
   topics: Record<string, TopicProgress>;
 };
 

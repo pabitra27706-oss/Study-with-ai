@@ -26,12 +26,12 @@ const STEPS = [
   {
     n: "03",
     title: "Deliver",
-    body: "One commit from your phone — or paste the code into a GitHub issue from anywhere. The agent senses it (compiles, runs the hidden test cases, checks your comments) and judges it.",
+    body: "You write it in CodeC, save it, and push it here yourself. Nothing runs on a schedule and no bot talks to your repository — you decide when to hand it over.",
   },
   {
     n: "04",
     title: "Read the notes",
-    body: "The agent writes the verdict, the review and your three notes lines back into the repository, and the site shows them. A topic is not finished because it felt good — it is finished because the agent says so, and you can answer without the notes.",
+    body: "You say \"check c-loops\". I read the brief — the topic, your code, the machine facts, your answers — and write the verdict, the review and your three notes lines back into the repository. A topic is not finished because it felt good — it is finished because I say so, and you can answer without the notes.",
   },
 ];
 
@@ -82,9 +82,10 @@ export default function LearnPage() {
         <div className="grid gap-4">
           {index.topics.map((topic) => {
             const result = progress?.topics?.[topic.id];
-            const score = result?.score ?? 0;
-            const done = result?.tasksPassed ?? 0;
-            const total = result?.tasksTotal ?? topic.points;
+            const score = result?.verdict?.score ?? 0;
+            const done = result?.machine?.tasksPassed ?? 0;
+            const total = result?.machine?.tasksTotal ?? topic.points;
+            const status = result?.verdict?.status;
 
             return (
               <Link
@@ -98,21 +99,21 @@ export default function LearnPage() {
                       <h3 className="text-lg font-semibold text-ink">{topic.title}</h3>
                       <Tag>{topic.language}</Tag>
                       <Tag>{topic.difficulty}</Tag>
-                      {result && (
+                      {status && (
                         <span
                           className={`rounded-full border px-2 py-0.5 font-mono text-[11px] ${
-                            result.status === "correct"
+                            status === "correct"
                               ? "border-ok/40 text-ok"
-                              : result.status === "mostly-correct"
+                              : status === "mostly-correct"
                                 ? "border-accent/40 text-accent"
-                                : result.status === "incomplete"
+                                : status === "incomplete"
                                   ? "border-warn/40 text-warn"
-                                  : result.status === "incorrect"
+                                  : status === "incorrect"
                                     ? "border-bad/40 text-bad"
                                     : "border-line text-faint"
                           }`}
                         >
-                          {result.status}
+                          {status}
                         </span>
                       )}
                     </div>
@@ -137,7 +138,7 @@ export default function LearnPage() {
                         {score}%
                       </p>
                       <p className="mt-0.5 text-[11px] uppercase tracking-wider text-faint">
-                        {done}/{result?.tasksTotal ?? topic.points} tasks
+                        {done}/{result?.machine?.tasksTotal ?? topic.points} tasks
                       </p>
                     </div>
                     <ArrowRight className="h-4 w-4 text-faint transition-transform group-hover:translate-x-0.5 group-hover:text-brand-soft" />
@@ -177,11 +178,11 @@ export default function LearnPage() {
 # 2. write your attempt
 nano ~/Study-with-ai/learn/c-loops/solutions/t1.c
 
-# 3. the agent — sense, judge, note, keep
-node runner/agent.mjs
+# 3. push it — collect.sh copies, compiles, tests, commits and pushes
+bash scripts/collect.sh c-loops t1
 
-# 4. ship it — Pages rebuilds and your scoreboard updates
-git add -A && git commit -m "c-loops: t1 done" && git push`}</code>
+# 4. then, in this chat: "check c-loops"
+#    I read the brief, judge it, and write the notes back`}</code>
           </pre>
         </Card>
       </section>
@@ -201,7 +202,7 @@ git add -A && git commit -m "c-loops: t1 done" && git push`}</code>
             <CircleCheck className="h-4 w-4 text-brand-soft" />
             <h3 className="mt-3 text-sm font-semibold text-ink">Hidden test cases</h3>
             <p className="mt-2 text-[13px] leading-relaxed text-muted">
-              You see one example per task. The agent runs the edge cases too —
+              You see one example per task. I run the edge cases too —
               zero, one, leading zeros, the boundary. A program that only works
               on the example does not pass.
             </p>
