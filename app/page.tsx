@@ -2,7 +2,6 @@ import Link from "next/link";
 import {
   ArrowRight,
   BookOpen,
-  FolderGit2,
   GitBranch,
   NotebookPen,
   Rss,
@@ -37,8 +36,8 @@ export default function HomePage() {
           </p>
 
           <h1 className="mt-5 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-5xl md:text-6xl">
-            I learn with AI as my{" "}
-            <span className="text-gradient">grader</span>, not my teacher.
+            I build from a phone, and I{" "}
+            <span className="text-gradient">prove it</span>.
           </h1>
 
           <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-muted sm:text-base">
@@ -47,21 +46,20 @@ export default function HomePage() {
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <Link
-              href="/skills"
+              href="/projects"
               className="group inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-2.5 text-sm font-medium text-white transition hover:bg-brand/85"
             >
-              See the skill tree
+              See what I shipped
               <ArrowRight
                 size={15}
                 className="transition-transform group-hover:translate-x-0.5"
               />
             </Link>
             <Link
-              href="/projects"
+              href="/audit"
               className="inline-flex items-center gap-2 rounded-xl border border-line bg-panel px-5 py-2.5 text-sm text-ink transition hover:border-brand/40"
             >
-              <FolderGit2 size={15} />
-              The portfolio
+              Read the GitHub audit
             </Link>
             <a
               href={site.links.github}
@@ -78,7 +76,7 @@ export default function HomePage() {
             <Stat
               label="Skill readiness"
               value={`${stats.readiness}%`}
-              hint="Self-reported across 24 skills, capped where no proof exists."
+              hint="Graded from what the repositories actually contain, and capped where no proof exists."
             />
             <Stat
               label="Skills shipped"
@@ -86,9 +84,9 @@ export default function HomePage() {
               hint="Shipped means built, documented and linked — not merely studied."
             />
             <Stat
-              label="Projects live"
+              label="Projects shipped"
               value={`${stats.shippedProjects} / ${stats.totalProjects}`}
-              hint="Four repos, each with a README, a licence and a working demo."
+              hint="An AI BI dashboard, a phone IDE, two Android apps, a textbook, a JELET archive."
             />
             <Stat
               label="Journal entries"
@@ -218,8 +216,8 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl px-5 py-20">
           <SectionHeading
             eyebrow="Portfolio"
-            title="Four repos, and what each one proves"
-            description="Recruiters read projects before education. Each repo has one job: prove one specific capability."
+            title="What I have actually shipped"
+            description="Recruiters read projects before education. Every repo here has one job: prove one specific capability — an AI product, a phone IDE, two Android apps, a JELET archive, a textbook."
           />
           <div className="grid gap-5 md:grid-cols-2">
             {projects.map((project) => (
@@ -232,6 +230,68 @@ export default function HomePage() {
           >
             All projects and what each proves <ArrowRight size={14} />
           </Link>
+        </div>
+      </section>
+
+      {/* -------------------------------------------------------------- Phone */}
+      <section className="border-t border-line/70">
+        <div className="mx-auto max-w-6xl px-5 py-20">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px]">
+            <div>
+              <SectionHeading
+                eyebrow="Constraints"
+                title="I have no computer. The phone is the machine."
+                description="Everything on this site was typed in a Termux terminal on Android. That is not a limitation I apologise for — it forced a system: the phone does the thinking, and GitHub Actions does the building."
+              />
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="rounded-[14px] border border-line bg-panel p-5">
+                  <p className="font-mono text-[11px] uppercase tracking-wider text-brand-soft">
+                    The phone does
+                  </p>
+                  <p className="mt-3 text-[13px] leading-relaxed text-muted">
+                    Reading, writing, committing. Git, gh, Python, Node, a shell
+                    and an editor. The whole learning loop, attempt-first, in
+                    twenty-minute sessions.
+                  </p>
+                </div>
+                <div className="rounded-[14px] border border-line bg-panel p-5">
+                  <p className="font-mono text-[11px] uppercase tracking-wider text-accent">
+                    The CI runner does
+                  </p>
+                  <p className="mt-3 text-[13px] leading-relaxed text-muted">
+                    TypeScript, ESLint, the static export, Gradle, Docker,
+                    deployments. Because Android is bionic and Next.js needs
+                    glibc, the build cannot happen on the phone anyway — so it
+                    does not.
+                  </p>
+                </div>
+              </div>
+              <Link
+                href="/phone"
+                className="mt-6 inline-flex items-center gap-1.5 text-sm text-accent transition hover:text-ink"
+              >
+                The full phone-first operating manual <ArrowRight size={14} />
+              </Link>
+            </div>
+
+            <aside className="h-fit rounded-[14px] border border-line bg-panel p-5">
+              <p className="font-mono text-[11px] uppercase tracking-wider text-brand-soft">
+                GitHub audit · 28 Oct 2026
+              </p>
+              <p className="mt-3 text-[14px] leading-relaxed text-muted">
+                Both accounts, 47 repositories, read off the live API. The
+                short version: you are not a beginner, and nobody can tell,
+                because both profile READMEs are empty and the best project
+                has no live link.
+              </p>
+              <Link
+                href="/audit"
+                className="mt-4 inline-flex items-center gap-1.5 text-sm text-accent transition hover:text-ink"
+              >
+                Read the audit <ArrowRight size={14} />
+              </Link>
+            </aside>
+          </div>
         </div>
       </section>
 

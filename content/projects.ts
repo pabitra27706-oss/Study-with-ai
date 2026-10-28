@@ -1,8 +1,10 @@
 /**
  * The portfolio.
  *
- * Four repos, each with a URL, a README and a live demo. This page is the
- * public face of them — the thing a recruiter sees.
+ * Every entry here is a real repository on one of the two GitHub accounts,
+ * read off the live API on 28 October 2026. The point of the site is that it
+ * cannot be faked — so a project is only "shipped" if it has a repo you can
+ * clone, and only "live" if there is a URL you can open.
  *
  * HOW TO UPDATE:
  *   - Set `live` to the deployed URL (or leave empty until it exists).
@@ -31,51 +33,172 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "study-with-ai",
-    name: "Study-with-ai",
-    tagline: "An AI study partner that tests you instead of answering you.",
+    slug: "matriq",
+    name: "InsightAI — Executive BI Dashboard",
+    tagline: "Ask a business question in plain English; get SQL, charts, KPIs and an AI-written insight.",
     status: "in-progress",
     live: "",
-    repo: "https://github.com/pabitra27706-oss/Study-with-ai",
-    stack: ["TypeScript", "Next.js", "Tailwind", "Markdown", "Git"],
+    repo: "https://github.com/pabitra27706-oss/matriq",
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "Tailwind",
+      "Recharts",
+      "FastAPI",
+      "Python",
+      "Gemini 2.5 Flash",
+      "SQLite",
+    ],
     proves:
-      "Agentic AI product design with a human-in-the-loop boundary: the agent compiles knowledge and quizzes, the learner owns the journal. This site is its public face.",
+      "That I can ship a full-stack AI product end to end: a 1M-row dataset, natural-language-to-SQL with injection guards, dynamic chart configuration, conversational follow-ups, CSV upload, and a real deployment config.",
     highlights: [
-      "This website — a live skill tracker, journal and project index generated from the repo itself.",
-      "Learning-journal format with attempt-first notes, error classification and weekly closed-book tests.",
-      "Git as the memory layer: every commit is a dated record of what I understood, and when.",
+      "Built for a 2026 hackathon — architecture and feature list in the README.",
+      "Backend: FastAPI + Python; frontend: Next.js 16 + React 19 + Tailwind + Recharts.",
+      "Genuine AI surface area: NL→SQL, chart config generation, AI insights that cite actual numbers.",
+      "Next gap, and I know it: no automated tests, and node_modules is committed.",
     ],
   },
   {
-    slug: "project-two",
-    name: "Project Two — a real app for real users",
-    tagline: "A deployed full-stack app solving a problem I personally understand.",
-    status: "planned",
+    slug: "codec",
+    name: "CodeC — phone-based coding workspace",
+    tagline: "Your phone. Your next idea. An IDE built for the device you actually own.",
+    status: "shipped",
     live: "",
-    repo: "",
-    stack: ["TypeScript", "Node", "Express", "PostgreSQL", "Docker", "CI/CD"],
+    repo: "https://github.com/pabiwilliams/CodeC",
+    stack: ["Kotlin", "Android", "Termux"],
     proves:
-      "That I can ship end to end: real auth, a real database with migrations, a real API, tests, CI on every push, and a live URL.",
+      "That I build developer tools, that I think phone-first, and that other developers want them — 3 stars from people who found it on their own.",
     highlights: [
-      "Problem chosen from my own life (college / local community), not a tutorial clone.",
-      "Non-negotiables: auth, migrations, tests, Docker, CI, deployed, README, LICENSE.",
-      "One feature that does the job properly beats five that half-work.",
+      "The anchor project for the whole phone-first direction.",
+      "Pairs with AppFlow, my playbook for shipping Android apps from a phone.",
+      "Next gap: a CI workflow, so GitHub Actions is the build machine exactly as AppFlow says it should be.",
     ],
   },
   {
-    slug: "project-three",
-    name: "Project Three — the AI-native one",
-    tagline: "An AI feature that is grounded, measured and safe.",
-    status: "planned",
+    slug: "tilefold",
+    name: "Tilefold — offline 4×4 sliding-merge puzzle",
+    tagline: "A complete Android game, bootstrapped from AppFlow and shipped from a phone.",
+    status: "shipped",
     live: "",
-    repo: "",
-    stack: ["Python", "FastAPI", "LLM APIs", "RAG", "Evals"],
+    repo: "https://github.com/pabiwilliams/2048-game",
+    stack: ["Kotlin", "Android"],
     proves:
-      "That I can build AI features that are trustworthy — grounded with clickable citations, with an evals harness showing I measured output quality.",
+      "That the phone-first pipeline actually works end to end: scaffold, implement, test on device, publish — without a laptop.",
     highlights: [
-      "RAG over real course material with citations back to the exact page.",
-      "An `evals/` folder: a test set, a scoring method, and the numbers before and after.",
-      "Guardrails and fallbacks, documented in the README.",
+      "Bootstrapped from AppFlow — the same generator that produced Day Ledger.",
+      "Offline-first, MIT licensed, self-contained.",
+      "Proof that a four-week time-boxed indie app is a real, repeatable unit of work.",
+    ],
+  },
+  {
+    slug: "day-ledger",
+    name: "Day Ledger — daily expense tracker",
+    tagline: "A personal finance app, generated by the same pipeline, shipped the same way.",
+    status: "shipped",
+    live: "",
+    repo: "https://github.com/pabiwilliams/Personal-ueses-app",
+    stack: ["Kotlin", "Android"],
+    proves:
+      "That the pipeline is repeatable — a second app from the same playbook, on a phone, in a week.",
+    highlights: [
+      "Provenance-tracked: the README records which AppFlow commit generated it.",
+      "MIT licensed, self-contained repository.",
+      "Two apps, one doctrine, zero laptops.",
+    ],
+  },
+  {
+    slug: "jelet-prep",
+    name: "Jelet-prep — JELET syllabus + 7 years of PYQs",
+    tagline: "The exam archive nobody else has, waiting to become an instrument.",
+    status: "in-progress",
+    live: "",
+    repo: "https://github.com/pabitra27706-oss/Jelet-prep",
+    stack: ["Markdown", "LaTeX", "MathJax", "marked"],
+    proves:
+      "That I can do precise, demanding research work and ship it: the full JELET-2026 syllabus plus previous-year papers from 2017 to 2025 transcribed with LaTeX and rendered in the browser.",
+    highlights: [
+      "syllabus.md — matches the official Information Bulletin of 18 March 2026.",
+      "pyq-md/ — 2017, 2018, 2019, 2021, 2022, 2024, 2025, fully transcribed.",
+      "Next gap: a scoring engine, an error log and a topic heat map. Right now it is an archive, not an instrument.",
+    ],
+  },
+  {
+    slug: "termux-mastery",
+    name: "Termux-Mastery",
+    tagline: "A 15-module Termux textbook, beginner to advanced, written for people starting from zero.",
+    status: "shipped",
+    live: "",
+    repo: "https://github.com/pabitra27706-oss/Termux-Mastery",
+    stack: ["HTML", "Shell", "Git", "Python"],
+    proves:
+      "That I can teach, not just learn — and that other people will follow the teaching (1 star, and the repo is the reason I run everything from a phone).",
+    highlights: [
+      "15 modules: getting started → commands → packages → file system → editors → networking → shell scripting → Python → git → SSH → Termux API → advanced tools → custom setup → real projects → troubleshooting.",
+      "MIT-adjacent, GitHub Pages ready.",
+      "Directly relevant: this is the environment I learn and ship in.",
+    ],
+  },
+  {
+    slug: "portfolio-archive",
+    name: "Personal Portfolio + Learning Archive",
+    tagline: "A static, JSON-driven site that documents every topic learned, with real code and honest notes.",
+    status: "shipped",
+    live: "https://pabitra27706-oss.github.io/portfolio/",
+    repo: "https://github.com/pabitra27706-oss/portfolio",
+    stack: ["HTML", "CSS", "JavaScript", "JSON", "GitHub Pages"],
+    proves:
+      "That I can design information architecture and ship something people can actually navigate — no frameworks, no build step, no database.",
+    highlights: [
+      "Live on GitHub Pages.",
+      "data/ is the brain, content/ is the evidence, website/ is the presentation.",
+      "Direct ancestor of this site, and the reason it exists.",
+    ],
+  },
+  {
+    slug: "coderanimeme",
+    name: "CoderAnimeMe",
+    tagline: "A programming portfolio and creator platform built for a public learning journey.",
+    status: "shipped",
+    live: "https://pabitra27706-oss.github.io/coderanimeme/",
+    repo: "https://github.com/pabitra27706-oss/coderanimeme",
+    stack: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
+    proves:
+      "That I can build in public, publish, and keep a public-facing surface alive.",
+    highlights: [
+      "Live on GitHub Pages.",
+      "Shows the public-learning-journey idea before it became this repository.",
+    ],
+  },
+  {
+    slug: "diploma-study-hubs",
+    name: "Diploma study hubs for WB poly students",
+    tagline: "Offline-ready PWAs publishing 2nd- and 3rd-semester material for CST students.",
+    status: "shipped",
+    live: "",
+    repo: "https://github.com/pabitra27706-oss/Diploma-3rd-sem",
+    stack: ["PWA", "Service Worker", "JavaScript", "Offline-first"],
+    proves:
+      "That I can serve an actual audience — students in my own stream — and that my work reaches people beyond myself.",
+    highlights: [
+      "Diploma-3rd-sem (1★) and Diploma-2nd-sem (1★).",
+      "Offline-ready PWA for students on patchy connections.",
+      "The channel: teach the batch, and the proof follows.",
+    ],
+  },
+  {
+    slug: "appflow",
+    name: "AppFlow — Phone-First Indie Playbook",
+    tagline: "One source of truth for shipping Android apps from a phone, with CI as the build machine.",
+    status: "shipped",
+    live: "",
+    repo: "https://github.com/pabiwilliams/AppFlow",
+    stack: ["Markdown", "GitHub Actions", "Kotlin"],
+    proves:
+      "That I write doctrine, not just code — and that my own process is documented well enough to generate two shipping apps.",
+    highlights: [
+      "Keep apps small, offline-first, distinct, respectful, time-boxed to four weeks.",
+      "Build on a phone with CodeC and an AI agent; use GitHub Actions as the build machine.",
+      "This is the document the rest of the journey is built on.",
     ],
   },
   {
@@ -87,9 +210,9 @@ export const projects: Project[] = [
     repo: "https://github.com/pabitra27706-oss",
     stack: ["Git", "Code review", "Testing"],
     proves:
-      "That I can work inside someone else's architecture, follow their conventions, and get code accepted. This is the signal that reads as 'works with a team'.",
+      "That I can work inside someone else's architecture, follow their conventions, and get code accepted. This is the signal that reads as 'works with a team' — and it is currently at zero.",
     highlights: [
-      "Target: 3–5 merged PRs by the end of my B.Tech first year.",
+      "Target: 3–5 merged PRs in the first three months.",
       "Start with docs, tests and small fixes; graduate to a real feature.",
       "Every PR is a public, permanent signal of collaboration.",
     ],

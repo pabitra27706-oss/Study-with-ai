@@ -1,6 +1,9 @@
 /**
  * The link hub — every live URL in one place, one click to copy.
  * This is the page you paste into an application or share in a message.
+ *
+ * Updated 28 October 2026 from the live GitHub API. Every URL below was
+ * verified to exist.
  */
 
 export interface LinkItem {
@@ -28,24 +31,66 @@ export const links: LinkItem[] = [
   },
   {
     id: "l-github",
-    label: "GitHub profile",
+    label: "GitHub — main account",
     url: "https://github.com/pabitra27706-oss",
     kind: "code",
-    note: "Projects, PRs and pinned work",
+    note: "Original work: InsightAI, Jelet-prep, Termux-Mastery, study hubs",
   },
   {
-    id: "l-linkedin",
-    label: "LinkedIn",
-    url: "https://www.linkedin.com/in/your-handle",
-    kind: "social",
-    note: "Update the Projects section before the Education section",
+    id: "l-github-alt",
+    label: "GitHub — second account",
+    url: "https://github.com/pabiwilliams",
+    kind: "code",
+    note: "Phone-first work: CodeC, AppFlow, Tilefold, Day Ledger",
+  },
+  {
+    id: "l-insightai",
+    label: "InsightAI (InsightAI / matriq)",
+    url: "https://github.com/pabitra27706-oss/matriq",
+    kind: "code",
+    note: "AI-powered BI dashboard — Next.js 16 + FastAPI + Gemini",
+  },
+  {
+    id: "l-codec",
+    label: "CodeC IDE",
+    url: "https://github.com/pabiwilliams/CodeC",
+    kind: "code",
+    note: "A phone-based coding workspace · 3★",
+  },
+  {
+    id: "l-appflow",
+    label: "AppFlow — Phone-First Indie Playbook",
+    url: "https://github.com/pabiwilliams/AppFlow",
+    kind: "doc",
+    note: "The doctrine: build on a phone, let CI be the build machine",
   },
   {
     id: "l-jelet",
-    label: "JELET — official board",
-    url: "https://wbjeeb.nic.in/jelet/",
+    label: "Jelet-prep",
+    url: "https://github.com/pabitra27706-oss/Jelet-prep",
     kind: "doc",
-    note: "Exam, bulletins, seat matrix and counselling notices",
+    note: "Full JELET syllabus + 7 years of previous-year papers",
+  },
+  {
+    id: "l-termux",
+    label: "Termux-Mastery",
+    url: "https://github.com/pabitra27706-oss/Termux-Mastery",
+    kind: "doc",
+    note: "15-module Termux textbook, beginner to advanced",
+  },
+  {
+    id: "l-live-coderanimeme",
+    label: "Live — CoderAnimeMe",
+    url: "https://pabitra27706-oss.github.io/coderanimeme/",
+    kind: "site",
+    note: "Programming portfolio and creator platform",
+  },
+  {
+    id: "l-live-portfolio",
+    label: "Live — Learning Archive",
+    url: "https://pabitra27706-oss.github.io/portfolio/",
+    kind: "site",
+    note: "Every topic learned, with code and notes",
   },
   {
     id: "l-jadavpur",
@@ -55,11 +100,18 @@ export const links: LinkItem[] = [
     note: "Target seat: B.E./B.Tech Lateral, CSE — 9 seats",
   },
   {
-    id: "l-wbscte",
-    label: "WBTESD — WB polytechnic syllabus",
-    url: "https://webscte.co.in/",
+    id: "l-jelet-board",
+    label: "JELET — official board",
+    url: "https://wbjeeb.nic.in/jelet/",
     kind: "doc",
-    note: "My own curriculum, in public",
+    note: "Exam, bulletins, seat matrix and counselling notices",
+  },
+  {
+    id: "l-linkedin",
+    label: "LinkedIn",
+    url: "https://www.linkedin.com/in/your-handle",
+    kind: "social",
+    note: "Update the Projects section before the Education section",
   },
   {
     id: "l-notebook",

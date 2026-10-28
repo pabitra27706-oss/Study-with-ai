@@ -15,6 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${origin}${basePath}/skills`, lastModified: now, priority: 0.9 },
     { url: `${origin}${basePath}/projects`, lastModified: now, priority: 0.9 },
     { url: `${origin}${basePath}/journal`, lastModified: now, priority: 0.8 },
+    { url: `${origin}${basePath}/phone`, lastModified: now, priority: 0.8 },
+    { url: `${origin}${basePath}/audit`, lastModified: now, priority: 0.8 },
     { url: `${origin}${basePath}/playbook`, lastModified: now, priority: 0.7 },
     { url: `${origin}${basePath}/playbook/roadmap`, lastModified: now, priority: 0.7 },
     { url: `${origin}${basePath}/links`, lastModified: now, priority: 0.6 },

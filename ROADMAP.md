@@ -6,25 +6,48 @@ Target seat: **Jadavpur University B.E./B.Tech (Lateral), Computer Science & Eng
 
 > **One structural note up front:** this plan has **two spines that share the same hours.**
 > - **JELET spine** — Maths + Physics + Chemistry + FEEE. This is your *exam*, and it is 100% your syllabus (or your Class 10–12 science).
-> - **Job spine** — TypeScript + Python/AI + portfolio. This is your *career*, and it is entirely outside your syllabus.
+> - **Job spine** — Android + Full-Stack (TypeScript/Python) + AI + a legible portfolio. This is your *career*, and it is entirely outside your syllabus.
 >
 > Everything else in this doc is either one of those two spines, or the operating system that runs them both (your repo, your agent, your loop).
+
+> **And one constraint that shapes the mechanics of all of it:** **you have no computer.** A Termux terminal on Android is your only machine. Every line of code in every repository was typed on it, and the plan is built around that fact rather than apologising for it — `git push` is the build command, and GitHub Actions is the build machine. See §1A, and your own doctrine in [`AppFlow`](https://github.com/pabiwilliams/AppFlow).
+
+> **Version note (28 October 2026):** §0, §1A, §1B, §3A.7, §6, §12 and §13 were rewritten after a **full audit of both GitHub accounts** (47 repositories). The plan's starting assumption changed from *"coding beginner"* to *"mid-level phone-first builder with five specific gaps"*. The full evidence is in **[`GITHUB-AUDIT.md`](GITHUB-AUDIT.md)**. Sections not listed above are unchanged and still accurate.
 
 *Research current as of 28 October 2026.*
 
 ---
 
-## 0. Your position, updated (after your answers)
+## 0. Your position, updated (after the GitHub audit, 28 Oct 2026)
 
-**Sem 3 · JELET-priority → JU CSE · beginner at coding · 2–3 hours/day · 9.3 GPA in 1st year · 88.17% Madhyamik · 80% HS.**
+**Sem 3 · JELET-priority → JU CSE · phone-first builder, _not_ a beginner · 2–3 hours/day · 9.3 GPA in 1st year · 88.17% Madhyamik · 80% HS.**
 
-**Your academic profile is a genuine asset here.** 88.17% in Class 10, 80% in Class 12, and a 1st-year diploma GPA of 9.3 (≈93% if that's a 10-point scale) put you comfortably over the single hardest gate on your entire path: **Jadavpur University's lateral entry demands a 60% diploma aggregate** — 15 points higher than every other college in West Bengal [JELET 2026 bulletin](https://cdnbbsr.s3waas.gov.in/s3d2a27e83d429f0dcae6b937cf480aeb1/uploads/2026/03/20260318287108702.pdf). You cleared that in year one. **The remaining challenge is not paperwork. It's the exam rank** — a pure skills problem, which is exactly what the AI learning system is for.
+> **This whole section was rewritten on 28 October 2026 after a full audit of both your GitHub accounts.** The earlier version of this plan was written from a self-report of *"coding beginner"*. That self-report is wrong, and the difference is not cosmetic — the plan below is **no longer a beginner's plan**. It is a plan for someone who has already shipped work and now needs to (a) make that work legible to a stranger and (b) close five specific gaps.
 
-Good news first: **2–3 hours/day for 3.5 years is roughly 3,000+ hours.** That is a professional-level runway, and it is the single biggest thing in your favour. A beginner who starts in Sem 3 with daily consistency reaches a completely different place by graduation than someone who starts learning in their final year. Your timing is genuinely good.
+### 0.1 What the repositories actually prove
 
-But the plan needs three corrections, and one of them is important.
+| Evidence | What it means |
+| -------- | ------------ |
+| `matriq` — Next.js 16 + React 19 + Tailwind + Recharts, FastAPI + Python, Gemini 2.5 Flash, SQLite at 1,000,000 rows, NL→SQL, dynamic chart config, SQL-injection guards, `Procfile` + `render.yaml` | You have shipped a **full-stack AI product**, not a tutorial. |
+| `CodeC` (3★) — "Your phone. Your next idea." A phone-based coding workspace | You build **developer tools**, and other developers find them on their own. |
+| `AppFlow` — "Phone-First Indie Playbook … build on a phone with CodeC and an AI agent; use GitHub Actions as the build machine" | You have already written the **operating doctrine** this plan needs. |
+| `Tilefold` + `Day Ledger` — two complete Android apps, MIT, offline-first, both bootstrapped from AppFlow | You can **ship an app from a phone**, with CI as the build machine. |
+| `Diploma-3rd-sem` (1★), `Diploma-2nd-sem` (1★), `anm-gnm-pre` — offline-ready PWAs for WB poly students | You can **serve an audience** and publish for your own batch. |
+| `Jelet-prep` — full JELET-2026 syllabus + **7 years of PYQs** (2017, 2018, 2019, 2021, 2022, 2024, 2025) transcribed with LaTeX and rendered with marked + MathJax | You can do **precise, demanding research work** and ship it. The JELET spine is further along than this plan assumed. |
+| `Termux-Mastery` (1★) — a 15-module Termux textbook, beginner → advanced | You can **teach**, and people follow the teaching. |
+| 47 repositories across two accounts, ~12 originals | **Consistency** — the rarest item on this list. |
 
-### Correction 1 — "Learn something not for my studies" needs one exception
+The full inventory, the things that are quietly broken (committed `node_modules` in three repos, 12 repos without a licence, 10 without a description, **two empty profile READMEs**), and a 30-day fix list are in **[`GITHUB-AUDIT.md`](GITHUB-AUDIT.md)**.
+
+**One honest sentence: you are a mid-level, phone-first full-stack builder with Android depth and real AI product experience. You are a beginner at testing, CI/CD, collaboration, DSA and system design — and nowhere else.** That is a much shorter list than "beginner", and it is the list this plan is built around.
+
+### 0.2 Your academic profile is still a genuine asset
+
+88.17% in Class 10, 80% in Class 12, and a 1st-year diploma GPA of 9.3 (≈93% if that is a 10-point scale) put you comfortably over the single hardest gate on your entire path: **Jadavpur University's lateral entry demands a 60% diploma aggregate** — 15 points higher than every other college in West Bengal [JELET 2026 bulletin](https://cdnbbsr.s3waas.gov.in/s3d2a27e83d429f0dcae6b937cf480aeb1/uploads/2026/03/20260318287108702.pdf). You cleared that in year one. **The remaining challenge is not paperwork. It is the exam rank** — a pure skills problem, which is exactly what the AI learning system is for.
+
+**2–3 hours/day for 3.5 years is roughly 3,000+ hours.** But note the change: you are no longer spending 3,000 hours learning *from zero*. You are spending them **compounding what already works, and repairing what is broken**. That is a much better use of the same hours, and it means the first 30 days should not look like a beginner's at all.
+
+### 0.3 Correction 1 — "Learn something not for my studies" needs one exception
 
 You said you want to learn *not for your studies*. I mostly agree — but **JELET, which you've now chosen as your spine, is 100% your studies.** JELET Paper I is **Mathematics, Physics, Chemistry, and Fundamentals of Electrical & Electronics Engineering** — there is no Computer Science paper at all.
 
@@ -33,26 +56,53 @@ That single fact reshapes the plan: the highest-leverage thing you can do at 2�
 - is **~92% of the JELET marks** (Math 41.7% + Physics 29.2% + Chemistry 20.8% + FEEE 8.3%) [JELET pattern](https://collegedunia.com/exams/jelet/exam-pattern),
 - and is *not* the CS skills that get you a job.
 
-So the structure becomes: **JELET subjects = the exam spine. CS + AI = the job spine. Both run in parallel from day one.** They're not competing for time — the syllabus overlap means your core academic effort and your exam prep are the same hours.
+So the structure is unchanged: **JELET subjects = the exam spine. CS + AI = the job spine. Both run in parallel from day one.** They're not competing for time — the syllabus overlap means your core academic effort and your exam prep are the same hours.
 
-### Correction 2 — Don't serialise degree-then-job
+**But the JELET starting point is better than assumed.** `Jelet-prep` already holds the complete 2026 syllabus and seven years of papers. The missing half is not content — it is *instrumentation*: a scoring engine, a forced error log, a topic heat map. See §3A.7.
+
+### 0.4 Correction 2 — Don't serialise degree-then-job
 
 You chose "degree first, jobs after." I'll support that. But the thing to understand is that **the degree only converts into a job if the portfolio exists at the same time.** By the time you sit JELET (~2029–30), the market will have moved further from where it is today — entry-level postings have already fallen ~60% since 2022 [9](https://www.nucamp.co/blog/the-junior-developer-hiring-crisis-in-2026-how-to-get-your-first-full-stack-job), and AI fluency has moved from nice-to-have to baseline [7](https://www.edstellar.com/blog/most-in-demand-skills-in-it).
 
 The right version of "degree first" is: **the degree is the spine; the portfolio is built in the same 3.5 years, not after it.** The B.Tech years (Sem 7–12) are then where you convert both into a job — and you can start applying during them too, not only after graduation.
 
-### Correction 3 — You're a beginner, so the first 6 months are about one thing only
+**The change from the old plan:** the portfolio already exists. What it lacks is *legibility* — a profile README, descriptions, licences, live links, and one identity instead of two. That is a 30-day job, not a 3-year job. See §1B.
 
-Not React. Not Docker. Not TypeScript. **Foundations:** one programming language done properly, Git/GitHub genuinely mastered, math and physics understood rather than memorised, and English technical reading/writing fluent enough that a doc isn't a wall.
+### 0.5 Correction 3 — You are not a beginner, so the first 6 months are about five specific gaps
 
-A beginner who tries to build a full-stack app in month 2 burns out and learns nothing. A beginner who spends 6 months on foundations + the JELET subjects + their learning system, then adds the stack, will be employable. The stack in §4 is real — it is just *sequenced differently for a beginner* (§7).
+The old plan said: *"Not React. Not Docker. Not TypeScript. Foundations — one language done properly."* You have all three of those, shipped. Starting over with them would be a **worse** use of a year than building on top of them.
 
-### One thing to settle this week
+The first six months, in priority order:
+
+1. **Make the work legible.** One GitHub account, a real profile README, a live demo on every project, descriptions and licences. *(§1B)*
+2. **Automated tests.** Zero tests across 47 repositories. This is the gap that reads as "hobbyist" rather than "engineer". *(§1B)*
+3. **CI/CD.** The doctrine exists in `AppFlow`; not one workflow file exists in either account. On a phone this is not a nice-to-have — it is the only way to compile. *(§1B, §4.5)*
+4. **Three merged PRs in other people's repositories.** The "works with a team" signal, currently at zero. *(§6, Repo 4)*
+5. **DSA, with a weekly score.** The one filter that can still reject you at every interview. *(§7.1)*
+
+**A deliberate demotion:** Java was in the old first-six-months list. It moves down. Three languages at once (Kotlin, Python, JavaScript/TypeScript) is how people stall, and you already have two of them in production. Java comes back for DSA practice in Sem 5, not before.
+
+### 0.6 Correction 4 — You have no computer. The phone is the machine.
+
+This is a hard constraint, and it changes the *mechanics* of everything in this plan, so it is stated here rather than buried.
+
+- **Termux is your terminal, editor, classroom and deployment console.** You have already written the 15-module textbook other people learn it from.
+- **You cannot build Next.js or Gradle on the phone** — Android is bionic, those toolchains need glibc. This is not a limitation to work around; it is the reason **`AppFlow`'s rule exists**: *use GitHub Actions as the build machine*. You wrote that rule. Now execute it.
+- **So: `git push` is the build command.** Typecheck, lint, build and deploy all happen on GitHub's runner, and you watch the run from the phone with `gh run watch`.
+- **The daily loop is the same, sized for twenty-minute sessions** — pull, attempt, commit, push, log. Full manual: [`/phone`](https://pabitra27706-oss.github.io/Study-with-ai/phone) on the site, or `scripts/termux-setup.sh` in the repo.
+- **Consequence for the portfolio:** every project needs a CI workflow and a one-command run path, because nobody — including a future employer — will ever open a terminal on your phone. Design for the browser.
+
+**What the phone gives you that a laptop would not:** enforced small sessions, no distraction, and the discipline of everything being text. **What it costs you:** long-form editing, local builds, and any task that needs a big screen. Design around it, do not fight it.
+
+### 0.7 One thing to settle this week
+
 **Ask your college office two questions:**
-1. *"Is a final-semester-appearing diploma candidate eligible to apply for JELET provisionally?"* — the WB rules say yes: *"Candidates who are appearing in their final semester of the qualifying exam can apply provisionally — admission will be confirmed only after submitting the final marksheet at document verification"* [Collegedunia — JELET 2026](https://collegedunia.com/exams/jelet). This single fact determines whether your target is **JELET 2029** (apply while appearing, join after results) or **JELET 2030**.
+1. *"Is a final-semester-appearing diploma candidate eligible to apply for JELET provisionally?"* — the WB rules say yes: *"Candidates who are appearing in their final semester of the qualifying exam can apply provisionally — admission will be confirmed only after submitting the final marksheet at document verification"* [Collegedunia — JELET 2026](https://collegedunia.com/exams/jelet/exam-pattern). This single fact determines whether your target is **JELET 2029** (apply while appearing, join after results) or **JELET 2030**.
 2. *"For JU, which B.Tech branches can a CST diploma holder apply to under JELET, and what do you know about JU's 60% rule and the 9 CSE seats?"* — **CST → JU CSE is explicitly listed** in the JU seat matrix (as "Computer Science & Engineering / Computer Science & Technology"), so your main target is clean. But the JU brochure also requires the diploma to be *"in the relevant branch"* for other departments, so **JU IT/ECE may not be open to you** — confirm before you build a tiered list on false assumptions. See §3B.
 
-Five minutes with the office now prevents a bad surprise in 2029.
+**And two questions for yourself, answerable in ten minutes:**
+3. *Which account is your identity?* `pabitra27706-oss` (17 repos, the originals, the live sites, the Pages domain) or `pabiwilliams` (30 repos, mostly forks, plus the Android work)? **Recommendation: `pabitra27706-oss`**, and move the Android work across.
+4. *What is the one project you would want a recruiter to open first?* Right now `matriq` is the answer — and it has **no live link**, which is a five-minute fix with a very large return.
 
 ---
 
@@ -63,13 +113,105 @@ Let's be precise, because the plan depends on it.
 **What you have (and shouldn't underestimate):**
 - A 3-year AICTE-recognised diploma in CST from a West Bengal government polytechnic. The WB syllabus for CST is genuinely strong in the fundamentals: C → Java/OOP → Data Structures → DBMS → Computer Networks → Operating Systems → Microprocessor/Microcontroller → IoT → Web Technology → AI/ML electives, plus a **Minor Project** and a **Summer Internship** [1](https://gsmp.co.in/wp-content/uploads/2023/02/CST_STRUCTURE.pdf) [2](https://polytechnic.wbtetsd.gov.in/polytechnic/college/download_file/184260348236f9554fe9375772ff966e/1731949424.pdf).
 - Your college sits in **Jadavpur, Kolkata** — inside the city's IT corridor. That matters more than the college name.
-- You already have a GitHub repo and an AI agent wired into it. That's a head start on the "AI-native developer" profile that employers are now paying a premium for.
+- You already have **47 repositories across two GitHub accounts**, including a shipped full-stack AI product (`matriq`), a 3-star phone-based IDE (`CodeC`), two complete Android apps, a 7-year JELET PYQ archive, a 15-module Termux textbook and two live websites. That is a head start on the "AI-native developer" profile that employers are now paying a premium for — *and* it is currently invisible, which is §1B's entire subject.*
 
 **What you don't have (and what actually blocks hiring):**
 - Publicly, the college reports **no median placement salary** [3](https://www.shiksha.com/college/acharya-prafulla-chandra-ray-polytechnic-jadavpur-kolkata-58865/course-diploma-in-computer-science-and-technology-640035). Which means: **nobody will hire you on the strength of your college.** Your proof has to come from outside it.
 - Your syllabus is a 2022 state curriculum. It is not what the job market is hiring for in 2026. That's fine — it's a floor, not a ceiling. But do not confuse "I did the syllabus" with "I'm employable."
 
 **The one piece of good news nobody tells diploma students:** in 2026, **skills-first hiring is real.** Remote junior roles now routinely say *"No degree required"* and *"We do not care about pedigree. We care about passion, potential, and proof of work"* [4](https://www.remoterocketship.com/country/india/jobs/junior-backend-developer/) [5](https://www.glassdoor.co.in/Job/india-junior-frontend-developer-remote-working-jobs-SRCH_IL.0,5_IN115_KO6,46.htm). A diploma holder with a great GitHub can beat a B.Tech holder with an empty one. But only one of those two things is under your control.
+
+---
+
+## 1A. The phone-first constraint — the mechanic that runs everything
+
+You have no computer. A Termux terminal on Android is your only machine, and every line of code in every repository was typed on it. That is not a limitation to apologise for — it has already produced a 3-star developer tool and two shipped Android apps. It is a **constraint with a known solution**, and you already wrote the solution yourself.
+
+**The doctrine, verbatim from your own `AppFlow` repo:**
+
+> "One source of truth for a phone-first Indian indie developer shipping Android apps. Build on a phone with CodeC and an AI agent; use GitHub Actions as the build machine. Keep apps small, offline-first, distinct, respectful, and time-boxed to four weeks."
+
+Everything below is that doctrine, applied.
+
+### 1A.1 The division of labour
+
+| The phone does | The CI runner does |
+| -------------- | ----------------- |
+| Read, write, commit, push | `npm ci`, TypeScript, ESLint, static export |
+| Git, `gh`, PR review, issues, releases | Gradle builds, release APKs, Docker images |
+| Python, Node, shell, a local static server | Deployment to Pages / Vercel / Netlify / Render |
+| The learning loop: read → attempt → quiz → log | Anything that needs a real Linux userland |
+
+### 1A.2 Why the build *cannot* happen on the phone
+
+Next.js 16's Turbopack and SWC binaries, lightningcss and Gradle's native parts are all compiled against **glibc**. Android is **bionic**. They will not load. There are exactly two honest answers:
+
+1. **Push the build to CI** (recommended, free, and what `AppFlow` says).
+2. **Run a glibc userland on the phone** with `proot-distro` + Ubuntu — `bash scripts/termux-build.sh` in this repo does it. It works. It downloads a few hundred MB, it is slow, and it is strictly worse than option 1.
+
+**Rule: never build locally. `git push` *is* the build command.** The only exception is a five-second type check to catch a typo before you push.
+
+### 1A.3 The daily loop, sized for a phone
+
+```
+cd ~/Study-with-ai && git pull     # 10 seconds
+nano notes/<topic>.md              # write the attempt BEFORE asking
+git add -A && git commit -m "What I decided, not what I changed"
+git push && gh run watch           # the build is somebody else's job now
+$EDITOR journal/$(date +%F)-<slug>.md   # attempt, mistake, fix
+```
+
+Full manual on the site: **`/phone`**. Deploy tooling in the repo: `scripts/termux-setup.sh` (one command, installs the Pages workflow and switches Pages on) and `scripts/termux-build.sh` (optional on-device build).
+
+### 1A.4 What this changes about every other decision in this document
+
+- **Every project needs a CI workflow.** A future employer will never open a terminal on your phone, so the run path must be a URL and a button.
+- **Every README needs a one-command start.** `git clone && npm ci && npm run dev` — and if that fails on their machine, it fails for them too.
+- **Scope is four weeks, not four months.** A phone session is 20 minutes. `AppFlow` already says it; now it is load-bearing.
+- **Text is your medium.** Markdown, plain files, one commit per decision. The phone is a text device, and that constraint has made your repository history legible — keep it.
+- **The studio ends, the server does not.** Everything you make is deployed and reachable from any phone on any network. That is the whole point.
+
+---
+
+## 1B. The real gap list — five items, ranked by recruiter impact
+
+Not "what a beginner lacks". **What you lack, given what you already have.** The full evidence is in [`GITHUB-AUDIT.md`](GITHUB-AUDIT.md).
+
+### Gap 1 — Legibility (do this first; it is 30 days, not 3 years)
+
+A stranger cannot tell what you have done. Specifically:
+
+- `pabitra27706-oss` has **no profile repository** → your GitHub profile shows a default card.
+- `pabiwilliams/pabiwilliams` contains the **untouched GitHub template** (`👀 I'm interested in ...`), unchanged since 2025-06-08.
+- `matriq` — your strongest project — has **no live link** in the README, despite shipping a `render.yaml`.
+- 10 of your repos have **no description**; 12 have **no licence**; `CodeC`'s description is literally `"9"`.
+- `node_modules` is **committed** in `matriq`, `club-web` (46 MB) and `CodeC` (31 MB) — the single most visible sign of an unfinished repo.
+
+**Fix order:** one identity → profile README → live link on `matriq` → descriptions + licences → `.gitignore` and `git rm -r --cached` → READMEs.
+
+### Gap 2 — Automated testing (currently 0%)
+
+Zero tests across 47 repositories. This is the gap that separates "hobbyist who ships" from "engineer who is trusted with a codebase". It is also the cheapest signal to add: three repos with real tests changes how a senior engineer reads your work.
+
+Start with the one that pays for itself: **`matriq`** — the SQL generator is exactly the kind of pure function that is easy to test and expensive to get wrong. One `pytest` file that asserts the generated SQL never drops a table, and the project has a spine.
+
+### Gap 3 — CI/CD (doctrine written, never executed)
+
+`AppFlow` says "use GitHub Actions as the build machine". **Not one workflow file exists in either account.** The plan is not "learn CI" — it is "type the file you already described". This one also unlocks phone-first shipping in general, so it is the highest-leverage single commit in the next month.
+
+### Gap 4 — Collaboration (0 merged PRs)
+
+The one signal that reads as "works with a team" is completely absent. You have 47 repositories and zero contributions to someone else's. Start with docs and tests (easiest to enter), in `TypeScript` and `Python` projects. Target 3–5 merged PRs before the B.Tech applications start.
+
+### Gap 5 — DSA, with a weekly score
+
+The one filter that can still reject you at every interview, and the only item on this list with **no repository at all**. It is also the one you have been avoiding, which is exactly why it is still empty. It does not need a big plan: one LeetCode-style problem a day, a weekly closed-book mock, and a score on this site.
+
+### What is *not* on the list
+
+Java (demoted to Sem 5, for DSA only). Kubernetes. Terraform. System design beyond what `AppFlow` already shows. Any new framework. Any new language. **Your problem is not breadth. It is that your breadth is invisible and your depth is unmeasured.**
+
+---
 
 ---
 
@@ -201,6 +343,33 @@ Write this in your journal now, and revisit it in **February 2029**:
 > *"If my diploma aggregate is ≥45%, I will appear for JELET 2029 provisionally. If I am below 45% in Sem 5 results, I will skip JELET, go straight into the job market with my portfolio, and reconsider MCA/BCA later as a part-time route."*
 
 Having the decision rule written in advance stops you from making an emotional choice in a high-stakes week.
+
+### 3A.7 You already have the archive — now turn it into an instrument
+
+`Jelet-prep` (2026-06-04) is **not** an empty repo. It contains:
+
+- `syllabus.md` — the complete JELET-2026 syllabus, matching the official Information Bulletin of 18 March 2026 (Maths 40 Q / 50 M, Physics 30 Q / 35 M, Chemistry 20 Q / 25 M, FEEE 10 Q / 10 M; Cat-1 +1/−0.25, Cat-2 +2 all-correct with partial credit and no negative).
+- `pyq-md/` — **2017, 2018, 2019, 2021, 2022, 2024, 2025** transcribed with LaTeX.
+- `pyq-index.html` — marked + MathJax rendering.
+
+It has **two commits** and stopped on 4 June 2026 — the week the 2026 exam was written. It was **abandoned, not finished**, and the reason is the classic one: an archive is satisfying to build and produces no score, so there is no feedback loop to keep going.
+
+**The missing half is instrumentation, not content.** Three additions, in this order:
+
+**1. A scoring engine that reproduces the official rule.**
+100 questions, 120 marks, 2 hours, OMR, English. Cat-1: 80 × (+1 / −0.25). Cat-2: 20 × (+2 if all correct options marked, partial credit if no wrong option, zero if any wrong option). Then apply the **official tie-break chain**: fewest negatives → Maths → Physics → Chemistry. A score without the tie-break is a score you cannot compare to a rank, and rank is the only thing that matters for a 9-seat programme.
+
+**2. A forced error log.**
+Every wrong answer must be tagged with *why*: `concept` (did not know it) · `careless` (knew it, slipped) · `misread` (bad question reading) · `time` (ran out of clock). Without this, 500 practice questions produce zero learning. With it, 200 produce thirty specific fixes. This is the same discipline as the journal in this repo — a spreadsheet, not a journal.
+
+**3. A topic heat map ranked by *marks recoverable*, not by accuracy.**
+A topic where you sit at 60% on 35 marks is worth more than one where you sit at 90% on 10. Sort by `weight × (1 − accuracy)`, not by accuracy. That single change is usually worth 8–15 marks on a 120-mark paper, and 8–15 marks is the difference between GMR 30 and GMR 15.
+
+**Why this matters more than you think:** JU CSE lateral has **9 seats** and closes around **GMR 9–55** (see §3B). At 120 marks, the difference between rank 15 and rank 40 is roughly 12 marks. These three features are the 12 marks.
+
+**Weekly rhythm:** 2 MCQ blocks (target 40 questions) · 1 full mock every Sunday, timed, closed-book · Sunday review = error-log classification only, no re-reading · re-mock the same weak topics in 7 days (spacing, d ≈ 0.85).
+
+**No AI inside the mock runner.** It is a measuring instrument, and an instrument that helps you cheat measures nothing. AI is allowed in the *review* step, and only after you have written your own attempt — the same rule that protects this repository.
 
 ---
 
@@ -365,11 +534,37 @@ Since ~84% of developers use AI coding tools weekly or daily [19](https://www.nu
 
 ---
 
-## 6. The portfolio architecture (4 repos, built across Sem 3 → Sem 6)
+## 6. The portfolio architecture (rewritten: you already have most of it)
 
-This is the job. Four repos, each with a URL, a README, and a live demo.
+> **Rewritten 28 Oct 2026 after the GitHub audit.** The old version of this section said "you need to build four repos from scratch". That is wrong now. You have **12 original repositories**, a shipped AI product, two shipped Android apps, a 3-star developer tool, a 7-year JELET archive, a 15-module textbook and two live sites. The job is no longer *building* the portfolio. It is **(a) making it legible** and **(b) adding the three pieces of evidence a portfolio is missing: tests, CI, and collaboration.**
 
-**Build order matters, and for a beginner the order is:** Repo 1 (now) → Repo 2 (Sem 5) → open source (from Sem 5) → Repo 3 (Sem 6). Do not start Repo 3 first — an AI project built before you can build a boring app properly is a demo, not a portfolio piece.
+**The new build order is:** Legibility (30 days) → CI in every repo → tests in `matriq` → 3 merged PRs → then the *new* repos, in this order:
+
+| Order | What | When | Why this order |
+| ----- | ---- | ---- | -------------- |
+| **Now** | **Legibility pass** | 30 days | Cheapest ROI in the whole plan. One identity, profile README, live link on `matriq`, descriptions, licences, `.gitignore`, un-commit `node_modules`. |
+| **Now** | **CI in every repo** | with the legibility pass | Your phone cannot build. Without a workflow, half your portfolio is unrunnable for anyone else. |
+| **Now** | **Tests in `matriq`** | Sem 3 | The SQL generator is a pure function — trivial to test, expensive to get wrong. This is the gap that reads as "engineer". |
+| **Sem 4** | **Repo 4 — open source (3–5 merged PRs)** | from Sem 4 | The only signal that reads as "works with a team". Currently zero, and the only way to fix zero is to start. |
+| **Sem 5** | **Repo 2 — a deployed full-stack app with auth + Postgres + tests + Docker** | Sem 5 | You have SQLite and Firebase. You do not have migrations, auth, or a real relational schema. That gap is exactly what a backend interview probes. |
+| **Sem 6** | **Repo 3 — the AI-native one, with `evals/`** | Sem 6 | `matriq` proves you can build AI. It does **not** prove you can *measure* AI. An `evals/` folder with a test set, a scoring method and before/after numbers is what turns "uses AI" into "engineers AI". |
+
+### What you already have — the honest portfolio list
+
+| Repo | Proves | Status |
+| ---- | ------ | ------ |
+| `matriq` / **InsightAI** | Full-stack AI product: NL→SQL over 1M rows, dynamic charts, KPI cards, injection guards, `render.yaml` | Shipped, **no live link** |
+| `CodeC` | Phone-based developer tooling; 3★ organic adoption | Shipped |
+| `Tilefold` (2048-game) | End-to-end Android shipping from a phone | Shipped, MIT |
+| `Day Ledger` | A repeatable pipeline — the same doctrine, a second app | Shipped, MIT |
+| `AppFlow` | Process design: phone-first indie shipping doctrine | Shipped |
+| `Jelet-prep` | Rigorous research + LaTeX transcription across 7 exam years | Shipped, needs instrumentation |
+| `Termux-Mastery` | Technical teaching; a 15-module textbook | Shipped, 1★ |
+| `portfolio` (live) | Information architecture, static-site design | Shipped, live |
+| `CoderAnimeMe` (live) | Building in public, keeping a public surface alive | Shipped, live |
+| `Diploma-2nd/3rd-sem` (1★ each) | Serving an audience of students in your own stream | Shipped |
+| `Study-with-ai` (this repo) | Agentic AI product design with a hard human-in-the-loop boundary | Live |
+| Open-source PRs | Collaboration in someone else's codebase | **0 — the biggest single gap** |
 
 ### Repo 1 — `Study-with-ai` (this one). **Your AI learning agent.**Turn this repo into a working system: spaced-repetition cards generated from your own notes, Socratic questioning, weekly closed-book tests, a human-owned journal layer. Document the AI-safety design in the README (guardrails, the "attempt first" rule, the human-owned layer).
 > **Why this is repo #1 and not a toy:** it demonstrates agentic AI design, retrieval, scheduling, evaluation, and careful human-in-the-loop product thinking — in the exact domain you understand. It's also genuinely useful to you. One repo, two returns.
@@ -702,26 +897,39 @@ Set up AI workflows for small Kolkata businesses: a chatbot for a coaching insti
 | `git log` commits | No gap >2 days | Consistency, not learning |
 | Anki reviews/day | Done daily | Retention compounding |
 | **"Can I defend this repo for 5 minutes?"** | Yes, for all of them | The real readiness test |
+| **Profile READMEs written** | 1 live, by end of Week 1 | The only page a recruiter is guaranteed to open |
+| **Repos with a live demo URL** | 3 by end of Sem 3 | A repo without a URL is a folder |
+| **Repos with a CI workflow** | All, by end of Sem 3 | A phone cannot build — CI is the build machine |
+| **Test files in portfolio repos** | ≥3 repos, by end of Sem 4 | The 0%-to-not-0% gap that reads as "engineer" |
+| **Commits on the phone** | ≥1 per active day | Consistency is the only metric that never lies |
 
 ---
 
 ## 13. The honest summary
 
-**What you got right:** You identified early that AI changes the game, and you connected a repo — the one artifact that captures *your* effort and can't be faked. That instinct is right, and the repo you've started is Repo 1 of your portfolio. You also chose the JELET path, and your academic record (88.17% → 80% → 9.3 GPA) means you've already cleared the one hard eligibility gate on that path — **JU's 60%** — in year one.
+> **Rewritten 28 October 2026 after the GitHub audit.** The previous version of this summary was written for a beginner. It was wrong, and the correction is the most valuable thing in this document.
+
+**What you got right — and did not know you got right.** You identified early that AI changes the game, and you connected a repository to it: the one artifact that captures *your* effort and cannot be faked. You also chose the JELET path, and your academic record (88.17% → 80% → 9.3 GPA) means you cleared the one hard eligibility gate on that path — **JU's 60%** — in year one.
+
+**And then you actually built.** While planning a learning system, you produced: a **full-stack AI product** (`matriq` — Next.js 16 + FastAPI + Gemini over a million rows), a **phone-based IDE with 3 stars** (`CodeC`), **two complete Android apps** shipped from a phone (`Tilefold`, `Day Ledger`), a **15-module Termux textbook** that other people learn from, **two live websites**, a **seven-year JELET previous-year-question archive** transcribed in LaTeX, and an **operating doctrine** (`AppFlow`) that explains how to ship software without a computer.
+
+**The self-report said "coding beginner". The repositories say: mid-level, phone-first, full-stack, with Android depth and real AI product experience.** That gap between self-report and evidence is itself the lesson of this document — and the same trap this whole repository is designed to avoid, applied to yourself.
 
 **What the plan adds on top of your instinct:**
-- **A spine.** "Learn for knowledge and opportunities" is a direction, not a route. The route is: **JELET spine (Maths + Physics + Chem) and Job spine (TypeScript + Python/AI + portfolio), running in parallel on the same hours → JU CSE (target GMR ≤40, ideally ≤20) → B.Tech → job.**
-- **A number.** JU CSE lateral is **9 seats** and closes around rank **9–55**. So your real target is a score, not a feeling: **95–105 out of 120, stretch 105–112.**
-- **A sequence.** Foundations now, stack later, AI layer last. The 2–3 hours a day you have is enough — but only if you don't spend it on React in Sem 3.
-- **An income line that pays you to revise.** Tutoring Class 11–12 Maths/Physics is the same syllabus as JELET Paper I. **You're getting paid to study.** ₹8,000–15,000/month from 6–8 hours/week, capped so it can never eat the JELET hours.
+- **A spine.** "Learn for knowledge and opportunities" is a direction, not a route. The route is: **JELET spine (Maths + Physics + Chem) and Job spine (Android + Full-Stack + AI), running in parallel on the same hours → JU CSE (target GMR ≤40, ideally ≤20) → B.Tech → job.**
+- **A number.** JU CSE lateral is **9 seats** and closes around rank **9–55**. So your real target is a score, not a feeling: **95–105 out of 120, stretch 105–112.** And `Jelet-prep` already holds the syllabus and seven years of papers — the missing half is instrumentation (§3A.7), and it is worth about 12 marks.
+- **A re-sequenced first six months.** Not "learn one language properly" — that ship has sailed, in the best possible way. Instead: **legibility → CI → tests → three merged PRs → DSA with a weekly score.** Five items, in that order, over 30 days and then one semester.
+- **A phone-first mechanic.** You have no computer, so `git push` is the build command and GitHub Actions is the build machine. You wrote that rule in `AppFlow` before this plan existed. Now it runs the whole portfolio.
+- **An income line that pays you to revise.** Tutoring Class 11–12 Maths/Physics is the same syllabus as JELET Paper I. **You are getting paid to study.** ₹8,000–15,000/month from 6–8 hours/week, capped so it can never eat the JELET hours.
 
 **What to watch for:**
+- **Legibility before new projects.** The instinct to build the next thing is strong, and it is the thing that has already left 12 repos invisible. Fix the 12 before you make the 13th.
 - **Don't serialise.** "Degree first, skills after" is the trap. The degree and the portfolio must be built in the same 3.5 years.
 - **Don't lose the 60%.** You have a huge cushion now; polytechnic theory papers in Sem 5–6 (Microprocessor, Automata, AI/ML) are where it can slip. Track the running aggregate every semester.
-- **Don't expect 6 months to a job.** End of Sem 5 you're employable at junior/IT level; end of Sem 6 you're employable at ₹4–7 LPA; B.Tech Yr 2 is where the good offers live.
-- **Don't let the AI write the code you claim you wrote.** A portfolio you can't defend in an interview is a liability.
+- **Don't expect 6 months to a job.** End of Sem 5 you're employable at junior/IT level; end of Sem 6 at ₹4–7 LPA; B.Tech Yr 2 is where the good offers live.
+- **Don't let the AI write the code you claim you wrote.** A portfolio you can't defend in an interview is a liability — and with 47 repositories, a recruiter *will* pick one and ask.
 
-**One line to remember:** *The JELET rank gets you into Jadavpur. The portfolio gets you the offer. The AI fluency gets you the raise. And the tutoring gets you the laptop.*
+**One line to remember:** *The JELET rank gets you into Jadavpur. The portfolio gets you the offer — but only if a stranger can see it. The AI fluency gets you the raise. The tutoring gets you the laptop.*
 
 ---
 

@@ -4,6 +4,8 @@
 
 *Research current as of 28 October 2026. Every empirical claim below is linked to its source.*
 
+*§11 added 28 October 2026: the learning system re-designed for a phone-only machine (Termux on Android).*
+
 ---
 
 ## 1. What you are actually proposing (restating your thoughts, so we can argue with them)
@@ -311,15 +313,28 @@ Write these down now, while you're motivated; they'll look obvious and feel invi
 
 ## 9. The first 30 days
 
-**Days 1–3 — Set the frame.** Decide: what's the domain (one subject for the first 8 weeks, not five)? What's the outcome (an exam, a job skill, a portfolio)? What's your daily time budget, honestly? Write it into `roadmap.md`. Claim the free-tier accounts and set the auto-renew reminder. Create `raw/`, `notes/`, `journal/`, `cards/`.
+> **Re-sequenced 28 October 2026.** The original version started with "pick one subject and build the loop from scratch". A GitHub audit of both accounts showed a learner who has **already built**: a full-stack AI product, a 3-star phone IDE, two shipped Android apps, a 15-module Termux textbook, a 7-year JELET PYQ archive and two live sites. Starting from scratch would have been a *worse* use of a year than building on what exists. So the first 30 days now start with **making the work visible**, not with making more work.
 
-**Days 4–7 — Build the loop on ONE topic.** Do the full daily loop (§6.1) end-to-end once. It will feel slow and awkward. That's the point — the slowness is the effort, and effort is the mechanism. Generate 20 cards from one video. Do the first closed-book test on day 7 and record the number.
+**Days 1–3 — Set the frame, and make it visible.**
+- Write the learning-system rules into `AGENTS.md` (§6.5). The agent contract is the one artefact that must exist before anything else runs.
+- **One GitHub identity.** Pick the account that holds the originals and the live sites, move the other account's best work across, and delete the untouched default profile template. Two accounts read as two different people.
+- **Write the profile README.** The only page a recruiter is guaranteed to open. It is currently empty on *both* accounts.
+- Create `raw/`, `notes/`, `journal/`, `cards/`, and claim the free-tier accounts (set the auto-renew reminder for the Google AI Plus student offer).
 
-**Week 2 — Turn on the scheduler.** Move all cards into Anki with FSRS. Start the daily review, 10–15 minutes, no exceptions. This is the single biggest compounding decision in the system.
+**Days 4–7 — Build the loop on ONE topic.**
+Do the full daily loop (§6.1) end to end once. It will feel slow and awkward. That is the point — the slowness is the effort, and effort is the mechanism. Generate 20 cards from one video. Do the first closed-book test on day 7 and record the number.
 
-**Week 3 — Add the agent contract.** Write your operating rules (§6.5) into `AGENTS.md` and let the agent run the wiki compile + lint cycle. Start asking the AI to connect new material to existing notes.
+**Week 2 — Turn on the scheduler, and turn on CI.**
+- Move all cards into Anki with FSRS. Start the daily review, 10–15 minutes, no exceptions. This is the single biggest compounding decision in the system.
+- **Add a GitHub Actions workflow to every repository.** On a phone this is not a nice-to-have: it is the build machine. Without it, half the portfolio is unrunnable by anyone, including you.
 
-**Week 4 — Run the monthly loop.** Mastery audit. Wipe-and-rebuild test on your first topic. Look at your commit history and your first weekly test score. Then fix the system, not yourself — the system is what you'll still have in year two.
+**Week 3 — Add the agent contract, and the tests.**
+- Let the agent run the wiki compile + lint cycle. Start asking the AI to connect new material to existing notes.
+- **Write the first real test file.** Not a tutorial test — a test of the one function in your best project that would be expensive to get wrong (in `matriq`, that is the SQL generator). Zero tests across every repository is currently the loudest gap in the portfolio.
+
+**Week 4 — Run the monthly loop, and open the first PR.**
+Mastery audit. Wipe-and-rebuild test on your first topic. Look at your commit history and your first weekly test score. Then fix the system, not yourself — the system is what you'll still have in year two.
+- **Open your first pull request in someone else's repository.** Docs or tests first. The "works with a team" signal is currently at zero, and it is the cheapest signal on the list to move.
 
 ---
 
@@ -337,6 +352,57 @@ Write these down now, while you're motivated; they'll look obvious and feel invi
 - **A human-owned journal layer** in the repo, because a wiki the AI wrote teaches you nothing.
 
 **The one-sentence version:** *Use AI to be grilled, not to be told; use Git to remember, not to store; and let the closed-book exam — not the feeling of progress — be the judge.*
+
+**And the one-sentence version for the phone:** *Use the phone to think and commit; use CI to compile; use the closed-book test — done away from the phone — to prove it.* (§11)
+
+---
+
+## 11. Learning from a phone — the constraint that shapes everything
+
+*Added 28 October 2026, after establishing that the learner has no computer: a Termux terminal on Android is the only machine available.*
+
+Every design decision above assumed a laptop. The interesting part of this system is that **it survives the constraint better than it would have survived a laptop** — but only if you change four things.
+
+### 11.1 What the constraint actually removes
+
+- **The build.** Next.js's Turbopack and SWC, lightningcss and Gradle's native parts are compiled against glibc; Android is bionic. They will not load. A local build is not merely slow on a phone — it is *impossible*.
+- **The big editor.** Typing a 200-line file on a phone keyboard is slow, and typo-driven commits are a real and recurring cost.
+- **The long session.** The 60-minute loop of §6.1 was written for a desk. On a phone, the natural unit is 20 minutes between classes.
+
+### 11.2 What the constraint gives back
+
+- **Enforced small sessions.** Twenty minutes is short enough that you actually start. The classic failure of self-directed learning — a beautiful plan and no Tuesday — is solved by a device that will not let you ignore the plan.
+- **Enforced text.** Everything is a file, a diff and a commit. That is the format the learning science prefers anyway, and it makes the repository legible years later.
+- **A free build machine.** GitHub Actions is a real Linux runner with no local dependency at all. Your phone limitation removes the reason you would ever build locally, which removes the slowest, most battery-destroying part of the loop.
+
+### 11.3 The four changes
+
+**1. `git push` becomes the build command.**
+Typecheck, lint, build and deploy happen on GitHub's runner; you watch the run from the phone with `gh run watch`. This is not a workaround — it is the *correct* architecture for a machine that cannot compile. Your own `AppFlow` repository already states the rule: *"use GitHub Actions as the build machine."*
+
+**2. The daily loop is re-timed from 60 minutes to 20.**
+The six phases of §6.1 survive intact — Prime, Probe, Point, Attach, Strengthen, Test — but they are now the *content* of one session rather than the length of one session. Two or three sessions a day instead of one long one, which is also how the spaced schedule actually wants to work [22](https://colinallen.dnsalias.org/Readings/2006_Roediger_Karpicke_PsychSci.pdf).
+
+**3. The agent does the typing; you do the judging.**
+The one thing a phone is genuinely bad at is long-form editing, and the one thing it is genuinely good at is *not* letting you skip the thinking. So: you write the attempt and the decision (short, high-stakes, human-only), and the agent handles the mechanical parts — scaffolding, boilerplate, the CI file, the first draft of a README. **This does not weaken the "attempt before you ask" rule; it sharpens it**, because the rule was never about who types faster. It is about whether the *idea* came from you.
+
+**4. Every project must be runnable by a stranger, from a URL.**
+No future employer will ever open a terminal on your phone. So the run path is a link and a button, the CI workflow is mandatory rather than nice-to-have, and the README must contain a one-command start that works on a laptop. **The phone constraint, applied honestly, produces exactly the portfolio hygiene a recruiter rewards.**
+
+### 11.4 What this means for the evidence
+
+Two of the strongest results in §2 and §3 are *more* relevant on a phone, not less:
+
+- The performance paradox (§3.1) — practice scores up 48%, unaided exam scores down 17% — is precisely the failure mode of a small screen where every answer is one tap away. **The guardrail matters more when the temptation is bigger.**
+- The self-regulated request trap (§3.4) — students who controlled when the AI helped lost more than half their gains — is easier to fall into when the AI lives in the same pocket as everything else. The journal, the closed-book test and the "attempt first" rule are the counterweights, and none of them require a laptop.
+
+### 11.5 The one thing the phone cannot do
+
+**It cannot run a closed-book test in a realistic setting.** A 45-minute timed test on a phone is doable — `Anki` and `Quizlet` both work — but it is easier to cheat on a device that also has your notes, your browser and your AI in the pocket. The fix is procedural, not technical: **put the phone in a different room for the test**, or run the mock on paper. The JELET mock (§3A.7) is the one place this matters most, and the 9 seats make it worth 45 uncomfortable minutes.
+
+### 11.6 The one-sentence version for this constraint
+
+*Use the phone to think and commit; use CI to compile; use the closed-book test — done away from the phone — to prove it.*
 
 ---
 
