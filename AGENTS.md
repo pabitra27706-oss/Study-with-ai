@@ -1,5 +1,10 @@
 # AGENTS.md — the contract for any AI working in this repository
 
+> **New here? Read [`runbook/README.md`](runbook/README.md) first**, then
+> `runbook/STATE.md` and `runbook/THE-LOOP.md`. The runbook holds the current
+> state, the exact steps, the judging rules, the decision log and the open
+> list. It is written for a session that has no memory of this project.
+
 This repository is not a codebase that an AI writes. It is a **learning
 system** that a human runs, with AI as a constrained tutor. An agent that
 ignores the rules below will make the learner worse, not faster — the

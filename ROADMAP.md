@@ -10,7 +10,7 @@ Target seat: **Jadavpur University B.E./B.Tech (Lateral), Computer Science & Eng
 >
 > Everything else in this doc is either one of those two spines, or the operating system that runs them both (your repo, your agent, your loop).
 
-> **And one constraint that shapes the mechanics of all of it:** **you have no computer.** A Termux terminal on Android is your only machine. Every line of code in every repository was typed on it, and the plan is built around that fact rather than apologising for it — `git push` is the build command, and GitHub Actions is the build machine. See §1A, and your own doctrine in [`AppFlow`](https://github.com/pabiwilliams/AppFlow).
+> **And one constraint that shapes the mechanics of all of it:** **you have no computer.** A Termux terminal on Android is your only machine. Every line of code in every repository was typed on it, and the plan is built around that fact rather than apologising for it — `git push` is the build command, and GitHub Actions is the build machine. See §1A, and your own doctrine in [`AppFlow`](https://github.com/pabi277/AppFlow).
 
 > **Version note (28 October 2026):** §0, §1A, §1B, §3A.7, §6, §12 and §13 were rewritten after a **full audit of both GitHub accounts** (47 repositories). The plan's starting assumption changed from *"coding beginner"* to *"mid-level phone-first builder with five specific gaps"*. The full evidence is in **[`GITHUB-AUDIT.md`](GITHUB-AUDIT.md)**. Sections not listed above are unchanged and still accurate.
 
@@ -101,7 +101,7 @@ This is a hard constraint, and it changes the *mechanics* of everything in this 
 2. *"For JU, which B.Tech branches can a CST diploma holder apply to under JELET, and what do you know about JU's 60% rule and the 9 CSE seats?"* — **CST → JU CSE is explicitly listed** in the JU seat matrix (as "Computer Science & Engineering / Computer Science & Technology"), so your main target is clean. But the JU brochure also requires the diploma to be *"in the relevant branch"* for other departments, so **JU IT/ECE may not be open to you** — confirm before you build a tiered list on false assumptions. See §3B.
 
 **And two questions for yourself, answerable in ten minutes:**
-3. *Which account is your identity?* `pabitra27706-oss` (17 repos, the originals, the live sites, the Pages domain) or `pabiwilliams` (30 repos, mostly forks, plus the Android work)? **Recommendation: `pabitra27706-oss`**, and move the Android work across.
+3. *Which account is your identity?* `pabitra27706-oss` (17 repos, the originals, the live sites, the Pages domain) or `pabi277` (30 repos, mostly forks, plus the Android work)? **Recommendation: `pabitra27706-oss`**, and move the Android work across.
 4. *What is the one project you would want a recruiter to open first?* Right now `matriq` is the answer — and it has **no live link**, which is a five-minute fix with a very large return.
 
 ---
@@ -182,7 +182,7 @@ Not "what a beginner lacks". **What you lack, given what you already have.** The
 A stranger cannot tell what you have done. Specifically:
 
 - `pabitra27706-oss` has **no profile repository** → your GitHub profile shows a default card.
-- `pabiwilliams/pabiwilliams` contains the **untouched GitHub template** (`👀 I'm interested in ...`), unchanged since 2025-06-08.
+- `pabi277/pabi277` contains the **untouched GitHub template** (`👀 I'm interested in ...`), unchanged since 2025-06-08.
 - `matriq` — your strongest project — has **no live link** in the README, despite shipping a `render.yaml`.
 - 10 of your repos have **no description**; 12 have **no licence**; `CodeC`'s description is literally `"9"`.
 - `node_modules` is **committed** in `matriq`, `club-web` (46 MB) and `CodeC` (31 MB) — the single most visible sign of an unfinished repo.

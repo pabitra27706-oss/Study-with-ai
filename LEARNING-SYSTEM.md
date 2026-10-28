@@ -217,7 +217,7 @@ bash scripts/collect.sh c-loops t1 /storage/emulated/0/Download/t1.c
 nothing posts to your repository behind your back, and no other AI is involved.
 
 > The CodeC repository URL could not be confirmed from the build sandbox
-> (`git clone https://github.com/pabiwilliams/CodeC.git` returns *Repository not
+> (`git clone https://github.com/pabi277/CodeC.git` returns *Repository not
 > found* — the account or the repo name is different). Nothing above depends on
 > it: CodeC needs this repository, not the other way round. Send me the real
 > URL and I will wire the docs to it.

@@ -25,7 +25,7 @@ export const milestones: Milestone[] = [
     detail:
       "CodeC (3★), Tilefold, Day Ledger, AppFlow. Android apps, a developer tool and a written doctrine, all built in a Termux terminal with GitHub Actions as the build machine.",
     state: "done",
-    href: "https://github.com/pabiwilliams/CodeC",
+    href: "https://github.com/pabi277/CodeC",
     hrefLabel: "CodeC",
   },
   {

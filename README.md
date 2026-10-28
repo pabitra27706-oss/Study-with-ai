@@ -17,6 +17,7 @@ Actions is the build machine.
 | ---- | ---------- |
 | [`GITHUB-AUDIT.md`](GITHUB-AUDIT.md) | **Start here.** A full audit of both GitHub accounts — 47 repositories, what each one proves, what is broken, and a 30-day fix list. |
 | [`LEARNING-JOURNEY.md`](LEARNING-JOURNEY.md) | The research-backed design of the learning system: how AI is used, what Git is for, the guardrails that keep it honest, and how all of it works from a phone. 11 sections, 40 sources. |
+| [`runbook/`](runbook/) | **The operating procedure.** State, the loop, how to judge, setup, the decision log (including what was rejected) and the open list. Written so that a fresh chat with no memory can pick up the thread. |
 | [`LEARNING-SYSTEM.md`](LEARNING-SYSTEM.md) | **The machine that judges you.** AI-written topics with curated video sources, machine-checked tasks, a why-comment checker, a written rubric — and the brief that I read before I judge, and the script that writes my verdict back. How it works, how to add a topic, how to publish into the archive. |
 | `curriculum/` | **Topic packs** — the teaching half. Explanation, videos with a reason for each, tasks with hidden test cases, rubric. Written by AI. |
 | `learn/` | **Your half and my half.** You write `solutions/*.c` and `answers.json` in CodeC; I write `verdict.json`, `notes.json`, `review.md` and `history.md` back. |
@@ -168,7 +169,7 @@ No paid service, no key, no laptop, and no bot talking to your repository
 behind your back. `clang` is a Termux package, so the checks run on the phone.
 
 See **[`LEARNING-SYSTEM.md`](LEARNING-SYSTEM.md)** for the full design, and
-**[/learn](https://pabitrawriters06-oss.github.io/Study-with-ai/learn)** for the
+**[/learn](https://pabitra27706-oss.github.io/Study-with-ai/learn)** for the
 live version.
 
 ---
