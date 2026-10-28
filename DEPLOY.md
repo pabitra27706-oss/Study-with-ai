@@ -12,31 +12,37 @@ https://pabitra27706-oss.github.io/Study-with-ai/
 There are two ways to get there. **Path A** is the permanent one; **Path B**
 gets you a live URL today with a single click.
 
+> **Doing it from a phone (Termux)?** Skip to [Path A2](#path-a2--termux-android)
+> — one script does the whole thing, and you never build the site on Android.
+
 ---
 
 ## Path A — GitHub Actions (recommended, automatic forever)
 
-The workflow file is ready at **`.github/workflows/deploy.yml`**. It builds the
-site on every push to `main` and publishes it to GitHub Pages.
+The workflow file lives at **`scripts/deploy-workflow.yml`** in this repo. It
+builds the site on every push to `main` and publishes it to GitHub Pages.
 
 **Two steps, once:**
 
-**1. Add the workflow to git and push it**
+**1. Install the workflow and push it**
 
 ```bash
+mkdir -p .github/workflows
+cp scripts/deploy-workflow.yml .github/workflows/deploy.yml
 git add .github/workflows/deploy.yml
 git commit -m "Add GitHub Pages deploy workflow"
-git push origin arena/404e7bd2-study-with-ai
+git push origin main
 ```
 
-> This file is present in your working copy but was not committed by the agent
-> that built it — the sandbox token is not permitted to push files under
-> `.github/workflows/`. Committing it yourself takes one command.
+> The copy has to be made by you: the token used to build this repo is not
+> permitted to push files under `.github/workflows/`. It is the only manual
+> step in the whole deployment.
 
 **2. Turn Pages on**
 
 Repo → **Settings** → **Pages** → **Build and deployment** → Source:
 **GitHub Actions** → Save.
+
 
 That is it. From now on every push to `main` redeploys the site automatically.
 
@@ -51,6 +57,9 @@ That is it. From now on every push to `main` redeploys the site automatically.
 Artifact uploaded: `out/` → published to GitHub Pages.
 
 ### The workflow YAML (for reference)
+
+The canonical copy is `scripts/deploy-workflow.yml`. It is also inlined here
+so the file can be recreated from scratch if you ever lose it.
 
 ```yaml
 name: Deploy site to GitHub Pages
@@ -105,6 +114,69 @@ jobs:
 > If you rename the repository, change `NEXT_PUBLIC_BASE_PATH` to match the
 > new name. If you switch to a user site (`<user>.github.io` → `/`), set
 > `NEXT_PUBLIC_BASE_PATH` to empty.
+
+---
+
+## Path A2 — Termux (Android)
+
+Everything below runs on your phone in Termux. The script does the lot.
+
+**Install Termux properly first:** use the **F-Droid** build
+(`https://f-droid.org/packages/com.termux/`), not the Play Store one — the
+Play Store version is stale and its package manager is unreliable.
+
+### One command
+
+```bash
+git clone https://github.com/pabitra27706-oss/Study-with-ai.git
+cd Study-with-ai
+bash scripts/termux-setup.sh
+```
+
+The script:
+
+1. installs `git` and `gh` (`pkg install git gh`),
+2. asks you to log in once — `gh auth login --hostname github.com --git-protocol https --web`
+   prints a one-time code; open the URL in your phone browser and paste the code
+   back,
+3. copies `scripts/deploy-workflow.yml` → `.github/workflows/deploy.yml`,
+4. commits and pushes it to `main`,
+5. turns GitHub Pages on with `gh api --method POST repos/…/pages -f build_type=workflow`,
+6. prints the live URL.
+
+**Watch the build:**
+
+```bash
+gh run watch
+```
+
+**Live URL** (about two minutes after the build turns green):
+
+```
+https://pabitra27706-oss.github.io/Study-with-ai/
+```
+
+### Why you do *not* build on the phone
+
+Next.js 16 ships native binaries (Turbopack, SWC, lightningcss) compiled
+against **glibc**. Android uses **bionic**, so `npm run build` fails on a
+plain Termux install. The GitHub Actions runner is real Ubuntu, so the build
+happens there — your phone only does `git` and `gh`. That is the whole point
+of this path.
+
+### If you ever *do* want to build on the phone
+
+Use a glibc environment:
+
+```bash
+bash scripts/termux-build.sh
+```
+
+It installs `proot-distro` + Ubuntu, then Node 22 inside it, clones the repo
+into Ubuntu's filesystem, runs `npm ci` and `npm run build:pages`, and pushes
+the rebuilt `docs/`. Expect a few hundred MB of download the first time, and
+a slow build. Only worth it if you are offline or you want to preview a
+change on the phone.
 
 ---
 

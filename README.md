@@ -92,6 +92,14 @@ The live URL is **`https://pabitra27706-oss.github.io/Study-with-ai/`**.
    `.github/workflows/deploy.yml` and switch the Pages source to **GitHub
    Actions**. See [`DEPLOY.md`](DEPLOY.md).
 
+**From a phone (Termux on Android), one command does it all:**
+
+```bash
+git clone https://github.com/pabitra27706-oss/Study-with-ai.git
+cd Study-with-ai
+bash scripts/termux-setup.sh
+```
+
 ---
 
 ## The stack — free, and chosen for the job market
