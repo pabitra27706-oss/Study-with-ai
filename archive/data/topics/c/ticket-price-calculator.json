@@ -27,5 +27,19 @@
       "description": "A simple ticket price calculater.",
       "dateAdded": "2026-08-06T18:10:52Z"
     }
-  ]
+  ],
+  "engine": {
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 60,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "misconceptions": [
+      "`scanf` returns the number of values it read. Nobody checked, so the program carried on with a number that was never typed.",
+      "An else-if chain reads top to bottom and the first true branch wins — so the order of the conditions is part of the rule, not a style choice."
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 30 = 60%**\n\n**What is right, by reading and by running**\n\nThis is the same program the archive also shows under *Ticket Price\nCalculator*, and it is a good one. The chain of conditions is the right\nchain, in the right order:\n\n```c\nif (age <= 12) price = 600;\nelse if (age >= 60) price = 200;\nelse price = 1080;          /* everyone else */\n\nif (is_student) price -= 100;\nif (is_weekend) price -= 200;\n```\n\nThe learner said it themselves: *\"How to create a long logic and add new one\nas well.\"* — and that is exactly what the file does. The base price is\ndecided by age, and then the two discounts are applied afterwards, in a\nfixed order. That is a real, correct piece of design, and it is the kind of\nthinking that does not come for free.\n\nI ran it: `10 20 1 0` gives the student price of 600 minus 100 = **500**,\nand the weekend case takes it to **300**. Both right.\n\n**What is not**\n\n**The input is never checked.** This is the same defect the other copy of\nthis program has, and it is the one thing to fix here:\n\n```c\nscanf(\"%d %d %d %d\", &age, &age, &student, &weekend);\n```\n\nNothing looks at what `scanf` returned. If the user types three numbers\ninstead of four, `weekend` keeps whatever value it had before — it is read\ninto a variable that was never initialised — and the program prints a price\nthat is confidently wrong. `scanf` returns the number of values it actually\nread, and that number is right there, unused.\n\n**There are no comments at all.** For a file whose whole subject is a long\nif-else chain, the branches are the lesson and none of them is named. A\ncomment on each branch — *children are half price*, *over 60s pay the\nconcession rate* — turns the chain from something you have to decode into\nsomething you can read.\n\n**The chain hides the rule.** A reader cannot tell that the discounts apply\n*after* the base price is chosen, and that the order matters. That is the\none fact worth writing down.\n\n**The one thing to fix first**\n\nCheck the input, and name the branches:\n\n```c\nint read = scanf(\"%d %d %d %d\", &age, &other, &student, &weekend);\nif (read != 4) {\n    printf(\"Please enter age, other age, student (0/1) and weekend (0/1).\\n\");\n    return 1;\n}\n\nif (age <= 12) {\n    price = 600;        /* children pay 600 */\n} else if (age >= 60) {\n    price = 200;        /* over 60s pay 200 */\n} else {\n    price = 1080;       /* everyone else pays 1080 */\n}\n```\n\nThe check is three lines. The comments are four. Together they are the\ndifference between a program that prints a number and a program you can\nchange safely next month.\n",
+    "machine": null
+  }
 }

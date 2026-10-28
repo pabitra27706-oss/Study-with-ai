@@ -15,9 +15,9 @@
     ],
     "description": "Finds the highest score in a list of student scores without using the built-in max() function. Builds algorithmic thinking from scratch.",
     "learningNotes": {
-      "whatILearned": "Iterating through a list and updating a tracking variable when a larger value is found.",
-      "challenges": "Deciding the correct initial value for high_score (first element vs 0).",
-      "nextSteps": "Also find minimum and average. Then compare with built-in max()."
+      "whatILearned": "Read a list of scores, convert them to numbers and print the highest one.",
+      "challenges": "A list of nothing but negative scores returns 0, because the answer starts at 0.",
+      "nextSteps": "Start the best score from the first score in the list, not from zero."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Finds highest score from list without max().",
       "dateAdded": "2026-01-06T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 80,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "Starting a maximum at 0 assumes the numbers are positive",
+      "`input().split()` gives strings; `.split()` on a string gives a list of strings"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 10 = 80%**\n\n**What is right**\n\nIt works. I ran it with `50 60 70` and it printed the list `[50, 60, 70]` and then `70` — the right answer, and it printed the converted list as well, which is a nice touch for a beginner file because you can see the conversion happen.\n\nThe two-step is also the right shape: `input(...).split()` turns one line of text into a list of strings, and then a loop converts each one to an `int` in place. After that loop the list really does hold numbers, which is why the comparison in the next loop works at all.\n\n**What is not**\n\n**The answer is wrong for negative scores.** `high_score = 0` starts the search at zero, so a list of `-10 -20 -30` returns **0** — a score nobody entered. The fix is to start from the first score in the list:\n\n```python\nhigh_score = student_scores[0]\n```\n\nor, if you want to be safe about an empty list, `high_score = max(student_scores, default=0)`.\n\n**The first loop is the old way of doing this.**\n\n```python\nfor n in range(len(student_scores)):\n    student_scores[n] = int(student_scores[n])\n```\n\nIndexing a list by a counter you are maintaining yourself is the shape beginners learn first and unlearn later. The one-line version is:\n\n```python\nstudent_scores = [int(s) for s in student_scores]\n```\n\nand `list(map(int, student_scores))` does it without a comprehension.\n\n**Indentation is mixed.** The file uses tabs in some lines and spaces in others. Python 3 accepts both, but a file that mixes them will throw `TabError` the day someone edits a line in an editor that uses spaces. Pick spaces, four of them, everywhere.\n\nThere are no comments — and the one comment worth writing here is the one that says *the input is a string until we convert it*, because that is the whole idea of the file.\n\n**The one thing to fix first**\n\nThe maximum that works on negative numbers:\n\n```python\nhigh_score = student_scores[0]   # start from a real score - starting at 0 fails on all-negative lists\nfor score in student_scores:\n    if score > high_score:\n        high_score = score\n```\n"
+  }
 }

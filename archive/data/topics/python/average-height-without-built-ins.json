@@ -15,9 +15,9 @@
     ],
     "description": "Calculates average height manually using a loop accumulator without sum() or len(). Deepens understanding of how built-in functions work internally.",
     "learningNotes": {
-      "whatILearned": "Implementing accumulator pattern with a loop to build sum and count from scratch.",
-      "challenges": "Remembering to initialize both sum and count before the loop.",
-      "nextSteps": "Compare performance and readability with built-in approach."
+      "whatILearned": "The average is the total divided by how many there are — and doing it by hand is how you find out what `sum()` and `len()` do.",
+      "challenges": "I truncate the average to a whole number, and an empty list divides by zero.",
+      "nextSteps": "Keep the decimal in the average, and refuse an empty list before dividing."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Manual average height without built-ins.",
       "dateAdded": "2026-01-05T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 65,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`int()` truncates towards zero, so 530/3 becomes 176 and not 176.67 — `round()` is what a person means by 'the average'",
+      "Dividing by a count of zero is the same mistake as dividing by zero anywhere else"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 25 + 0 = 65%**\n\n**What is solid**\n\nThe point of the file is the point of the exercise: work the average out without `sum()` and `len()`. The second loop counts the students by adding one each time, which is exactly the thing `len()` does for you, and doing it by hand once is how that becomes obvious. The conversion of the input string into a list of numbers is right too — `split()` then `int()` in a loop.\n\n**What is not**\n\n**The average is truncated.** `int(total_height/student_no)` throws away the fraction: 180, 190 and 160 come to 176.67 and the program prints *176*. A `round()` would say 177 — and for heights, a truncated number is a wrong number, not a rounded one.\n\nAnd an empty list divides by zero. There is also no comment, which is a shame in the one file whose whole purpose is to show what the built-ins are doing.\n\n**The one thing to fix first**\n\n```python\navg_height = round(total_height / student_no)  # round, not int - 176.67 is not 176\n```\n\nAnd one comment on the counting loop: *this is what len() does*.\n"
+  }
 }

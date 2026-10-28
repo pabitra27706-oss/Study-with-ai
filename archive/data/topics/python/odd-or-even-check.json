@@ -15,9 +15,9 @@
     ],
     "description": "A program that checks whether a given number is odd or even using the modulo operator. A foundational exercise in conditionals and operators.",
     "learningNotes": {
-      "whatILearned": "Using the % (modulo) operator and if-else to branch based on a condition.",
-      "challenges": "None — great first conditional exercise.",
-      "nextSteps": "Extend to check for prime numbers."
+      "whatILearned": "The remainder after dividing by two is the whole test — zero means even, anything else means odd.",
+      "challenges": "I checked nothing and wrote nothing, so the file has no guard and no explanation.",
+      "nextSteps": "Add one comment saying why the remainder decides it, and keep the indentation consistent — it mixes spaces and a tab."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Odd/even checker using modulo.",
       "dateAdded": "2026-01-02T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 70,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`number % 2` is 0 for an even number and 1 for an odd one — the test is the remainder, not the number",
+      "Python's indentation is part of the syntax, and mixing a tab with spaces is a trap that hides in a file nobody opens again"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 0 = 70%**\n\n**What is solid**\n\nIt is right: given 7 it prints *The number is odd.*, and the test is the correct one — `number % 2 != 0` for odd, the other branch for even. It is also as small as it should be.\n\n**What is not**\n\nNo comment, and no check on the input — `int(input(...))` raises `ValueError` on a word. And the indentation is mixed: the `if` body is indented with spaces and the `else` body with a tab. Python accepts it here, but a file that mixes the two is a file that will bite the next person who edits it.\n\n**The one thing to fix first**\n\n```python\nd_number = number % 2  # Dividing by two leaves 0 for even and 1 for odd.\n```\n\nAnd make the indentation all spaces, all the way down.\n"
+  }
 }

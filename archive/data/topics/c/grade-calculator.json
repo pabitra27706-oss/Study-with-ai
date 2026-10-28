@@ -14,9 +14,9 @@
     ],
     "description": "To understand how if else work.",
     "learningNotes": {
-      "whatILearned": "Adding a error cheker is good.",
-      "challenges": "I first write the wrong logic for marks with grade.",
-      "nextSteps": "I will practice more on this topic."
+      "whatILearned": "The grade comes from the percentage, and the percentage comes from marks divided by full marks.",
+      "challenges": "I divide by the full marks without checking them, so a zero there gives me *inf percent* and a grade of A.",
+      "nextSteps": "Refuse a full-marks value of zero, and take the unused variable out."
     }
   },
   "files": [
@@ -27,5 +27,23 @@
       "description": "If else statement.",
       "dateAdded": "2026-08-06T14:38:24Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 60,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "Dividing by zero here does not give zero — it gives infinity, and infinity is above every threshold, so a nonsense input scores the highest grade",
+      "A variable that is declared and never used is not a small thing: it is usually a half-finished idea left in the code"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 20 + 0 = 60%**\n\n**What is solid**\n\nThe band logic is right. Given 80 out of 100 it prints `You score 80.000000 percent in exam and get a grade of B`, and the five bands — A at 90 and above, B at 80, C at 70, D at 60, fail below — are the usual ones, each one testing the boundary in the right order.\n\n**What is not**\n\n**Full marks of zero gives `inf percent` and a grade of A.** I ran it with 80 and 0 and it printed `You score inf percent in exam and get a grade of A`. Infinity is bigger than 90, so the worst input possible gets the best grade. That is not a formatting problem; the program is telling the reader they scored an A.\n\nThe compiler also says so: `unused variable 'marks'` — there is a `marks` declared that the program never touches.\n\n**The one thing to fix first**\n\nCheck the divisor, then delete the variable that is not used:\n\n```c\nif (f_marks <= 0) {\n    printf(\"Full marks must be more than zero.\\n\");\n    return 1;\n}\n```\n\nAnd change `float marks;` to nothing at all — it is not doing anything.\n"
+  }
 }

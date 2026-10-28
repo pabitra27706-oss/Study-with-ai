@@ -15,9 +15,9 @@
     ],
     "description": "Given an age, calculates remaining days, weeks, and months assuming a 90-year lifespan. Practices basic arithmetic and string output formatting.",
     "learningNotes": {
-      "whatILearned": "Performing arithmetic operations on user input and displaying multiple results clearly.",
-      "challenges": "Converting input string to integer before arithmetic.",
-      "nextSteps": "Make the lifespan configurable and add years remaining."
+      "whatILearned": "If you live to ninety, then how much of that is left is just ninety minus where you are now.",
+      "challenges": "I subtracted weeks from days in one line, so the number of days left is nonsense — and I computed the days I have lived and never used it.",
+      "nextSteps": "Subtract days from days, and use the numbers you calculate."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Remaining days, weeks, and months calculator.",
       "dateAdded": "2026-01-02T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 55,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "Weeks and days are different units — subtracting one from the other gives a number that looks like a quantity of days and is not",
+      "A value that is calculated and never used is either a mistake or a leftover, and both are worth finding"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 10 + 5 = 55%**\n\n**What is solid**\n\nThe idea is good and the working is mostly right: it takes an age, works out how many years, weeks and days are left until ninety, and prints all three. The structure — total, current, remainder — is a clean way to lay out the problem, and the comments `#t=total`, `#c=current`, `#remain` show you were keeping track of which was which.\n\n**What is not**\n\n**The days figure is wrong.** The line `r_days=(t_days-c_weeks)` subtracts *weeks* from *days*. I ran it with age 20 and it printed `You have 31810.0 days left` — but 90 years is 32,850 days and 20 years is 7,300 days, so the answer should be 25,550 days. It printed 31,810 because it subtracted 1,040 (twenty years *in weeks*) from the number of days. The right number is in the file: `c_days` is calculated on the line above and then never used.\n\nThe years also print as `70.0` rather than `70`, because everything went through `float`.\n\n**The one thing to fix first**\n\n```python\nr_days = (t_days - c_days)  # days from days - the old line mixed the units up\n```\n\nOne word, and the number becomes true.\n"
+  }
 }

@@ -16,9 +16,9 @@
     ],
     "description": "A game where the player guesses which celebrity has more social media followers. Uses lists of dictionaries, score tracking, and a continuous game loop.",
     "learningNotes": {
-      "whatILearned": "Structuring data as a list of dictionaries, comparing values within dictionaries, and managing a score counter across game rounds.",
-      "challenges": "Handling duplicate follower counts and ensuring the same celebrity is not selected twice.",
-      "nextSteps": "Add a high-score tracker and fetch live data from an API."
+      "whatILearned": "Guess which of two things has more followers. Forty famous names, a logo, and a running score.",
+      "challenges": "The game needs a list of follower counts that is not in the file — so it can only ever compare the ones you added.",
+      "nextSteps": "Add the follower counts as data, and take the choice as `A` or `B` without crashing on anything else."
     }
   },
   "files": [
@@ -29,5 +29,23 @@
       "description": "Complete celebrity follower-count guessing game.",
       "dateAdded": "2026-01-16T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 85,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "A higher/lower game needs two numbers to compare - without them it is only a coin toss",
+      "`os.system('clear')` clears a terminal, but it fails when there is no TERM - which is exactly what happens on a phone"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 15 = 85%**\n\n**What is right**\n\nIt runs. I played it: it printed the logo, showed the two options with their descriptions, asked `Who has more followers. Type 'A' or 'B':` and told me *You guessed wrong. Game over....* when I picked badly. The flow is right — pick two names at random, show them, take the answer, compare, keep score.\n\nThe forty descriptions are good writing too: *Instagram (The official platform account)*, *Vin Diesel (Actor known for Fast & Furious)*. A file like this is mostly data, and the data is good.\n\n**What is not**\n\n**There are no follower counts anywhere in the file.** The game picks two names and asks which has more followers — but nothing in the archive says how many followers any of them has. So the comparison cannot be made from the data; it can only come from the player's own knowledge. That is a valid game (it is how the real one works) but it should be *said*, because a reader of the file will assume the numbers are hiding somewhere.\n\n**`os.system('clear')` throws a visible error.** It printed `TERM environment variable not set.` into the output — the game is calling a terminal command that assumes it is running in a terminal. On the phone in Termux it mostly works; in a pipe, a service or a web page it does not. `print('\\033c', end='')` is the portable version.\n\nThere are also no comments, and the one line that most deserves one — where the two names are picked — has none.\n\n**The one thing to fix first**\n\nSay out loud, in a comment, where the answer comes from:\n\n```python\n# There are no follower numbers in this file on purpose: the player knows them.\n# If you want the game to decide, add a followers number to each entry below.\n```\n\nand replace the clear:\n\n```python\nprint('\\033c', end='')  # clear the screen without needing a terminal\n```\n"
+  }
 }

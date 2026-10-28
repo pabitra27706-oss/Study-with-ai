@@ -16,9 +16,9 @@
     ],
     "description": "Conditional execution using if-else statements. Decision making and branching logic in C programs.",
     "learningNotes": {
-      "whatILearned": "Nested if-else",
-      "challenges": "",
-      "nextSteps": ""
+      "whatILearned": "To find the largest of three, ask the first question — is `a` bigger than `b` — and only then ask the second.",
+      "challenges": "I wrote the nesting correctly but never checked the numbers I read, so three missing answers print the highest of three random values.",
+      "nextSteps": "Read the three numbers with one checked `scanf`, and put a comment on the nested `if` saying why the second question only matters when the first answer is yes."
     }
   },
   "files": [
@@ -29,5 +29,23 @@
       "description": "",
       "dateAdded": "2026-08-07T09:40:33Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 70,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`scanf` returns how many items it read — the value is only ever set if you check that, so a missing answer leaves the variable untouched",
+      "The nested `if` is only correct because the first branch already guarantees `a > b` — that is the reason the second comparison does not need `b` in it, and it is worth saying so"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 0 = 70%**\n\n**What is solid**\n\nThe nesting is right, and this is the point of the exercise. The outer test asks whether `a` beats `b`; only if it does does the inner test compare `a` with `c`. When the outer test fails, the code already knows `a` is out, so it compares `b` with `c` and prints one of those. I ran it with 3, 5 and 9 and it printed `9 is the highest number among the 3 numbers.`\n\nIt compiles clean.\n\n**What is not**\n\n`scanf(\"%d%d%d\", &a, &b, &c)` is not checked, so three missing answers give three meaningless comparisons. And there is no comment on the one thing that makes this code correct — that inside the first branch, `a > b` is already known, which is why the inner comparison only needs `c`.\n\n**The one thing to fix first**\n\nOne comment on the inner `if`:\n\n```c\n/* We only get here when a > b, so only c can still be bigger. */\n```\n\nThat single line is the difference between code that is correct and code that a reader can see is correct.\n"
+  }
 }

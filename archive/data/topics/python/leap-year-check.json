@@ -15,9 +15,9 @@
     ],
     "description": "Determines whether a year is a leap year using divisibility rules: divisible by 4, not by 100, unless also by 400. Teaches compound boolean expressions.",
     "learningNotes": {
-      "whatILearned": "Combining and/or logical operators in a single condition and applying the real-world leap year rule.",
-      "challenges": "Getting the order of conditions correct — 400 must be checked before 100.",
-      "nextSteps": "Validate non-integer input and build a date library."
+      "whatILearned": "One line can hold the whole leap-year rule, as long as `and` and `or` are bracketed in the right order.",
+      "challenges": "I wrote the rule with no brackets and no comment, and the precedence is doing the work by accident.",
+      "nextSteps": "Bracket the two halves and say what each one means."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Leap year checker with compound boolean logic.",
       "dateAdded": "2026-01-04T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 70,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`and` binds tighter than `or`, so `a and b or c` means `(a and b) or c` — the rule works, but only by luck of precedence",
+      "The century rule has to be tested separately from the four-year rule; a leap year is every fourth year *except* centuries *except* every fourth century"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 0 = 70%**\n\n**What is solid**\n\nThe rule is complete and correct. I checked both awkward years: 1900 prints *This is not a leap year* and 2000 prints *This is a leap year*. Those two are exactly the cases that separate the real rule from `year % 4 == 0`, so getting both right is the whole exercise.\n\n**What is not**\n\nThe condition is `a%4==0 and a%100!=0 or a%400==0` with no brackets. It is correct, because `and` binds tighter than `or`, so Python reads it as `(a%4==0 and a%100!=0) or (a%400==0)` — but nothing in the file says that, and the next person to edit it will get it wrong. There is also no comment, and the condition *is* the lesson.\n\n**The one thing to fix first**\n\n```python\nif (a % 4 == 0 and a % 100 != 0) or a % 400 == 0:  # every 4th, except centuries, except every 400th\n```\n\nBrackets for the reader, and the rule in words.\n"
+  }
 }

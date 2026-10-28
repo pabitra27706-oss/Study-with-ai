@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${origin}${basePath}/`, lastModified: now, priority: 1 },
     { url: `${origin}${basePath}/learn`, lastModified: now, priority: 0.9 },
   { url: `${origin}${basePath}/archive`, lastModified: now, priority: 0.8 },
+  { url: `${origin}${basePath}/archive/pending`, lastModified: now, priority: 0.5 },
   { url: `${origin}${basePath}/progress`, lastModified: now, priority: 0.8 },
     { url: `${origin}${basePath}/skills`, lastModified: now, priority: 0.9 },
     { url: `${origin}${basePath}/projects`, lastModified: now, priority: 0.9 },
@@ -40,9 +41,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   /* Every topic in the archive has its own page, and each one is a page of
-     code. Sixty-nine of them is the largest single body of work on this
-     site, so it belongs in the sitemap — otherwise a crawler has to find
-     it by walking the archive page. */
+     code. They are the largest single body of work on this site, so they
+     belong in the sitemap — otherwise a crawler has to find them by
+     walking the archive page. */
   const archive = getArchiveIndex();
   const fallback = archive.metadata.lastUpdated || new Date().toISOString();
   const archiveRoutes: MetadataRoute.Sitemap = archive.topics.map((topic) => {

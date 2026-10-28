@@ -15,9 +15,9 @@
     ],
     "description": "A fun program that counts letters in \"true\" and \"love\" from two names and produces a love score. Practices string methods and conditionals.",
     "learningNotes": {
-      "whatILearned": "Using str.lower() for case-insensitive matching and str.count() to tally characters.",
-      "challenges": "Correctly concatenating the two names before counting.",
-      "nextSteps": "Improve scoring algorithm and add more words."
+      "whatILearned": "Count the letters of *true* and *love* in the two names and join the two counts into a score.",
+      "challenges": "I lowercased the second name but not the first, so a capital letter in one name is never counted.",
+      "nextSteps": "Lowercase both names before you count, and keep the score in one variable instead of three."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Calculates a love score from two names.",
       "dateAdded": "2026-01-03T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 60,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`str.count` is case-sensitive — 'T' and 't' are different letters to it, so both names have to be lowered before counting",
+      "The score is built by joining two counts as text, which is a string trick hiding inside arithmetic"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 20 + 0 = 60%**\n\n**What is solid**\n\nThe idea is the classic one and it is implemented: count the letters of *true* and of *love* across both names, then join the two counts into a two-digit score and say something about it. The joke lands.\n\n**What is not**\n\n**The score depends on capitalisation.** `name2` is lowercased but `name1` is not — the line is `name=name1+l_name2`, and `name1` was never lowered. I ran it with *Tim* and *alice* and got **12**; with *tim* and *alice* I got **22**. Same two people, same letters, different score, because one of them was capitalised.\n\nThe score is also assembled in a way that hides arithmetic inside text: `t_l1=(str(true)+str(love))` then `t_l=int(t_l1)`. And `E` is counted twice — once into `true` and once into `love` — which is correct for this game but is not obvious.\n\n**The one thing to fix first**\n\n```python\nname = (name1 + name2).lower()  # One lowercased string, so T and t count the same.\n```\n\nThat one line removes the dead `name1`/`l_name2` pair as well.\n"
+  }
 }

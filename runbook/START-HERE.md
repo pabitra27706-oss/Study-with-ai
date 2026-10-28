@@ -11,10 +11,12 @@ chat, every reset, every device change.
 ## The short one — "check my work"
 
 ```
-Read runbook/README.md, then runbook/THE-LOOP.md. Look at my latest push on
-the branch and work out what it is. If it looks like a topic submission,
-judge it: read the brief, run the sensor, write the verdict, apply it,
-commit and push. If you cannot tell what I meant, just ask me.
+Read runbook/README.md, then runbook/THE-LOOP.md. Run
+node runner/brief.mjs --pending and judge anything at the top of that list
+that has no verdict. Then look at my latest push on the branch and work out
+what it is. If it looks like a topic submission, judge it: read the brief,
+run the sensor, write the verdict, apply it, commit and push. If you cannot
+tell what I meant, just ask me.
 ```
 
 ---
@@ -27,13 +29,21 @@ You are working on my learning repository. Before anything else:
 1. Read runbook/README.md, then runbook/STATE.md and runbook/THE-LOOP.md.
 2. Look at my most recent push: git fetch origin && git log --oneline -5
    origin/main && git show --stat HEAD. Work out from that what I just did.
-3. Do the thing. If it is a topic submission, run the loop end to end:
+3. Run `node runner/brief.mjs --pending`. If it is not empty, the top of
+   that list is work of mine that has no verdict yet — a file written
+   straight into the archive, or a task I submitted and you have not judged.
+   Judge the newest one first.
+4. Do the thing. If it is a topic submission, run the loop end to end:
    node runner/brief.mjs <topic>
    node runner/evidence.mjs
    write learn/<topic>/verdict.json
    node runner/apply-verdict.mjs <topic>
    commit and push, and open a pull request — never merge it yourself.
-4. If you cannot work out what I meant from the push, the branch, the
+5. If the work is a file in the archive instead of a task, use
+   `node runner/brief.mjs --archive archive/content/<lang>/<file>` and
+   write the verdict into that topic's own JSON, then run
+   `node scripts/build-archive.mjs`.
+6. If you cannot work out what I meant from the push, the branch, the
    runbook and the open items, just ask me. Do not guess.
 
 Never merge a pull request, never write to journal/, and never put another
@@ -71,6 +81,7 @@ git show HEAD -- learn/data-structures-c/answers.json   # new answers?
 | What the push contains | What it means |
 |---|---|
 | A new file in `learn/<topic>/solutions/` | A task submission. **Judge it.** |
+| A new file in `archive/content/<lang>/` | Work written straight into the archive. **Judge it** with the archive rubric: `node runner/brief.mjs --archive <file>`. |
 | A changed `learn/<topic>/answers.json` | New written answers. **Judge it.** |
 | A change to `learn/<topic>/notes.json` or `review.md` | Your own previous verdict, committed back. Nothing to judge. |
 | A change under `curriculum/` | A topic pack. Check it builds and the references still pass. |

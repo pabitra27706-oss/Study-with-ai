@@ -128,7 +128,19 @@ Archive is often not that: it is something written before the engine
 existed, or a script with no exercise behind it. There is no task sheet, so
 the task rubric does not apply.
 
-For those, the rubric is three questions:
+**The instrument for it is `runner/brief.mjs --archive`:**
+
+```bash
+node runner/brief.mjs --pending                          # the whole queue
+node runner/brief.mjs --archive archive/content/c/foo.c  # one file
+node runner/brief.mjs c-foo                             # by topic id
+```
+
+It prints the file, the rubric below, and the rules. The queue it reads is
+`archive/data/archive-pending.json` — every topic with code and no verdict,
+newest first.
+
+For those files, the rubric is three questions:
 
 | Points | Question |
 |---|---|

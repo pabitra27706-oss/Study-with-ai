@@ -15,9 +15,9 @@
     ],
     "description": "Calculates how much each person should pay including a chosen tip percentage. Practices float arithmetic, rounding, and formatted output.",
     "learningNotes": {
-      "whatILearned": "Converting input to float, dividing bills, and rounding to two decimal places using round().",
-      "challenges": "Handling floating-point precision and displaying clean output.",
-      "nextSteps": "Add custom rounding and support for unequal splits."
+      "whatILearned": "A tip is a percentage of the bill, and splitting a bill is dividing what is owed by how many people are paying.",
+      "challenges": "I divide by the number of people without checking it, and zero people stops the program dead.",
+      "nextSteps": "Check that the number of people is at least one, and write the tip formula in a comment."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Bill and tip splitter among multiple people.",
       "dateAdded": "2026-01-02T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 60,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "Splitting a bill by zero people raises `ZeroDivisionError` — the input that is least likely is the one that breaks it",
+      "The bill, the tip and the people are three separate questions; each answer needs its own type conversion"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 20 + 0 = 60%**\n\n**What is solid**\n\nThe arithmetic is right. A bill of 100 with a 15% tip split four ways comes to `28.75`, and the rounding to two decimals is the right thing to do with money. The order of the steps is clean: ask, convert, calculate, print.\n\n**What is not**\n\n**Zero people stops the program.** I put `0` in the third box and it died with `ZeroDivisionError` on the line that divides the bill. Nothing in the prompt says the number cannot be zero, so a user who types it gets a crash and a traceback instead of a message.\n\nThe three `input` calls also each need their own conversion, and the file does that by hand — `bill_1`, `tip_1`, `on_people_1` — which is fine, but it leaves the types implicit.\n\n**The one thing to fix first**\n\n```python\nif no_people < 1:\n    print('There must be at least one person.')\nelse:\n    ...\n```\n\nAnd one comment on the formula, because it is not obvious:\n\n```python\npay_1 = (1 + tip) * bill  # bill plus the tip, before it is split\n```\n"
+  }
 }

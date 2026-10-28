@@ -15,9 +15,9 @@
     ],
     "description": "The very first Python program: printing a greeting and taking user input. Introduces the print() and input() functions with basic string usage.",
     "learningNotes": {
-      "whatILearned": "Using print() to display output and input() to receive user data. Understanding strings as sequences of characters.",
-      "challenges": "None — this is the starting point.",
-      "nextSteps": "Learn about variables and data types."
+      "whatILearned": "One line, one `input`, one `print` — the smallest complete program there is.",
+      "challenges": "I wrote no comment at all, so the file does not say what it is for.",
+      "nextSteps": "Add one line at the top saying what this file demonstrates, so it can be found later by what it teaches and not only by its name."
     }
   },
   "files": [
@@ -28,5 +28,22 @@
       "description": "Greeting program using print and input.",
       "dateAdded": "2026-01-01T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 70,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`print(\"text\" + input(...))` builds the greeting by joining two strings — the `+` needs both sides to be strings"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 0 = 70%**\n\n**What is solid**\n\nIt runs, and it does exactly what it says: it asks for a name and prints `wellcome Pabitra`. There is nothing wrong with it, and nothing hidden in it either.\n\n**What is not**\n\nThere is no comment. For a one-line program that is not a small thing — this file is one of fifty in a folder, and without a line saying what it demonstrates, the only way to find it again is to open it and read it.\n\n**The one thing to fix first**\n\nOne line at the top:\n\n```python\n# Reads a name and greets it - the smallest complete program.\n```\n"
+  }
 }

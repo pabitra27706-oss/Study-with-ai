@@ -16,9 +16,9 @@
     ],
     "description": "Three files demonstrating Python scope rules: global vs local, block scope absence, and modifying globals. Covers the LEGB rule in practice.",
     "learningNotes": {
-      "whatILearned": "Understanding the LEGB (Local, Enclosing, Global, Built-in) rule, why Python has no block scope unlike C/Java, and the safest ways to modify global state.",
-      "challenges": "Accidentally shadowing global variables with local ones and confusion with nested function scopes.",
-      "nextSteps": "Study the nonlocal keyword and closures for enclosing scope modification."
+      "whatILearned": "The three scope rules, one file each: global, block, and what happens when a function wants to change a global.",
+      "challenges": "Nothing is broken here. The challenge is that the rules are invisible when you read code — this is what makes them worth writing down.",
+      "nextSteps": "Write your own fourth file that breaks one of the rules on purpose, so you can see the error it produces."
     }
   },
   "files": [
@@ -43,5 +43,23 @@
       "description": "Modifying global state safely through function return values.",
       "dateAdded": "2026-01-15T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "correct",
+      "score": 90,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "Python has no block scope - an `if` or a `for` does not create a new scope, so a variable made inside it still exists afterwards",
+      "A function can *read* a global without any keyword; it can only *change* one with `global`"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 20 = 90%**\n\n**What is right**\n\nAll three files run and all three make their point, and between them they cover the whole topic.\n\n`Scope.py` shows the three namespaces in one nested function: a global `x`, an enclosing `y`, a local `z`, and then `locals()` and `globals()` printed so you can *see* the namespaces rather than take them on faith.\n\n`Block_scope.py` shows that Python has no block scope: `a` is set inside `if True:` and is still readable three lines later. That surprises everybody once.\n\n`Global_modify.py` shows the correct way to change a global — **return the new value and let the caller assign it**, which is better than the `global` keyword and is what the file does:\n\n```python\ndef increase_enemies():\n    return enemies + 1\n\nenemies = increase_enemies()\n```\n\nThe comments explain the rule, not the syntax: *This line accesses the global variable 'enemies' (since there's no local 'enemies' defined)*.\n\n**What is not**\n\nVery little, which is a compliment.\n\n`Global_modify.py` does not use the `global` keyword, and does not say *why not*. That is the interesting part: with `global enemies` inside the function, the same file would work too — but the global would change as a side effect of a function call, and the caller would have no idea. One line would settle it:\n\n```python\n# Returning the value is better than `global`: the change is visible in the caller's code.\n```\n\n`Scope.py` prints the whole `globals()` dictionary, which includes module machinery (`__name__`, `__loader__`, `__spec__` and the rest). That is a good teaching moment that the file does not take: the namespace contains your variables *and* Python's own.\n\n**The one thing to fix first**\n\nOne line in `Global_modify.py`:\n\n```python\nenemies = increase_enemies()  # Better than `global`: the caller can see that the value changed.\n```\n\nAnd in `Scope.py`, one line before the `globals()` print:\n\n```python\nprint(\"Global namespace:\", globals())  # Your variables, plus the module's own bookkeeping.\n```\n"
+  }
 }

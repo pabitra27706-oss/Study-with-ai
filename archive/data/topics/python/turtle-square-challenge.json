@@ -15,9 +15,9 @@
     ],
     "description": "Draws a square by repeating forward and right-turn movements in a for loop. A focused challenge connecting loop logic with turtle geometry.",
     "learningNotes": {
-      "whatILearned": "Using a for loop to repeat turtle steps and calculating that a square needs four 90-degree turns.",
-      "challenges": "None — straightforward geometric loop exercise.",
-      "nextSteps": "Draw a triangle, pentagon, and hexagon. Generalise with a function."
+      "whatILearned": "Four sides of equal length: forward, turn a quarter, and do it four times.",
+      "challenges": "The square is drawn and then the window closes before anyone can see it.",
+      "nextSteps": "Add the screen and `exitonclick()` — without them this file produces nothing you can look at."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Draws a square using a for loop.",
       "dateAdded": "2026-01-11T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "incomplete",
+      "score": 20,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "Turning right four times by 90 degrees comes back to where you started — the square is the *sum* of the turns, not the shape of any one of them",
+      "A drawing program has to keep its window open, or the drawing is a flash"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**0 + 20 + 0 = 20%**\n\n**This file cannot be run here.** It needs `tkinter`, and this\nmachine has no display and no `tkinter` — so the 40 points for *it runs* are\nnot ones I can give, and they are not given. The other two bands are judged\nby reading the code, carefully, line by line.\n\nThere is a bigger point here, and it is worth saying plainly: **`tkinter`\ndoes not exist on Termux either.** These files cannot be run on the phone\nthis whole system is built around. They are not broken — they are stranded.\n\n**What is right, by reading**\n\nThe geometry is right: forward, right 90, forward, right 90, four times over, and the turtle ends up back at the start having drawn a square. The numbers are the right numbers.\n\n**What is not**\n\n**It produces nothing you can see.** There is no `Screen()` and no `exitonclick()`, so the window opens and closes in the same instant and the square is gone before it exists. As a file in the archive it is a drawing that nobody has ever seen.\n\nThere is also no comment explaining why four sides of 90 degrees close the shape — which is the one idea in the file.\n\n**The one thing to fix first**\n\n```python\nfrom turtle import Turtle, Screen\n...\nscreen = Screen()\nscreen.exitonclick()  # Keep the window open, or the square vanishes.\n```\n\nThen one comment: *four turns of 90 degrees bring the turtle back to the start, which is why the shape closes.*\n"
+  }
 }

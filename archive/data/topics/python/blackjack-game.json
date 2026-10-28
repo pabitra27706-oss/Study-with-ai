@@ -16,9 +16,9 @@
     ],
     "description": "A text-based Blackjack (21) game against the computer. Implements card drawing, Ace value adjustment (11→1), and computer AI that draws until 17.",
     "learningNotes": {
-      "whatILearned": "Using a list to represent a deck, randomly drawing cards, handling the special Ace case, and implementing simple computer AI logic.",
-      "challenges": "Correctly reducing Ace from 11 to 1 when the hand total exceeds 21 without over-correcting.",
-      "nextSteps": "Add betting mechanics, split, and double-down options."
+      "whatILearned": "A full game of blackjack: two cards each, aces that count as 1 or 11, and a dealer that draws until 17.",
+      "challenges": "The ace handling is the hard part of blackjack and you got it.",
+      "nextSteps": "Deal from a real deck that is shuffled and reshuffled, and take a bet before the first card."
     }
   },
   "files": [
@@ -29,5 +29,23 @@
       "description": "Full Blackjack game with Ace handling and computer AI.",
       "dateAdded": "2026-01-17T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "correct",
+      "score": 90,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "An ace is 11 unless that busts you, in which case it is 1 - the dealer follows the same rule",
+      "The dealer must draw to 16 and stand on 17; that rule is the whole reason the dealer is not a person"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 20 = 90%**\n\n**What is right**\n\nThis is the best file in the whole batch, and it is a real game. It compiles, it runs, and every branch does what it says.\n\nThe parts that are easy to get wrong are the parts you got right:\n\n- **The ace.** Aces are dealt as 11, and when the total goes over 21 the code finds the ace, swaps it for 1, and recalculates — and it does that in a `continue`, so the hand is re-checked rather than falling through.\n- **The dealer.** `while c_total < 17` draws until 17, exactly the dealer rule, and the dealer also gets an ace downgraded when it busts.\n- **Every outcome.** Blackjack, a bust, the player winning, the dealer winning and the draw are all handled — the draw case is the one most people forget.\n\nThe comments explain *why* rather than *what*: *Check for ace to reduce value*, *Computer draws until it has at least 17*.\n\n**What is not**\n\nThree small things.\n\n**The deck never runs out.** `cards` is a fixed list of thirteen values and `deal_card()` picks from it with `random.choice`, so the same card can be dealt twice in a row and the distribution never changes. A real deck is a list you take from and put back.\n\n**The cards are dealt before you agree to play.** `user_cards` and `computer_cards` are dealt, and only then is the player asked *Do you want to play?*. Move the question to the top of the loop.\n\n**There is no bet.** This is the rule of the game that everything else in the file is serving, and it is the one thing missing.\n\n**The one thing to fix first**\n\nA deck that empties:\n\n```python\nimport random\ndeck = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10] * 4\nrandom.shuffle(deck)\n\ndef deal_card():\n    return deck.pop()   # take from the end; the list shrinks as you deal\n```\n\nThen the question goes first, and a bet goes on the table.\n"
+  }
 }

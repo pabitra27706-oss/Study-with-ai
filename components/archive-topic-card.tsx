@@ -28,11 +28,14 @@ export function ArchiveTopicCard({
   topic,
   dense = false,
   aside,
+  codeHit = false,
 }: {
   topic: ArchiveIndexEntry;
   dense?: boolean;
   /** Rendered in the top-right corner — used for the ZIP selection box. */
   aside?: React.ReactNode;
+  /** True when the search matched this topic's code rather than its title. */
+  codeHit?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const [payload, setPayload] = useState<ArchiveTopic | null>(null);
@@ -42,12 +45,16 @@ export function ArchiveTopicCard({
   async function load() {
     setStatus("loading");
     try {
-      const lang = archiveLanguageSlug(topic.language);
+      /* The directory the topic's JSON lives in. The language on its own is
+         not enough: "HTML/CSS" is the language, "html-css" is the folder,
+         and asking for the wrong one returns nothing at all. */
+      const lang = topic.langSlug ?? archiveLanguageSlug(topic.language);
       const response = await fetch(`${BASE_PATH}/archive-data/topics/${lang}/${topic.id}.json`);
       if (!response.ok) throw new Error(String(response.status));
 
       const data = (await response.json()) as ArchiveTopic;
       setPayload(data);
+      setStatus("idle");
 
       const texts: Record<string, string> = {};
       await Promise.all(
@@ -58,7 +65,6 @@ export function ArchiveTopicCard({
         }),
       );
       setSources(texts);
-      setStatus("idle");
     } catch {
       setStatus("error");
     }
@@ -100,6 +106,20 @@ export function ArchiveTopicCard({
             {topic.source === "adopted" && (
               <span className="rounded-full border border-warn/40 px-2 py-0.5 font-mono text-[11px] text-warn">
                 recovered
+              </span>
+            )}
+            {/* Code with no verdict is work nobody has looked at yet. It is
+                said quietly here and said properly on the topic's own
+                page, because a file that is never judged is a file that
+                gets forgotten. */}
+            {codeHit && (
+              <span className="rounded-full border border-brand/40 bg-brand/10 px-2 py-0.5 font-mono text-[11px] text-brand-soft">
+                in the code
+              </span>
+            )}
+            {!topic.verdict && (topic.fileCount ?? 0) > 0 && (
+              <span className="rounded-full border border-line-soft bg-panel-2 px-2 py-0.5 font-mono text-[11px] text-faint">
+                not judged
               </span>
             )}
           </div>
@@ -190,6 +210,13 @@ export function ArchiveTopicCard({
                     </li>
                   ))}
                 </ul>
+              )}
+
+              {!payload.engine?.verdict && (payload.files?.length ?? 0) > 0 && (
+                <p className="rounded-[12px] border border-line-soft bg-panel-2 px-3.5 py-2.5 text-[13px] leading-relaxed text-faint">
+                  This code has no verdict yet. It is here, and it is waiting to
+                  be judged — nothing about it is finished until it has one.
+                </p>
               )}
 
               {payload.files && payload.files.length > 0 ? (

@@ -133,15 +133,29 @@ task sheet behind it.
 1. `node scripts/build-archive.mjs` **adopts** it: it finds the topic from
    the file's own header, or gives it one, and it never overwrites what is
    already there.
-2. I read the file, run it if it runs, and judge it on the archive's
+2. Read the file with the archive brief — it has no task sheet, so it is a
+   different instrument:
+
+   ```bash
+   node runner/brief.mjs --pending                      # the whole queue
+   node runner/brief.mjs --archive archive/content/c/foo.c   # one file
+   node runner/brief.mjs c-foo                          # by topic id
+   ```
+
+3. I read the file, run it if it runs, and judge it on the archive's
    rubric — does it run (40), is it right (30), does it explain itself (30).
-3. I write the notes and the `engine` block into that topic's JSON: the
+4. I write the notes and the `engine` block into that topic's JSON: the
    verdict, the score, the misconceptions and the review.
-4. `node scripts/build-archive.mjs` again lifts the verdict into the
+5. `node scripts/build-archive.mjs` again lifts the verdict into the
    catalogue, and the site shows it.
 
-The generator never touches step 3. An adopted topic is written once and
+The generator never touches step 4. An adopted topic is written once and
 then it is a hand-written entry, so the notes survive every build.
+
+**The queue.** `archive/data/archive-pending.json` lists every topic that has
+code and no verdict — new work first, the older backlog after it. The site
+says "waiting to be judged" on those pages, and `scripts/check.sh` prints the
+queue before the brief, so nothing waits silently.
 
 
 ## Adding a topic

@@ -15,9 +15,9 @@
     ],
     "description": "First steps with the Turtle graphics module: importing, creating a Turtle object, and calling movement methods. A graphical equivalent of Hello World.",
     "learningNotes": {
-      "whatILearned": "Importing turtle, creating a Turtle instance, and using forward(), left(), and right() to move and turn.",
-      "challenges": "Understanding the object-oriented interface for the first time.",
-      "nextSteps": "Draw geometric shapes and experiment with color and speed."
+      "whatILearned": "The turtle's first program: a window opens, a turtle draws a square, and the window waits for you to close it.",
+      "challenges": "It cannot be run here, and it cannot be run on Termux either — there is no tkinter on a phone.",
+      "nextSteps": "Find a machine with a screen and Python, run it once, and change one number to watch the shape change."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Turtle intro: creates turtle and moves forward.",
       "dateAdded": "2026-01-09T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 30,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`turtle.done()` and `screen.exitonclick()` do the same job - keeping the window open until you close it",
+      "Without one of those calls the window closes the instant the script ends"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**0 + 25 + 5 = 30%**\n\n**This file cannot be run here.** It needs `tkinter`, and this\nmachine has no display and no `tkinter`. The 40 points for *it runs* are\ntherefore not points I can give, and I do not give them.\n\nThe larger point: **`tkinter` does not exist on Termux either.** These\nfiles cannot be run on the phone this whole system is built around. They\nare not broken — they are stranded.\n\n**What is right, by reading**\n\nIt is the shape every turtle program starts from: import turtle, make a screen, make a turtle, move and turn four times, and then keep the window open so you can look at what you made. The turns are the right ones — four sides, four right angles — and the loop, if that is how it is written, is the natural way to express it.\n\n**What is not**\n\n**No comments at all**, in the one file where the reader most needs them: every line is a method call on an object that did not exist a minute ago.\n\nAnd there is a lesson this file should be carrying that it does not: **the turtle draws by leaving a trail**. `forward` draws, `penup` moves without drawing, `pendown` starts drawing again. Until that is understood, every turtle program is a list of magic words.\n\n**The one thing to fix first**\n\nOne comment that explains the object you are driving:\n\n```python\ntim = turtle.Turtle()  # An object with a pen on it - forward() draws, penup() moves without drawing.\n```\n"
+  }
 }

@@ -4,7 +4,7 @@
     "lastUpdated": "2026-10-29",
     "firstEntryDate": "2026-01-08",
     "totalTopics": 74,
-    "totalFiles": 86,
+    "totalFiles": 87,
     "languages": [
       "C",
       "JavaScript",
@@ -29,7 +29,8 @@
       "topicFile": "data/topics/python/python-lists.json",
       "source": "adopted",
       "verdict": "correct",
-      "score": 92
+      "score": 92,
+      "langSlug": "python"
     },
     {
       "id": "python-functions",
@@ -46,7 +47,8 @@
       "topicFile": "data/topics/python/python-functions.json",
       "source": "adopted",
       "verdict": "correct",
-      "score": 85
+      "score": 85,
+      "langSlug": "python"
     },
     {
       "id": "javascript-dom-manipulation",
@@ -64,7 +66,8 @@
       "topicFile": "data/topics/javascript/javascript-dom-manipulation.json",
       "source": "adopted",
       "verdict": "correct",
-      "score": 96
+      "score": 96,
+      "langSlug": "javascript"
     },
     {
       "id": "javascript-arrays",
@@ -82,7 +85,8 @@
       "topicFile": "data/topics/javascript/javascript-arrays.json",
       "source": "adopted",
       "verdict": "correct",
-      "score": 95
+      "score": 95,
+      "langSlug": "javascript"
     },
     {
       "id": "c-ticket-price-calculator",
@@ -100,7 +104,8 @@
       "topicFile": "data/topics/c/c-ticket-price-calculator.json",
       "source": "adopted",
       "verdict": "mostly-correct",
-      "score": 60
+      "score": 60,
+      "langSlug": "c"
     },
     {
       "id": "c-data-structures-c",
@@ -126,7 +131,9 @@
       "topicFile": "data/topics/c/data-structures-c.json",
       "source": "engine",
       "verdict": null,
-      "score": null
+      "score": null,
+      "langSlug": "c",
+      "curriculumId": "data-structures-c"
     },
     {
       "id": "c-multiplication-table",
@@ -143,7 +150,10 @@
         "scanf"
       ],
       "description": "Iteration using for loops. Understanding loop initialization, condition, and increment/decrement.",
-      "topicFile": "data/topics/c/multiplication-table.json"
+      "topicFile": "data/topics/c/multiplication-table.json",
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "c-1-to-n-odd-even",
@@ -162,7 +172,10 @@
         "scanf"
       ],
       "description": "Iteration using for loops. Understanding loop initialization, condition, and increment/decrement.",
-      "topicFile": "data/topics/c/1-to-n-odd-even.json"
+      "topicFile": "data/topics/c/1-to-n-odd-even.json",
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 75
     },
     {
       "id": "c-1-to-n-number-print",
@@ -180,7 +193,10 @@
         "input"
       ],
       "description": "Iteration using for loops. Understanding loop initialization, condition, and increment/decrement.",
-      "topicFile": "data/topics/c/1-to-n-number-print.json"
+      "topicFile": "data/topics/c/1-to-n-number-print.json",
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "c-for-loop-example",
@@ -195,7 +211,10 @@
         "iteration"
       ],
       "description": "Iteration using for loops. Understanding loop initialization, condition, and increment/decrement.",
-      "topicFile": "data/topics/c/for-loop-example.json"
+      "topicFile": "data/topics/c/for-loop-example.json",
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 85
     },
     {
       "id": "c-nasted-if-else-statement-in-c",
@@ -212,7 +231,10 @@
         "conditional"
       ],
       "description": "Conditional execution using if-else statements. Decision making and branching logic in C programs.",
-      "topicFile": "data/topics/c/nasted-if-else-for-max-no-find.json"
+      "topicFile": "data/topics/c/nasted-if-else-for-max-no-find.json",
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "c-for-loop-in-c",
@@ -229,7 +251,10 @@
         "scanf"
       ],
       "description": "Iteration using for loops. Understanding loop initialization, condition, and increment/decrement.",
-      "topicFile": "data/topics/c/for-loop.json"
+      "topicFile": "data/topics/c/for-loop.json",
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 55
     },
     {
       "id": "c-if-else-statement-in-c",
@@ -237,14 +262,17 @@
       "language": "C",
       "dateCreated": "2026-08-06",
       "lastUpdated": "2026-08-06",
-      "fileCount": 0,
+      "fileCount": 1,
       "tags": [
         "if-else",
         "conditional",
         "printf"
       ],
       "description": "Conditional execution using if-else statements. Decision making and branching logic in C programs.",
-      "topicFile": "data/topics/c/if-else-statement.json"
+      "topicFile": "data/topics/c/ticket-price-calculator.json",
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 60
     },
     {
       "id": "c-grade-calculator",
@@ -259,7 +287,10 @@
         "else-if"
       ],
       "description": "To understand how if else work.",
-      "topicFile": "data/topics/c/grade-calculator.json"
+      "topicFile": "data/topics/c/grade-calculator.json",
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 60
     },
     {
       "id": "c-leap-year-finder",
@@ -274,7 +305,10 @@
         "else-if"
       ],
       "description": "Any can find if a year is leap-year or not.",
-      "topicFile": "data/topics/c/leap-year-finder.json"
+      "topicFile": "data/topics/c/leap-year-finder.json",
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 75
     },
     {
       "id": "c-highest-number-among-3-numbers",
@@ -288,7 +322,10 @@
         "else"
       ],
       "description": "To find the highest number among 3 numbers.",
-      "topicFile": "data/topics/c/highest-number-among-3-numbers.json"
+      "topicFile": "data/topics/c/highest-number-among-3-numbers.json",
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "c-divider",
@@ -301,7 +338,10 @@
         "arithmetic-operation"
       ],
       "description": "Didier of 2 integer numbers.",
-      "topicFile": "data/topics/c/divider.json"
+      "topicFile": "data/topics/c/divider.json",
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 60
     },
     {
       "id": "c-simple-subtraction",
@@ -314,7 +354,10 @@
         "arithmetic-operation"
       ],
       "description": "It simply subtract 2 digits.",
-      "topicFile": "data/topics/c/simple-subtraction.json"
+      "topicFile": "data/topics/c/simple-subtraction.json",
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "c-simple-multiplication",
@@ -328,7 +371,10 @@
         "for-loop"
       ],
       "description": "How to multiply numbers",
-      "topicFile": "data/topics/c/simple-multiplication.json"
+      "topicFile": "data/topics/c/simple-multiplication.json",
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "c-count-bassed-sum-c",
@@ -342,7 +388,10 @@
         "arithmetic-expressions"
       ],
       "description": "It a simple project to get some of numbers with a finite known numbers.",
-      "topicFile": "data/topics/c/count_bassed_sum.json"
+      "topicFile": "data/topics/c/count_bassed_sum.json",
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-hello-world",
@@ -358,7 +407,10 @@
         "variables"
       ],
       "description": "The very first Python program: printing a greeting and taking user input. Introduces the print() and input() functions with basic string usage.",
-      "topicFile": "data/topics/python/hello-world.json"
+      "topicFile": "data/topics/python/hello-world.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-data-types",
@@ -374,7 +426,10 @@
         "integers"
       ],
       "description": "An introduction to Python data types: strings, integers, and type conversion. Demonstrates accessing characters by index and converting between types.",
-      "topicFile": "data/topics/python/data-types-practice.json"
+      "topicFile": "data/topics/python/data-types-practice.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 60
     },
     {
       "id": "python-variable-swap",
@@ -389,7 +444,10 @@
         "temp-variable"
       ],
       "description": "A classic beginner exercise that swaps the values of two variables using a temporary variable. Builds understanding of assignment and memory.",
-      "topicFile": "data/topics/python/variable-swap-practice.json"
+      "topicFile": "data/topics/python/variable-swap-practice.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-life-in-weeks",
@@ -405,7 +463,10 @@
         "print"
       ],
       "description": "Given an age, calculates remaining days, weeks, and months assuming a 90-year lifespan. Practices basic arithmetic and string output formatting.",
-      "topicFile": "data/topics/python/life-in-weeks-calculator.json"
+      "topicFile": "data/topics/python/life-in-weeks-calculator.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 55
     },
     {
       "id": "python-tip-calculator",
@@ -421,7 +482,10 @@
         "float"
       ],
       "description": "Calculates how much each person should pay including a chosen tip percentage. Practices float arithmetic, rounding, and formatted output.",
-      "topicFile": "data/topics/python/tip-calculator.json"
+      "topicFile": "data/topics/python/tip-calculator.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 60
     },
     {
       "id": "python-odd-even",
@@ -437,7 +501,10 @@
         "operators"
       ],
       "description": "A program that checks whether a given number is odd or even using the modulo operator. A foundational exercise in conditionals and operators.",
-      "topicFile": "data/topics/python/odd-or-even-check.json"
+      "topicFile": "data/topics/python/odd-or-even-check.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-head-tail",
@@ -452,7 +519,10 @@
         "import"
       ],
       "description": "Simulates a coin flip using random.randint and prints Head or Tail. Introduces the random module and simple conditional logic.",
-      "topicFile": "data/topics/python/head-or-tail-coin-flip.json"
+      "topicFile": "data/topics/python/head-or-tail-coin-flip.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-bmi-calculator",
@@ -468,7 +538,10 @@
         "health"
       ],
       "description": "Calculates Body Mass Index from height and weight and categorizes the result as underweight, normal, overweight, or obese. Combines arithmetic and multi-branch conditionals.",
-      "topicFile": "data/topics/python/bmi-calculator.json"
+      "topicFile": "data/topics/python/bmi-calculator.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-pizza-order",
@@ -484,7 +557,10 @@
         "if-elif"
       ],
       "description": "Calculates the total price of a pizza order based on size, pepperoni, and extra cheese selections. Reinforces if-elif-else logic and cumulative addition.",
-      "topicFile": "data/topics/python/pizza-order-calculator.json"
+      "topicFile": "data/topics/python/pizza-order-calculator.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 60
     },
     {
       "id": "python-love-calculator",
@@ -500,7 +576,10 @@
         "lower"
       ],
       "description": "A fun program that counts letters in \"true\" and \"love\" from two names and produces a love score. Practices string methods and conditionals.",
-      "topicFile": "data/topics/python/love-calculator.json"
+      "topicFile": "data/topics/python/love-calculator.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 60
     },
     {
       "id": "python-random-payer",
@@ -516,7 +595,10 @@
         "split"
       ],
       "description": "Randomly selects a person from a comma-separated list of names to pay the bill. Introduces random.choice and string splitting.",
-      "topicFile": "data/topics/python/random-bill-payer.json"
+      "topicFile": "data/topics/python/random-bill-payer.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 75
     },
     {
       "id": "python-treasure-island",
@@ -532,7 +614,10 @@
         "nested-if"
       ],
       "description": "A text-based adventure game where choices determine whether the player finds treasure or meets their end. Solidifies understanding of nested if-else branching.",
-      "topicFile": "data/topics/python/treasure-island-adventure.json"
+      "topicFile": "data/topics/python/treasure-island-adventure.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-if-statement-practice",
@@ -548,7 +633,10 @@
         "elif"
       ],
       "description": "Checks height and age for a rollercoaster ride, calculates ticket price, and offers a photo add-on. A practical multi-condition exercise.",
-      "topicFile": "data/topics/python/if-statement-practice.json"
+      "topicFile": "data/topics/python/if-statement-practice.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-leap-year-check",
@@ -564,7 +652,10 @@
         "boolean"
       ],
       "description": "Determines whether a year is a leap year using divisibility rules: divisible by 4, not by 100, unless also by 400. Teaches compound boolean expressions.",
-      "topicFile": "data/topics/python/leap-year-check.json"
+      "topicFile": "data/topics/python/leap-year-check.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-treasure-map",
@@ -581,7 +672,10 @@
         "nested-lists"
       ],
       "description": "Places a treasure marker on a 3×3 grid by converting user row/column input to list indices. Introduces 2D lists and index manipulation.",
-      "topicFile": "data/topics/python/treasure-map-game.json"
+      "topicFile": "data/topics/python/treasure-map-game.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 55
     },
     {
       "id": "python-list-introduction",
@@ -597,7 +691,10 @@
         "access"
       ],
       "description": "Demonstrates creating a list of Indian states and accessing elements using both positive and negative indices. A clean introduction to Python lists.",
-      "topicFile": "data/topics/python/list-introduction.json"
+      "topicFile": "data/topics/python/list-introduction.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-sum-even-numbers",
@@ -614,7 +711,10 @@
         "modulo"
       ],
       "description": "Calculates the sum of all even numbers from 1 to 100 using a for loop and modulo filtering. Combines loops with conditional logic.",
-      "topicFile": "data/topics/python/sum-of-even-numbers.json"
+      "topicFile": "data/topics/python/sum-of-even-numbers.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 75
     },
     {
       "id": "python-average-height-builtin",
@@ -631,7 +731,10 @@
         "built-ins"
       ],
       "description": "Calculates the average height of a list of students using Python built-in functions sum() and len(). Demonstrates the power of built-in functions for clean code.",
-      "topicFile": "data/topics/python/average-height-with-built-ins.json"
+      "topicFile": "data/topics/python/average-height-with-built-ins.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 65
     },
     {
       "id": "python-average-height-manual",
@@ -647,7 +750,10 @@
         "accumulator"
       ],
       "description": "Calculates average height manually using a loop accumulator without sum() or len(). Deepens understanding of how built-in functions work internally.",
-      "topicFile": "data/topics/python/average-height-without-built-ins.json"
+      "topicFile": "data/topics/python/average-height-without-built-ins.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 65
     },
     {
       "id": "python-high-score",
@@ -663,7 +769,10 @@
         "max"
       ],
       "description": "Finds the highest score in a list of student scores without using the built-in max() function. Builds algorithmic thinking from scratch.",
-      "topicFile": "data/topics/python/find-highest-score.json"
+      "topicFile": "data/topics/python/find-highest-score.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 80
     },
     {
       "id": "python-fizzbuzz",
@@ -679,7 +788,10 @@
         "logic"
       ],
       "description": "The classic FizzBuzz challenge: print Fizz for multiples of 3, Buzz for multiples of 5, FizzBuzz for both, and the number otherwise. Tests logical condition ordering.",
-      "topicFile": "data/topics/python/fizzbuzz.json"
+      "topicFile": "data/topics/python/fizzbuzz.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 80
     },
     {
       "id": "python-rock-paper-scissors",
@@ -695,7 +807,10 @@
         "ascii-art"
       ],
       "description": "A text-based Rock Paper Scissors game against the computer with ASCII art displays. Consolidates conditionals, random choice, and user input handling.",
-      "topicFile": "data/topics/python/rock-paper-scissors.json"
+      "topicFile": "data/topics/python/rock-paper-scissors.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 80
     },
     {
       "id": "python-password-generator",
@@ -712,7 +827,10 @@
         "join"
       ],
       "description": "Generates a random password with a user-specified number of letters, symbols, and numbers. Offers easy (ordered) and hard (shuffled) modes.",
-      "topicFile": "data/topics/python/password-generator.json"
+      "topicFile": "data/topics/python/password-generator.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 80
     },
     {
       "id": "python-hangman-step-1",
@@ -728,7 +846,10 @@
         "in-operator"
       ],
       "description": "First step of building Hangman: randomly choose a word and check if a single guessed letter is in the word. Introduces the in operator with strings.",
-      "topicFile": "data/topics/python/hangman-step-1.json"
+      "topicFile": "data/topics/python/hangman-step-1.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 55
     },
     {
       "id": "python-hangman-step-2",
@@ -744,7 +865,10 @@
         "enumerate"
       ],
       "description": "Adds a display list of underscores and reveals correctly guessed letters in their positions. Builds on step 1 with list manipulation.",
-      "topicFile": "data/topics/python/hangman-step-2.json"
+      "topicFile": "data/topics/python/hangman-step-2.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-hangman-step-3",
@@ -760,7 +884,10 @@
         "win-condition"
       ],
       "description": "Adds a while loop so the player keeps guessing until the word is fully revealed. Introduces loop termination based on a win condition.",
-      "topicFile": "data/topics/python/hangman-step-3.json"
+      "topicFile": "data/topics/python/hangman-step-3.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-hangman-step-4",
@@ -776,7 +903,10 @@
         "stages"
       ],
       "description": "Completes the Hangman mechanics by adding a lives counter and ASCII art stages that update with each wrong guess.",
-      "topicFile": "data/topics/python/hangman-step-4.json"
+      "topicFile": "data/topics/python/hangman-step-4.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-hangman",
@@ -793,7 +923,10 @@
         "ascii-art"
       ],
       "description": "The complete polished Hangman game with logo, word list, lives, and ASCII art stages. Combines all previous steps into a fully playable game.",
-      "topicFile": "data/topics/python/hangman-game.json"
+      "topicFile": "data/topics/python/hangman-game.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 85
     },
     {
       "id": "python-formatted-name",
@@ -809,7 +942,10 @@
         "return"
       ],
       "description": "Takes a first and last name and returns them formatted in title case. A gentle introduction to defining and calling functions with return values.",
-      "topicFile": "data/topics/python/formatted-name-practice.json"
+      "topicFile": "data/topics/python/formatted-name-practice.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 85
     },
     {
       "id": "python-basic-calculator",
@@ -825,7 +961,10 @@
         "operators"
       ],
       "description": "A simple four-operation calculator using functions stored in a dictionary. Demonstrates how to map operators to functions for clean dispatch logic.",
-      "topicFile": "data/topics/python/basic-calculator.json"
+      "topicFile": "data/topics/python/basic-calculator.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 80
     },
     {
       "id": "python-days-in-month",
@@ -841,7 +980,10 @@
         "leap-year"
       ],
       "description": "Determines the number of days in any given month for any year, accounting correctly for leap years. Combines function design with list indexing.",
-      "topicFile": "data/topics/python/days-in-month-calculator.json"
+      "topicFile": "data/topics/python/days-in-month-calculator.json",
+      "langSlug": "python",
+      "verdict": "correct",
+      "score": 90
     },
     {
       "id": "python-turtle-hello-world",
@@ -857,7 +999,10 @@
         "basics"
       ],
       "description": "First steps with the Turtle graphics module: importing, creating a Turtle object, and calling movement methods. A graphical equivalent of Hello World.",
-      "topicFile": "data/topics/python/turtle-hello-world.json"
+      "topicFile": "data/topics/python/turtle-hello-world.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 30
     },
     {
       "id": "python-turtle-library",
@@ -873,7 +1018,10 @@
         "attributes"
       ],
       "description": "Explores Turtle module attributes: printing the turtle object reference and reading screen canvas dimensions. Builds familiarity with the turtle environment.",
-      "topicFile": "data/topics/python/turtle-library-overview.json"
+      "topicFile": "data/topics/python/turtle-library-overview.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 40
     },
     {
       "id": "python-turtle-import-styles",
@@ -889,7 +1037,10 @@
         "modules"
       ],
       "description": "Demonstrates three ways to import the Turtle module: import turtle, from turtle import Turtle, and import turtle as t. Clarifies Python import mechanics.",
-      "topicFile": "data/topics/python/turtle-import-styles.json"
+      "topicFile": "data/topics/python/turtle-import-styles.json",
+      "langSlug": "python",
+      "verdict": "incomplete",
+      "score": 25
     },
     {
       "id": "python-turtle-shape-color",
@@ -905,7 +1056,10 @@
         "methods"
       ],
       "description": "Customises a turtle by changing its shape and color before drawing. Introduces turtle appearance methods for more expressive graphics.",
-      "topicFile": "data/topics/python/turtle-shape-and-color.json"
+      "topicFile": "data/topics/python/turtle-shape-and-color.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 30
     },
     {
       "id": "python-turtle-square",
@@ -921,7 +1075,10 @@
         "challenge"
       ],
       "description": "Draws a square by repeating forward and right-turn movements in a for loop. A focused challenge connecting loop logic with turtle geometry.",
-      "topicFile": "data/topics/python/turtle-square-challenge.json"
+      "topicFile": "data/topics/python/turtle-square-challenge.json",
+      "langSlug": "python",
+      "verdict": "incomplete",
+      "score": 20
     },
     {
       "id": "python-dash-line",
@@ -937,7 +1094,10 @@
         "pendown"
       ],
       "description": "Draws a dashed line by alternating penup() and pendown() calls inside a loop. Teaches pen control for non-continuous drawing.",
-      "topicFile": "data/topics/python/dash-line-drawing.json"
+      "topicFile": "data/topics/python/dash-line-drawing.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 30
     },
     {
       "id": "python-drawing-shapes",
@@ -953,7 +1113,10 @@
         "random-color"
       ],
       "description": "Draws polygons from triangle to decagon, each with a random color. Applies the exterior angle formula (360 / sides) and nested loops.",
-      "topicFile": "data/topics/python/drawing-different-shapes.json"
+      "topicFile": "data/topics/python/drawing-different-shapes.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 35
     },
     {
       "id": "python-random-walk",
@@ -969,7 +1132,10 @@
         "choice"
       ],
       "description": "A turtle that moves in random directions (up, down, left, right) producing an unpredictable colored path. Introduces algorithmic randomness in graphics.",
-      "topicFile": "data/topics/python/random-walk.json"
+      "topicFile": "data/topics/python/random-walk.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 30
     },
     {
       "id": "python-random-color-walk",
@@ -985,7 +1151,10 @@
         "rgb"
       ],
       "description": "Extends the random walk by generating a random RGB color for each step. Introduces colormode(255) and dynamic color generation.",
-      "topicFile": "data/topics/python/random-color-walk.json"
+      "topicFile": "data/topics/python/random-color-walk.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 35
     },
     {
       "id": "python-turtle-race",
@@ -1002,7 +1171,10 @@
         "lists"
       ],
       "description": "A turtle racing game where the user bets on a color and multiple turtles race across the screen with random step sizes. Introduces multiple turtle objects.",
-      "topicFile": "data/topics/python/turtle-race.json"
+      "topicFile": "data/topics/python/turtle-race.json",
+      "langSlug": "python",
+      "verdict": "incomplete",
+      "score": 15
     },
     {
       "id": "python-turtle-events",
@@ -1018,7 +1190,10 @@
         "listen"
       ],
       "description": "Demonstrates setting up keyboard event listeners with screen.listen() and screen.onkey(). A foundation for building interactive turtle applications.",
-      "topicFile": "data/topics/python/turtle-keyboard-events.json"
+      "topicFile": "data/topics/python/turtle-keyboard-events.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 30
     },
     {
       "id": "python-etch-a-sketch",
@@ -1034,7 +1209,10 @@
         "interactive"
       ],
       "description": "A keyboard-controlled drawing app using W/A/S/D keys to move the turtle and C to clear the screen. A complete interactive turtle application.",
-      "topicFile": "data/topics/python/etch-a-sketch-app.json"
+      "topicFile": "data/topics/python/etch-a-sketch-app.json",
+      "langSlug": "python",
+      "verdict": "incomplete",
+      "score": 20
     },
     {
       "id": "python-spirograph",
@@ -1051,7 +1229,10 @@
         "circles"
       ],
       "description": "Creates a colorful spirograph pattern by drawing circles with a small heading change each iteration. Combines loops, geometry, and random color generation.",
-      "topicFile": "data/topics/python/spirograph.json"
+      "topicFile": "data/topics/python/spirograph.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 35
     },
     {
       "id": "python-number-guessing-explained",
@@ -1068,7 +1249,10 @@
         "game"
       ],
       "description": "A heavily commented number guessing implementation that explains variable scope, function definitions, and global variables in detail.",
-      "topicFile": "data/topics/python/number-guessing-game-explained.json"
+      "topicFile": "data/topics/python/number-guessing-game-explained.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 85
     },
     {
       "id": "python-number-guessing-game",
@@ -1085,7 +1269,10 @@
         "game"
       ],
       "description": "Two implementations of a number guessing game with limited attempts and difficulty selection. Covers while loops, conditionals, and modular function design.",
-      "topicFile": "data/topics/python/number-guessing-game.json"
+      "topicFile": "data/topics/python/number-guessing-game.json",
+      "langSlug": "python",
+      "verdict": "correct",
+      "score": 90
     },
     {
       "id": "python-variable-scope",
@@ -1102,7 +1289,10 @@
         "namespaces"
       ],
       "description": "Three files demonstrating Python scope rules: global vs local, block scope absence, and modifying globals. Covers the LEGB rule in practice.",
-      "topicFile": "data/topics/python/variable-scope.json"
+      "topicFile": "data/topics/python/variable-scope.json",
+      "langSlug": "python",
+      "verdict": "correct",
+      "score": 90
     },
     {
       "id": "python-debugging-exercises",
@@ -1119,7 +1309,10 @@
         "control-flow"
       ],
       "description": "A collection of buggy programs covering off-by-one errors, type mismatches, indentation errors, and logical mistakes — each paired with a corrected version.",
-      "topicFile": "data/topics/python/debugging-exercises.json"
+      "topicFile": "data/topics/python/debugging-exercises.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 80
     },
     {
       "id": "python-higher-lower-game",
@@ -1136,7 +1329,10 @@
         "game"
       ],
       "description": "A game where the player guesses which celebrity has more social media followers. Uses lists of dictionaries, score tracking, and a continuous game loop.",
-      "topicFile": "data/topics/python/higher-lower-game.json"
+      "topicFile": "data/topics/python/higher-lower-game.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 85
     },
     {
       "id": "python-blackjack",
@@ -1153,7 +1349,10 @@
         "cards"
       ],
       "description": "A text-based Blackjack (21) game against the computer. Implements card drawing, Ace value adjustment (11→1), and computer AI that draws until 17.",
-      "topicFile": "data/topics/python/blackjack-game.json"
+      "topicFile": "data/topics/python/blackjack-game.json",
+      "langSlug": "python",
+      "verdict": "correct",
+      "score": 90
     },
     {
       "id": "python-painting-project",
@@ -1170,7 +1369,10 @@
         "rgb"
       ],
       "description": "Extracts a color palette from an image using the colorgram library and recreates it as a dot painting with turtle. Combines external libraries with turtle graphics.",
-      "topicFile": "data/topics/python/painting-project.json"
+      "topicFile": "data/topics/python/painting-project.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 30
     },
     {
       "id": "python-oop-user-class",
@@ -1187,7 +1389,10 @@
         "init"
       ],
       "description": "Defines a User class with id, username, followers, and following attributes, plus a follow() method. A clean introduction to object-oriented programming.",
-      "topicFile": "data/topics/python/oop-user-class.json"
+      "topicFile": "data/topics/python/oop-user-class.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 80
     },
     {
       "id": "python-quiz-game",
@@ -1204,7 +1409,10 @@
         "methods"
       ],
       "description": "A True/False quiz game built with OOP across four files: Question model, QuizBrain controller, question data, and main entry point. Demonstrates real multi-file Python project structure.",
-      "topicFile": "data/topics/python/quiz-game.json"
+      "topicFile": "data/topics/python/quiz-game.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 85
     },
     {
       "id": "python-prettytable",
@@ -1220,7 +1428,10 @@
         "libraries"
       ],
       "description": "Uses the PrettyTable library to display structured tabular data with a Pokémon example. Introduces third-party library usage and table formatting.",
-      "topicFile": "data/topics/python/prettytable-demo.json"
+      "topicFile": "data/topics/python/prettytable-demo.json",
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 85
     }
   ]
 }

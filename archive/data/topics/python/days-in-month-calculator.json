@@ -15,9 +15,9 @@
     ],
     "description": "Determines the number of days in any given month for any year, accounting correctly for leap years. Combines function design with list indexing.",
     "learningNotes": {
-      "whatILearned": "Encapsulating leap year logic in a helper function and using a list of month-day counts indexed by month number.",
-      "challenges": "Correctly adjusting February days when the year is a leap year.",
-      "nextSteps": "Extend to calculate the number of days between two dates."
+      "whatILearned": "How many days are in a given month — with the leap year rule handled properly.",
+      "challenges": "The function returns a number for a valid month and a *string* for an invalid one, which is a type inconsistency waiting to bite.",
+      "nextSteps": "Raise an error for an invalid month instead of returning a string, and write the caller's expectation down."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Returns days in a month with leap year support.",
       "dateAdded": "2026-01-09T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "correct",
+      "score": 90,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "A leap year is divisible by 4, except centuries, which are leap only if divisible by 400 - 1900 is not, 2000 is",
+      "The list of month lengths is zero-indexed, so January is `month_days[0]`, not `month_days[1]`"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 20 = 90%**\n\n**What is right**\n\nThis is a clean piece of code and it is right in every part I checked.\n\n**The leap year rule is complete.** `is_leap` implements the full rule — divisible by 4, unless divisible by 100, unless also divisible by 400 — so 1900 is not a leap year and 2000 is. The nesting reads the rule exactly as it is written, which is the best way to write it.\n\n**The zero-index is handled and, better, explained.** `month_days[month - 1]` is correct, and the comment says why: *We subtract 1 from the month because lists are zero-indexed.* That is a what-comment that earns its place, because the `month - 1` is precisely the sort of thing that gets broken later by someone who tidies it away.\n\n**The month is validated** before the list is indexed, so the function cannot crash on a bad input — it returns a message instead.\n\n**What is not**\n\n**The function returns two different types.** For a valid month it returns an `int`; for an invalid one it returns the string `\"Invalid month entered.\"`. The caller does `days = days_in_month(year, month)` and then `print(days)` — which works right now, and will break the moment anyone does arithmetic with the result.\n\nThe usual Python answer is to raise an error instead:\n\n```python\nraise ValueError(f\"{month} is not a month\")\n```\n\nand let the caller decide what to print. A function that can return a number *or* a sentence is a function whose contract nobody can write down.\n\nTwo smaller things: the `#🚨 Do NOT change any of the code below` comment is a good instinct but a bad rule — the code below is three lines, and the year and month prompts are exactly the kind of thing you should be able to change. And `year` and `month` are read at the top level rather than passed in, which makes the function hard to test.\n\n**The one thing to fix first**\n\nOne type instead of two:\n\n```python\nif not 1 <= month <= 12:\n    raise ValueError(f\"{month} is not a month number\")\n```\n\nand catch it where the input happens:\n\n```python\ntry:\n    days = days_in_month(year, month)\nexcept ValueError as e:\n    print(e)\n```\n"
+  }
 }

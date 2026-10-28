@@ -18,9 +18,9 @@
     ],
     "description": "Iteration using for loops. Understanding loop initialization, condition, and increment/decrement.",
     "learningNotes": {
-      "whatILearned": "I use both if-else and for loop together and also add error handling.",
-      "challenges": "Not much.",
-      "nextSteps": "More for loop questions practice."
+      "whatILearned": "`i % 2` is the whole test — a number is even when the remainder is zero, and the same loop can print either set.",
+      "challenges": "I checked the letter the user typed but never checked the number they typed before it, so a missing number leaves `n` unset.",
+      "nextSteps": "Read the number with `scanf` and check it, the way I already check the letter, and then the two halves of the program are equally careful."
     }
   },
   "files": [
@@ -31,5 +31,23 @@
       "description": "If finds the odd and even numbers between 1 to n.",
       "dateAdded": "2026-08-10T15:39:48Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 75,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`scanf` returns how many items it read — the value is only ever set if you check that, so a missing answer leaves the variable untouched",
+      "`i % 2 == 0` and `i % 2 != 0` are the two cases; writing the second as `!(i % 2 == 0)` would make the pair obvious"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 5 = 75%**\n\n**What is solid**\n\nThis is the best-behaved file in the batch. It compiles clean, and given `10` and `e` it prints `2 4 6 8 10`; given `10` and `o` it prints the odd ones. It also handles the third case properly: anything that is not `e` or `o` gets *Invalid input. Please enter 'e' for even or 'o' for odd.* instead of running the loop with garbage. That is a real decision, not an accident.\n\n**What is not**\n\nThe number is read without being checked. `scanf(\"%d\", &n)` — and then the program goes straight on to read the letter. If there was no number, `n` is whatever was on the stack, and the loop prints the even or odd numbers up to that. The letter is checked and the number is not, which is the odd way round: the number is the one that decides how much the loop prints.\n\n**The one thing to fix first**\n\nCheck the number the way you already check the letter. Then both inputs are guarded, and the file becomes the example the others in this folder should copy.\n"
+  }
 }

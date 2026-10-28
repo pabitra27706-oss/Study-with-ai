@@ -15,9 +15,9 @@
     ],
     "description": "Explores Turtle module attributes: printing the turtle object reference and reading screen canvas dimensions. Builds familiarity with the turtle environment.",
     "learningNotes": {
-      "whatILearned": "Accessing screen properties like canvwidth, and understanding that turtle methods return objects with their own attributes.",
-      "challenges": "Understanding the difference between the Turtle object and the Screen object.",
-      "nextSteps": "Explore pen properties: pencolor, fillcolor, pensize."
+      "whatILearned": "Turtle is a library: you import the classes you want and the objects they make are yours to drive.",
+      "challenges": "The comments name what each line does instead of saying why any of it is there.",
+      "nextSteps": "Rewrite the three comments so they say what the file is showing rather than what the code is calling."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Prints turtle object info and screen canvas width.",
       "dateAdded": "2026-01-11T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 40,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`print(timmi)` shows the object reference, not the turtle — that is the point of the line, and the comment should say so",
+      "`import turtle as t` and `from turtle import Turtle` are different styles, and the file shows both"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**0 + 30 + 10 = 40%**\n\n**This file cannot be run here.** It needs `tkinter`, and this\nmachine has no display and no `tkinter` — so the 40 points for *it runs* are\nnot ones I can give, and they are not given. The other two bands are judged\nby reading the code, carefully, line by line.\n\nThere is a bigger point here, and it is worth saying plainly: **`tkinter`\ndoes not exist on Termux either.** These files cannot be run on the phone\nthis whole system is built around. They are not broken — they are stranded.\n\n**What is right, by reading**\n\nIt is the clearest of the turtle files, and it has the three comments the others lack. `print(timmi)` deliberately prints the object reference to show what a turtle *is* in Python — a bound method, not a picture of a turtle — and the comment says exactly that. `canvwidth` shows the canvas is 300 wide by default, and the last line keeps the window open so you can look at it.\n\n**What is not**\n\nThe comments say what the code does rather than why it is there: *Shows turtle object reference* describes the `print`, it does not explain that seeing the reference is the lesson. And *Corrected variable name* is a note to yourself, not an explanation to a reader.\n\n**The one thing to fix first**\n\n```python\nprint(timmi)  # A turtle in Python is a bound method, not a picture - this shows it.\n```\n\nThat one line turns the file from a list of calls into an explanation of what a turtle actually is.\n"
+  }
 }

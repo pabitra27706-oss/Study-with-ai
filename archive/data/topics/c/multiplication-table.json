@@ -16,9 +16,9 @@
     ],
     "description": "Iteration using for loops. Understanding loop initialization, condition, and increment/decrement.",
     "learningNotes": {
-      "whatILearned": "Previously used functions .",
-      "challenges": "None.",
-      "nextSteps": "More practice."
+      "whatILearned": "The same loop that counts can multiply — `n * i` for `i` from 1 to 10 is a whole table.",
+      "challenges": "I did not check the number I read, so an empty answer gives me the table of zero and I would not even know it was wrong.",
+      "nextSteps": "Check the `scanf` result, and put the loop bound in a comment: ten rows is the school timetable, not an arbitrary choice."
     }
   },
   "files": [
@@ -29,5 +29,23 @@
       "description": "Create a Multiplication table for user.",
       "dateAdded": "2026-08-10T15:53:39Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 70,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`scanf` returns how many items it read — the value is only ever set if you check that, so a missing answer leaves the variable untouched",
+      "The multiplication happens inside the loop body every time, so `m` is recomputed rather than carried — that is fine, but it is worth a line saying it is deliberate"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 0 = 70%**\n\n**What is solid**\n\nIt is correct and it is small. Given `7` it prints the table of seven from `7*1=7` down to `7*10=70`, every product right. It compiles clean under `-Wall -Wextra`.\n\n**What is not**\n\n`scanf(\"%d\", &n)` is not checked, and the program prints a whole table for whatever `n` happened to be. There is also no comment anywhere, and there is one thing here that deserves a comment: `m = n * i` inside the loop rather than `m = n * 10` outside it. Both are right; the one inside the loop is the one a reader has to work out.\n\n**The one thing to fix first**\n\nCheck the read, and add one line above the loop:\n\n```c\n/* Ten rows: the school timetable always has ten periods. */\n```\n\nThat is the kind of comment that carries information the code does not.\n"
+  }
 }

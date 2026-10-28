@@ -63,6 +63,41 @@ export function getArchiveTopicIds(): string[] {
 }
 
 /* -------------------------------------------------------------------------- */
+/* The pending queue                                                           */
+/* -------------------------------------------------------------------------- */
+
+export type ArchivePendingTopic = {
+  id: string;
+  title: string;
+  language: string;
+  topicFile: string;
+  reason: string;
+  dateCreated: string;
+  files: string[];
+};
+
+export type ArchivePending = {
+  note: string;
+  count: number;
+  topics: ArchivePendingTopic[];
+};
+
+/**
+ * The work in the archive that has code and no verdict yet.
+ *
+ * Written by `scripts/build-archive.mjs` on every build, newest work first.
+ * A file that arrives in the archive has to be able to say that it is
+ * waiting — otherwise it sits there, looking finished.
+ */
+export function getArchivePending(): ArchivePending {
+  return readJson<ArchivePending>(join(ARCHIVE, "data", "archive-pending.json"), {
+    note: "",
+    count: 0,
+    topics: [],
+  });
+}
+
+/* -------------------------------------------------------------------------- */
 /* Code                                                                       */
 /* -------------------------------------------------------------------------- */
 

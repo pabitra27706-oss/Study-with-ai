@@ -15,9 +15,9 @@
     ],
     "description": "A text-based adventure game where choices determine whether the player finds treasure or meets their end. Solidifies understanding of nested if-else branching.",
     "learningNotes": {
-      "whatILearned": "Building a multi-path story using deeply nested conditionals and user input validation.",
-      "challenges": "Managing all possible paths and ensuring every branch has an outcome.",
-      "nextSteps": "Add loops for replay and introduce randomness."
+      "whatILearned": "A branching story is nested `if`s — each answer opens exactly one door and closes the rest.",
+      "challenges": "The file has no comment and the prompts have typos in them, so the reader is left guessing at the rules.",
+      "nextSteps": "Fix the typos in the prompts and put one comment on the branch that makes the game end."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Text adventure with multiple branching choices.",
       "dateAdded": "2026-01-04T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 70,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "A game whose rules live only in the prompt strings is a game nobody can change without breaking it",
+      "Each `else` in a story branch is a 'game over' — the shape of the file is the rules, and it is worth writing down once"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 0 = 70%**\n\n**What is solid**\n\nThe branching is right and the game works. I played it — left, wait, yellow — and it printed *Congratulations!!!! You won the game...*. The three-door ending is the correct classic one: red is fire, blue is the monster, yellow is the win. The `else` branches catch every invalid answer instead of falling through, which is the part people usually get wrong.\n\n**What is not**\n\nThe prompts have typos in them — *trasure*, *swime*, *choise is not mention* — and the rules of the game exist nowhere except inside those strings. There is not one comment, so the shape of the file — which is the actual lesson — has to be reverse-engineered from the text.\n\n**The one thing to fix first**\n\nNot the code. The words:\n\n```python\n# Every 'else' here is a game over - a wrong answer ends the run.\n```\n\nAnd fix the spelling while you are there. This is the file in the archive most worth re-reading, because the nesting *is* the content.\n"
+  }
 }

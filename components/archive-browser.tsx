@@ -1,9 +1,9 @@
 "use client";
 
-import { useCallback, useMemo, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { Download, Grid2X2, List, Rows3, Search, X } from "lucide-react";
 import type { ArchiveIndex, ArchiveIndexEntry } from "@/lib/archive-shared";
-import { archiveMonthLabel } from "@/lib/archive-shared";
+import { archiveLanguageSlug, archiveMonthLabel } from "@/lib/archive-shared";
 import { ArchiveTopicCard } from "@/components/archive-topic-card";
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -68,6 +68,28 @@ export function ArchiveBrowser({ index }: { index: ArchiveIndex }) {
   const [selected, setSelected] = useState<string[]>([]);
   const [busy, setBusy] = useState(false);
 
+  /* The vocabulary of the code. Titles and tags cannot answer "where did I
+     use recursion?" — the code can. The index is fetched once, and only
+     when a search is actually typed, so a plain visit to the archive does
+     not pay for it. */
+  const [codeIndex, setCodeIndex] = useState<Record<string, string[]> | null>(null);
+
+  useEffect(() => {
+    if (!query.trim() || codeIndex) return;
+    let cancelled = false;
+    fetch(`${BASE_PATH}/archive-data/code-index.json`)
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        if (!cancelled && data?.topics) setCodeIndex(data.topics as Record<string, string[]>);
+      })
+      .catch(() => {
+        /* No index, no code search. The rest of the archive still works. */
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [query, codeIndex]);
+
   const topics = index.topics;
 
   const languages = useMemo(() => {
@@ -92,6 +114,17 @@ export function ArchiveBrowser({ index }: { index: ArchiveIndex }) {
     return [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 28);
   }, [topics]);
 
+  /* The topics whose code contains the search. */
+  const codeMatched = useMemo(() => {
+    const out = new Set<string>();
+    const needle = query.trim().toLowerCase();
+    if (!needle || !codeIndex) return out;
+    for (const [topicId, words] of Object.entries(codeIndex)) {
+      if (words.some((word) => word.includes(needle))) out.add(topicId);
+    }
+    return out;
+  }, [query, codeIndex]);
+
   const visible = useMemo(() => {
     let list = [...topics];
     if (lang !== "all") list = list.filter((topic) => topic.language === lang);
@@ -102,7 +135,8 @@ export function ArchiveBrowser({ index }: { index: ArchiveIndex }) {
         (topic) =>
           topic.title.toLowerCase().includes(needle) ||
           (topic.description ?? "").toLowerCase().includes(needle) ||
-          (topic.tags ?? []).some((item) => item.toLowerCase().includes(needle)),
+          (topic.tags ?? []).some((item) => item.toLowerCase().includes(needle)) ||
+          codeMatched.has(topic.id),
       );
     }
     switch (sort) {
@@ -122,7 +156,7 @@ export function ArchiveBrowser({ index }: { index: ArchiveIndex }) {
         list.sort((a, b) => b.dateCreated.localeCompare(a.dateCreated));
     }
     return list;
-  }, [topics, lang, tag, query, sort]);
+  }, [topics, lang, tag, query, sort, codeMatched]);
 
   const grouped = useMemo(() => {
     const groups: Array<{ label: string; items: ArchiveIndexEntry[] }> = [];
@@ -177,11 +211,28 @@ export function ArchiveBrowser({ index }: { index: ArchiveIndex }) {
   }
 
   async function fetchTopicFiles(topic: ArchiveIndexEntry) {
-    const response = await fetch(`${BASE_PATH}/archive-data/${topic.topicFile.replace(/^data\//, "")}`);
-    if (!response.ok) return [];
-    const payload = (await response.json()) as {
-      files?: Array<{ fileName: string; filePath: string }>;
-    };
+    /* The mirror writes each topic's JSON under its own id, in the folder
+       the topic lives in. Asking for the *file name* instead of the id
+       found nothing at all for 69 of the 74 topics, so the ZIP came out
+       empty without a word of explanation. Try the right one first, then
+       the old one, so nothing can be lost either way. */
+    const lang = topic.langSlug ?? archiveLanguageSlug(topic.language);
+    const urls = [
+      `${BASE_PATH}/archive-data/topics/${lang}/${topic.id}.json`,
+      `${BASE_PATH}/archive-data/${topic.topicFile.replace(/^data\//, "")}`,
+    ];
+
+    let payload: { files?: Array<{ fileName: string; filePath: string }> } | null = null;
+    for (const url of urls) {
+      const response = await fetch(url);
+      if (!response.ok) continue;
+      payload = (await response.json()) as {
+        files?: Array<{ fileName: string; filePath: string }>;
+      };
+      break;
+    }
+    if (!payload) return [];
+
     const out: Array<{ name: string; body: string }> = [];
     for (const file of payload.files ?? []) {
       const fileResponse = await fetch(
@@ -269,7 +320,7 @@ export function ArchiveBrowser({ index }: { index: ArchiveIndex }) {
               type="search"
               value={query}
               onChange={(event) => update({ q: event.target.value })}
-              placeholder={`Search ${topics.length} topics…`}
+              placeholder={`Search ${topics.length} topics and their code…`}
               className="w-full rounded-lg border border-line bg-panel py-2 pl-9 pr-9 text-[13px] text-ink outline-none transition placeholder:text-faint focus:border-brand/50"
             />
             {query && (
@@ -321,6 +372,9 @@ export function ArchiveBrowser({ index }: { index: ArchiveIndex }) {
           <p className="font-mono text-[11px] text-faint">
             Showing {visible.length} topic{visible.length === 1 ? "" : "s"} · {fileTotal} file
             {fileTotal === 1 ? "" : "s"}
+            {query && codeMatched.size > 0 && (
+              <> · {codeMatched.size} matched in the code</>
+            )}
           </p>
           {(lang !== "all" || tag || query) && (
             <button
@@ -356,7 +410,12 @@ export function ArchiveBrowser({ index }: { index: ArchiveIndex }) {
                 </p>
                 <div className="space-y-2">
                   {group.items.map((topic) => (
-                    <ArchiveTopicCard key={topic.id} topic={topic} dense />
+                    <ArchiveTopicCard
+                      key={topic.id}
+                      topic={topic}
+                      dense
+                      codeHit={codeMatched.has(topic.id)}
+                    />
                   ))}
                 </div>
               </div>
@@ -369,6 +428,7 @@ export function ArchiveBrowser({ index }: { index: ArchiveIndex }) {
                 key={topic.id}
                 topic={topic}
                 dense
+                codeHit={codeMatched.has(topic.id)}
                 aside={
                   <input
                     type="checkbox"
@@ -387,6 +447,7 @@ export function ArchiveBrowser({ index }: { index: ArchiveIndex }) {
               <ArchiveTopicCard
                 key={topic.id}
                 topic={topic}
+                codeHit={codeMatched.has(topic.id)}
                 aside={
                   <input
                     type="checkbox"

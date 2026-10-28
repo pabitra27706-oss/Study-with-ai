@@ -16,9 +16,9 @@
     ],
     "description": "Creates a colorful spirograph pattern by drawing circles with a small heading change each iteration. Combines loops, geometry, and random color generation.",
     "learningNotes": {
-      "whatILearned": "Drawing circles with turtle.circle() and rotating the heading by a small angle each iteration to create a spirograph effect.",
-      "challenges": "Finding the right balance between angle increment and number of iterations.",
-      "nextSteps": "Experiment with different radii, speeds, and angle increments."
+      "whatILearned": "The spirograph: a turtle draws circles, turning a little further round each time, and the circles together make a rosette.",
+      "challenges": "It needs tkinter, so it cannot run here — and there is no tkinter on Termux either.",
+      "nextSteps": "Run it once on a machine with a screen and change the two numbers — 37 and 10 — until you can see why they produce the shape."
     }
   },
   "files": [
@@ -29,5 +29,23 @@
       "description": "Colorful spirograph pattern with random RGB colors.",
       "dateAdded": "2026-01-14T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 35,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "A spirograph is not one curve with a strange formula - it is many identical circles drawn with a turning offset",
+      "`setheading` sets an absolute angle; `right` adds to the current one - the shape depends on which one you use"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**0 + 30 + 5 = 35%**\n\n**This file cannot be run here.** It needs `tkinter`, and this\nmachine has no display and no `tkinter`. The 40 points for *it runs* are\ntherefore not points I can give, and I do not give them.\n\nThe larger point: **`tkinter` does not exist on Termux either.** These\nfiles cannot be run on the phone this whole system is built around. They\nare not broken — they are stranded.\n\n**What is right, by reading**\n\nThe maths is right, and it is a lovely piece of maths. The turtle draws a circle of radius 100, then turns 10 degrees further than last time and draws another; thirty-seven circles later, every one of them overlapping the others at a slightly different angle, and the whole thing comes out as a rosette. The heading is read *before* each circle (`current_heading = tim.heading()`) and then set to `current_heading + 10`, so the offset accumulates exactly as it should.\n\nThe two speeds are also right: `speed('fastest')` and a pen of width 5, because thirty-seven overlapping circles would take forever at normal speed.\n\n**What is not**\n\n**There are no comments**, and the two numbers that make the shape — 37 and 10 — are magic. A reader who changes one of them cannot predict what happens, and the number 10 is the actual subject of the file: a circle every 10 degrees, thirty-seven times.\n\nThe colour function has the same flaw as the one in `Random_color.py` — a local variable named the same as the function that returns it — and it is the same idea repeated, which is worth noticing: you wrote that shape twice.\n\nThere is also no explanation of why the turtle draws a *circle* instead of a polygon: `tim.circle(100)` draws an arc of that radius, and 360 degrees of it is a circle.\n\n**The one thing to fix first**\n\nTwo comments on the two magic numbers:\n\n```python\ni = 0\nwhile i < 37:            # How many circles to draw.\n    tim.setheading(current_heading + 10)  # Each circle is drawn 10 degrees further round.\n```\n\nThat pair of comments turns the file from a recipe into an explanation.\n"
+  }
 }

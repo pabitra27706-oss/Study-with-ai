@@ -15,9 +15,9 @@
     ],
     "description": "A keyboard-controlled drawing app using W/A/S/D keys to move the turtle and C to clear the screen. A complete interactive turtle application.",
     "learningNotes": {
-      "whatILearned": "Binding multiple keys to different turtle actions and using screen.clearscreen() to reset the drawing.",
-      "challenges": "Ensuring key bindings do not interfere with each other and that the screen remains responsive.",
-      "nextSteps": "Add pen color selection with number keys and an undo feature."
+      "whatILearned": "An etch-a-sketch is a turtle with keys: one key forwards, one back, one to turn each way, one to clear.",
+      "challenges": "The A key turns right and the D key turns left — the opposite of what anybody would expect from those two letters.",
+      "nextSteps": "Swap the two bindings so A turns left and D turns right, and comment why the heading is changed by adding and subtracting."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "WASD-controlled turtle drawing with clear function.",
       "dateAdded": "2026-01-13T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "incomplete",
+      "score": 20,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "Changing direction means changing the heading by a fixed amount — subtracting for a right turn and adding for a left, because the angles run clockwise",
+      "A and D turning the wrong way is the kind of bug that survives because nobody plays the game"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**0 + 20 + 0 = 20%**\n\n**This file cannot be run here.** It needs `tkinter`, and this\nmachine has no display and no `tkinter` — so the 40 points for *it runs* are\nnot ones I can give, and they are not given. The other two bands are judged\nby reading the code, carefully, line by line.\n\nThere is a bigger point here, and it is worth saying plainly: **`tkinter`\ndoes not exist on Termux either.** These files cannot be run on the phone\nthis whole system is built around. They are not broken — they are stranded.\n\n**What is right, by reading**\n\nMost of it is right. The structure is the standard one: five functions, `screen.listen()`, five `onkey` bindings, `turtle.done()` to keep the window open. The turn functions read the current heading, add or subtract 10 degrees and set it back, which is the correct way to turn a turtle relative to where it is pointing.\n\n**What is not**\n\n**A turns right and D turns left.** The bindings are `A → turn_right` and `D → turn_left`. Every player who has ever used an etch-a-sketch expects A to go left and D to go right — those are the left and right arrow keys, and the letters follow them. As it stands the two letters are crossed, and the game feels broken in a way that is hard to describe.\n\nThere is also no comment anywhere, and the turning functions are the part that deserves one: `heading() - 10` for a right turn and `heading() + 10` for a left turn is only correct because turtle angles run clockwise.\n\n**The one thing to fix first**\n\n```python\nscreen.onkey(key='A', fun=turn_left)\nscreen.onkey(key='D', fun=turn_right)\n```\n\nAnd one comment on the turn, because the sign is the whole trick:\n\n```python\nnew_heading = tim.heading() - 10  # Angles run clockwise, so right is minus.\n```\n"
+  }
 }

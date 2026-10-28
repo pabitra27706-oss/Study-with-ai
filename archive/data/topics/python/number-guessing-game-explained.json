@@ -16,9 +16,9 @@
     ],
     "description": "A heavily commented number guessing implementation that explains variable scope, function definitions, and global variables in detail.",
     "learningNotes": {
-      "whatILearned": "How global and local scope interact, when to use the global keyword, and how returning values from functions avoids global state.",
-      "challenges": "Keeping track of which variables are accessible where.",
-      "nextSteps": "Refactor to remove global variables entirely using function parameters and returns."
+      "whatILearned": "The number guessing game with every scope rule written out beside the line it applies to.",
+      "challenges": "The file explains the scope rules so well that it reads like a lesson rather than a game — and it inherits one bug from the earlier version.",
+      "nextSteps": "Fix the difficulty fallback, and then take the file apart until only the game is left."
     }
   },
   "files": [
@@ -29,5 +29,23 @@
       "description": "Number guessing game with detailed scope comments.",
       "dateAdded": "2026-01-14T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 85,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "A comment that says which scope a name lives in is worth more than a comment that says what the line does",
+      "Reading a global is free; changing one is a decision"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 15 = 85%**\n\n**What is right**\n\nThe comments are the best in the archive. This is the same game as `Number_guessing_won.py`, but every line is labelled with the *rule* it demonstrates:\n\n- `# GLOBAL SCOPE: Everything defined here is accessible anywhere in the code.`\n- `# This function has its own LOCAL SCOPE for parameters and variables inside it`\n- `# This function can ACCESS global variables like 'thinking_no' but it can't MODIFY them without using the 'global' keyword`\n- `# Return value exits the function's local scope`\n- `# Calling the function: passing GLOBAL u_input's VALUE to function's LOCAL u_input parameter`\n\nThat last one is the sentence that makes Python's arguments make sense, and most people only learn it by getting it wrong first.\n\nThe game itself works: the guess is read inside the loop, the comparison lives in a function, and the loop stops on a win.\n\n**What is not**\n\n**The same bug as `Number_guessing_won.py`: any difficulty other than 'easy' or 'hard' ends the game instantly.** `attempts` starts at 0 and is only ever increased inside the two `if` branches, so a typo in the difficulty leaves the loop with nothing to run and the game prints *You've run out of guesses. You lose.* without asking for a single guess. `Number_guessing_deep.py` has the fix.\n\nThere is also no `else` branch at all, which is the same bug seen from the other side: there is no statement saying what happens if the answer is neither of the two the code expects.\n\nAnd the lesson, good as it is, is slightly incomplete: the file says a function *cannot modify* a global without the `global` keyword — true — but it never shows the keyword, so the reader is told about a door without being shown where it is.\n\n**The one thing to fix first**\n\nThe missing `else`:\n\n```python\nelse:\n    attempts = 10  # Any other answer still gets a game - otherwise the loop below never runs.\n```\n\nAnd one line to show the door the comment mentions:\n\n```python\n# global thinking_no  <- uncomment this and the function can change the global directly.\n```\n"
+  }
 }

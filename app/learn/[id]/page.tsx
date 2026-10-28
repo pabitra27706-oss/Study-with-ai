@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ExternalLink, PlayCircle, Terminal } from "lucide-react";
+import { Archive, ArrowLeft, ExternalLink, PlayCircle, Terminal } from "lucide-react";
 import { Card, Tag } from "@/components/ui";
 import { renderMarkdown } from "@/lib/markdown";
 import { formatCount } from "@/lib/utils";
@@ -14,6 +14,7 @@ import {
   type CurriculumTask,
   type TaskEvidence,
 } from "@/lib/curriculum";
+import { getArchiveIndex } from "@/lib/archive";
 
 export const dynamic = "force-static";
 
@@ -204,6 +205,11 @@ export default async function LearnTopicPage({
   const notes = verdict?.notes;
   const reviewHtml = judgement?.review ? await renderMarkdown(judgement.review) : null;
 
+  /* The archive entry this topic becomes, so the page can point at it. */
+  const archiveEntry = getArchiveIndex().topics.find(
+    (entry) => entry.curriculumId === topic.id,
+  );
+
   return (
     <main className="mx-auto max-w-4xl px-5 py-12 sm:py-16">
       <Link
@@ -230,6 +236,22 @@ export default async function LearnTopicPage({
           {topic.title}
         </h1>
         <p className="mt-4 text-[15px] leading-relaxed text-muted">{curriculum.summary}</p>
+
+        {/* The round trip. The archive's page links back here to the tasks
+            and the rubric; without this, the topic you are working on had
+            no way to point at the record it is about to become. */}
+        {archiveEntry && (
+          <p className="mt-5 font-mono text-[11px]">
+            <Link
+              href={`/archive/${archiveEntry.id}`}
+              className="inline-flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-muted transition hover:border-brand/40 hover:text-brand-soft"
+            >
+              <Archive className="h-3.5 w-3.5" />
+              see it in the archive
+              <ExternalLink className="h-3 w-3" />
+            </Link>
+          </p>
+        )}
       </header>
 
       {verdict && (

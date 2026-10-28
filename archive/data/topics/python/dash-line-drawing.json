@@ -15,9 +15,9 @@
     ],
     "description": "Draws a dashed line by alternating penup() and pendown() calls inside a loop. Teaches pen control for non-continuous drawing.",
     "learningNotes": {
-      "whatILearned": "Using penup() to lift the pen and pendown() to resume drawing, creating gaps in the path.",
-      "challenges": "Timing the pen state changes to produce evenly spaced dashes.",
-      "nextSteps": "Draw dashed outlines of shapes."
+      "whatILearned": "A dashed line is just: draw, lift the pen, move, put the pen down, and do it fifty times.",
+      "challenges": "Nothing in the file says the pen has to be lifted at all, which is the one idea behind a dashed line.",
+      "nextSteps": "Add one comment on `penup()` — that is the whole trick — and one on the loop bound."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Draws a dashed line with penup/pendown alternation.",
       "dateAdded": "2026-01-12T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 30,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`penup()` lifts the pen so the turtle moves without drawing; `pendown()` puts it back — that is the entire idea behind a dashed line",
+      "The dash is half the distance of the gap, which is why the file moves 10, skips 10, rather than some other ratio"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**0 + 30 + 0 = 30%**\n\n**This file cannot be run here.** It needs `tkinter`, and this\nmachine has no display and no `tkinter` — so the 40 points for *it runs* are\nnot ones I can give, and they are not given. The other two bands are judged\nby reading the code, carefully, line by line.\n\nThere is a bigger point here, and it is worth saying plainly: **`tkinter`\ndoes not exist on Termux either.** These files cannot be run on the phone\nthis whole system is built around. They are not broken — they are stranded.\n\n**What is right, by reading**\n\nIt is right. Fifty dashes of ten units with ten-unit gaps between them, the turtle moving forward the whole time, and `turtle.done()` at the end so the window stays open. The ratio is exactly what a dashed line looks like.\n\n**What is not**\n\nNo comments, and the file has exactly one idea in it — that a dash is made by drawing, lifting the pen, moving, and putting the pen down. Without a word of explanation the reader has to spot `penup()` and work out what it means.\n\n**The one thing to fix first**\n\n```python\nt.penup()  # Lift the pen: the turtle moves here without drawing.\n```\n\nOne line on the one idea the file has.\n"
+  }
 }

@@ -101,7 +101,10 @@ for (const entry of index.topics) {
      which turns git into a churn machine and makes `--check` useless. These
      are the real "last changed" times: the verdict's, or the pack's. */
   const verdictAt = verdictFile?.at ?? topicProgress?.verdict?.at ?? null;
-  const stamp = verdictAt ?? topic.lastUpdated ?? topic.dateCreated ?? new Date().toISOString();
+  /* Never the clock. A generator that stamps "now" rewrites the archive on
+     every single run, which turns git into a churn machine and makes
+     `--check` useless. Every date here comes from a file in the repository. */
+  const stamp = verdictAt || topic.lastUpdated || topic.dateCreated || "";
   const stampDate = String(stamp).slice(0, 10);
 
   /* ---- the learner's own code ------------------------------------------ */
@@ -200,6 +203,7 @@ for (const entry of index.topics) {
     description: topic.description,
     topicFile,
     source: "engine",
+    curriculumId: topic.id,
     verdict: payload.engine.verdict?.status ?? null,
     score: payload.engine.verdict?.score ?? null,
   };
@@ -249,6 +253,24 @@ for (const entry of index.topics) {
         keeper = id;
         break;
       }
+    }
+
+    /* Two topics can genuinely share one program: the original topic and
+       the copy the adoption rule makes of a file written straight into the
+       archive. Stripping the file from the loser would leave that topic
+       with nothing to open — a card with a title and no code — which is a
+       worse fault than the one being repaired. When the loser would be
+       emptied, the file stays with both and is reported. */
+    const emptied = ids.filter((id) => {
+      if (id === keeper) return false;
+      const payload = payloads.get(id);
+      return payload && (payload.files ?? []).length <= 1;
+    });
+    if (emptied.length) {
+      console.log(
+        `  ${filePath} is shared by ${ids.length} topics (${ids.join(", ")}) — kept in both, because taking it away would leave one of them empty.`,
+      );
+      continue;
     }
 
     for (const id of ids) {
@@ -496,7 +518,7 @@ if (existsSync(contentRoot)) {
       /* A topic of its own. Write it once; after that it is hand-written. */
       const topicFile = `data/topics/${lang}/${id}.json`;
       const topicPath = join(ARCHIVE, topicFile);
-      const payload = {
+      const fresh = {
         topic: {
           id,
           title: displayTitle,
@@ -516,27 +538,36 @@ if (existsSync(contentRoot)) {
         ],
       };
 
-      if (!existsSync(topicPath)) {
+      const onDisk = readJson(topicPath);
+      if (!onDisk) {
         if (!CHECK_ONLY) {
           mkdirSync(dirname(topicPath), { recursive: true });
-          writeFileSync(topicPath, `${JSON.stringify(payload, null, 2)}\n`);
+          writeFileSync(topicPath, `${JSON.stringify(fresh, null, 2)}\n`);
         }
         written.push(topicFile);
       }
 
+      /* Whatever is in the file is the truth — not what this script would
+         write today. A description you rewrote by hand, notes you added
+         after it was judged, a verdict you gave it: all of those live in
+         that file, and the catalogue has to show them. Rebuilding the
+         catalogue entry from a fresh guess silently undid every one of
+         those edits on the next build. */
+      const truth = onDisk ?? fresh;
+
       const entry = {
         id,
-        title: displayTitle,
-        language: languageDisplayName(lang),
-        dateCreated: created,
-        lastUpdated: created,
-        fileCount: payload.files.length,
-        tags: payload.topic.tags,
-        description: payload.topic.description,
+        title: truth.topic?.title || displayTitle,
+        language: truth.topic?.language || languageDisplayName(lang),
+        dateCreated: String(truth.topic?.dateCreated || created).slice(0, 10),
+        lastUpdated: String(truth.topic?.lastUpdated || created).slice(0, 10),
+        fileCount: (truth.files ?? []).length,
+        tags: truth.topic?.tags ?? [],
+        description: truth.topic?.description ?? "",
         topicFile,
         source: "adopted",
-        verdict: payload.engine?.verdict?.status ?? null,
-        score: payload.engine?.verdict?.score ?? null,
+        verdict: truth.engine?.verdict?.status ?? null,
+        score: truth.engine?.verdict?.score ?? null,
       };
 
       if (byId.has(id)) {
@@ -571,7 +602,35 @@ if (notCode.length) {
 for (const topic of archiveIndex.topics) {
   const payload = readJson(join(ARCHIVE, topic.topicFile));
   if (!payload) continue;
+
+  /* A file that is listed but no longer on disk is a ghost: the card opens
+     to an empty box, and the download link 404s. Delete the file from the
+     archive and the topic still claimed it, because nothing ever checked.
+     The list is now read from the disk, so a deleted file leaves the
+     catalogue too. */
+  const before = (payload.files ?? []).length;
+  const present = (payload.files ?? []).filter(
+    (file) => existsSync(join(ARCHIVE, file.filePath)),
+  );
+  if (present.length !== before) {
+    const dropped = (payload.files ?? [])
+      .filter((file) => !existsSync(join(ARCHIVE, file.filePath)))
+      .map((file) => file.filePath);
+    payload.files = present;
+    const topicPath = join(ARCHIVE, topic.topicFile);
+    if (!CHECK_ONLY) writeFileSync(topicPath, `${JSON.stringify(payload, null, 2)}\n`);
+    written.push(topic.topicFile);
+    console.log(`  ${topic.id}: ${dropped.join(", ")} is gone — dropped from the topic.`);
+  }
+
   topic.fileCount = (payload.files ?? []).length;
+
+  /* The directory a topic lives in. The browser needs it to fetch the
+     topic's own JSON, and the directory name is not always the same as
+     the language spelled out — "html-css" is the directory, "HTML/CSS" is
+     the language. Guessing one from the other broke every card in a
+     language whose name is not a plain word. */
+  topic.langSlug = topic.topicFile.split("/").slice(-2, -1)[0] ?? "";
 
   /* A topic with no date is a topic nobody could date. The file it holds
      may know when it was written — an entry that was written and never
@@ -597,6 +656,113 @@ for (const topic of archiveIndex.topics) {
   }
 }
 
+/* ---- the pending list ----------------------------------------------------
+   Work that exists but has no verdict yet.
+
+   A file written straight into the archive is adopted on the next build,
+   and from that moment it is on the site with nothing but the code — no
+   verdict, no notes, no review. That is a file nobody looks at again, and
+   nothing anywhere says it is waiting.
+
+   So the generator writes the list of everything waiting. `scripts/check.sh`
+   prints it, `runbook/START-HERE.md` tells me to read it first, and the
+   archive's own pages say "waiting to be judged" instead of showing
+   nothing. The archive is an input; this is the queue for it. */
+const pending = [];
+for (const topic of archiveIndex.topics) {
+  const payload = readJson(join(ARCHIVE, topic.topicFile));
+  if (!payload) continue;
+  const files = payload.files ?? [];
+  if (!files.length) continue;
+  if (payload.engine?.verdict?.status) continue;
+
+  pending.push({
+    id: topic.id,
+    title: payload.topic?.title || topic.title,
+    language: topic.language,
+    topicFile: topic.topicFile,
+    reason:
+      topic.source === "adopted"
+        ? "written straight into the archive"
+        : topic.source === "engine"
+          ? "submitted to the engine, not judged yet"
+          : "older work, never judged",
+    dateCreated: topic.dateCreated,
+    files: files.map((file) => file.filePath),
+  });
+}
+/* Newest first, so the work that arrived last is the first thing you see.
+   The older backlog is still listed — it is still unjudged — but it never
+   hides the file that landed five minutes ago. */
+pending.sort(
+  (a, b) =>
+    String(b.dateCreated ?? "").localeCompare(String(a.dateCreated ?? "")) ||
+    String(a.id).localeCompare(String(b.id)),
+);
+
+const pendingPayload = {
+  note: "Work in the archive with no verdict yet. Judge these before anything else.",
+  count: pending.length,
+  topics: pending,
+};
+const pendingSerialised = `${JSON.stringify(pendingPayload, null, 2)}\n`;
+const pendingPath = join(ARCHIVE, "data", "archive-pending.json");
+const pendingChanged =
+  !existsSync(pendingPath) || readFileSync(pendingPath, "utf8") !== pendingSerialised;
+
+/* ---- the code index -------------------------------------------------------
+   The archive searches titles, descriptions and tags. That cannot answer the
+   question a code archive exists to answer: "where did I use recursion?".
+
+   So the generator reads the code and writes an index of the words in it —
+   one list per topic. It is not the code: it is the vocabulary of the code,
+   which is a fraction of the size and is enough to answer "which topics
+   mention this". The browser fetches it only when you actually search, and
+   the Pages CDN serves it compressed. */
+const CODE_INDEX_STOP = new Set([
+  "the", "and", "for", "not", "you", "this", "that", "with", "from", "have",
+  "has", "are", "was", "were", "but", "all", "can", "will", "your", "our",
+  "its", "it's", "they", "them", "then", "than", "there", "here", "what",
+  "which", "when", "where", "how", "why", "who", "does", "did", "been",
+  "being", "would", "could", "should", "about", "into", "out", "get", "got",
+]);
+
+function codeIndexWords(text) {
+  const words = new Set();
+  for (const word of String(text).match(/[A-Za-z_][A-Za-z0-9_]{2,}/g) ?? []) {
+    const lower = word.toLowerCase();
+    if (CODE_INDEX_STOP.has(lower)) continue;
+    words.add(lower);
+  }
+  return words;
+}
+
+const codeIndex = {};
+for (const topic of archiveIndex.topics) {
+  const payload = readJson(join(ARCHIVE, topic.topicFile));
+  if (!payload) continue;
+  const words = new Set();
+  for (const file of payload.files ?? []) {
+    const path = join(ARCHIVE, file.filePath);
+    if (!existsSync(path)) continue;
+    try {
+      for (const word of codeIndexWords(readFileSync(path, "utf8"))) words.add(word);
+    } catch {
+      /* A file that cannot be read simply contributes nothing. */
+    }
+  }
+  if (words.size) codeIndex[topic.id] = [...words].sort();
+}
+
+const codeIndexPayload = {
+  note: "The words that appear in each topic's code. Built by scripts/build-archive.mjs.",
+  topics: codeIndex,
+};
+const codeIndexSerialised = `${JSON.stringify(codeIndexPayload, null, 0)}\n`;
+const codeIndexPath = join(ARCHIVE, "data", "code-index.json");
+const codeIndexChanged =
+  !existsSync(codeIndexPath) || readFileSync(codeIndexPath, "utf8") !== codeIndexSerialised;
+
 /* ---- metadata ------------------------------------------------------------ */
 const languages = new Set(
   (archiveIndex.metadata?.languages ?? []).concat(
@@ -621,9 +787,9 @@ const indexChanged =
   !existsSync(archiveIndexPath) || readFileSync(archiveIndexPath, "utf8") !== serialisedIndex;
 
 if (CHECK_ONLY) {
-  if (written.length || indexChanged) {
+  if (written.length || indexChanged || pendingChanged || codeIndexChanged) {
     console.error(
-      `  The archive is out of date: ${written.length} topic file(s) and the index need regenerating.`,
+      `  The archive is out of date: ${written.length} topic file(s), the index, the pending list and the code index need regenerating.`,
     );
     process.exit(1);
   }
@@ -632,6 +798,8 @@ if (CHECK_ONLY) {
 }
 
 if (indexChanged) writeFileSync(archiveIndexPath, serialisedIndex);
+if (pendingChanged) writeFileSync(pendingPath, pendingSerialised);
+if (codeIndexChanged) writeFileSync(codeIndexPath, codeIndexSerialised);
 
 /* ---- mirror into public/ so the site can serve them ------------------------
    The archive pages read the catalogue at build time, but the browser needs
@@ -644,6 +812,8 @@ rmSync(mirror, { recursive: true, force: true });
 rmSync(dataMirror, { recursive: true, force: true });
 mkdirSync(dataMirror, { recursive: true });
 copyFileSync(archiveIndexPath, join(dataMirror, "index.json"));
+copyFileSync(pendingPath, join(dataMirror, "archive-pending.json"));
+copyFileSync(codeIndexPath, join(dataMirror, "code-index.json"));
 
 let mirrored = 0;
 for (const topic of archiveIndex.topics) {
@@ -674,4 +844,10 @@ for (const topic of archiveIndex.topics) {
 console.log(
   `  archive: ${archiveIndex.topics.length} topics · ${archiveIndex.metadata.totalFiles} files · ${written.length} topic file(s) rewritten`,
 );
+console.log(
+  pending.length
+    ? `  waiting to be judged: ${pending.length} topic(s) — see data/archive-pending.json`
+    : "  waiting to be judged: nothing",
+);
+console.log(`  code index: ${Object.keys(codeIndex).length} topic(s), ${Object.values(codeIndex).reduce((sum, words) => sum + words.length, 0)} word(s)`);
 console.log(`  public mirror: ${mirrored} file(s) ready for download`);

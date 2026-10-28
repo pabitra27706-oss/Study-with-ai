@@ -15,9 +15,9 @@
     ],
     "description": "Takes a first and last name and returns them formatted in title case. A gentle introduction to defining and calling functions with return values.",
     "learningNotes": {
-      "whatILearned": "Defining a function with parameters, using str.title() for formatting, and returning a value.",
-      "challenges": "Understanding the difference between printing inside a function and returning a value.",
-      "nextSteps": "Add optional middle name parameter and handle empty string input."
+      "whatILearned": "A name formatter: take a first name and a last name and print them properly capitalised.",
+      "challenges": "The file defines the same function twice, and the second definition quietly replaces the first.",
+      "nextSteps": "Give the two versions different names, or fold them into one function with a check inside."
     }
   },
   "files": [
@@ -35,5 +35,23 @@
       "description": "Formatted name function — version 2 with variation.",
       "dateAdded": "2026-01-08T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 85,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "Redefining a function replaces the earlier one - it does not add to it",
+      "`.title()` capitalises every word, so 'macdonald' becomes 'Macdonald' - that is usually what you want"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 15 = 85%**\n\n**What is right**\n\nBoth files run and both do what they claim. `.title()` on `pAbItRa` gives `Pabitra` and on `cHaKrAbOrTtY` gives `Chakrabortty`, and the output reads *Your formatted name is Pabitra Chakrabortty* — which is the point of the exercise, and it comes out right.\n\nThe second version also checks for empty input before it does anything else, which is the kind of guard that keeps a program from doing something silly with nothing.\n\n**What is not**\n\n**The file defines `formatted_name` twice.**\n\n```python\ndef formatted_name(name, s_name):   # version 1 - capitalises\n    ...\nprint(formatted_name(\"pAbItRa\", \"cHaKrAbOrTtY\"))\n\nprint(\"Example 02:\")\ndef formatted_name(name, s_name):   # version 2 - the same name again\n    ...\n```\n\nThe second definition **replaces** the first one completely — it is not an overload and not an override, it is the same name bound to a new function. Every call after that line uses version 2. So `002_day_10_practice.py` and `002_day_10_practice(1).py` are the same file with a different name, and each of them runs two examples where the first one is already using the second definition (the first call happens after both definitions, so the *empty-input check* is silently active in 'Example 01' too — and the empty check is not visible in the output at all).\n\nTwo fixes: give them different names (`formatted_name` and `safe_formatted_name`), or write one function with the check inside it — which is what you would actually ship.\n\n**The one thing to fix first**\n\nOne function instead of two:\n\n```python\ndef formatted_name(name, s_name):\n    if not name or not s_name:\n        return \"You entered invalid input....\"\n    return f\"Your formatted name is {name.title()} {s_name.title()}\"\n```\n\nThen `002_day_10_practice(1).py` and `002_day_10_practice.py` can be one file, and the archive stops carrying the same program twice.\n"
+  }
 }

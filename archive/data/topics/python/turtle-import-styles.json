@@ -15,9 +15,9 @@
     ],
     "description": "Demonstrates three ways to import the Turtle module: import turtle, from turtle import Turtle, and import turtle as t. Clarifies Python import mechanics.",
     "learningNotes": {
-      "whatILearned": "The difference between module-level imports and object imports, and how aliases reduce typing.",
-      "challenges": "Understanding namespace differences between each import style.",
-      "nextSteps": "Apply import patterns to other standard library modules."
+      "whatILearned": "There are three ways to bring turtle into a program, and the file shows all three — one after another.",
+      "challenges": "The file ends without a screen, so the window opens and closes again straight away and you never see the turtle.",
+      "nextSteps": "Add the screen and `exitonclick()` at the end, and put one comment on each import saying what it gives you."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Three import style examples for the turtle module.",
       "dateAdded": "2026-01-11T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "incomplete",
+      "score": 25,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`import turtle` gives you the module, `from turtle import Turtle` gives you the class — the two are not interchangeable",
+      "A turtle program without `exitonclick()` or `turtle.done()` closes its window the instant it ends"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**0 + 20 + 5 = 25%**\n\n**This file cannot be run here.** It needs `tkinter`, and this\nmachine has no display and no `tkinter` — so the 40 points for *it runs* are\nnot ones I can give, and they are not given. The other two bands are judged\nby reading the code, carefully, line by line.\n\nThere is a bigger point here, and it is worth saying plainly: **`tkinter`\ndoes not exist on Termux either.** These files cannot be run on the phone\nthis whole system is built around. They are not broken — they are stranded.\n\n**What is right, by reading**\n\nThe three styles are all there and they are all real: `import turtle`, `from turtle import Turtle`, and `import turtle as t`. Showing the commented-out versions of the first two beside the working third one is a good way to write the comparison down.\n\n**What is not**\n\n**The window closes the instant the program ends.** The file creates a turtle and stops — there is no `Screen()`, no `exitonclick()`, no `turtle.done()`. Run it and the window appears for a fraction of a second and vanishes, which looks exactly like the program doing nothing at all.\n\nAnd the lesson is only half-written: the file shows three styles of import but never says what the difference *is*.\n\n**The one thing to fix first**\n\n```python\nimport turtle as t\ntim = t.Turtle()\n\nscreen = t.Screen()\nscreen.exitonclick()  # Without this the window closes the moment the script ends.\n```\n\nThen one line per import style, saying what each one gives you.\n"
+  }
 }
