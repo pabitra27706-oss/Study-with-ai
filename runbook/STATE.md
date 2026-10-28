@@ -1,6 +1,7 @@
 # State
 
-**Written: 2026-10-28.** Update this file whenever something in it changes.
+**Written: 2026-10-28. Last updated: 2026-10-28, after PR #6 merged.**
+Update this file whenever something in it changes.
 
 ## The two accounts
 
@@ -28,9 +29,10 @@
 | | |
 |---|---|
 | Clone | `https://github.com/pabitra27706-oss/Study-with-ai.git` |
-| Live branch | `arena/46ac3b37-study-with-ai` |
-| PR | **#6** — open, mergeable, clean. *Not merged.* |
-| Superseded | PR #5 (its content was cherry-picked into #6). Close it after #6 merges. |
+| Canonical branch | `main` |
+| Working branch | `arena/46ac3b37-study-with-ai` (this session's branch) |
+| Merged | **PR #6** → `main` at `a8add89`, deployed to Pages, green. |
+| Superseded | PR #5 — **closed** as a duplicate of #6. Its only remaining diff was the `docs/` build output, which #6 deliberately removed. Never merge it. |
 | Archive repo | `https://github.com/pabitra27706-oss/portfolio` — 68 topics, 82 files |
 | Deploy | Pages workflow committed by the owner at `414c6fe`; the hardened copy lives at `scripts/deploy-workflow.yml` |
 
@@ -70,6 +72,7 @@ node scripts/serve-static.mjs 3000 out    # preview locally
 - `node runner/apply-verdict.mjs c-loops` — notes, review, history, progress and the topic all update; re-running is idempotent.
 - The whole loop, end to end, in a throwaway clone: CodeC file -> collect -> brief -> verdict -> apply. A deliberately-wrong `t2.c` using `int` instead of `long long` **passed all 4 test cases** and was still judged wrong. That is the whole argument for a human-shaped judge.
 - Live site renders the verdict, the machine facts, the notes and the review.
+- PR #6 merged to `main` as `a8add89`; the Pages deployment for it returned `success`.
 
 ## Sandbox constraints (these will bite you)
 

@@ -7,8 +7,8 @@ can do it now. "Owner" means only the user can.
 
 | # | What | Why it matters | Owner |
 |---|---|---|---|
-| 1 | Merge PR #6 | Everything above is on the branch, not on `main`. The live site does not show the new learn pages until it merges. | Owner |
-| 2 | Close PR #5 | Its content was cherry-picked into #6. Leaving it open invites a double merge. | Owner, after #6 |
+| 1 | ~~Merge PR #6~~ | **Done** — merged as `a8add89`, deployed green. | — |
+| 2 | ~~Close PR #5~~ | **Done** — closed as a duplicate of #6. | — |
 | 3 | `cp scripts/deploy-workflow.yml .github/workflows/deploy.yml` and push | The hardened Pages workflow. The sandbox token cannot push workflow files. | Owner |
 | 4 | Replace the placeholder LinkedIn and email | `content/site.ts` and `content/links.ts` still carry placeholders. | Owner |
 | 5 | Write the `pabi277` profile README | It is still the untouched GitHub profile template. This is the first thing a recruiter sees. | Owner or Claude |

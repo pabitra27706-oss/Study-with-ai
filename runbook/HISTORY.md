@@ -136,3 +136,20 @@ file moving around on the phone.
 `GitCredentialsStore` and feeds it to git through an askpass script (never into
 a remote URL), pushes the branch name explicitly, and has a **Publish to
 GitHub** flow that creates a repo through `POST /user/repos`.
+
+---
+
+## 2026-10-28 — PR #6 merged, PR #5 closed
+
+**Decided.** The owner's instruction was *"Please merge the pull request."*
+
+**Done.** PR #6 squashed into `main` as `a8add89` — matching the repository's
+existing convention, since `main` carries no merge commits, only squash
+merges. The Pages deployment for it returned `success`. PR #5 was closed as a
+duplicate: its only remaining diff was the `docs/` build output, which #6
+deliberately removed from version control, so merging it would have undone
+that.
+
+**Also done.** The runbook was updated to match reality. A runbook that still
+says "PR #6 is open" after it has merged is exactly the failure this folder
+exists to prevent.
