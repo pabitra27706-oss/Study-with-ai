@@ -132,7 +132,8 @@
       "source": "engine",
       "verdict": null,
       "score": null,
-      "langSlug": "c"
+      "langSlug": "c",
+      "curriculumId": "data-structures-c"
     },
     {
       "id": "c-multiplication-table",

@@ -22,6 +22,8 @@ export type ArchiveIndexEntry = {
   topicFile: string;
   /** "engine" when the learning engine wrote this entry. */
   source?: string;
+  /** The learning topic this entry came from, when the engine wrote it. */
+  curriculumId?: string;
   verdict?: string | null;
   score?: number | null;
   /**

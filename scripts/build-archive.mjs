@@ -203,6 +203,7 @@ for (const entry of index.topics) {
     description: topic.description,
     topicFile,
     source: "engine",
+    curriculumId: topic.id,
     verdict: payload.engine.verdict?.status ?? null,
     score: payload.engine.verdict?.score ?? null,
   };
