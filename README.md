@@ -17,10 +17,10 @@ Actions is the build machine.
 | ---- | ---------- |
 | [`GITHUB-AUDIT.md`](GITHUB-AUDIT.md) | **Start here.** A full audit of both GitHub accounts — 47 repositories, what each one proves, what is broken, and a 30-day fix list. |
 | [`LEARNING-JOURNEY.md`](LEARNING-JOURNEY.md) | The research-backed design of the learning system: how AI is used, what Git is for, the guardrails that keep it honest, and how all of it works from a phone. 11 sections, 40 sources. |
-| [`runbook/`](runbook/) | **The operating procedure.** State, the loop, how to judge, setup, the decision log (including what was rejected) and the open list. Written so that a fresh chat with no memory can pick up the thread. |
+| [`runbook/`](runbook/) | **The operating procedure.** State, the loop, how to judge, **how to write a topic** (`NEW-TOPIC.md`), setup, the decision log (including what was rejected) and the open list. Written so that a fresh chat with no memory can pick up the thread. |
 | [`LEARNING-SYSTEM.md`](LEARNING-SYSTEM.md) | **The machine that judges you.** AI-written topics with curated video sources, machine-checked tasks, a why-comment checker, a written rubric — and the brief that I read before I judge, and the script that writes my verdict back. How it works, how to add a topic, how to publish into the archive. |
-| `curriculum/` | **Topic packs** — the teaching half. Explanation, videos with a reason for each, tasks with hidden test cases, rubric. Written by AI. |
-| `learn/` | **Your half and my half.** You write `solutions/*.c` and `answers.json` in CodeC; I write `verdict.json`, `notes.json`, `review.md` and `history.md` back. |
+| `curriculum/` | **Topic packs** — the teaching half. Explanation, videos with a reason for each **and their measured views and likes**, tasks with hidden test cases, rubric. Written by AI. |
+| `learn/` | **Your half and my half.** You write `solutions/*.c` and `answers.json` in CodeC; I write `verdict.json`, `notes.json`, `review.md` and `history.md` back. `learn/archive/` holds the topics that are finished. |
 | `runner/` | The instrument: `evidence.mjs` is the sensor (compile, test, comment check); `brief.mjs` assembles the judging brief; `apply-verdict.mjs` writes a verdict into the repository. |
 | [`ROADMAP.md`](ROADMAP.md) | The career roadmap — JELET + Jadavpur University CSE on one spine, Android/Full-Stack/AI on the other, plus the part-time income plan. 79 sources. |
 | `app/` `components/` `content/` `lib/` | The website. Next.js 16 + Tailwind v4, static export, content generated from `content/*.ts` and `journal/*.md`. |
@@ -29,7 +29,7 @@ Actions is the build machine.
 | `notes/` | AI-compiled, human-owned topic notes. |
 | `cards/` | Spaced-repetition cards, curated by hand from mistakes. |
 | [`AGENTS.md`](AGENTS.md) | The contract for any AI working in this repo. Read it before touching anything. |
-| `scripts/` | `collect.sh` (the CodeC bridge — copy in, check, commit, push), `check.sh` (print the judging brief), `termux-setup.sh` (one-command deploy from Android), `export-to-portfolio.mjs` (publish into the archive), `deploy-workflow.yml` (the hardened Pages workflow). |
+| `scripts/` | `collect.sh` (the CodeC bridge — copy in, check, commit, push), `check.sh` (print the judging brief), `new-topic.mjs` (scaffold a topic pack), `check-topic.mjs` (validate one — the gate), `termux-setup.sh` (one-command deploy from Android), `export-to-portfolio.mjs` (publish into the archive), `deploy-workflow.yml` (the hardened Pages workflow). |
 | `scripts/deploy-workflow.yml` | The canonical Pages workflow. Copy it into `.github/workflows/deploy.yml` and push — that is what makes every push to `main` redeploy the site. |
 | [`DEPLOY.md`](DEPLOY.md) | How to build and deploy the site (GitHub Pages, Vercel, Netlify, Cloudflare) — including the Termux walkthrough. |
 
@@ -160,9 +160,9 @@ the difference between a system you will actually use and one you will not.
 ```bash
 pkg install nodejs clang            # once
 
-bash scripts/collect.sh c-loops t1  # CodeC -> repo -> compile, test, commit, push
+bash scripts/collect.sh data-structures-c t1  # CodeC -> repo -> compile, test, commit, push
 # then, in this chat:
-#   check c-loops
+#   check data-structures-c
 ```
 
 No paid service, no key, no laptop, and no bot talking to your repository

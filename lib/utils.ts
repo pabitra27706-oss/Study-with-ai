@@ -20,6 +20,19 @@ export function slugify(input: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
+/**
+ * Counts, the way a video page shows them: 5,880,358 becomes 5.9M.
+ *
+ * These numbers are measured, not estimated, so they deserve to be readable
+ * at a glance rather than printed in full.
+ */
+export function formatCount(value: number): string {
+  if (!Number.isFinite(value)) return "—";
+  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1).replace(/\.0$/, "")}M`;
+  if (value >= 1_000) return `${(value / 1_000).toFixed(1).replace(/\.0$/, "")}K`;
+  return String(value);
+}
+
 /** Adds a smooth "marching ants" gradient border to a card. */
 export function progressTone(progress: number): string {
   if (progress >= 100) return "bg-ok";

@@ -2,7 +2,7 @@
 # ---------------------------------------------------------------------------
 # check.sh — the judging brief.
 #
-#   bash scripts/check.sh c-loops
+#   bash scripts/check.sh data-structures-c
 #
 # Prints everything needed to judge a submission: what was taught, what the
 # task asked, the code, the machine facts and the written answers.

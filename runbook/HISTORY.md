@@ -223,3 +223,121 @@ N — cannot exist in it, and none of its three comments explain a why.
 **Also.** `runbook/START-HERE.md` is new: a permanent, copy-paste prompt for
 starting a new chat, with a table for reading a push before guessing, and the
 instruction to ask when it is ambiguous.
+
+---
+
+## 2026-10-28 — PR #8 merged
+
+**Done.** PR #8 squashed into `main` as `e6973cd`. The Pages deployment for it
+returned `success`. It carried the sensor's leniency fix, the corrected
+verdict on the learner's `t2.c`, the *output carries extra text* display on the
+site, and `runbook/START-HERE.md`.
+
+**Also decided here.** The PR ledger in `STATE.md` now points at
+`gh pr list --state all` as the source of truth, and the table records only
+the decisions that matter. A merge on its own is no longer worth a runbook
+edit — which stops this file needing a new commit after every single merge.
+
+**The PR ledger, for the record.**
+
+| PR | State | What it was |
+|---|---|---|
+| #1–#4 | merged | the site, the Termux tooling, the audit, the roadmap |
+| #5 | closed | duplicate of #6 — do not merge |
+| #6 | merged | the learning engine: CodeC → push → Claude judges |
+| #7 | closed | superseded by #8 |
+| #8 | merged | the first real judgement, and the sensor fix |
+| #9 | closed | the PR #8 bookkeeping — folded into the topic-swap PR |
+| #10 | open | the `data-structures-c` topic, and the authoring system |
+
+---
+
+## 2026-10-29 — The demo pack is retired; the first real topic ships
+
+**The complaint.** *"remove the c loops and add a real topic as we planned as
+a beginner friendly"* and, separately, *"your youtube suggestions are bad see
+the views, like etc to find the best video"*.
+
+**What the second complaint was actually about.** The `c-loops` pack shipped
+**"For Loop in C Programming (With Examples for Beginners)" — 327 views, 12
+likes**, from a channel with no audience for the topic. Nothing in the
+repository had checked. A video recommendation is a claim about other people's
+time, and it was being made on vibes.
+
+**What was done.**
+
+- `c-loops` is retired: the pack and its reference solutions are removed, and
+  the learner's work moved to `learn/archive/c-loops/` with a note saying what
+  the topic was, what they finished and what the verdict was. **Archived, not
+  deleted** — the git history and the folder are the record.
+- A new topic, `data-structures-c`: linked lists, stacks and queues in C, with
+  pointer and `malloc` groundwork so it is genuinely beginner-friendly. 14
+  explanation sections, 16 videos, 8 tasks over 100 points, 6 rubric questions,
+  8 reference solutions.
+- Every video in the pack carries **measured** views, likes, length, channel,
+  upload date and the date the numbers were read. The lowest reach of any
+  video is **535,687 views**; the highest is 5,880,358.
+
+**Where the videos came from.** Two English-language channels that implement
+these structures in C: **MyCodeSchool** (the 42-video "Data structures"
+course, 15,278,890 views — the spine of the topic) and **freeCodeCamp.org**
+(the pointers course, 5,880,358 views — the stated prerequisite; and the
+10-hour compilation of the same MyCodeSchool course, 4,034,678 views).
+
+**Rejected after checking, not after guessing.** A 886,367-view "Learn Linked
+Lists in 13 minutes" video (Bro Code) — it is **Java**. CodeWithHarry's
+linked-list playlist (1,191,488 views) — it is **in Hindi**, and the learner is
+English-only. A freeCodeCamp video id lower-cased from a blog link —
+**"This video isn't available anymore"**. A 1.7M-view Jenny's Lectures C
+playlist — it stops at functions and never reaches data structures.
+
+---
+
+## 2026-10-29 — Videos are chosen on measured numbers, and the numbers are recorded
+
+**Decided.** Every video in a topic pack carries its real `views`, `likes`,
+`length`, `published` date and a `measuredOn` date, read off the watch page on
+the day it was checked. The `why` for a video must say why *this* one, for
+*this* learner, at *this* point in the topic — "a good video" is not a reason.
+
+**The floor.** `scripts/check-topic.mjs` refuses any video below **100,000
+views**. That is roughly 300x the video that was rejected, and about 1% of a
+good channel's back catalogue. Below the floor, a video belongs in
+`references` as a text link, or nowhere.
+
+**How to measure.** `fetch_page` on `https://www.youtube.com/watch?v=<id>`
+returns `Views`, `Likes`, `Length`, `Uploaded by`, `Uploaded at` and the
+transcript. A playlist page returns per-video titles, ids, durations and the
+playlist total, but **not** per-video likes — fetch the watch page for those.
+Reading the transcript is also how you catch the two traps: a high-traffic
+video in the wrong language, and a high-traffic video in the wrong programming
+language.
+
+---
+
+## 2026-10-29 — The authoring system
+
+**Decided.** Writing a topic is a documented, repeatable procedure with two
+tools, not something re-invented each time.
+
+- **`runbook/NEW-TOPIC.md`** — the sequence, in order: decide, scaffold,
+  explain, measure the videos, write the tasks, write the reference solutions,
+  write the rubric, validate, preview, commit, retire.
+- **`scripts/new-topic.mjs`** — the scaffolder. One command creates the pack
+  skeleton, the reference folder, the learner's folder and the index entry.
+  It refuses to overwrite anything.
+- **`scripts/check-topic.mjs`** — the validator, and the gate. It enforces
+  the view floor, a `why` on every video, a hidden test on every task, points
+  summing to exactly 100, a reference solution per task, and — with `--deep` —
+  that every reference solution compiles, passes its own tests and scores 100
+  on "the code explains itself".
+
+**Verified it bites.** The validator was run against a deliberately broken copy
+of the new pack with the old 327-view video put back and a hidden test
+removed. It failed it with exactly those two problems and exited 1.
+
+**The other rule, from the same failure.** A topic the learner has not touched
+is **0%**, and it says 0%. The previous pack shipped a finished example inside
+the graded folder, which inflated it to 29% before the learner had written a
+line. The new learner's folder ships with `answers.json` empty and only a
+`.gitkeep` in `solutions/`.

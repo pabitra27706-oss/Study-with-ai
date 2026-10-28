@@ -16,10 +16,10 @@
 #   /sdcard/Download/
 #
 # Example:
-#   bash scripts/collect.sh c-loops t1
-#   bash scripts/collect.sh c-loops t1 ~/storage/downloads/t1.c
+#   bash scripts/collect.sh data-structures-c t1
+#   bash scripts/collect.sh data-structures-c t1 ~/storage/downloads/t1.c
 #
-# Then say "check c-loops" and I read the brief, judge it, and write the
+# Then say "check data-structures-c" and I read the brief, judge it, and write the
 # verdict back into the repository.
 # ---------------------------------------------------------------------------
 set -euo pipefail
@@ -32,7 +32,7 @@ SOURCE="${3:-}"
 
 if [ -z "$TOPIC" ] || [ -z "$TASK" ]; then
   echo "usage: bash scripts/collect.sh <topic> <task> [source-file]" >&2
-  echo "  e.g. bash scripts/collect.sh c-loops t1" >&2
+  echo "  e.g. bash scripts/collect.sh data-structures-c t1" >&2
   exit 1
 fi
 

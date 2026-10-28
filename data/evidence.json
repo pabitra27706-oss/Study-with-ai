@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-10-28T18:09:06.300Z",
+  "generatedAt": "2026-10-28T18:57:34.889Z",
   "compiler": {
     "bin": "gcc",
     "version": "gcc (Debian 12.2.0-14+deb12u1) 12.2.0"
   },
   "topics": {
-    "c-loops": {
-      "id": "c-loops",
-      "title": "Loops in C",
+    "data-structures-c": {
+      "id": "data-structures-c",
+      "title": "Data Structures in C: linked lists, stacks, queues",
       "language": "C",
-      "submitted": 1,
+      "submitted": 0,
       "tasks": {
         "t1": {
           "id": "t1",
-          "title": "Print 1 to N",
+          "title": "One list, one node per value",
           "status": "not-submitted",
           "passed": 0,
-          "total": 3,
+          "total": 4,
           "points": 0,
           "maxPoints": 10,
           "compileError": null,
@@ -25,77 +25,43 @@
         },
         "t2": {
           "id": "t2",
-          "title": "Factorial of N",
-          "status": "passed",
-          "passed": 4,
-          "total": 4,
-          "points": 15,
-          "maxPoints": 15,
-          "compileError": null,
-          "failing": [],
-          "noisy": [
-            {
-              "expected": "120",
-              "actual": "Enter an integer: Factorial of 5 = 120"
-            },
-            {
-              "expected": "1",
-              "actual": "Enter an integer: Factorial of 0 = 1"
-            },
-            {
-              "expected": "1",
-              "actual": "Enter an integer: Factorial of 1 = 1"
-            },
-            {
-              "expected": "3628800",
-              "actual": "Enter an integer: Factorial of 10 = 3628800"
-            }
-          ],
-          "explain": {
-            "score": 70,
-            "flags": [
-              {
-                "kind": "no-why",
-                "line": 3,
-                "text": "Recursive function declaration",
-                "message": "This comment states what, not why. Explain the reason or delete it."
-              },
-              {
-                "kind": "no-why",
-                "line": 6,
-                "text": "Base case: 0! = 1",
-                "message": "This comment states what, not why. Explain the reason or delete it."
-              },
-              {
-                "kind": "no-why",
-                "line": 8,
-                "text": "Recursive case",
-                "message": "This comment states what, not why. Explain the reason or delete it."
-              }
-            ],
-            "stats": {
-              "lines": 25,
-              "comments": 3,
-              "whyComments": 0,
-              "significantLines": 0
-            }
-          }
-        },
-        "t3": {
-          "id": "t3",
-          "title": "Sum of digits",
+          "title": "Push to the front",
           "status": "not-submitted",
           "passed": 0,
           "total": 4,
           "points": 0,
-          "maxPoints": 15,
+          "maxPoints": 12,
+          "compileError": null,
+          "failing": [],
+          "explain": null
+        },
+        "t3": {
+          "id": "t3",
+          "title": "Insert at a position",
+          "status": "not-submitted",
+          "passed": 0,
+          "total": 4,
+          "points": 0,
+          "maxPoints": 13,
           "compileError": null,
           "failing": [],
           "explain": null
         },
         "t4": {
           "id": "t4",
-          "title": "Reverse a number",
+          "title": "Delete at a position",
+          "status": "not-submitted",
+          "passed": 0,
+          "total": 4,
+          "points": 0,
+          "maxPoints": 13,
+          "compileError": null,
+          "failing": [],
+          "explain": null
+        },
+        "t5": {
+          "id": "t5",
+          "title": "Reverse the list",
           "status": "not-submitted",
           "passed": 0,
           "total": 4,
@@ -105,99 +71,137 @@
           "failing": [],
           "explain": null
         },
-        "t5": {
-          "id": "t5",
-          "title": "FizzBuzz",
+        "t6": {
+          "id": "t6",
+          "title": "Sum of the values",
           "status": "not-submitted",
           "passed": 0,
           "total": 4,
           "points": 0,
-          "maxPoints": 20,
+          "maxPoints": 12,
           "compileError": null,
           "failing": [],
           "explain": null
         },
-        "t6": {
-          "id": "t6",
-          "title": "Multiplication table",
+        "t7": {
+          "id": "t7",
+          "title": "A stack: push, pop, peek",
           "status": "not-submitted",
           "passed": 0,
           "total": 4,
           "points": 0,
-          "maxPoints": 25,
+          "maxPoints": 12,
+          "compileError": null,
+          "failing": [],
+          "explain": null
+        },
+        "t8": {
+          "id": "t8",
+          "title": "A queue: fill it, then drain it",
+          "status": "not-submitted",
+          "passed": 0,
+          "total": 4,
+          "points": 0,
+          "maxPoints": 13,
           "compileError": null,
           "failing": [],
           "explain": null
         }
       },
-      "code": {
-        "t2": "#include <stdio.h>\n\n// Recursive function declaration\nunsigned long long calculateFactorial(int n) {\n    if (n == 0) {\n        return 1; // Base case: 0! = 1\n    }\n    return n * calculateFactorial(n - 1); // Recursive case\n}\n\nint main() {\n    int n;\n\n    printf(\"Enter an integer: \");\n    scanf(\"%d\", &n);\n\n    if (n < 0) {\n        printf(\"Error: Factorial of a negative number does not exist.\\n\");\n    } else {\n        printf(\"Factorial of %d = %llu\\n\", n, calculateFactorial(n));\n    }\n\n    return 0;\n}\n"
-      },
-      "answers": {
-        "q1": "Use for when the number of iterations is known in advance; use while when it is not known in advance.",
-        "q2": "The boundary is included or excluded wrongly. Decide the range in English first, then write that range down as a comment.",
-        "q3": "It jumps to the step expression, not back to the condition, so the loop still terminates.",
-        "q4": "Because initialising it inside the body resets it every iteration, so each pass overwrites the previous total."
-      },
+      "code": {},
+      "answers": {},
       "learnerNotes": {},
       "written": {
-        "score": 83,
-        "answered": 4,
-        "total": 4,
+        "score": 0,
+        "answered": 0,
+        "total": 6,
         "perQuestion": [
           {
             "id": "q1",
-            "q": "When is a for-loop better than a while-loop?",
-            "answered": true,
-            "score": 0.67,
-            "hits": [
-              "known",
-              "advance"
-            ],
+            "q": "Why is `malloc` needed for a linked list when an array of the same size would be simpler?",
+            "answered": false,
+            "score": 0,
+            "hits": [],
             "missing": [
-              "count"
+              "one node at a time",
+              "not known",
+              "contiguous",
+              "run time"
             ],
-            "feedback": "Partly right. Missing: count. Mentions that the count is known in advance."
+            "feedback": "Not answered yet."
           },
           {
             "id": "q2",
-            "q": "What is an off-by-one error and how do you avoid it?",
-            "answered": true,
-            "score": 1,
-            "hits": [
-              "boundary",
-              "range",
-              "comment"
+            "q": "Why must a new node's `next` be set to NULL before it is linked into the list?",
+            "answered": false,
+            "score": 0,
+            "hits": [],
+            "missing": [
+              "random memory",
+              "uninitialised",
+              "end of the list",
+              "NULL"
             ],
-            "missing": [],
-            "feedback": "Full marks."
+            "feedback": "Not answered yet."
           },
           {
             "id": "q3",
-            "q": "Inside a for-loop, where does `continue` jump to?",
-            "answered": true,
-            "score": 0.67,
-            "hits": [
-              "step",
-              "not"
-            ],
+            "q": "In `temp->next = head; head = temp;`, what breaks if you swap the two lines?",
+            "answered": false,
+            "score": 0,
+            "hits": [],
             "missing": [
-              "increment"
+              "destroyed",
+              "itself",
+              "orphaned",
+              "leaked",
+              "before"
             ],
-            "feedback": "Partly right. Missing: increment. Says it goes to the increment/step rather than the condition."
+            "feedback": "Not answered yet."
           },
           {
             "id": "q4",
-            "q": "Why must an accumulator be initialised before the loop and not inside it?",
-            "answered": true,
-            "score": 1,
-            "hits": [
-              "reset",
-              "every",
-              "iteration"
+            "q": "Why is deleting a node two jobs, and what breaks if you only do one of them?",
+            "answered": false,
+            "score": 0,
+            "hits": [],
+            "missing": [
+              "free",
+              "link",
+              "leak",
+              "dangling",
+              "traversal"
             ],
-            "missing": [],
-            "feedback": "Full marks."
+            "feedback": "Not answered yet."
+          },
+          {
+            "id": "q5",
+            "q": "A stack is O(1) for push and pop. What has to be true for a linked-list stack to be O(1)?",
+            "answered": false,
+            "score": 0,
+            "hits": [],
+            "missing": [
+              "same end",
+              "head",
+              "tail",
+              "O(n)"
+            ],
+            "feedback": "Not answered yet."
+          },
+          {
+            "id": "q6",
+            "q": "Why does a queue implemented on an array need to wrap its indices back to zero?",
+            "answered": false,
+            "score": 0,
+            "hits": [],
+            "missing": [
+              "wrap",
+              "modulo",
+              "slots",
+              "run out",
+              "re-use"
+            ],
+            "feedback": "Not answered yet."
           }
         ]
       },
@@ -236,62 +240,9 @@
         ]
       },
       "explain": {
-        "score": 70,
-        "flags": [
-          {
-            "kind": "no-why",
-            "line": 3,
-            "text": "Recursive function declaration",
-            "message": "This comment states what, not why. Explain the reason or delete it.",
-            "file": "t2"
-          },
-          {
-            "kind": "no-why",
-            "line": 6,
-            "text": "Base case: 0! = 1",
-            "message": "This comment states what, not why. Explain the reason or delete it.",
-            "file": "t2"
-          },
-          {
-            "kind": "no-why",
-            "line": 8,
-            "text": "Recursive case",
-            "message": "This comment states what, not why. Explain the reason or delete it.",
-            "file": "t2"
-          }
-        ],
-        "perFile": [
-          {
-            "id": "t2",
-            "score": 70,
-            "flags": [
-              {
-                "kind": "no-why",
-                "line": 3,
-                "text": "Recursive function declaration",
-                "message": "This comment states what, not why. Explain the reason or delete it."
-              },
-              {
-                "kind": "no-why",
-                "line": 6,
-                "text": "Base case: 0! = 1",
-                "message": "This comment states what, not why. Explain the reason or delete it."
-              },
-              {
-                "kind": "no-why",
-                "line": 8,
-                "text": "Recursive case",
-                "message": "This comment states what, not why. Explain the reason or delete it."
-              }
-            ],
-            "stats": {
-              "lines": 25,
-              "comments": 3,
-              "whyComments": 0,
-              "significantLines": 0
-            }
-          }
-        ]
+        "score": 0,
+        "flags": [],
+        "perFile": []
       }
     }
   }

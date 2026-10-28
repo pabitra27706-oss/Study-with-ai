@@ -22,7 +22,7 @@ notebook, not a learning system.
     ▼
   GitHub                         learn/<topic>/solutions/t1.c
     │
-    │  you say: "check c-loops"
+    │  you say: "check data-structures-c"
     ▼
   runner/brief.mjs               what was taught · what was asked · the code
                                  the machine facts · the written answers
@@ -123,11 +123,11 @@ the parts that are easy to get wrong. **Repeatable is what makes it a system.**
 
 ```bash
 git add -A
-git commit -m "c-loops: t1"
+git commit -m "data-structures-c: t1"
 git push
 ```
 
-CodeC commits to `learn/c-loops/solutions/t1.c` — that is the whole contract.
+CodeC commits to `learn/data-structures-c/solutions/t1.c` — that is the whole contract.
 (`scripts/collect.sh` does the copying for you if CodeC cannot reach GitHub
 from the phone; see §5.)
 
@@ -136,15 +136,15 @@ file, check it and push it for you.
 
 ### Then say:
 
-> check c-loops
+> check data-structures-c
 
 ### What I do:
 
-1. `node runner/brief.mjs c-loops` — read the topic, the task, your code, the
+1. `node runner/brief.mjs data-structures-c` — read the topic, the task, your code, the
    machine facts and your answers.
-2. Write `learn/c-loops/verdict.json` — the verdict, the score, the three notes
+2. Write `learn/data-structures-c/verdict.json` — the verdict, the score, the three notes
    lines, the misconceptions and the written review.
-3. `node runner/apply-verdict.mjs c-loops` — everything lands in the repository.
+3. `node runner/apply-verdict.mjs data-structures-c` — everything lands in the repository.
 4. Commit, push. Pages rebuilds. The scoreboard moves.
 
 ### What you get back:
@@ -183,14 +183,14 @@ the branch we share.
 ### The loop
 
 ```bash
-# in CodeC: edit learn/c-loops/solutions/t1.c, save
+# in CodeC: edit learn/data-structures-c/solutions/t1.c, save
 # then, from Termux (or CodeC's own git panel):
 git add -A
-git commit -m "c-loops: t1"
+git commit -m "data-structures-c: t1"
 git push
 ```
 
-Then say **check c-loops**. I pull, read the brief, judge, write the verdict
+Then say **check data-structures-c**. I pull, read the brief, judge, write the verdict
 and push it back on the same branch.
 
 ### The fallback
@@ -199,7 +199,7 @@ If CodeC cannot reach a repo from the phone, `scripts/collect.sh` does the
 copying for you:
 
 ```bash
-bash scripts/collect.sh c-loops t1
+bash scripts/collect.sh data-structures-c t1
 ```
 
 It searches `~/codec-out/`, `~/storage/downloads/`, `$EXTERNAL_STORAGE/Download/`
@@ -208,7 +208,7 @@ into `learn/<topic>/solutions/<task>.c`, compiles it, runs the test cases, check
 the comments, commits and pushes.
 
 ```bash
-bash scripts/collect.sh c-loops t1 /storage/emulated/0/Download/t1.c
+bash scripts/collect.sh data-structures-c t1 /storage/emulated/0/Download/t1.c
 ```
 
 ### Either way the rule is the same
@@ -244,15 +244,16 @@ still gets the mark.
 ## 7. Adding a topic
 
 A topic pack is one JSON file. I write the teaching half; you write the doing
-half.
+half. **The full sequence, with the commands, is in
+[`runbook/NEW-TOPIC.md`](runbook/NEW-TOPIC.md).** This is the short version.
 
 1. `topic` — id, title, language, category, difficulty, tags, description.
 2. `curriculum.explanation` — an array of `{h, md}` sections. **Write the whole
    thing.** The order people get wrong, the bugs that cost marks, the idiomatic
    choice. Not a teaser and not a summary.
-3. `curriculum.videos` — **each one needs a `why`.** A link without a reason is
-   a list; a link with a reason is a curriculum. Prefer specific videos over
-   channels. Say what each one is *for*.
+3. `curriculum.videos` — **each one needs a `why` and its measured numbers.**
+   A link without a reason is a list; a link with a reason is a curriculum.
+   Prefer specific videos over channels. Say what each one is *for*.
 4. `curriculum.references` — text references for the parts videos gloss over.
 5. `curriculum.tasks` — prompt, starter code, `tests` (mark the visible ones
    with `"public": true`), `explainTarget`, `hints`.
@@ -266,6 +267,42 @@ Then register it in `curriculum/index.json` and create `learn/<id>/` with empty
 what the comment for that task has to explain. It is the difference between
 "write a factorial" and "write a factorial and say why the accumulator starts
 at 1".
+
+### The video rule
+
+Every video carries its **real** numbers:
+
+```json
+{ "title": "…", "url": "…", "channel": "mycodeschool",
+  "length": "17:13", "views": 1738697, "likes": 19798,
+  "published": "2013-03-28", "measuredOn": "2026-10-29",
+  "why": "…", "order": 4 }
+```
+
+They are read off the watch page on the day they are checked — never estimated,
+never copied from a search snippet. The floor is **100,000 views**, and
+`scripts/check-topic.mjs` enforces it. This rule exists because the first pack
+shipped a video with **327 views and 12 likes**, and nothing noticed.
+
+Two things to check before you pick one, because both are invisible in the
+title:
+
+- **the language it is taught in** — an English-only learner cannot use a
+  Hindi course, however many views it has;
+- **the language of the code** — a 886,367-view "learn linked lists in 13
+  minutes" video is written in **Java**.
+
+### The two commands
+
+```bash
+node scripts/new-topic.mjs <id> "<title>"    # scaffold: pack, folders, index
+node scripts/check-topic.mjs <id> --deep    # validate: the gate
+```
+
+`--deep` compiles every reference solution, runs it against its own tests and
+scores its comments. It fails the pack if a video is under the floor, if a
+task has no hidden test, if the points do not add up to 100, if a reference
+solution is missing or does not compile, or if a task has no `explainTarget`.
 
 ---
 
@@ -291,11 +328,11 @@ archive shows your latest judgement, not a one-line summary.
 
 | Command | What it does |
 |---|---|
-| `bash scripts/collect.sh c-loops t1` | The CodeC bridge: copy in, check, commit, push |
-| `bash scripts/check.sh c-loops` | Print the judging brief |
-| `node runner/brief.mjs c-loops --task t1` | One task only |
+| `bash scripts/collect.sh data-structures-c t1` | The CodeC bridge: copy in, check, commit, push |
+| `bash scripts/check.sh data-structures-c` | Print the judging brief |
+| `node runner/brief.mjs data-structures-c --task t1` | One task only |
 | `node runner/evidence.mjs` | Compile, test and score the comments; write `data/evidence.json` |
-| `node runner/apply-verdict.mjs c-loops` | Apply `verdict.json` to the repository |
+| `node runner/apply-verdict.mjs data-structures-c` | Apply `verdict.json` to the repository |
 | `node scripts/export-to-portfolio.mjs ../portfolio` | Publish into the archive |
 | `npm run preview` | Serve the built site locally |
 

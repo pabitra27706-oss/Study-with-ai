@@ -1,0 +1,703 @@
+{
+  "topic": {
+    "id": "data-structures-c",
+    "title": "Data Structures in C: linked lists, stacks, queues",
+    "language": "C",
+    "category": "Data Structures",
+    "difficulty": "beginner",
+    "dateCreated": "2026-10-29T00:00:00Z",
+    "lastUpdated": "2026-10-29T00:00:00Z",
+    "tags": [
+      "linked-list",
+      "stack",
+      "queue",
+      "pointer",
+      "malloc",
+      "free",
+      "memory",
+      "O(1)",
+      "O(n)",
+      "LIFO",
+      "FIFO"
+    ],
+    "description": "The three structures every interview asks about, built from scratch in C: a node, a head pointer, and the links between them — plus the stack (LIFO) and the queue (FIFO) that sit on top of the same idea.",
+    "learningNotes": {
+      "whatILearned": "",
+      "challenges": "",
+      "nextSteps": ""
+    }
+  },
+  "files": [],
+  "curriculum": {
+    "summary": "A linked list, a stack and a queue are one idea in three costumes: a structure that owns its own memory and decides where the next thing goes. In C that means a pointer inside a struct. This topic starts from that node and builds the whole family up — malloc, the head pointer, insert at the front, insert at a position, delete (two jobs, not one), traverse, reverse, then the stack (LIFO) and the queue (FIFO) on both an array and a list. Every video is measured: the numbers next to each one are the real views, likes, length and channel, read off the watch page, not a guess. The lowest reach of any video in this pack is 535,687 views; the one that was rejected when this topic was written had 327.",
+    "prerequisites": [
+      "c-basics",
+      "pointers-c"
+    ],
+    "estimatedMinutes": 240,
+    "rules": {
+      "writingMaxChars": 220,
+      "commentPolicy": "Every non-obvious line needs a WHY comment, not a WHAT comment. A comment that restates the code is deleted. A comment that states the reason is kept. In this topic that means a comment on every malloc, every link you change, and every index you move.",
+      "notePolicy": "Write three lines maximum: what you learned, what broke, what is next. If it needs more than 220 characters per line, it is not understood yet."
+    },
+    "explanation": [
+      {
+        "h": "1. Why this topic starts with pointers",
+        "md": "A linked list, a stack and a queue are the same idea wearing different clothes: **a structure that owns its own memory and decides where the next thing goes.** In C, \"decides where the next thing goes\" means *a pointer inside a struct*. If pointers are still shaky, this topic will be noise. So watch the pointer course first, and if `malloc` still feels like magic, watch its dynamic memory chapter before you write anything.\n\nOne C fact to hold onto for the whole topic: **C has no garbage collector.** Every byte you ask for with `malloc`, you give back with `free`, by hand. That single fact explains most of the bugs in this topic."
+      },
+      {
+        "h": "2. What a data structure actually is",
+        "md": "A **data structure** is a way of storing and organising data so that it can be used efficiently. Every structure has two halves:\n\n- The **abstract data type (ADT)** — what you are allowed to do. Push, pop, enqueue, dequeue. No mention of arrays, pointers or memory.\n- The **implementation** — how it is actually done in your language.\n\nThe same ADT has several possible implementations. \"A stack\" could be an array with an index, or a linked list. \"A list\" could be an array, a linked list, or a growable array. The ADT is the contract; the implementation is your choice. When someone asks \"what is a stack?\", the good answer starts with the contract, not the code."
+      },
+      {
+        "h": "3. The node: a struct that points at itself",
+        "md": "```c\nstruct Node {\n    int data;          /* the value */\n    struct Node *next; /* the address of the node after this one */\n};\n```\n\nTwo things to notice.\n\n1. The struct contains a **pointer to its own type**. That is legal in C — the `struct Node` tag is known inside its own definition, so `struct Node *next` compiles. (In C++ you would write `Node*`.)\n2. `next` is a **pointer**, so it holds an *address*, not a value. `next->data` is the value stored in the node that this pointer points at.\n\nWhy not an array of values plus an array of indices? Because the whole point is that the nodes do not have to sit next to each other in memory. Each `malloc` hands back whatever address happens to be free."
+      },
+      {
+        "h": "4. `head`: the only identity a list has",
+        "md": "```c\nstruct Node *head = NULL;\n```\n\n`head` is **a pointer variable**, not a node. It holds the address of the first node, and that address is the *entire* identity of the list. If you lose it, the list is gone — no matter how many nodes are still allocated.\n\n`NULL` means \"points to nothing\", and it is how you spell the end of a list. Every list operation ends the same way: keep a pointer to the current node, follow `next`, and stop when the pointer is `NULL`.\n\nCareful with the vocabulary: `head` is the *pointer*, the *head node* is the node it points at. Mixing the two up is how you end up writing `head->next` when you meant `head->next->next`."
+      },
+      {
+        "h": "5. Building a list — malloc, fill, link",
+        "md": "Every insert into a linked list is the same three steps, no matter where the node goes:\n\n```c\ntemp = malloc(sizeof(struct Node)); /* 1. ask for the memory */\ntemp->data = value;                 /* 2. fill in the value  */\ntemp->next = NULL;                  /* 3. set the link       */\n```\n\nStep 3 comes **before** you link the node into the chain, and it is not optional. A node whose `next` still holds garbage will be followed into random memory the first time somebody walks the list. Set it to `NULL` — it is the last node for now — and re-point it when you attach it.\n\n`malloc` returns a `void *`, so it must be cast: `temp = (struct Node *)malloc(sizeof(struct Node));`. `malloc` can also return `NULL` if the machine is out of memory. At this size you can ignore that check, but know the check exists."
+      },
+      {
+        "h": "6. Insert at the front — and why the order of two lines matters",
+        "md": "```c\ntemp->next = head;  /* the new node points at the old head */\nhead = temp;        /* the new node becomes the head       */\n```\n\n**Swap those two lines and the list is destroyed.** If `head = temp` comes first, `head` no longer knows where the old first node is; then `temp->next = head` points the new node at *itself*, and the rest of the list is orphaned — still allocated, but unreachable and leaked forever.\n\nThis is the classic pointer bug of the whole topic, and it is not a C problem. It is an ordering problem.\n\nBecause both operations are pointer assignments, inserting at the front is **O(1)** — constant time, however long the list is. That is the payoff of the linked list over an array, where inserting at the front means shifting every element along."
+      },
+      {
+        "h": "7. Insert at a position — you need the node *before* it",
+        "md": "To insert at position `n` you need the node at position `n-1`, because that is the node whose link has to be cut:\n\n```c\nfresh->next = walk->next;  /* the new node takes the next node's place */\nwalk->next = fresh;        /* and the node before it now points here   */\n```\n\nSame ordering trap: build the new link **before** you break the old one. If you write `walk->next = fresh;` first, then `walk->next` no longer tells you where the rest of the list is, and `fresh->next = walk->next` would point the new node at itself.\n\nTwo special cases to write down as comments: position 1 (the new node becomes the head) and a position past the end (the new node is appended)."
+      },
+      {
+        "h": "8. Delete a node — two jobs, and people forget the second",
+        "md": "Deleting is **two** jobs, not one:\n\n1. **Fix the links** so that nothing points at the dead node.\n2. **Free the memory** with `free(dead)`.\n\nDo only the first and you get a working program that leaks. Do only the second and you get a dangling pointer: the list still points at memory that has been handed back to the system, so the next traversal reads whatever happens to be there now. That is the bug that crashes a program tomorrow, not today.\n\n```c\nwalk->next = dead->next;  /* 1. cut it out of the chain */\nfree(dead);                /* 2. give the memory back  */\n```\n\nDeleting the head is its own case, because `head` itself has to move first: `head = head->next;` and then `free(dead)`."
+      },
+      {
+        "h": "9. Traverse: never lose the head",
+        "md": "Walking a list is one rule: **keep a pointer to the current node, follow `next`, stop at `NULL`.**\n\n```c\nstruct Node *cursor = head;\nwhile (cursor != NULL) {\n    printf(\"%d\\n\", cursor->data);\n    cursor = cursor->next;\n}\n```\n\nTwo things beginners get wrong:\n\n- **Using `head` as the walking pointer.** If you overwrite `head`, you destroy the list's identity and can never walk it again. Use a separate cursor.\n- **Forgetting that `cursor` is a copy of an address.** `cursor = cursor->next` does not change the list at all — it only moves your bookmark. That is exactly why it is safe.\n\nEvery traversal is **O(n)** — you must visit every node. So searching is O(n) too, because a linked list has no index."
+      },
+      {
+        "h": "10. Reverse the list — save `next` before you overwrite it",
+        "md": "Reversing is not \"print the values backwards\". The data stays exactly where it is; **only the links change.** Every node's `next` pointer is turned around to point back at the node you came from.\n\nThat is the hard part: once you overwrite `current->next`, the only way forward is gone. So save it first.\n\n```c\nstruct Node *ahead = current->next; /* save the way forward      */\ncurrent->next = previous;           /* turn the link around      */\nprevious = current;                 /* remember where we came from */\ncurrent = ahead;                    /* carry on from where we were */\n```\n\nThree pointers, one pass: O(n) time, O(1) extra space. When the loop ends, `previous` points at the old last node — which is the new head.\n\nThis is the most asked linked-list question in interviews, and it is four lines. The difficulty was never the code; it was knowing which line had to come first."
+      },
+      {
+        "h": "11. Stack: LIFO and its four operations",
+        "md": "A **stack** is a list with one restriction: insertion and deletion happen at the **same end**, called the **top**. That makes it **LIFO** — last in, first out.\n\nThe contract (the ADT) is four operations:\n\n| Operation | What it does | Cost |\n|---|---|---|\n| `push(x)` | put `x` on top | O(1) |\n| `pop()` | take the top value off and return it | O(1) |\n| `top()` / `peek()` | look at the top without removing it | O(1) |\n| `isEmpty()` | is there anything in it? | O(1) |\n\nA real stack is a pile of plates: you take the top one, and you put the new one on top. That is the whole idea.\n\nWhere you meet stacks every day: **function calls**. The call stack is what makes recursion work — each call pushes a frame, each return pops one. \"Last in first out\" is not an academic detail."
+      },
+      {
+        "h": "12. Stack on an array and on a list",
+        "md": "Two implementations, the same four operations.\n\n**On an array**, the stack is the array plus one index, `top`, holding the index of the top element (`-1` when the stack is empty):\n\n```c\nint stack[100];\nint top = -1;\n\npush(x): top = top + 1;  stack[top] = x;\npop():   x = stack[top]; top = top - 1;  return x;\n```\n\nEach operation is one increment and one array write. **O(1).** The limit is the array size — when `top` runs past the end you have overflow, and the usual fixes are a bigger array or a growable one.\n\n**On a linked list**, the stack is the list with `top` pointing at the head:\n\n```c\npush(x): temp->next = top;  top = temp;\npop():   temp = top;  top = top->next;  free(temp);  return temp->data;\n```\n\nAlso O(1) — but only because we push and pop at the **head**. Push at the tail and pop at the tail is O(n), because finding the tail means walking the list. The rule for the whole topic: **the end you work at decides the cost.**"
+      },
+      {
+        "h": "13. Queue: FIFO, front and rear, and the circular array",
+        "md": "A **queue** is a list with the opposite restriction: insertion at one end (**rear**), removal at the other (**front**). That makes it **FIFO** — first in, first out.\n\n| Operation | What it does | Cost |\n|---|---|---|\n| `enqueue(x)` | put `x` at the rear | O(1) |\n| `dequeue()` | take the front value off and return it | O(1) |\n| `front()` | look at the front without removing it | O(1) |\n| `isEmpty()` | is there anything in it? | O(1) |\n\nA real queue is the line at a shop: the person who arrived first is served first.\n\n**On an array** you need two indices, `front` and `rear`. Here is the problem: if dequeueing only does `front = front + 1`, the slots at the start of the array are dead forever, and a long-running queue runs out of array even while it holds one element. The fix is the **circular array** — when an index runs past the end, it wraps to the start.\n\n```c\nrear  = (rear  + 1) % SIZE;\nfront = (front + 1) % SIZE;\n```\n\n**On a linked list** you need **two** pointers, `front` and `rear`, not just `head`. With only a head pointer, enqueueing at the back means walking the whole list (O(n)). Keeping a rear pointer makes both ends O(1).\n\nThat extra pointer is the whole lesson of the queue: when a structure has two active ends, you keep a pointer to each."
+      },
+      {
+        "h": "14. The checklist before you submit",
+        "md": "- [ ] Does every `malloc` have a matching `free` on every path out of the program?\n- [ ] Does a node's `next` get set to `NULL` before the node is linked into a chain?\n- [ ] Did you build the new link **before** you broke the old one?\n- [ ] Did you walk the list with a separate cursor, so `head` is still intact afterwards?\n- [ ] Did you test the end of the list with `NULL`, and never compare a pointer with a number?\n- [ ] On a stack: is `top` initialised to `-1`, and do you check for overflow?\n- [ ] On a queue: do you wrap the indices with `% SIZE`?\n\nIf any answer is \"no\", the comment in your code should say which one you are fixing, and why."
+      }
+    ],
+    "videos": [
+      {
+        "title": "Pointers in C / C++ [Full Course]",
+        "url": "https://www.youtube.com/watch?v=zuegQmMdy8M",
+        "channel": "freeCodeCamp.org",
+        "length": "3:47:22",
+        "minutes": 227,
+        "views": 5880358,
+        "likes": 95378,
+        "published": "2020-12-29",
+        "measuredOn": "2026-10-29",
+        "why": "The prerequisite, and the single most-watched C video in this pack (5.88M views, 95k likes). Watch 0:00-0:33 for pointers, then jump to 2:29:14 for malloc/calloc/realloc/free and 3:29:16 for memory leaks. Without this, every node in this topic is magic.",
+        "order": 1
+      },
+      {
+        "title": "Introduction to data structures",
+        "url": "https://www.youtube.com/watch?v=92S4zgXN17o",
+        "channel": "mycodeschool",
+        "length": "6:33",
+        "minutes": 7,
+        "views": 3239200,
+        "likes": 22879,
+        "published": "2013-03-25",
+        "measuredOn": "2026-10-29",
+        "why": "Six and a half minutes, 3.24M views, and the only video here that defines the words: data structure, abstract data type, and implementation. Watch it before anything else so 'ADT' is not new vocabulary later.",
+        "order": 2
+      },
+      {
+        "title": "Introduction to linked list",
+        "url": "https://www.youtube.com/watch?v=NobHlGUjV3g",
+        "channel": "mycodeschool",
+        "length": "17:13",
+        "minutes": 17,
+        "views": 1738697,
+        "likes": 19798,
+        "published": "2013-03-28",
+        "measuredOn": "2026-10-29",
+        "why": "The 'why' of linked lists, told as a story about Albert and the memory manager. It shows exactly why a fixed array wastes memory and why copying to a bigger array is expensive. 1.74M views.",
+        "order": 3
+      },
+      {
+        "title": "Linked List - Implementation in C/C++",
+        "url": "https://www.youtube.com/watch?v=vcQIFT79_50",
+        "channel": "mycodeschool",
+        "length": "13:58",
+        "minutes": 14,
+        "views": 1688701,
+        "likes": 13928,
+        "published": "2013-04-04",
+        "measuredOn": "2026-10-29",
+        "why": "The first video where the picture becomes code: struct Node, the head pointer, malloc, and the two writes that build a node. 1.69M views, and it is the base for tasks t1 and t6.",
+        "order": 4
+      },
+      {
+        "title": "Linked List in C/C++ - Inserting a node at beginning",
+        "url": "https://www.youtube.com/watch?v=cAZ8CyDY56s",
+        "channel": "mycodeschool",
+        "length": "12:49",
+        "minutes": 13,
+        "views": 1192586,
+        "likes": 8587,
+        "published": "2013-04-06",
+        "measuredOn": "2026-10-29",
+        "why": "The two-case insert at the front, and the exact two lines whose order matters. Watch it before writing task t2 — it is the video the task is built from.",
+        "order": 5
+      },
+      {
+        "title": "Linked List in C/C++ - Insert a node at nth position",
+        "url": "https://www.youtube.com/watch?v=IbvsNF22Ud0",
+        "channel": "mycodeschool",
+        "length": "15:14",
+        "minutes": 15,
+        "views": 751686,
+        "likes": 5078,
+        "published": "2013-04-09",
+        "measuredOn": "2026-10-29",
+        "why": "Walks to the node before the position and re-points two links. It also draws the stack and the heap separately, which is the clearest picture of where malloc actually puts your node.",
+        "order": 6
+      },
+      {
+        "title": "Linked List in C/C++ - Delete a node at nth position",
+        "url": "https://www.youtube.com/watch?v=Y0n86K43GO4",
+        "channel": "mycodeschool",
+        "length": "12:29",
+        "minutes": 12,
+        "views": 557233,
+        "likes": 3940,
+        "published": "2013-04-10",
+        "measuredOn": "2026-10-29",
+        "why": "Deletion is two jobs — cut the link and free the memory — and this video says so out loud. It also shows the head-deletion case separately. Task t4 is this video.",
+        "order": 7
+      },
+      {
+        "title": "Reverse a linked list - Iterative method",
+        "url": "https://www.youtube.com/watch?v=sYcOK51hl-A",
+        "channel": "mycodeschool",
+        "length": "13:50",
+        "minutes": 14,
+        "views": 793903,
+        "likes": 7193,
+        "published": "2013-04-29",
+        "measuredOn": "2026-10-29",
+        "why": "The most asked linked-list interview question, solved in four lines. The whole difficulty is one line of ordering, and the video shows the memory picture of why. Task t5 is this video.",
+        "order": 8
+      },
+      {
+        "title": "Data structures: Introduction to Doubly Linked List",
+        "url": "https://www.youtube.com/watch?v=JdQeNxWCguQ",
+        "channel": "mycodeschool",
+        "length": "7:12",
+        "minutes": 7,
+        "views": 535687,
+        "likes": 4365,
+        "published": "2013-11-12",
+        "measuredOn": "2026-10-29",
+        "why": "Seven minutes, and the byte-count comparison is the reason to watch: 8 bytes per node singly, 12 bytes doubly. Useful context for section 3, even though this topic builds the singly linked list.",
+        "order": 9
+      },
+      {
+        "title": "Data structures: Introduction to stack",
+        "url": "https://www.youtube.com/watch?v=F1F2imiOJfk",
+        "channel": "mycodeschool",
+        "length": "8:26",
+        "minutes": 8,
+        "views": 626643,
+        "likes": 5596,
+        "published": "2013-10-01",
+        "measuredOn": "2026-10-29",
+        "why": "LIFO, push, pop, top, isEmpty, and why the call stack means you already use this structure every day. Section 11 is this video in eight minutes.",
+        "order": 10
+      },
+      {
+        "title": "Data structures: Array implementation of stacks",
+        "url": "https://www.youtube.com/watch?v=sFVxsglODoo",
+        "channel": "mycodeschool",
+        "length": "13:08",
+        "minutes": 13,
+        "views": 881458,
+        "likes": 7481,
+        "published": "2013-10-08",
+        "measuredOn": "2026-10-29",
+        "why": "The stack as an array plus a `top` index, with push and pop written as two lines each, plus what overflow is and how a growable array fixes it. Task t7 is this video.",
+        "order": 11
+      },
+      {
+        "title": "Data Structures: Linked List implementation of stacks",
+        "url": "https://www.youtube.com/watch?v=MuwxQ2IB8lQ",
+        "channel": "mycodeschool",
+        "length": "10:58",
+        "minutes": 11,
+        "views": 658135,
+        "likes": 5582,
+        "published": "2013-10-10",
+        "measuredOn": "2026-10-29",
+        "why": "The same stack on a linked list, and the reason it must use the head: pushing at the tail would be O(n). This is where the O(1) rule in section 12 comes from.",
+        "order": 12
+      },
+      {
+        "title": "Data structures: Introduction to Queues",
+        "url": "https://www.youtube.com/watch?v=XuCbpw6Bj1U",
+        "channel": "mycodeschool",
+        "length": "9:18",
+        "minutes": 9,
+        "views": 547118,
+        "likes": 5393,
+        "published": "2013-11-01",
+        "measuredOn": "2026-10-29",
+        "why": "FIFO, enqueue, dequeue, front, isEmpty, and why a queue is the opposite of a stack in exactly one respect: the two ends differ. Section 13 starts here.",
+        "order": 13
+      },
+      {
+        "title": "Data structures: Array implementation of Queue",
+        "url": "https://www.youtube.com/watch?v=okr-XE8yTO8",
+        "channel": "mycodeschool",
+        "length": "14:59",
+        "minutes": 15,
+        "views": 947791,
+        "likes": 9893,
+        "published": "2013-11-06",
+        "measuredOn": "2026-10-29",
+        "why": "Front and rear as two indices, and the circular array that stops the front half of the array from going dead. 948k views, and the best-rated of the queue videos. Task t8 is this video.",
+        "order": 14
+      },
+      {
+        "title": "Data structures: Linked List implementation of Queue",
+        "url": "https://www.youtube.com/watch?v=A5_XdiK4J8A",
+        "channel": "mycodeschool",
+        "length": "14:16",
+        "minutes": 14,
+        "views": 574440,
+        "likes": 6014,
+        "published": "2013-11-17",
+        "measuredOn": "2026-10-29",
+        "why": "Why a linked-list queue needs a second pointer, `rear`, and not just `head` — the O(n) traversal you avoid by keeping it. The closing argument of the topic.",
+        "order": 15
+      },
+      {
+        "title": "Data Structures - Full Course Using C and C++",
+        "url": "https://www.youtube.com/watch?v=B31LgI4Y4DQ",
+        "channel": "freeCodeCamp.org",
+        "length": "9:46:10",
+        "minutes": 586,
+        "views": 4034678,
+        "likes": 94933,
+        "published": "2021-01-27",
+        "measuredOn": "2026-10-29",
+        "why": "The same MyCodeSchool course as one 9h46m video (4.03M views, 95k likes). Use it as the deep-dive when a section confuses you: the chapter list in the description gives exact timestamps — linked list at 19:40, stack at 2:43:09, queue at 4:32:17. Do not start here; the individual lessons above are the route.",
+        "order": 16
+      }
+    ],
+    "references": [
+      {
+        "title": "MyCodeSchool — Data structures (the full 42-video series in order)",
+        "url": "https://www.youtube.com/playlist?list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P",
+        "why": "15,278,890 views across 42 lessons. This is the spine of the topic: the 16 videos in this pack are the linked-list, stack and queue lessons from it, in the order they are meant to be watched. The lessons past the queue (trees, BSTs, graphs) are the next topic."
+      },
+      {
+        "title": "freeCodeCamp.org — Pointers in C / C++ [Full Course]",
+        "url": "https://www.youtube.com/watch?v=zuegQmMdy8M",
+        "why": "5,880,358 views. The stated prerequisite of the course, and the reference for the two things this topic depends on: pointers (0:00-0:33) and dynamic memory (2:29:14)."
+      },
+      {
+        "title": "MyCodeSchool — Lesson on dynamic memory allocation (malloc)",
+        "url": "https://www.youtube.com/watch?v=_8-ht2AKyH4",
+        "why": "The single lesson the C course points at before every linked-list video. Short, and it covers exactly the three calls this topic uses: malloc, free, and what happens when malloc returns NULL."
+      },
+      {
+        "title": "freeCodeCamp.org — Data Structures - Full Course Using C and C++",
+        "url": "https://www.youtube.com/watch?v=B31LgI4Y4DQ",
+        "why": "4,034,678 views and 94,933 likes — the same course as one 9h46m video. Use it as the deep dive, not the starting point: the chapter timestamps in the description let you jump straight to linked list (19:40), stack (2:43:09) and queue (4:32:17)."
+      }
+    ],
+    "tasks": [
+      {
+        "id": "t1",
+        "title": "One list, one node per value",
+        "points": 10,
+        "prompt": "Read an integer N (1 to 100), then N integers. Build a singly linked list that holds the N values in the order you read them. Print every value on its own line, in list order.",
+        "starter": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node {\n    int data;\n    struct Node *next;\n};\n\nint main(void) {\n    int n;\n    struct Node *head = NULL;\n\n    scanf(\"%d\", &n);\n\n    /* your code here */\n\n    return 0;\n}\n",
+        "solutionFile": "curriculum/reference/data-structures-c/t1.c",
+        "explainTarget": "Your comment must state WHY you set the new node's next pointer to NULL before you link it into the list.",
+        "hints": [
+          "A node is a struct with a value and a pointer to the next node. Where does the struct go? On the heap.",
+          "malloc(sizeof(struct Node)) gives you a node-sized block of memory; malloc(sizeof(int)) would give you four bytes and nothing to point at.",
+          "Keep one pointer to the head of the list, and one cursor you use to walk it."
+        ],
+        "tests": [
+          {
+            "stdin": "3\n10 20 30\n",
+            "stdout": "10\n20\n30",
+            "public": true
+          },
+          {
+            "stdin": "1\n7\n",
+            "stdout": "7",
+            "public": true
+          },
+          {
+            "stdin": "5\n1 2 3 4 5\n",
+            "stdout": "1\n2\n3\n4\n5",
+            "public": false
+          },
+          {
+            "stdin": "2\n-4 9\n",
+            "stdout": "-4\n9",
+            "public": false
+          }
+        ]
+      },
+      {
+        "id": "t2",
+        "title": "Push to the front",
+        "points": 12,
+        "prompt": "Read an integer N (1 to 100), then N integers. Insert each value at the FRONT of a singly linked list, so the list ends up holding the values in the reverse of the order you read them. Print every value on its own line.",
+        "starter": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node {\n    int data;\n    struct Node *next;\n};\n\nint main(void) {\n    int n;\n    struct Node *head = NULL;\n\n    scanf(\"%d\", &n);\n\n    /* your code here */\n\n    return 0;\n}\n",
+        "solutionFile": "curriculum/reference/data-structures-c/t2.c",
+        "explainTarget": "Your comment must state WHY the line that points the new node at the old head has to come before the line that moves the head.",
+        "hints": [
+          "Two lines: one makes the new node point at the old head, the other makes the new node the head.",
+          "Try swapping those two lines and see what the list prints afterwards.",
+          "Both operations are pointer assignments, so inserting at the front costs the same however long the list is."
+        ],
+        "tests": [
+          {
+            "stdin": "3\n10 20 30\n",
+            "stdout": "30\n20\n10",
+            "public": true
+          },
+          {
+            "stdin": "1\n5\n",
+            "stdout": "5",
+            "public": true
+          },
+          {
+            "stdin": "4\n1 2 3 4\n",
+            "stdout": "4\n3\n2\n1",
+            "public": false
+          },
+          {
+            "stdin": "2\n-1 -2\n",
+            "stdout": "-2\n-1",
+            "public": false
+          }
+        ]
+      },
+      {
+        "id": "t3",
+        "title": "Insert at a position",
+        "points": 13,
+        "prompt": "Read an integer N (1 to 100), then N integers, then a position P (1-based) and a value V. Insert V into the list so that it becomes the P-th element. Print every value on its own line.",
+        "starter": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node {\n    int data;\n    struct Node *next;\n};\n\nint main(void) {\n    int n;\n    struct Node *head = NULL;\n\n    scanf(\"%d\", &n);\n\n    /* your code here */\n\n    return 0;\n}\n",
+        "solutionFile": "curriculum/reference/data-structures-c/t3.c",
+        "explainTarget": "Your comment must state WHY you set the new node's next pointer before you change the link of the node before it.",
+        "hints": [
+          "To insert at position P you need the node at position P-1 — that is the node whose link you have to re-point.",
+          "Build the new link first, then break the old one. If you do it the other way round you lose the way to the rest of the list.",
+          "Position 1 and a position past the end are both special cases. Write them down as comments."
+        ],
+        "tests": [
+          {
+            "stdin": "3\n10 20 30\n2\n99\n",
+            "stdout": "10\n99\n20\n30",
+            "public": true
+          },
+          {
+            "stdin": "1\n5\n1\n7\n",
+            "stdout": "7\n5",
+            "public": true
+          },
+          {
+            "stdin": "4\n1 2 3 4\n5\n9\n",
+            "stdout": "1\n2\n3\n4\n9",
+            "public": false
+          },
+          {
+            "stdin": "2\n1 2\n1\n0\n",
+            "stdout": "0\n1\n2",
+            "public": false
+          }
+        ]
+      },
+      {
+        "id": "t4",
+        "title": "Delete at a position",
+        "points": 13,
+        "prompt": "Read an integer N (1 to 100), then N integers, then a position P (1-based). Delete the P-th node from the list and give its memory back. Print the values that are left, one per line. If P is outside the list, print the list unchanged.",
+        "starter": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node {\n    int data;\n    struct Node *next;\n};\n\nint main(void) {\n    int n;\n    struct Node *head = NULL;\n\n    scanf(\"%d\", &n);\n\n    /* your code here */\n\n    return 0;\n}\n",
+        "solutionFile": "curriculum/reference/data-structures-c/t4.c",
+        "explainTarget": "Your comment must state WHY deleting a node is two jobs, and what breaks if you only do one of them.",
+        "hints": [
+          "Deleting is not one line. Fix the links, and then free the node.",
+          "Deleting the first node is a separate case, because the head pointer itself has to move.",
+          "C does not collect garbage. If you do not call free, the memory is gone for good."
+        ],
+        "tests": [
+          {
+            "stdin": "4\n10 20 30 40\n2\n",
+            "stdout": "10\n30\n40",
+            "public": true
+          },
+          {
+            "stdin": "3\n1 2 3\n1\n",
+            "stdout": "2\n3",
+            "public": true
+          },
+          {
+            "stdin": "5\n5 6 7 8 9\n3\n",
+            "stdout": "5\n6\n8\n9",
+            "public": false
+          },
+          {
+            "stdin": "2\n1 2\n9\n",
+            "stdout": "1\n2",
+            "public": false
+          }
+        ]
+      },
+      {
+        "id": "t5",
+        "title": "Reverse the list",
+        "points": 15,
+        "prompt": "Read an integer N (1 to 100), then N integers. Build a singly linked list, then reverse it by changing the links — do not copy the values into an array and print them backwards. Print every value on its own line.",
+        "starter": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node {\n    int data;\n    struct Node *next;\n};\n\nint main(void) {\n    int n;\n    struct Node *head = NULL;\n\n    scanf(\"%d\", &n);\n\n    /* your code here */\n\n    return 0;\n}\n",
+        "solutionFile": "curriculum/reference/data-structures-c/t5.c",
+        "explainTarget": "Your comment must state WHY you save the next pointer before you overwrite it with the previous one.",
+        "hints": [
+          "Reversing does not move any data. Only the next pointers change.",
+          "You need three pointers: the current node, the node you came from, and the node you are going to.",
+          "The last node you visit becomes the new head."
+        ],
+        "tests": [
+          {
+            "stdin": "3\n10 20 30\n",
+            "stdout": "30\n20\n10",
+            "public": true
+          },
+          {
+            "stdin": "1\n5\n",
+            "stdout": "5",
+            "public": true
+          },
+          {
+            "stdin": "4\n1 2 3 4\n",
+            "stdout": "4\n3\n2\n1",
+            "public": false
+          },
+          {
+            "stdin": "2\n-1 8\n",
+            "stdout": "8\n-1",
+            "public": false
+          }
+        ]
+      },
+      {
+        "id": "t6",
+        "title": "Sum of the values",
+        "points": 12,
+        "prompt": "Read an integer N (1 to 100), then N integers. Build a singly linked list and print the sum of the values it holds.",
+        "starter": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node {\n    int data;\n    struct Node *next;\n};\n\nint main(void) {\n    int n;\n    struct Node *head = NULL;\n\n    scanf(\"%d\", &n);\n\n    /* your code here */\n\n    return 0;\n}\n",
+        "solutionFile": "curriculum/reference/data-structures-c/t6.c",
+        "explainTarget": "Your comment must state WHY you use long long for the sum instead of int.",
+        "hints": [
+          "A list has no index, so you have to walk it with a cursor and add each value as you go.",
+          "A sum of many int values can be bigger than an int can hold.",
+          "Use a separate cursor for walking. Do not walk with head, or the list loses its identity."
+        ],
+        "tests": [
+          {
+            "stdin": "3\n10 20 30\n",
+            "stdout": "60",
+            "public": true
+          },
+          {
+            "stdin": "1\n7\n",
+            "stdout": "7",
+            "public": true
+          },
+          {
+            "stdin": "4\n1 2 3 4\n",
+            "stdout": "10",
+            "public": false
+          },
+          {
+            "stdin": "2\n-5 5\n",
+            "stdout": "0",
+            "public": false
+          }
+        ]
+      },
+      {
+        "id": "t7",
+        "title": "A stack: push, pop, peek",
+        "points": 12,
+        "prompt": "Read an integer N (2 to 100), then N integers. Push them onto a stack of at most 100 values — an array plus a top index, where top starts at -1 to mean the stack is empty. Then pop one value off and print it. Then print the value that is now on top of the stack, without removing it. Print each on its own line.",
+        "starter": "#include <stdio.h>\n\nint main(void) {\n    int n;\n\n    scanf(\"%d\", &n);\n\n    /* your code here */\n\n    return 0;\n}\n",
+        "solutionFile": "curriculum/reference/data-structures-c/t7.c",
+        "explainTarget": "Your comment must state WHY top starts at -1 and why push increments it before it writes.",
+        "hints": [
+          "The stack is an int array of 100 and one index. That is the whole implementation.",
+          "Push: move the top up one, then write the value there. Pop: take the value, then move the top down one.",
+          "Peek reads the top without moving it, so the same value can be read twice."
+        ],
+        "tests": [
+          {
+            "stdin": "3\n10 20 30\n",
+            "stdout": "30\n20",
+            "public": true
+          },
+          {
+            "stdin": "2\n10 20\n",
+            "stdout": "20\n10",
+            "public": true
+          },
+          {
+            "stdin": "4\n1 2 3 4\n",
+            "stdout": "4\n3",
+            "public": false
+          },
+          {
+            "stdin": "3\n-5 0 7\n",
+            "stdout": "7\n0",
+            "public": false
+          }
+        ]
+      },
+      {
+        "id": "t8",
+        "title": "A queue: fill it, then drain it",
+        "points": 13,
+        "prompt": "Read an integer N (1 to 4), then N integers, then one more value V. Put the N values into a queue that holds at most 4 values — an array with a front index and a rear index, where the indices wrap back to 0 when they run past the end of the array. Then take one value out of the queue and print it. Then put V into the queue. Then take everything that is left out, one per line, and print it.",
+        "starter": "#include <stdio.h>\n\nint main(void) {\n    int n;\n\n    scanf(\"%d\", &n);\n\n    /* your code here */\n\n    return 0;\n}\n",
+        "solutionFile": "curriculum/reference/data-structures-c/t8.c",
+        "explainTarget": "Your comment must state WHY the front and rear indices wrap back to 0 instead of just counting up.",
+        "hints": [
+          "A queue is an array plus two indices: front is where the next value comes out, rear is where the last value went in.",
+          "If the indices only counted up, the slots at the start of the array would be dead forever and a long queue would run out of array.",
+          "Wrapping is just the modulo: next = (index + 1) % SIZE."
+        ],
+        "tests": [
+          {
+            "stdin": "3\n10 20 30\n99\n",
+            "stdout": "10\n20\n30\n99",
+            "public": true
+          },
+          {
+            "stdin": "1\n5\n7\n",
+            "stdout": "5\n7",
+            "public": true
+          },
+          {
+            "stdin": "4\n1 2 3 4\n9\n",
+            "stdout": "1\n2\n3\n4\n9",
+            "public": false
+          },
+          {
+            "stdin": "2\n-6 8\n0\n",
+            "stdout": "-6\n8\n0",
+            "public": false
+          }
+        ]
+      }
+    ],
+    "rubric": {
+      "written": [
+        {
+          "id": "q1",
+          "q": "Why is `malloc` needed for a linked list when an array of the same size would be simpler?",
+          "a": "Because a linked list grows one node at a time, so the size is not known when the program starts, and each node only needs memory for itself rather than one contiguous block. malloc hands out memory at run time, so the list can grow.",
+          "keywords": [
+            "one node at a time",
+            "not known",
+            "contiguous",
+            "run time"
+          ],
+          "partial": "Says the size is not known in advance and that malloc allocates at run time."
+        },
+        {
+          "id": "q2",
+          "q": "Why must a new node's `next` be set to NULL before it is linked into the list?",
+          "a": "Because until it is linked it still holds whatever was in that memory, and a walk of the list that follows an uninitialised next pointer goes into random memory. Setting it to NULL first means it is the end of the list until the real link is written.",
+          "keywords": [
+            "random memory",
+            "uninitialised",
+            "end of the list",
+            "NULL"
+          ],
+          "partial": "Says an uninitialised next pointer sends the walk somewhere random."
+        },
+        {
+          "id": "q3",
+          "q": "In `temp->next = head; head = temp;`, what breaks if you swap the two lines?",
+          "a": "The list is destroyed. If head is moved first, head no longer knows where the old first node is, so temp->next = head points the new node at itself and the rest of the list is orphaned and leaked. The new link has to be built before the old one is broken.",
+          "keywords": [
+            "destroyed",
+            "itself",
+            "orphaned",
+            "leaked",
+            "before"
+          ],
+          "partial": "Says the order matters and that the new link must be built first."
+        },
+        {
+          "id": "q4",
+          "q": "Why is deleting a node two jobs, and what breaks if you only do one of them?",
+          "a": "Deleting is fixing the links so nothing points at the dead node, and then freeing the memory. Skip the free and the program leaks. Skip the link fix and you leave a dangling pointer, so the next traversal reads memory that has been handed back.",
+          "keywords": [
+            "free",
+            "link",
+            "leak",
+            "dangling",
+            "traversal"
+          ],
+          "partial": "Says deleting needs both free and fixing the links, and names the leak or the dangling pointer."
+        },
+        {
+          "id": "q5",
+          "q": "A stack is O(1) for push and pop. What has to be true for a linked-list stack to be O(1)?",
+          "a": "The push and the pop have to happen at the same end, and that end has to be the head, because reaching the tail of a linked list is O(n). Inserting and deleting at the head are both constant time.",
+          "keywords": [
+            "same end",
+            "head",
+            "tail",
+            "O(n)"
+          ],
+          "partial": "Says push and pop must be at the head, or that the tail costs O(n)."
+        },
+        {
+          "id": "q6",
+          "q": "Why does a queue implemented on an array need to wrap its indices back to zero?",
+          "a": "Because if the front index only counted up, the slots it leaves behind at the start of the array could never be used again, and a long-running queue would run out of array while holding only a few values. Wrapping the index with modulo reuses those slots.",
+          "keywords": [
+            "wrap",
+            "modulo",
+            "slots",
+            "run out",
+            "re-use"
+          ],
+          "partial": "Says the front index must wrap so the old slots get used again."
+        }
+      ]
+    }
+  }
+}
