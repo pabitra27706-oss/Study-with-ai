@@ -1,0 +1,43 @@
+{
+  "topic": {
+    "id": "c-data-structures-c",
+    "title": "Data Structures in C: linked lists, stacks, queues",
+    "language": "C",
+    "category": "Data Structures",
+    "difficulty": "beginner",
+    "dateCreated": "2026-10-29T00:00:00Z",
+    "lastUpdated": "2026-10-29T00:00:00Z",
+    "tags": [
+      "linked-list",
+      "stack",
+      "queue",
+      "pointer",
+      "malloc",
+      "free",
+      "memory",
+      "O(1)",
+      "O(n)",
+      "LIFO",
+      "FIFO"
+    ],
+    "description": "The three structures every interview asks about, built from scratch in C: a node, a head pointer, and the links between them — plus the stack (LIFO) and the queue (FIFO) that sit on top of the same idea.",
+    "learningNotes": {
+      "whatILearned": "",
+      "challenges": "",
+      "nextSteps": ""
+    },
+    "source": "engine",
+    "curriculumId": "data-structures-c"
+  },
+  "files": [],
+  "engine": {
+    "topicId": "data-structures-c",
+    "minutes": 240,
+    "points": 100,
+    "tasks": 8,
+    "verdict": null,
+    "machine": null,
+    "misconceptions": [],
+    "review": ""
+  }
+}

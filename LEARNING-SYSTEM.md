@@ -80,7 +80,8 @@ actually ran, they stay honest.
 | `data/progress.json` | The verdict and the facts together | Claude |
 | `scripts/collect.sh` | The fallback bridge, for when CodeC cannot push: copy in, check, commit, push | — |
 | `scripts/check.sh` | Prints the brief | — |
-| `scripts/export-to-portfolio.mjs` | Publishes your work into the Learning Archive | — |
+| `scripts/build-archive.mjs` | Regenerates the Learning Archive from the engine — runs on every build | — |
+| `scripts/publish-archive.sh` | One command: regenerate the archive, commit it, push it | — |
 
 ---
 
@@ -308,19 +309,37 @@ solution is missing or does not compile, or if a task has no `explainTarget`.
 
 ## 8. Publishing into the Learning Archive
 
-Your archive lives at `pabitra27706-oss/portfolio` — 68 topics, 82 files, and
-the only place people can read your code, preview it and download it.
+The Learning Archive — every topic, the code that came out of it, the notes
+and the verdict — used to be a **second repository** with a **second site**.
+Publishing into it meant remembering four folders and running a copier by
+hand, on a phone. That is exactly the kind of thing that quietly stops
+happening.
 
-```bash
-git clone https://github.com/pabitra27706-oss/portfolio.git ../portfolio
-node scripts/export-to-portfolio.mjs ../portfolio
-cd ../portfolio && git status && git diff
-git commit -am "Add loops in C from the AI curriculum" && git push
+It is now a **view of the engine**, in this repository:
+
+```
+you finish a task -> I judge it -> verdict.json
+   -> apply-verdict writes notes, review, history, progress
+   -> build-archive regenerates archive/data + archive/content
+   -> the site build renders /archive from it
 ```
 
-That writes the topic in the archive's own schema, copies your actual code
-into `content/`, and refreshes `data/index.json` — including the notes, so the
-archive shows your latest judgement, not a one-line summary.
+There is nothing for you to do. The archive cannot fall behind the work,
+because it is generated from the work.
+
+```bash
+node scripts/build-archive.mjs            # regenerate
+node scripts/build-archive.mjs --check    # fail if it is out of date
+bash scripts/publish-archive.sh           # regenerate, commit and push
+```
+
+**What a generated entry carries:** the code you actually wrote, the verdict
+and its score, the machine facts, your three notes lines, the
+misconceptions, and the written review. The hand-written entries — the 68
+topics catalogued by hand between January and August 2026 — are never
+overwritten.
+
+The archive's own folder documents the schema: [`archive/README.md`](archive/README.md).
 
 ---
 
@@ -333,7 +352,8 @@ archive shows your latest judgement, not a one-line summary.
 | `node runner/brief.mjs data-structures-c --task t1` | One task only |
 | `node runner/evidence.mjs` | Compile, test and score the comments; write `data/evidence.json` |
 | `node runner/apply-verdict.mjs data-structures-c` | Apply `verdict.json` to the repository |
-| `node scripts/export-to-portfolio.mjs ../portfolio` | Publish into the archive |
+| `node scripts/build-archive.mjs` | Regenerate the Learning Archive from the engine |
+| `bash scripts/publish-archive.sh` | Regenerate the archive, commit it and push it |
 | `npm run preview` | Serve the built site locally |
 
 ---

@@ -22,7 +22,9 @@ append-only record is [`HISTORY.md`](HISTORY.md).
 | This site | `https://pabitra27706-oss.github.io/Study-with-ai/` |
 | The learn route | `https://pabitra27706-oss.github.io/Study-with-ai/learn` |
 | One topic | `https://pabitra27706-oss.github.io/Study-with-ai/learn/data-structures-c` |
-| The Learning Archive | `https://pabitra27706-oss.github.io/portfolio/` |
+| The archive | `https://pabitra27706-oss.github.io/Study-with-ai/archive` — 69 topics, 82 files |
+| The progress map | `https://pabitra27706-oss.github.io/Study-with-ai/progress` |
+| The Learning Archive | `https://pabitra27706-oss.github.io/Study-with-ai/archive` — now part of this site |
 | CodeC (Pages) | `https://pabi217.github.io/CodeC/` |
 | CodeC (source) | `https://github.com/pabi217/CodeC` |
 
@@ -33,11 +35,10 @@ append-only record is [`HISTORY.md`](HISTORY.md).
 | Clone | `https://github.com/pabitra27706-oss/Study-with-ai.git` |
 | Canonical branch | `main` |
 | Working branch | `arena/42ceaa51-study-with-ai` (this session) |
-| Merged | **PR #8** — merged as `e6973cd`, deployed to Pages, green. **PR #6** — merged as `a8add89`. **PRs #1–#4** merged. |
-| Closed | **PR #5** (duplicate of #6), **PR #7** (superseded), **PR #9** (its content is folded into #10). Never merge any of them. |
-| Open | **PR #10** — the `data-structures-c` topic pack and the authoring system. Open and clean, **waiting for the owner to say merge**. |
-| The live PR ledger | `gh pr list --state all --limit 30` — the truth. This table is a summary, not the record. |
-| Archive repo | `https://github.com/pabitra27706-oss/portfolio` — 68 topics, 82 files |
+| Merged | **PR #10** — the `data-structures-c` topic pack and the authoring system, `6b155ca`. **PR #8** — merged as `e6973cd`, deployed to Pages, green. **PR #6** — merged as `a8add89`. **PRs #1–#4** merged. |
+| Closed, do not merge | **PR #5** (duplicate of #6), **PR #7** (superseded), **PR #9** (its content is folded into #10). Never merge any of them. |
+| The live PR ledger | `gh pr list --state all --limit 30` — **the truth.** The table below records the decisions that matter: which PRs are in, and which ones must never be merged. There is deliberately **no "open" row** — a merge is not worth an edit, so a row that changed on every merge would only make this file wrong. |
+| Archive | `archive/` in this repository — 69 topics, 82 files. Imported from `pabitrawriters06-oss/portfolio` with its history; that repository now points here. |
 | Deploy | Pages workflow committed by the owner at `414c6fe`; the hardened copy lives at `scripts/deploy-workflow.yml` |
 
 ## Where the learning actually stands
@@ -64,7 +65,8 @@ append-only record is [`HISTORY.md`](HISTORY.md).
 | The verdict | `learn/<topic>/verdict.json` | Claude's judgement, in a fixed shape. |
 | The writer | `runner/apply-verdict.mjs` | Writes the verdict into notes, review, history, progress, topic. |
 | The site | `app/learn/`, `app/learn/[id]/` | The scoreboard. |
-| The exporter | `scripts/export-to-portfolio.mjs` | Publishes the work into the Learning Archive. |
+| The archive generator | `scripts/build-archive.mjs` | Rebuilds the Learning Archive from the engine. Runs on every site build. Deterministic — a run changes nothing unless the work changed. |
+| The archive, on the site | `app/archive/`, `app/progress/` | `/archive`, `/archive/<topic>` and `/progress` — the catalogue and the history map. |
 | The bridge | `scripts/collect.sh` | Fallback for when CodeC cannot push: copy, check, commit, push. |
 
 ## The authoring system
@@ -96,6 +98,8 @@ node scripts/check-topic.mjs --deep       # every topic pack
 - The validator was tested against a deliberately broken copy: it **failed** it with *"video 3 has 327 views, below the 1,00,000 floor"* and *"task t4 has 0 hidden tests"* and exited 1. It catches the exact mistake that shipped the old pack.
 - `node runner/evidence.mjs` — `data-structures-c  0/8 tasks · comments 0/100 · answers 0%`. An untouched topic honestly reads zero.
 - `node runner/evidence.mjs` against the reference folder — all 8 tasks pass, comments 100/100.
+- `node scripts/build-archive.mjs --check` — *the archive is in step with the engine*, and a second run is a no-op. The generator is deterministic: timestamps come from the source data, never the clock.
+- `NEXT_OUTPUT=export npm run build` — **88 static pages**, including `/archive`, 69 `/archive/<topic>` pages and `/progress`. Every archive download resolves.
 - `node runner/brief.mjs data-structures-c --task t1` — the brief renders with the prompt, the tests and the rules.
 - PR #8 merged to `main` as `e6973cd`; the Pages deployment for it returned `success`.
 - The learner's own `t2.c` was judged end to end: brief → sensor → verdict → apply. The verdict (20%) and the machine score (19%) agree, and both are far above the old seeded 28% once the shipped example was removed from the graded folder.

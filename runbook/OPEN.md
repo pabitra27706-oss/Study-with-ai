@@ -25,7 +25,8 @@ can do it now. "Owner" means only the user can.
 | 16 | Re-measure the video numbers before the topic is taught | The numbers were read on 2026-10-29 and they only go up. A stale number is still a true number, but say when it was read. | Claude |
 | 17 | The next topic: trees and BSTs in C | It is the natural follow-on — MyCodeSchool's same course covers it next, and it reuses the node struct the learner will have just built. | Claude, on request |
 | 18 | The next topic after that: sorting and searching | `O(n log n)` is where the complexity talk in `data-structures-c` starts to pay off. | Claude, on request |
-| 19 | Export the learner's work into the Learning Archive | `scripts/export-to-portfolio.mjs` exists and works, but it has only ever been run against the demo pack. It should run against real work. | Claude, after the first submission |
+| 19 | ~~Export the learner's work into the Learning Archive~~ | **Done** — the archive came home. `scripts/build-archive.mjs` regenerates it from the engine on every build, so it can never fall behind the work. | — |
+| 20 | Apply the "moved" notice to the old `portfolio` repository | The landing page and the pointer README are **prepared** at `archive/legacy/moved-page/`. The sandbox token is scoped to this repository and cannot write to that one, so this is one command the owner runs: `bash scripts/publish-moved-notice.sh`. | Owner |
 
 ## Not to be done without being asked
 

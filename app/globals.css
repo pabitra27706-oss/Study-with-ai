@@ -264,3 +264,68 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Syntax highlighting, done at build time.
+   The archive's code is highlighted on the server, so the page ships the
+   finished markup and the visitor's phone does no highlighting work.
+   These are the tokens highlight.js emits, mapped onto the site palette.
+   --------------------------------------------------------------------------- */
+.hljs {
+  color: var(--color-muted);
+  background: transparent;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: var(--color-faint);
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-type {
+  color: var(--color-brand-soft);
+}
+
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute {
+  color: var(--color-ok);
+}
+
+.hljs-number,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-template-variable,
+.hljs-variable,
+.hljs-link {
+  color: var(--color-warn);
+}
+
+.hljs-title,
+.hljs-title.function_,
+.hljs-section,
+.hljs-name {
+  color: var(--color-accent);
+}
+
+.hljs-built_in,
+.hljs-class .hljs-title {
+  color: var(--color-accent);
+}
+
+.hljs-meta,
+.hljs-deletion {
+  color: var(--color-bad);
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: 600;
+}

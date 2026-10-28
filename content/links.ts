@@ -88,9 +88,9 @@ export const links: LinkItem[] = [
   {
     id: "l-live-portfolio",
     label: "Live — Learning Archive",
-    url: "https://pabitra27706-oss.github.io/portfolio/",
+    url: "https://pabitra27706-oss.github.io/Study-with-ai/archive",
     kind: "site",
-    note: "Every topic learned, with code and notes",
+    note: "Every topic learned, with the code, the notes and the verdict",
   },
   {
     id: "l-jadavpur",

@@ -29,7 +29,7 @@ Actions is the build machine.
 | `notes/` | AI-compiled, human-owned topic notes. |
 | `cards/` | Spaced-repetition cards, curated by hand from mistakes. |
 | [`AGENTS.md`](AGENTS.md) | The contract for any AI working in this repo. Read it before touching anything. |
-| `scripts/` | `collect.sh` (the CodeC bridge — copy in, check, commit, push), `check.sh` (print the judging brief), `new-topic.mjs` (scaffold a topic pack), `check-topic.mjs` (validate one — the gate), `termux-setup.sh` (one-command deploy from Android), `export-to-portfolio.mjs` (publish into the archive), `deploy-workflow.yml` (the hardened Pages workflow). |
+| `scripts/` | `collect.sh` (the CodeC bridge — copy in, check, commit, push), `check.sh` (print the judging brief), `new-topic.mjs` (scaffold a topic pack), `check-topic.mjs` (validate one — the gate), `termux-setup.sh` (one-command deploy from Android), `build-archive.mjs` (regenerate the Learning Archive), `publish-archive.sh` (refresh it in one command), `deploy-workflow.yml` (the hardened Pages workflow). |
 | `scripts/deploy-workflow.yml` | The canonical Pages workflow. Copy it into `.github/workflows/deploy.yml` and push — that is what makes every push to `main` redeploy the site. |
 | [`DEPLOY.md`](DEPLOY.md) | How to build and deploy the site (GitHub Pages, Vercel, Netlify, Cloudflare) — including the Termux walkthrough. |
 

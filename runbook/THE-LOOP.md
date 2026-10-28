@@ -108,18 +108,22 @@ git push
 Then tell the user what you found, in three short lines. The detail is in
 `review.md`; their phone should not have to scroll through it.
 
-## Step 7 — publish into the archive (when a topic is finished)
+## Step 7 — publish into the archive
+
+**Automatic.** The archive is a view of the engine, so the same commit that
+carries the verdict carries the archive entry.
 
 ```bash
-git clone https://github.com/pabitra27706-oss/portfolio.git ~/portfolio
-node scripts/export-to-portfolio.mjs ~/portfolio
-cd ~/portfolio && git status && git diff
-git commit -am "Add <topic> from the AI curriculum" && git push
+node scripts/build-archive.mjs     # regenerate archive/data + archive/content
 ```
 
-That writes the topic in the archive's own schema, copies the code into
-`content/`, and refreshes `data/index.json` — including the notes, so the
-archive shows the latest judgement.
+It writes the topic in the archive's own schema, copies the code into
+`content/`, refreshes `data/index.json` with the notes, the verdict and the
+score, and never touches a hand-written entry.
+
+Commit that alongside the verdict — or run `bash scripts/publish-archive.sh`
+to do the commit and the push for you.
+
 
 ## Adding a topic
 

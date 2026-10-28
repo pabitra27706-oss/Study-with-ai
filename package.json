@@ -5,18 +5,22 @@
   "description": "Skill-readiness journey: a personal learning OS built on AI, tracked in Git, published to the web.",
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/build-archive.mjs",
+    "build:archive": "node scripts/build-archive.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "preview": "node scripts/serve-static.mjs 3000 out",
     "stats": "node scripts/stats.mjs",
-    "build:pages": "NEXT_OUTPUT=export NEXT_PUBLIC_BASE_PATH=/Study-with-ai NEXT_PUBLIC_SITE_HOST=pabitra27706-oss.github.io next build && rm -rf docs && cp -r out docs"
+    "build:pages": "NEXT_OUTPUT=export NEXT_PUBLIC_BASE_PATH=/Study-with-ai NEXT_PUBLIC_SITE_HOST=pabitra27706-oss.github.io npm run build && rm -rf docs && cp -r out docs"
   },
   "dependencies": {
     "@fontsource-variable/inter": "5.3.0",
     "@fontsource-variable/jetbrains-mono": "5.3.0",
     "gray-matter": "4.0.3",
+    "highlight.js": "^11.11.1",
+    "jszip": "^3.10.1",
     "lucide-react": "1.63.0",
     "marked": "^18.1.2",
     "next": "16.4.3",

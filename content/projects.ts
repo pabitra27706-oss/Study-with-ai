@@ -141,16 +141,18 @@ export const projects: Project[] = [
   {
     slug: "portfolio-archive",
     name: "Personal Portfolio + Learning Archive",
-    tagline: "A static, JSON-driven site that documents every topic learned, with real code and honest notes.",
+    tagline:
+      "Every topic I have worked through, with the real code, my notes and the verdict I was given - generated from the learning engine, never hand-maintained.",
     status: "shipped",
-    live: "https://pabitra27706-oss.github.io/portfolio/",
-    repo: "https://github.com/pabitra27706-oss/portfolio",
-    stack: ["HTML", "CSS", "JavaScript", "JSON", "GitHub Pages"],
+    live: "https://pabitra27706-oss.github.io/Study-with-ai/archive",
+    repo: "https://github.com/pabitrawriters06-oss/Study-with-ai",
+    stack: ["Next.js", "TypeScript", "JSON", "GitHub Pages"],
     proves:
-      "That I can design information architecture and ship something people can actually navigate — no frameworks, no build step, no database.",
+      "That I can design information architecture and ship something people can actually navigate - and that I can take a working static site and rebuild it inside a real framework without losing a single feature.",
     highlights: [
-      "Live on GitHub Pages.",
-      "data/ is the brain, content/ is the evidence, website/ is the presentation.",
+      "69 topics, 82 files, searchable and downloadable.",
+      "Started as a framework-free JSON site; rebuilt inside this one, with the catalogue baked in at build time instead of fetched in the browser.",
+      "The graded entries carry the verdict, the score and the misconceptions - not just the code.",
       "Direct ancestor of this site, and the reason it exists.",
     ],
   },
