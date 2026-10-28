@@ -20,6 +20,8 @@ const eslintConfig = defineConfig([
     "node_modules/**",
     "next-env.d.ts",
     "public/**",
+    // The imported archive: historical content, not code this project maintains.
+    "archive/content/**",
   ]),
 ]);
 

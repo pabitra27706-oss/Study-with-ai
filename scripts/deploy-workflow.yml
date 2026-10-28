@@ -42,6 +42,12 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      # The Learning Archive is generated from the learning engine, so it is
+      # rebuilt here rather than edited by hand. It runs as part of `npm run
+      # build` too (the prebuild hook) — this step just makes it visible.
+      - name: Build the Learning Archive
+        run: npm run build:archive
+
       - name: Build static export
         run: npm run build
         env:

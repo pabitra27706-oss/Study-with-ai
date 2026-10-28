@@ -77,16 +77,20 @@ needed for this one.
 
 ## The Learning Archive
 
+**Nothing to set up.** The archive used to be a second repository you had to
+clone, copy into by hand and push separately. It is now part of this
+repository, and it is regenerated from the learning engine on every build.
+
+If you want to refresh it in the repository itself:
+
 ```bash
-git clone https://github.com/pabitra27706-oss/portfolio.git ~/portfolio
+bash scripts/publish-archive.sh
 ```
 
-The exporter expects that clone at `../portfolio` by default, or you pass the
-path:
-
-```bash
-node scripts/export-to-portfolio.mjs ~/portfolio
-```
+That regenerates `archive/data/` and `archive/content/` from your work and
+your verdicts, commits the difference and pushes it. It is also automatic —
+the Pages build runs the same generator, so the published site is never
+behind.
 
 ## Deploying the site
 

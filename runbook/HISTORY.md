@@ -341,3 +341,102 @@ is **0%**, and it says 0%. The previous pack shipped a finished example inside
 the graded folder, which inflated it to 29% before the learner had written a
 line. The new learner's folder ships with `answers.json` empty and only a
 `.gitkeep` in `solutions/`.
+
+---
+
+## 2026-10-29 — The Learning Archive comes home
+
+**The request.** *"Upload a code to my archives is very much of a war — I have
+to update many files from different folders, remember them. If you make that
+automatic it will be good and rich in quality."*
+
+**What it was.** The archive was a **second repository** with a **second
+site**. Publishing into it meant: clone it, run a copier, remember that the
+copier wanted `data/topics/<lang>/`, remember that the index had to be
+edited by hand, commit, push. Four folders and a memory task, on a phone,
+after every finished task. And it showed: the exporter had *"only ever been
+run against the demo pack"*, so a live-looking archive sat next to a
+repository that changed daily, and the two read as two different projects.
+
+**What it is now.** The archive is a **view of the engine**, in this
+repository, and it is regenerated on every build.
+
+```
+you finish a task -> I judge it -> verdict.json
+   -> apply-verdict writes notes, review, history, progress
+   -> build-archive regenerates archive/data + archive/content
+   -> the site build renders /archive from it
+```
+
+**The rule that makes it safe.** The generator never deletes or overwrites a
+hand-written entry. The 68 topics catalogued by hand between January and
+August 2026 are history, and they stay exactly as they were. Only entries
+marked `source: "engine"` are rewritten.
+
+**The import.** `git subtree add --prefix=archive` — the archive's **16
+commits are in this repository's history**, not flattened away. The old
+static site (`website/`, `tools/`) is retired; every feature it had —
+search, language and tag filters, three view modes, shareable filtered URLs,
+code preview, multi-topic ZIP download — is ported into `/archive` and works
+better there, because the catalogue is baked in at build time instead of
+fetched by the browser, and the code is highlighted on the server instead of
+on the visitor's phone.
+
+**What a generated entry carries that the old archive could not:** the code
+the learner actually wrote, the verdict and its score, the machine facts, the
+three notes lines, the misconceptions, and the written review. That is the
+difference between a catalogue of files and a record of a person improving.
+
+**The old repository** becomes a pointer — its README and a "moved" landing
+page — so the old URLs resolve and its history stays readable.
+
+---
+
+## 2026-10-29 — `/progress`: the history map
+
+**Decided.** A new route, `/progress`, that reads the arc straight out of the
+repository: the dated judgement lines in each topic's `history.md`, the
+verdicts in `data/progress.json`, the notes, the archived topics, and the
+journal.
+
+**Why it is not written by hand.** Because it is assembled from files the
+engine already produces, it cannot drift away from the truth. If a judgement
+is not in the repository, it is not on the page. That is the whole argument
+of this project — Git as the memory — applied to the public face of it.
+
+**What a catalogue of finished files cannot do.** 68 topics with no verdicts,
+no failed attempts and no corrections show a person who always got it right.
+A timeline that shows 28% → 20% → 45% shows a person who learned something.
+The second one is worth more.
+
+---
+
+## 2026-10-29 — The sandbox token is scoped, and that is worth knowing
+
+**What happened.** The archive came home, and the old repository was supposed
+to become a pointer — a "moved" landing page and a README that says where
+everything went. The commit was prepared and the push was refused:
+
+```
+remote: Permission to pabitrawriters06-oss/portfolio.git denied to pabitrawriters06-oss.
+```
+
+**Why.** The token this session runs on is a **GitHub App installation token**,
+not a personal access token, and it is scoped to this repository. The
+contents API says the same thing in a different way: *"Resource not accessible
+by integration"*. The token's own scope header is empty.
+
+**What it means.** Writing to **this** repository works. Writing to any other
+repository does not — not by git, not by the API. That is a property of the
+sandbox, not a mistake, and it is not worth fighting.
+
+**What was done instead.** The landing page and the pointer README are
+**prepared and committed** at `archive/legacy/moved-page/`, and
+`scripts/publish-moved-notice.sh` applies them from a phone with a
+credential that can write there. The old repository keeps serving the
+original site in the meantime, which is a perfectly good snapshot — nothing
+breaks while this waits.
+
+**The rule.** Never design a task that needs two repositories to be writable
+at once. If a step genuinely needs a second repository, prepare the files
+here and hand the owner one command.

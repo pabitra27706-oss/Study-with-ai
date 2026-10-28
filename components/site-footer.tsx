@@ -17,6 +17,12 @@ export function SiteFooter() {
           </div>
 
           <div className="grid grid-cols-2 gap-x-12 gap-y-2 text-sm">
+            <Link href="/archive" className="text-muted transition hover:text-ink">
+              Archive
+            </Link>
+            <Link href="/progress" className="text-muted transition hover:text-ink">
+              Progress
+            </Link>
             <Link href="/skills" className="text-muted transition hover:text-ink">
               Skills
             </Link>

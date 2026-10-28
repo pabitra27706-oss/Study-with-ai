@@ -14,6 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${origin}${basePath}/`, lastModified: now, priority: 1 },
     { url: `${origin}${basePath}/learn`, lastModified: now, priority: 0.9 },
+  { url: `${origin}${basePath}/archive`, lastModified: now, priority: 0.8 },
+  { url: `${origin}${basePath}/progress`, lastModified: now, priority: 0.8 },
     { url: `${origin}${basePath}/skills`, lastModified: now, priority: 0.9 },
     { url: `${origin}${basePath}/projects`, lastModified: now, priority: 0.9 },
     { url: `${origin}${basePath}/journal`, lastModified: now, priority: 0.8 },

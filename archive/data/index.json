@@ -1,17 +1,43 @@
 {
   "metadata": {
     "siteName": "Learning Archive",
-    "lastUpdated": "2026-08-10T15:53:39Z",
+    "lastUpdated": "2026-10-29",
     "firstEntryDate": "2026-01-08",
-    "totalTopics": 68,
+    "totalTopics": 69,
     "totalFiles": 82,
     "languages": [
       "C",
-      "Python",
-      "JavaScript"
+      "JavaScript",
+      "Python"
     ]
   },
   "topics": [
+    {
+      "id": "c-data-structures-c",
+      "title": "Data Structures in C: linked lists, stacks, queues",
+      "language": "C",
+      "dateCreated": "2026-10-29",
+      "lastUpdated": "2026-10-29",
+      "fileCount": 0,
+      "tags": [
+        "linked-list",
+        "stack",
+        "queue",
+        "pointer",
+        "malloc",
+        "free",
+        "memory",
+        "O(1)",
+        "O(n)",
+        "LIFO",
+        "FIFO"
+      ],
+      "description": "The three structures every interview asks about, built from scratch in C: a node, a head pointer, and the links between them — plus the stack (LIFO) and the queue (FIFO) that sit on top of the same idea.",
+      "topicFile": "data/topics/c/data-structures-c.json",
+      "source": "engine",
+      "verdict": null,
+      "score": null
+    },
     {
       "id": "c-multiplication-table",
       "title": "Multiplication Table",
