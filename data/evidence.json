@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T17:23:34.998Z",
+  "generatedAt": "2026-10-28T18:09:06.300Z",
   "compiler": {
     "bin": "gcc",
     "version": "gcc (Debian 12.2.0-14+deb12u1) 12.2.0"
@@ -14,35 +14,72 @@
         "t1": {
           "id": "t1",
           "title": "Print 1 to N",
-          "status": "passed",
-          "passed": 3,
+          "status": "not-submitted",
+          "passed": 0,
           "total": 3,
-          "points": 10,
+          "points": 0,
           "maxPoints": 10,
           "compileError": null,
           "failing": [],
-          "explain": {
-            "score": 100,
-            "flags": [],
-            "stats": {
-              "lines": 18,
-              "comments": 2,
-              "whyComments": 2,
-              "significantLines": 1
-            }
-          }
+          "explain": null
         },
         "t2": {
           "id": "t2",
           "title": "Factorial of N",
-          "status": "not-submitted",
-          "passed": 0,
+          "status": "passed",
+          "passed": 4,
           "total": 4,
-          "points": 0,
+          "points": 15,
           "maxPoints": 15,
           "compileError": null,
           "failing": [],
-          "explain": null
+          "noisy": [
+            {
+              "expected": "120",
+              "actual": "Enter an integer: Factorial of 5 = 120"
+            },
+            {
+              "expected": "1",
+              "actual": "Enter an integer: Factorial of 0 = 1"
+            },
+            {
+              "expected": "1",
+              "actual": "Enter an integer: Factorial of 1 = 1"
+            },
+            {
+              "expected": "3628800",
+              "actual": "Enter an integer: Factorial of 10 = 3628800"
+            }
+          ],
+          "explain": {
+            "score": 70,
+            "flags": [
+              {
+                "kind": "no-why",
+                "line": 3,
+                "text": "Recursive function declaration",
+                "message": "This comment states what, not why. Explain the reason or delete it."
+              },
+              {
+                "kind": "no-why",
+                "line": 6,
+                "text": "Base case: 0! = 1",
+                "message": "This comment states what, not why. Explain the reason or delete it."
+              },
+              {
+                "kind": "no-why",
+                "line": 8,
+                "text": "Recursive case",
+                "message": "This comment states what, not why. Explain the reason or delete it."
+              }
+            ],
+            "stats": {
+              "lines": 25,
+              "comments": 3,
+              "whyComments": 0,
+              "significantLines": 0
+            }
+          }
         },
         "t3": {
           "id": "t3",
@@ -94,7 +131,7 @@
         }
       },
       "code": {
-        "t1": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    /* The range is 1..n inclusive, so the test is i <= n - using i < n would\n       stop one short and never print n itself. */\n    for (int i = 1; i <= n; i++) {\n        /* A space goes before every number except the first, so the output\n           has no trailing space and still separates the numbers. */\n        if (i > 1) printf(\" \");\n        printf(\"%d\", i);\n    }\n    printf(\"\\n\");\n    return 0;\n}\n"
+        "t2": "#include <stdio.h>\n\n// Recursive function declaration\nunsigned long long calculateFactorial(int n) {\n    if (n == 0) {\n        return 1; // Base case: 0! = 1\n    }\n    return n * calculateFactorial(n - 1); // Recursive case\n}\n\nint main() {\n    int n;\n\n    printf(\"Enter an integer: \");\n    scanf(\"%d\", &n);\n\n    if (n < 0) {\n        printf(\"Error: Factorial of a negative number does not exist.\\n\");\n    } else {\n        printf(\"Factorial of %d = %llu\\n\", n, calculateFactorial(n));\n    }\n\n    return 0;\n}\n"
       },
       "answers": {
         "q1": "Use for when the number of iterations is known in advance; use while when it is not known in advance.",
@@ -199,18 +236,59 @@
         ]
       },
       "explain": {
-        "score": 100,
-        "flags": [],
+        "score": 70,
+        "flags": [
+          {
+            "kind": "no-why",
+            "line": 3,
+            "text": "Recursive function declaration",
+            "message": "This comment states what, not why. Explain the reason or delete it.",
+            "file": "t2"
+          },
+          {
+            "kind": "no-why",
+            "line": 6,
+            "text": "Base case: 0! = 1",
+            "message": "This comment states what, not why. Explain the reason or delete it.",
+            "file": "t2"
+          },
+          {
+            "kind": "no-why",
+            "line": 8,
+            "text": "Recursive case",
+            "message": "This comment states what, not why. Explain the reason or delete it.",
+            "file": "t2"
+          }
+        ],
         "perFile": [
           {
-            "id": "t1",
-            "score": 100,
-            "flags": [],
+            "id": "t2",
+            "score": 70,
+            "flags": [
+              {
+                "kind": "no-why",
+                "line": 3,
+                "text": "Recursive function declaration",
+                "message": "This comment states what, not why. Explain the reason or delete it."
+              },
+              {
+                "kind": "no-why",
+                "line": 6,
+                "text": "Base case: 0! = 1",
+                "message": "This comment states what, not why. Explain the reason or delete it."
+              },
+              {
+                "kind": "no-why",
+                "line": 8,
+                "text": "Recursive case",
+                "message": "This comment states what, not why. Explain the reason or delete it."
+              }
+            ],
             "stats": {
-              "lines": 18,
-              "comments": 2,
-              "whyComments": 2,
-              "significantLines": 1
+              "lines": 25,
+              "comments": 3,
+              "whyComments": 0,
+              "significantLines": 0
             }
           }
         ]

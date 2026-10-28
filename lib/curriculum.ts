@@ -105,6 +105,11 @@ export type CurriculumIndex = {
   topics: CurriculumIndexEntry[];
 };
 
+export type TaskNoise = {
+  expected: string;
+  actual: string;
+};
+
 export type TaskEvidence = {
   id: string;
   title: string;
@@ -121,6 +126,8 @@ export type TaskEvidence = {
   maxPoints: number;
   compileError: string | null;
   failing: Array<{ expected: string; actual: string; error: string | null }>;
+  /** The expected answer was found, but the output carries extra text too. */
+  noisy?: Array<{ expected: string; actual: string }>;
   explain?: {
     score: number;
     flags: Array<{ kind: string; line: number; text: string; message: string }>;

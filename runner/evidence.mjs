@@ -88,6 +88,12 @@ export async function collectEvidence({ root, index, solutionsOverride = null, l
             actual: result.actual,
             error: result.error,
           })),
+        noisy: outcome.results
+          .filter((result) => result.noisy)
+          .map((result) => ({
+            expected: result.expected,
+            actual: result.actual,
+          })),
         explain: checkExplainability(source),
       };
     }

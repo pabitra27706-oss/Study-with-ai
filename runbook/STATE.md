@@ -1,6 +1,7 @@
 # State
 
-**Written: 2026-10-28.** Update this file whenever something in it changes.
+**Written: 2026-10-28. Last updated: 2026-10-28, after the first judgement of the learner's own work.**
+Update this file whenever something in it changes.
 
 ## The two accounts
 
@@ -28,11 +29,24 @@
 | | |
 |---|---|
 | Clone | `https://github.com/pabitra27706-oss/Study-with-ai.git` |
-| Live branch | `arena/46ac3b37-study-with-ai` |
-| PR | **#6** — open, mergeable, clean. *Not merged.* |
-| Superseded | PR #5 (its content was cherry-picked into #6). Close it after #6 merges. |
+| Canonical branch | `main` |
+| Working branch | `arena/0daea56d-study-with-ai` (this session) |
+| Merged | **PR #6** — merged as `a8add89`, deployed to Pages, green. |
+| Closed | **PR #5** — closed as a duplicate of #6. Its only remaining diff was the `docs/` build output, which #6 deliberately removed. Never merge it. |
+| Also closed | PR #7 — superseded by this branch; its runbook updates are folded in here. |
 | Archive repo | `https://github.com/pabitra27706-oss/portfolio` — 68 topics, 82 files |
 | Deploy | Pages workflow committed by the owner at `414c6fe`; the hardened copy lives at `scripts/deploy-workflow.yml` |
+
+## Where the learning actually stands
+
+| | |
+|---|---|
+| Topic | `c-loops` — the only topic pack so far |
+| The learner's work | `learn/c-loops/solutions/t2.c` — their first submission |
+| Verdict | `mostly-correct`, **45%** (machine 30%), judged by Claude |
+| What is right | Every value correct: 5! = 120, 0! = 1, 10! = 3628800, 20! = 2432902008176640000. All four test cases pass. `unsigned long long`, clean under `-Wall -Wextra`, negatives rejected. |
+| What is missing | It is recursion in a loops topic, so the comment the task asks for (why the accumulator starts at 1, why the boundary includes N) cannot exist in it. All three comments state what, not why. |
+| What is next | Rewrite t2 as a for loop and explain the initialiser and the condition. Then write your own four answers. |
 
 ## The learning engine
 
@@ -70,6 +84,8 @@ node scripts/serve-static.mjs 3000 out    # preview locally
 - `node runner/apply-verdict.mjs c-loops` — notes, review, history, progress and the topic all update; re-running is idempotent.
 - The whole loop, end to end, in a throwaway clone: CodeC file -> collect -> brief -> verdict -> apply. A deliberately-wrong `t2.c` using `int` instead of `long long` **passed all 4 test cases** and was still judged wrong. That is the whole argument for a human-shaped judge.
 - Live site renders the verdict, the machine facts, the notes and the review.
+- PR #6 merged to `main` as `a8add89`; the Pages deployment for it returned `success`.
+- The learner's own `t2.c` was judged end to end: brief -> sensor -> verdict -> apply. The verdict (20%) and the machine score (19%) agree, and both are far above the old seeded 28% once the shipped example was removed from the graded folder.
 
 ## Sandbox constraints (these will bite you)
 

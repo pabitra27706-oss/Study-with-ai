@@ -137,6 +137,17 @@ for (const entry of entries) {
       out.push("");
     }
 
+    if (graded.noisy?.length) {
+      out.push(
+        "**The output carries extra text** — the expected answer is in there, but so is more. It passes; decide whether the extra text is acceptable.",
+      );
+      out.push("");
+      for (const noisyCase of graded.noisy) {
+        out.push(`- expected \`${noisyCase.expected}\` / got \`${noisyCase.actual}\``);
+      }
+      out.push("");
+    }
+
     if (graded.explain) {
       out.push(`**Comment check:** ${graded.explain.score}/100`);
       out.push("");

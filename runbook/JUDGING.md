@@ -46,6 +46,28 @@ Keyword coverage is a **hint for the learner, not the truth**. The rubric lists
 the key ideas an answer should contain; a correct idea that avoids the exact
 keyword still gets the mark.
 
+### How the sensor compares output
+
+The sensor asks one question: **is the right value there?**
+
+- The expected answer must appear as a **whole token** (or a whole line, for
+  multi-line expectations).
+- `120` matches `Factorial of 5 = 120` — it passes.
+- `120` does **not** match `1200`, and does not match a program that only ever
+  prints `120`.
+- When the output carries extra text, the case still **passes**, but it is
+  recorded as **noisy**. The judge sees the extra text and decides whether it
+  is acceptable. The sensor reports; it does not scold.
+
+**Why.** The sensor's job is to be a reliable fact-giver. A sensor that fails a
+correct program for formatting forces the judge to spend its attention arguing
+with the sensor instead of judging the work. The owner's correction: *"Don't
+be so strict all outputs are ok so it should be passed."*
+
+The rule is verified against deliberately broken programs — off-by-one, wrong
+value, trailing digits, exiting non-zero on an edge case — and all of them
+still fail. Only cosmetics are forgiven.
+
 ## Verdict levels
 
 | Level | When |

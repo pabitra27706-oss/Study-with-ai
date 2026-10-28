@@ -3,6 +3,9 @@
 **Read [`runbook/README.md`](runbook/README.md) first.** Then
 `runbook/STATE.md` and `runbook/THE-LOOP.md`.
 
+Starting a new chat? The copy-paste prompt is in
+[`runbook/START-HERE.md`](runbook/START-HERE.md).
+
 This repository is not a codebase you write. It is a **learning system** a
 human runs, with you as the judge. The rules are in `AGENTS.md`; the current
 state, the exact steps, the judging guide and the decision log are in

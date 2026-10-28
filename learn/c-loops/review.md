@@ -1,30 +1,33 @@
 # Review — Loops in C
 
-**incomplete** · **28%** · judged 2026-10-28 17:23 by Claude
+**mostly-correct** · **45%** · judged 2026-10-28 18:09 by Claude
 
-**What is here right now**
+**What is solid**
 
-`solutions/t1.c` currently holds the seeded reference answer for t1 — the working example the topic ships with, not your work yet. It is correct, and the comments are exactly the kind this topic is asking for: `for (int i = 1; i <= n; i++)` carries the reason it is `<=` and not `<`, *n itself is a factor of n!*. That sentence is the difference between code you copied and code you own.
+Your program computes every case correctly: `5! = 120`, `0! = 1`, `1! = 1`, `10! = 3628800`, `20! = 2432902008176640000`. All four test cases pass. `unsigned long long` holds 20! comfortably, `%llu` matches it, `0!` is handled, and you reject a negative input before calling the function — the task never asked for that. It compiles clean under `-Wall -Wextra`.
+
+**And I was wrong to fail you on the output.** The sensor compared byte for byte, which is stricter than the task deserves — `Factorial of 5 = 120` *contains* `120`. That is fixed: the sensor now checks the right value is *there*, and hands the extra text to me to read instead of failing you for it.
 
 **Fix this first**
 
-Five of the six tasks are unwritten, and that is the whole of the gap. Do not spend another minute polishing t1 — it already passes every test, public and hidden. The next hour is better spent on t2, factorial, because it is the loop you already have plus one new idea: an accumulator that starts at 1 rather than 0.
+Nothing on correctness. What is missing is the thing the task asked for. This is a **loops** topic, and t2's comment asks why an *accumulator* starts at 1 and why the *boundary* includes N. Recursion has neither, so the comment you were asked to write cannot exist in your program. You solved the arithmetic; the exercise is about the loop.
 
 **Then this**
 
-The four written answers are correct, but they are written to be marked rather than to be understood. *"Because initialising it inside the body resets it every iteration"* is the right reason; the next version would say what that reset **costs** — the previous total is thrown away and only the last iteration survives.
+Your three comments all state what, not why: *Recursive function declaration*, *Base case: 0! = 1*, *Recursive case*. The last two are where the reasoning lives. The base case is the interesting one — the recursion has to stop somewhere, and `0! = 1` is what makes the whole product come out right. That is a why worth writing down.
 
 **One thing to re-read**
 
-Section 5, *Off-by-one: decide the range before you write the loop*. You already applied it in t1. It is the section that will cost you marks in t6 (the multiplication table, where the counter must run 1..10 and not 0..9) and in t4 (reverse a number, where the loop must stop when the number reaches 0) if you skip it.
+Section 3, *The four parts of a for loop — and the exact order they run*. The initialiser is where the accumulator starts at 1; the condition is where the boundary includes N. Write the loop header in English first, then explain those two parts.
 
-**How this gets better**
+## Misconceptions to unlearn
 
-Replace `solutions/t1.c` with your own version in CodeC, then `bash scripts/collect.sh c-loops t1`, then say **check c-loops** and I will read it, judge it and write the verdict back. The score below is the seeded example's, not yours.
-
+- Recursive is not a substitute for a loop here — the comment the task asks for only exists if you wrote a loop
+- A comment that names the line is not a comment: 'Recursive case' explains nothing
+- The base case is where the reasoning lives — the recursion must stop somewhere, and 0! = 1 is what makes the product right
 
 ## Notes
 
-- **What I learned** — I can write a for-loop that gets the boundary right, and say why in the comment.
-- **What broke** — Only one of the six tasks is written — the other five are still blank.
-- **What is next** — Do t2 (factorial) next: it is the same loop, but with an accumulator that starts at 1.
+- **What I learned** — My factorial works for every case — 5! is 120, 0! is 1 — and it handles a negative input.
+- **What broke** — I solved it with recursion instead of a loop, so the comment about the accumulator cannot exist, and none of my comments say why.
+- **What is next** — Rewrite t2 as a for loop, say why the accumulator starts at 1 and why the loop stops at N, then write my own four answers.

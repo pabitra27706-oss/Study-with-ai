@@ -1,1 +1,3 @@
 - 2026-10-28 — **incomplete** (28%) · 1/6 tasks · Only one of the six tasks is written — the other five are still blank.
+- 2026-10-28 — **incomplete** (20%) · 0/6 tasks · My program prints a prompt and a sentence instead of just the number, so it fails all four test cases.
+- 2026-10-28 — **mostly-correct** (45%) · 1/6 tasks · I solved it with recursion instead of a loop, so the comment about the accumulator cannot exist, and none of my comments say why.
