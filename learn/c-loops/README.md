@@ -50,23 +50,28 @@ folder both work.
 
 ### 2 · Push it
 
-Save the file anywhere CodeC puts it — `~/codec-out/` or your Downloads folder
-both work. Then:
+CodeC commits straight to this repository, to:
+
+```
+learn/c-loops/solutions/t1.c
+learn/c-loops/answers.json
+```
+
+That is the whole contract. Then:
+
+```bash
+git add -A
+git commit -m "c-loops: t1"
+git push
+```
+
+If CodeC cannot reach GitHub from the phone, `scripts/collect.sh` copies the
+file in for you, compiles it, runs the test cases, checks the comments, commits
+and pushes:
 
 ```bash
 bash scripts/collect.sh c-loops t1
 ```
-
-That finds the file, copies it into `solutions/t1.c`, compiles it, runs the test
-cases, checks the comments, commits and pushes. If it cannot find the file it
-prints the paths it tried; give it the path yourself:
-
-```bash
-bash scripts/collect.sh c-loops t1 /storage/emulated/0/Download/t1.c
-```
-
-If CodeC already pushes to GitHub by itself, skip the script entirely — commit
-straight to `learn/c-loops/solutions/t1.c` and say **check c-loops**.
 
 You can also just paste the code into this chat and I will do all of it.
 

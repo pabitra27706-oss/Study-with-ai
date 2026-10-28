@@ -26,7 +26,7 @@ const STEPS = [
   {
     n: "03",
     title: "Deliver",
-    body: "You write it in CodeC, save it, and push it here yourself. Nothing runs on a schedule and no bot talks to your repository — you decide when to hand it over.",
+    body: "You write it in CodeC and commit it to this repository yourself. Nothing runs on a schedule and no bot talks to your repository — you decide when to hand it over.",
   },
   {
     n: "04",
@@ -175,11 +175,11 @@ export default function LearnPage() {
           </div>
           <pre className="overflow-x-auto px-4 py-4 font-mono text-[12.5px] leading-relaxed text-muted">
             <code>{`# 1. read the topic on the site
-# 2. write your attempt
-nano ~/Study-with-ai/learn/c-loops/solutions/t1.c
+# 2. write your attempt in CodeC, save it
+#    (file: learn/c-loops/solutions/t1.c)
 
-# 3. push it — collect.sh copies, compiles, tests, commits and pushes
-bash scripts/collect.sh c-loops t1
+# 3. push it
+git add -A && git commit -m "c-loops: t1" && git push
 
 # 4. then, in this chat: "check c-loops"
 #    I read the brief, judge it, and write the notes back`}</code>

@@ -18,10 +18,7 @@ notebook, not a learning system.
 ```
   CodeC                          you write the code, on your phone
     │
-    │  save it
-    ▼
-  scripts/collect.sh             copies it in, checks it, commits, pushes
-    │
+    │  save it, commit, push
     ▼
   GitHub                         learn/<topic>/solutions/t1.c
     │
@@ -81,7 +78,7 @@ actually ran, they stay honest.
 | `runner/lib/sandbox.mjs` | Compile and run, with a timeout | — |
 | `data/evidence.json` | The machine facts | Claude |
 | `data/progress.json` | The verdict and the facts together | Claude |
-| `scripts/collect.sh` | The CodeC bridge: copy in, check, commit, push | — |
+| `scripts/collect.sh` | The fallback bridge, for when CodeC cannot push: copy in, check, commit, push | — |
 | `scripts/check.sh` | Prints the brief | — |
 | `scripts/export-to-portfolio.mjs` | Publishes your work into the Learning Archive | — |
 
@@ -122,15 +119,17 @@ the parts that are easy to get wrong. **Repeatable is what makes it a system.**
 
 ## 4. The loop, in practice
 
-### Write it in CodeC, then:
+### Write it in CodeC, then push it:
 
 ```bash
-bash scripts/collect.sh c-loops t1
+git add -A
+git commit -m "c-loops: t1"
+git push
 ```
 
-That finds the file (in `~/codec-out/`, `~/storage/downloads/`, or wherever
-CodeC saves), copies it into `learn/c-loops/solutions/t1.c`, compiles it, runs
-the test cases, checks the comments, commits and pushes.
+CodeC commits to `learn/c-loops/solutions/t1.c` — that is the whole contract.
+(`scripts/collect.sh` does the copying for you if CodeC cannot reach GitHub
+from the phone; see §5.)
 
 You can also just paste the code into this conversation and I will write the
 file, check it and push it for you.
@@ -165,48 +164,63 @@ needs a bullet list is a note that is not understood yet.
 
 ## 5. The CodeC side
 
-CodeC is your editor. This repository is the notebook. The bridge between them
-is one file on the phone.
+CodeC is your editor and it already talks to GitHub. So the file goes straight
+from CodeC into this repository — **no copy step, no script, no moving files
+around on the phone.**
 
-**Option A — CodeC saves to a folder (works today, nothing to configure).**
+### The path
 
-Point CodeC's save location at `~/codec-out/` in Termux, or just use the normal
-Android Downloads folder. Then:
+CodeC commits to:
+
+```
+learn/<topic>/solutions/<task>.c
+learn/<topic>/answers.json
+```
+
+That is all. Two paths, in the `learn/<topic>/` folder of this repository, on
+the branch we share.
+
+### The loop
+
+```bash
+# in CodeC: edit learn/c-loops/solutions/t1.c, save
+# then, from Termux (or CodeC's own git panel):
+git add -A
+git commit -m "c-loops: t1"
+git push
+```
+
+Then say **check c-loops**. I pull, read the brief, judge, write the verdict
+and push it back on the same branch.
+
+### The fallback
+
+If CodeC cannot reach a repo from the phone, `scripts/collect.sh` does the
+copying for you:
 
 ```bash
 bash scripts/collect.sh c-loops t1
 ```
 
-`collect.sh` looks in `~/codec-out/`, `~/storage/downloads/`,
-`$EXTERNAL_STORAGE/Download/` and `/sdcard/Download/`, takes the newest file
-matching the task id, copies it into `learn/<topic>/solutions/<task>.c`,
-compiles it, runs the test cases, checks the comments, commits and pushes.
-
-If it cannot find the file it tells you the paths it tried, and you pass the
-path yourself:
+It searches `~/codec-out/`, `~/storage/downloads/`, `$EXTERNAL_STORAGE/Download/`
+and `/sdcard/Download/`, takes the newest file matching the task id, copies it
+into `learn/<topic>/solutions/<task>.c`, compiles it, runs the test cases, checks
+the comments, commits and pushes.
 
 ```bash
 bash scripts/collect.sh c-loops t1 /storage/emulated/0/Download/t1.c
 ```
 
-**Option B — CodeC pushes to GitHub itself.**
+### Either way the rule is the same
 
-If CodeC already talks to GitHub, point it at this repository and commit
-straight to `learn/<topic>/solutions/<task>.c`. Then `collect.sh` is not needed
-at all — the file is already in the right place. Say **check \<topic\>** and I
-take it from there.
+**You decide when the work is ready to be judged.** Nothing runs on a schedule,
+nothing posts to your repository behind your back, and no other AI is involved.
 
-Either way the rule is the same: **you decide when the work is ready to be
-judged.** Nothing runs on a schedule, and nothing posts to your repository
-behind your back.
-
-> The `CodeC` repository URL could not be confirmed from the build sandbox
+> The CodeC repository URL could not be confirmed from the build sandbox
 > (`git clone https://github.com/pabiwilliams/CodeC.git` returns *Repository not
 > found* — the account or the repo name is different). Nothing above depends on
-> it: the bridge only needs the file on your phone and this repository. Send me
-> the real URL and I will wire the docs to it.
-
----
+> it: CodeC needs this repository, not the other way round. Send me the real
+> URL and I will wire the docs to it.
 
 ## 6. The two scores
 

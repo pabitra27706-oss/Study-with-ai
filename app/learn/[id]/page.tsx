@@ -281,17 +281,19 @@ export default async function LearnTopicPage({
           </div>
           <div className="space-y-4 px-4 py-4">
             <p className="text-[13px] leading-relaxed text-muted">
-              Write the code in <span className="text-ink">CodeC</span>, save it, and
-              push it here. Then say <span className="font-mono text-ink">check {topic.id}</span> —
-              I read the brief, judge the work, and write the verdict and the notes back
-              into the repository. There is no model and no API key involved: the judge
-              is me, in the conversation.
+              Write the code in <span className="text-ink">CodeC</span> and commit it to{" "}
+              <span className="font-mono text-ink">learn/{topic.id}/solutions/</span>.
+              Then say <span className="font-mono text-ink">check {topic.id}</span> — I read
+              the brief, judge the work, and write the verdict and the notes back into the
+              repository. There is no model and no API key involved: the judge is me, in
+              the conversation.
             </p>
             <pre className="overflow-x-auto rounded-lg border border-line bg-panel-2 px-4 py-3 font-mono text-[12.5px] leading-relaxed text-muted">
               <code>{`# write it in CodeC, save it, then:
-bash scripts/collect.sh ${topic.id} t1
+git add -A
+git commit -m "${topic.id}: t1"
+git push
 
-# that copies the file in, checks it, commits and pushes
 # then just say: "check ${topic.id}"`}</code>
             </pre>
           </div>
