@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://pabitra27706-oss.github.io/Study-with-ai/sitemap.xml

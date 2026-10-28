@@ -1,0 +1,72 @@
+1:"$Sreact.fragment"
+2:"/Study-with-ai/_next/static/chunks/3vmmyw058qjeb.js"
+3:I[48303,["$2"],"SiteHeader"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+6:I[22016,["$2"],""]
+d:"ViewportBoundary"
+e:I[97367,["$2"],"$d"]
+10:"MetadataBoundary"
+11:I[97367,["$2"],"$10"]
+12:"$Sreact.suspense"
+14:I[68027,["$2"],"default",1]
+:HL["/Study-with-ai/_next/static/chunks/0n_c4btriddr3.css","style"]
+:HC["/",""]
+8:X
+b:[["children",{"s":"__PAGE__","h":512,"d":{"r":"$Lc","p":false,"v":null}}]]
+9:[["children",{"s":{"n":"slug","t":"d","k":"2026-10-27-why-the-repo-is-the-spine","s":[]},"h":512,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":"$La","templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$8"},"c":"$Qb"}]]
+7:[["children",{"s":"journal","h":512,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$8"},"c":"$Q9"}]]
+0:{"P":null,"c":["","journal","2026-10-27-why-the-repo-is-the-spine",""],"q":"","i":false,"t":{"t":{"s":"","h":528,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Study-with-ai/_next/static/chunks/0n_c4btriddr3.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/Study-with-ai/_next/static/chunks/3vmmyw058qjeb.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":["$","body",null,{"className":"min-h-screen bg-canvas text-ink antialiased","children":[["$","div",null,{"className":"grid-bg pointer-events-none fixed inset-0 -z-10"}],["$","div",null,{"className":"relative flex min-h-screen flex-col","children":[["$","$L3",null,{}],["$","main",null,{"className":"flex-1","children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"mx-auto flex max-w-2xl flex-col items-center px-5 py-32 text-center","children":[["$","p",null,{"className":"font-mono text-sm text-brand-soft","children":"404"}],["$","h1",null,{"className":"mt-4 text-3xl font-semibold tracking-tight text-ink","children":"This page does not exist"}],["$","p",null,{"className":"mt-4 text-[15px] leading-relaxed text-muted","children":"Which is, honestly, the correct response to a question that has no answer yet. Write it down and go find it."}],["$","div",null,{"className":"mt-8 flex flex-wrap justify-center gap-3","children":[["$","$L6",null,{"href":"/","className":"rounded-xl bg-brand px-5 py-2.5 text-sm font-medium text-white transition hover:bg-brand/85","children":"Back to the dashboard"}],["$","$L6",null,{"href":"/journal","className":"rounded-xl border border-line bg-panel px-5 py-2.5 text-sm text-ink transition hover:border-brand/40","children":"Read the journal"}]]}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","footer",null,{"className":"mt-24 border-t border-line/70 bg-panel/40","children":["$","div",null,{"className":"mx-auto max-w-6xl px-5 py-12","children":[["$","div",null,{"className":"flex flex-col gap-10 md:flex-row md:items-start md:justify-between","children":[["$","div",null,{"className":"max-w-sm","children":[["$","p",null,{"className":"font-mono text-sm text-ink","children":["study",["$","span",null,{"className":"text-brand-soft","children":"-with-ai"}]]}],["$","p",null,{"className":"mt-3 text-sm leading-relaxed text-muted","children":"A skill-readiness journey built on AI tutoring, Git as memory, and the web as proof. Built from the repository itself."}]]}],["$","div",null,{"className":"grid grid-cols-2 gap-x-12 gap-y-2 text-sm","children":[["$","$L6",null,{"href":"/skills","className":"text-muted transition hover:text-ink","children":"Skills"}],["$","$L6",null,{"href":"/projects","className":"text-muted transition hover:text-ink","children":"Projects"}],["$","$L6",null,{"href":"/journal","className":"text-muted transition hover:text-ink","children":"Journal"}],["$","$L6",null,{"href":"/playbook","className":"text-muted transition hover:text-ink","children":"Playbook"}],["$","$L6",null,{"href":"/links","className":"text-muted transition hover:text-ink","children":"Links"}],["$","a",null,{"href":"https://github.com/pabitra27706-oss","target":"_blank","rel":"noreferrer noopener","className":"text-muted transition hover:text-ink","children":"GitHub ↗"}]]}]]}],["$","div",null,{"className":"mt-10 flex flex-col gap-3 border-t border-line-soft pt-6 text-xs text-faint sm:flex-row sm:items-center sm:justify-between","children":[["$","p",null,{"children":["Kolkata, West Bengal, India"," · Built with Next.js + Tailwind · Content generated from the repo"]}],["$","p",null,{"className":"font-mono","children":"Attempt first. Ask second. Test unaided. — the rule this whole system runs on."}]]}]]}]}]]}]]}]}]]}],"p":false,"v":null},"c":"$Q7"},"h":{"r":["$","$1","h",{"children":[null,["$","$Le",null,{"children":"$Lf"}],["$","$L11",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$12",null,{"name":"Next.Metadata","children":"$L13"}]}],null]}],null]}],"p":false,"v":null}},"m":"$undefined","G":["$14",[["$","link","0",{"rel":"stylesheet","href":"/Study-with-ai/_next/static/chunks/0n_c4btriddr3.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"nj0Rr-KzbRUjNPRYokdPu"}
+16:I[97367,["$2"],"OutletBoundary"]
+8:C
+a:["$","$L5",null,{}]
+c:["$","$1","c",{"children":["$L15",null,["$","$L16",null,{"children":["$","$12",null,{"name":"Next.MetadataOutlet","children":"$@17"}]}]]}]
+18:I[5014,["$2"],"default"]
+19:Tb16,<h2 id="01-the-question">01 — The question</h2>
+<p>I kept hitting the same wall: a chat window full of good explanations, and
+nothing I could point to a month later. Notes lived in one app, code in
+another, half-formed thoughts in the chat history itself. The AI was doing the
+remembering for me, and AI conversations do not age well.</p>
+<h2 id="02-my-attempt">02 — My attempt</h2>
+<p>I asked the AI to design a better system for me. It produced a tidy diagram:
+ingest → summarise → store → review. Clean. And I noticed immediately that it
+had removed the only part that was actually mine — the attempt. The pipeline
+had no place for me to be wrong, and being wrong is the part that produces the
+learning.</p>
+<h2 id="03-where-i-was-wrong">03 — Where I was wrong</h2>
+<p>Two corrections, and they came from the evidence rather than from taste.</p>
+<p><strong>The guarded-tutor result.</strong> In a real course with GPT-4 assistance, students
+who used the tutor freely improved their <em>practice</em> performance (about +48%)
+but performed <strong>17% worse unaided</strong> on the exam. The harm disappeared when the
+tutor was constrained — hints instead of answers, quizzes instead of lectures.
+So the design constraint is not &quot;AI tutor&quot;, it is &quot;AI that cannot answer the
+question for me&quot;.</p>
+<p><strong>The effort trap.</strong> Open-ended chatbot tutoring pushes people into the
+cheapest available action — accept the answer. A study of this found the
+sequence Prime → Probe → Point → Attach → Strengthen → Test: the learner
+generates the question, attempts it, gets the explanation, connects it,
+consolidates it, and is finally tested. Each step is <em>more</em> work than the
+last, which is exactly the point.</p>
+<p>So the repository — not the chat — is the spine. A commit is a dated,
+immutable record of what I understood at a specific moment. If I cannot
+express it in a file, I did not understand it yet.</p>
+<h2 id="04-what-changes">04 — What changes</h2>
+<p>Concrete rules now in <code>AGENTS.md</code>:</p>
+<ul>
+<li>The AI reads <code>raw/</code> and <code>notes/</code>; it <strong>never</strong> writes <code>journal/</code>. That
+folder is mine.</li>
+<li>Every session ends with a commit. Not a summary — a decision.</li>
+<li>The weekly test is closed-book and no-AI. It is the only score that counts.</li>
+<li><code>raw/</code> is append-only. Notes are AI-compiled and I own them. Cards are
+curated by me — roughly a third of what the AI generates survives.</li>
+</ul>
+<p>One more thing I am keeping: the AI is allowed to disagree with me and to
+flag contradictions between my notes. A tutor that only agrees is a mirror,
+and mirrors do not teach.</p>
+<p>Next: write the actual <code>AGENTS.md</code> and make the loop runnable rather than
+aspirational.</p>
+15:["$","div",null,{"className":"mx-auto max-w-3xl px-5 py-16","children":[["$","$L6",null,{"href":"/journal","className":"inline-flex items-center gap-1.5 text-sm text-muted transition hover:text-ink","children":[["$","$L18",null,{"ref":"$undefined","icon":{"name":"arrow-left","size":24,"node":[["path",{"d":"m12 19-7-7 7-7","key":"1l729n"}],["path",{"d":"M19 12H5","key":"x3x0zl"}]]},"className":"$undefined","size":14}],"All entries"]}],["$","article",null,{"className":"mt-8","children":[["$","div",null,{"className":"flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] text-faint","children":[["$","span",null,{"children":"27 Oct 2026"}],[["$","span","system-design",{"className":"text-brand-soft","children":["#","system-design"]}],["$","span","git",{"className":"text-brand-soft","children":["#","git"]}],["$","span","metacognition",{"className":"text-brand-soft","children":["#","metacognition"]}]]]}],["$","h1",null,{"className":"mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl","children":"Why the repository is the spine and the AI is only the tutor"}],["$","p",null,{"className":"mt-4 text-[16px] leading-relaxed text-muted","children":"I had been treating the repo as an archive of notes. It is not an archive — it is the only place where my understanding is stored in a form I can audit."}],["$","div",null,{"className":"mt-6 rounded-xl border border-warn/25 bg-warn/5 p-4","children":[["$","p",null,{"className":"font-mono text-[11px] uppercase tracking-wider text-warn","children":"The mistake"}],["$","p",null,{"className":"mt-2 text-[14px] leading-relaxed text-muted","children":"I was using the AI to produce content instead of using it to test content I had produced."}]]}],["$","div",null,{"className":"md mt-10","dangerouslySetInnerHTML":{"__html":"$19"}}]]}],"$L1a"]}]
+1a:["$","div",null,{"className":"mt-16 border-t border-line pt-6","children":["$","$L6",null,{"href":"/journal","className":"inline-flex items-center gap-1.5 text-sm text-accent transition hover:text-ink","children":[["$","$L18",null,{"ref":"$undefined","icon":"$15:props:children:0:props:children:0:props:icon","className":"$undefined","size":14}],"Back to the journal"]}]}]
+f:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#06070c"}],["$","meta","3",{"name":"color-scheme","content":"dark"}]]
+13:[["$","title","0",{"children":"Why the repository is the spine and the AI is only the tutor · Pabitra"}],["$","meta","1",{"name":"description","content":"I had been treating the repo as an archive of notes. It is not an archive — it is the only place where my understanding is stored in a form I can audit."}],["$","meta","2",{"name":"author","content":"Pabitra"}],["$","meta","3",{"name":"keywords","content":"portfolio,CS student,AI learning,skill readiness,web development,Kolkata"}],["$","meta","4",{"name":"robots","content":"index, follow"}],["$","meta","5",{"property":"og:title","content":"Pabitra — A diploma CS student in Kolkata building a career-grade skill set with AI — and documenting every step of it."}],["$","meta","6",{"property":"og:description","content":"I'm a Computer Science & Technology diploma student at APC Ray Polytechnic, Kolkata. I'm using AI as a study partner, Git as memory, and the web as proof. This site is the live output of that system: skills I'm building, projects I've shipped, and what I got wrong along the way."}],["$","meta","7",{"property":"og:url","content":"https://pabitra27706-oss.github.io/Study-with-ai/Study-with-ai/"}],["$","meta","8",{"property":"og:type","content":"website"}],["$","meta","9",{"name":"twitter:card","content":"summary"}],["$","meta","10",{"name":"twitter:title","content":"Pabitra — A diploma CS student in Kolkata building a career-grade skill set with AI — and documenting every step of it."}],["$","meta","11",{"name":"twitter:description","content":"I'm a Computer Science & Technology diploma student at APC Ray Polytechnic, Kolkata. I'm using AI as a study partner, Git as memory, and the web as proof. This site is the live output of that system: skills I'm building, projects I've shipped, and what I got wrong along the way."}]]
+17:null

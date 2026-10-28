@@ -1,0 +1,43 @@
+1:"$Sreact.fragment"
+2:"/Study-with-ai/_next/static/chunks/3vmmyw058qjeb.js"
+3:I[48303,["$2"],"SiteHeader"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+6:I[22016,["$2"],""]
+11:"ViewportBoundary"
+12:I[97367,["$2"],"$11"]
+13:"MetadataBoundary"
+14:I[97367,["$2"],"$13"]
+15:"$Sreact.suspense"
+:HL["/Study-with-ai/_next/static/chunks/0n_c4btriddr3.css","style"]
+8:X
+b:X
+b:C
+c:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","div",null,{"className":"mx-auto max-w-4xl px-5 py-16","children":[["$","div",null,{"className":"mb-10 max-w-2xl","children":[["$","p",null,{"className":"mb-2 font-mono text-xs uppercase tracking-[0.18em] text-brand-soft","children":"Links"}],["$","h2",null,{"className":"text-2xl font-semibold text-ink sm:text-3xl","children":"Everything, one click away"}],["$","p",null,{"className":"mt-3 text-[15px] leading-relaxed text-muted","children":"The site, the source, my profiles, the exam resources and the free tools the whole system runs on. Every one of these is free — the constraint was a feature, not a budget problem."}]]}],"$Ld"]}],["$Le"],"$Lf"]}],"p":"$@10","v":null,"s":"$8"}}]]
+9:[["children",{"s":"links","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@a","v":"$b","s":"$8"},"c":"$Qc"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Study-with-ai/_next/static/chunks/0n_c4btriddr3.css","precedence":"next"}],["$","script","script-0",{"src":"/Study-with-ai/_next/static/chunks/3vmmyw058qjeb.js","async":true}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":["$","body",null,{"className":"min-h-screen bg-canvas text-ink antialiased","children":[["$","div",null,{"className":"grid-bg pointer-events-none fixed inset-0 -z-10"}],["$","div",null,{"className":"relative flex min-h-screen flex-col","children":[["$","$L3",null,{}],["$","main",null,{"className":"flex-1","children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[["$","div",null,{"className":"mx-auto flex max-w-2xl flex-col items-center px-5 py-32 text-center","children":[["$","p",null,{"className":"font-mono text-sm text-brand-soft","children":"404"}],["$","h1",null,{"className":"mt-4 text-3xl font-semibold tracking-tight text-ink","children":"This page does not exist"}],["$","p",null,{"className":"mt-4 text-[15px] leading-relaxed text-muted","children":"Which is, honestly, the correct response to a question that has no answer yet. Write it down and go find it."}],["$","div",null,{"className":"mt-8 flex flex-wrap justify-center gap-3","children":[["$","$L6",null,{"href":"/","className":"rounded-xl bg-brand px-5 py-2.5 text-sm font-medium text-white transition hover:bg-brand/85","children":"Back to the dashboard"}],["$","$L6",null,{"href":"/journal","className":"rounded-xl border border-line bg-panel px-5 py-2.5 text-sm text-ink transition hover:border-brand/40","children":"Read the journal"}]]}]]}],[]]}]}],["$","footer",null,{"className":"mt-24 border-t border-line/70 bg-panel/40","children":["$","div",null,{"className":"mx-auto max-w-6xl px-5 py-12","children":[["$","div",null,{"className":"flex flex-col gap-10 md:flex-row md:items-start md:justify-between","children":[["$","div",null,{"className":"max-w-sm","children":[["$","p",null,{"className":"font-mono text-sm text-ink","children":["study",["$","span",null,{"className":"text-brand-soft","children":"-with-ai"}]]}],["$","p",null,{"className":"mt-3 text-sm leading-relaxed text-muted","children":"A skill-readiness journey built on AI tutoring, Git as memory, and the web as proof. Built from the repository itself."}]]}],["$","div",null,{"className":"grid grid-cols-2 gap-x-12 gap-y-2 text-sm","children":[["$","$L6",null,{"href":"/skills","className":"text-muted transition hover:text-ink","children":"Skills"}],["$","$L6",null,{"href":"/projects","className":"text-muted transition hover:text-ink","children":"Projects"}],["$","$L6",null,{"href":"/journal","className":"text-muted transition hover:text-ink","children":"Journal"}],["$","$L6",null,{"href":"/playbook","className":"text-muted transition hover:text-ink","children":"Playbook"}],["$","$L6",null,{"href":"/links","className":"text-muted transition hover:text-ink","children":"Links"}],["$","a",null,{"href":"https://github.com/pabitra27706-oss","target":"_blank","rel":"noreferrer noopener","className":"text-muted transition hover:text-ink","children":"GitHub ↗"}]]}]]}],["$","div",null,{"className":"mt-10 flex flex-col gap-3 border-t border-line-soft pt-6 text-xs text-faint sm:flex-row sm:items-center sm:justify-between","children":[["$","p",null,{"children":["Kolkata, West Bengal, India"," · Built with Next.js + Tailwind · Content generated from the repo"]}],["$","p",null,{"className":"font-mono","children":"Attempt first. Ask second. Test unaided. — the rule this whole system runs on."}]]}]]}]}]]}]]}]}]]}],"p":"$@7","v":null,"s":"$8"},"c":"$Q9"},"h":{"r":["$","$1","h",{"children":[null,["$","$L12",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#06070c"}],["$","meta","3",{"name":"color-scheme","content":"dark"}]]}],["$","$L14",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$15",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Links · Pabitra"}],["$","meta","1",{"name":"description","content":"Every live URL in one place — repo, site, profiles, exam resources and the free tools this journey runs on."}],"$L16","$L17","$L18","$L19","$L1a","$L1b","$L1c","$L1d","$L1e","$L1f"]}]}],null]}],null]}],"p":"$@20","v":null,"s":"$8"}},"a":"$@21","u":"$@22","b":"nj0Rr-KzbRUjNPRYokdPu"}
+23:"/Study-with-ai/_next/static/chunks/3lj2ta_ye6z-3.js"
+24:I[30662,["$2","$23"],"LinksBoard"]
+25:I[97367,["$2"],"OutletBoundary"]
+d:["$","$L24",null,{}]
+e:["$","script","script-0",{"src":"/Study-with-ai/_next/static/chunks/3lj2ta_ye6z-3.js","async":true}]
+f:["$","$L25",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@26"}]}]
+16:["$","meta","2",{"name":"author","content":"Pabitra"}]
+17:["$","meta","3",{"name":"keywords","content":"portfolio,CS student,AI learning,skill readiness,web development,Kolkata"}]
+18:["$","meta","4",{"name":"robots","content":"index, follow"}]
+19:["$","meta","5",{"property":"og:title","content":"Pabitra — A diploma CS student in Kolkata building a career-grade skill set with AI — and documenting every step of it."}]
+1a:["$","meta","6",{"property":"og:description","content":"I'm a Computer Science & Technology diploma student at APC Ray Polytechnic, Kolkata. I'm using AI as a study partner, Git as memory, and the web as proof. This site is the live output of that system: skills I'm building, projects I've shipped, and what I got wrong along the way."}]
+1b:["$","meta","7",{"property":"og:url","content":"https://pabitra27706-oss.github.io/Study-with-ai/Study-with-ai/"}]
+1c:["$","meta","8",{"property":"og:type","content":"website"}]
+1d:["$","meta","9",{"name":"twitter:card","content":"summary"}]
+1e:["$","meta","10",{"name":"twitter:title","content":"Pabitra — A diploma CS student in Kolkata building a career-grade skill set with AI — and documenting every step of it."}]
+1f:["$","meta","11",{"name":"twitter:description","content":"I'm a Computer Science & Technology diploma student at APC Ray Polytechnic, Kolkata. I'm using AI as a study partner, Git as memory, and the web as proof. This site is the live output of that system: skills I'm building, projects I've shipped, and what I got wrong along the way."}]
+8:300
+26:null
+22:true
+8:C
+21:0
+a:"$undefined"
+7:"$undefined"
+20:"$undefined"
+10:"$undefined"

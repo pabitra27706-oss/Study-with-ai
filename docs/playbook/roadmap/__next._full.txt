@@ -1,0 +1,1307 @@
+1:"$Sreact.fragment"
+2:"/Study-with-ai/_next/static/chunks/3vmmyw058qjeb.js"
+3:I[48303,["$2"],"SiteHeader"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+6:I[22016,["$2"],""]
+c:"ViewportBoundary"
+d:I[97367,["$2"],"$c"]
+f:"MetadataBoundary"
+10:I[97367,["$2"],"$f"]
+11:"$Sreact.suspense"
+13:I[68027,["$2"],"default",1]
+:HL["/Study-with-ai/_next/static/chunks/0n_c4btriddr3.css","style"]
+:HC["/",""]
+8:X
+a:[["children",{"s":"__PAGE__","h":512,"d":{"r":"$Lb","p":false,"v":null}}]]
+9:[["children",{"s":"roadmap","h":512,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$8"},"c":"$Qa"}]]
+7:[["children",{"s":"playbook","h":512,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$8"},"c":"$Q9"}]]
+0:{"P":null,"c":["","playbook","roadmap",""],"q":"","i":false,"t":{"t":{"s":"","h":528,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Study-with-ai/_next/static/chunks/0n_c4btriddr3.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/Study-with-ai/_next/static/chunks/3vmmyw058qjeb.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":["$","body",null,{"className":"min-h-screen bg-canvas text-ink antialiased","children":[["$","div",null,{"className":"grid-bg pointer-events-none fixed inset-0 -z-10"}],["$","div",null,{"className":"relative flex min-h-screen flex-col","children":[["$","$L3",null,{}],["$","main",null,{"className":"flex-1","children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"mx-auto flex max-w-2xl flex-col items-center px-5 py-32 text-center","children":[["$","p",null,{"className":"font-mono text-sm text-brand-soft","children":"404"}],["$","h1",null,{"className":"mt-4 text-3xl font-semibold tracking-tight text-ink","children":"This page does not exist"}],["$","p",null,{"className":"mt-4 text-[15px] leading-relaxed text-muted","children":"Which is, honestly, the correct response to a question that has no answer yet. Write it down and go find it."}],["$","div",null,{"className":"mt-8 flex flex-wrap justify-center gap-3","children":[["$","$L6",null,{"href":"/","className":"rounded-xl bg-brand px-5 py-2.5 text-sm font-medium text-white transition hover:bg-brand/85","children":"Back to the dashboard"}],["$","$L6",null,{"href":"/journal","className":"rounded-xl border border-line bg-panel px-5 py-2.5 text-sm text-ink transition hover:border-brand/40","children":"Read the journal"}]]}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","footer",null,{"className":"mt-24 border-t border-line/70 bg-panel/40","children":["$","div",null,{"className":"mx-auto max-w-6xl px-5 py-12","children":[["$","div",null,{"className":"flex flex-col gap-10 md:flex-row md:items-start md:justify-between","children":[["$","div",null,{"className":"max-w-sm","children":[["$","p",null,{"className":"font-mono text-sm text-ink","children":["study",["$","span",null,{"className":"text-brand-soft","children":"-with-ai"}]]}],["$","p",null,{"className":"mt-3 text-sm leading-relaxed text-muted","children":"A skill-readiness journey built on AI tutoring, Git as memory, and the web as proof. Built from the repository itself."}]]}],["$","div",null,{"className":"grid grid-cols-2 gap-x-12 gap-y-2 text-sm","children":[["$","$L6",null,{"href":"/skills","className":"text-muted transition hover:text-ink","children":"Skills"}],["$","$L6",null,{"href":"/projects","className":"text-muted transition hover:text-ink","children":"Projects"}],["$","$L6",null,{"href":"/journal","className":"text-muted transition hover:text-ink","children":"Journal"}],["$","$L6",null,{"href":"/playbook","className":"text-muted transition hover:text-ink","children":"Playbook"}],["$","$L6",null,{"href":"/links","className":"text-muted transition hover:text-ink","children":"Links"}],["$","a",null,{"href":"https://github.com/pabitra27706-oss","target":"_blank","rel":"noreferrer noopener","className":"text-muted transition hover:text-ink","children":"GitHub ↗"}]]}]]}],["$","div",null,{"className":"mt-10 flex flex-col gap-3 border-t border-line-soft pt-6 text-xs text-faint sm:flex-row sm:items-center sm:justify-between","children":[["$","p",null,{"children":["Kolkata, West Bengal, India"," · Built with Next.js + Tailwind · Content generated from the repo"]}],["$","p",null,{"className":"font-mono","children":"Attempt first. Ask second. Test unaided. — the rule this whole system runs on."}]]}]]}]}]]}]]}]}]]}],"p":false,"v":null},"c":"$Q7"},"h":{"r":["$","$1","h",{"children":[null,["$","$Ld",null,{"children":"$Le"}],["$","$L10",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$11",null,{"name":"Next.Metadata","children":"$L12"}]}],null]}],null]}],"p":false,"v":null}},"m":"$undefined","G":["$13",[["$","link","0",{"rel":"stylesheet","href":"/Study-with-ai/_next/static/chunks/0n_c4btriddr3.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"nj0Rr-KzbRUjNPRYokdPu"}
+15:I[97367,["$2"],"OutletBoundary"]
+8:C
+b:["$","$1","c",{"children":["$L14",null,["$","$L15",null,{"children":["$","$11",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]]}]
+17:I[5014,["$2"],"default"]
+18:T1a8f6,<h1>CS Career Roadmap — CST Diploma, WB APC Ray Polytechnic</h1>
+<p><strong>Tailored plan for: Computer Science &amp; Technology diploma (3 years, after Class 10), Kolkata.</strong>
+Goal: <strong>CS career ready</strong> — skills, job, and the opportunities that come with both.
+Target seat: <strong>Jadavpur University B.E./B.Tech (Lateral), Computer Science &amp; Engineering.</strong></p>
+<blockquote>
+<p><strong>One structural note up front:</strong> this plan has <strong>two spines that share the same hours.</strong></p>
+<ul>
+<li><strong>JELET spine</strong> — Maths + Physics + Chemistry + FEEE. This is your <em>exam</em>, and it is 100% your syllabus (or your Class 10–12 science).</li>
+<li><strong>Job spine</strong> — TypeScript + Python/AI + portfolio. This is your <em>career</em>, and it is entirely outside your syllabus.</li>
+</ul>
+<p>Everything else in this doc is either one of those two spines, or the operating system that runs them both (your repo, your agent, your loop).</p>
+</blockquote>
+<p><em>Research current as of 28 October 2026.</em></p>
+<hr>
+<h2 id="0-your-position-updated-after-your-answers">0. Your position, updated (after your answers)</h2>
+<p><strong>Sem 3 · JELET-priority → JU CSE · beginner at coding · 2–3 hours/day · 9.3 GPA in 1st year · 88.17% Madhyamik · 80% HS.</strong></p>
+<p><strong>Your academic profile is a genuine asset here.</strong> 88.17% in Class 10, 80% in Class 12, and a 1st-year diploma GPA of 9.3 (≈93% if that&#39;s a 10-point scale) put you comfortably over the single hardest gate on your entire path: <strong>Jadavpur University&#39;s lateral entry demands a 60% diploma aggregate</strong> — 15 points higher than every other college in West Bengal <a href="https://cdnbbsr.s3waas.gov.in/s3d2a27e83d429f0dcae6b937cf480aeb1/uploads/2026/03/20260318287108702.pdf">JELET 2026 bulletin</a>. You cleared that in year one. <strong>The remaining challenge is not paperwork. It&#39;s the exam rank</strong> — a pure skills problem, which is exactly what the AI learning system is for.</p>
+<p>Good news first: <strong>2–3 hours/day for 3.5 years is roughly 3,000+ hours.</strong> That is a professional-level runway, and it is the single biggest thing in your favour. A beginner who starts in Sem 3 with daily consistency reaches a completely different place by graduation than someone who starts learning in their final year. Your timing is genuinely good.</p>
+<p>But the plan needs three corrections, and one of them is important.</p>
+<h3 id="correction-1-quotlearn-something-not-for-my-studiesquot-needs-one-exception">Correction 1 — &quot;Learn something not for my studies&quot; needs one exception</h3>
+<p>You said you want to learn <em>not for your studies</em>. I mostly agree — but <strong>JELET, which you&#39;ve now chosen as your spine, is 100% your studies.</strong> JELET Paper I is <strong>Mathematics, Physics, Chemistry, and Fundamentals of Electrical &amp; Electronics Engineering</strong> — there is no Computer Science paper at all.</p>
+<p>That single fact reshapes the plan: the highest-leverage thing you can do at 2–3 hours/day from Sem 3 onwards is <strong>master Maths, Physics and Chemistry properly in English, using the AI as a tutor.</strong> That single activity simultaneously:</p>
+<ul>
+<li>protects the <strong>45% diploma aggregate</strong> that JELET eligibility depends on,</li>
+<li>is <strong>~92% of the JELET marks</strong> (Math 41.7% + Physics 29.2% + Chemistry 20.8% + FEEE 8.3%) <a href="https://collegedunia.com/exams/jelet/exam-pattern">JELET pattern</a>,</li>
+<li>and is <em>not</em> the CS skills that get you a job.</li>
+</ul>
+<p>So the structure becomes: <strong>JELET subjects = the exam spine. CS + AI = the job spine. Both run in parallel from day one.</strong> They&#39;re not competing for time — the syllabus overlap means your core academic effort and your exam prep are the same hours.</p>
+<h3 id="correction-2-don39t-serialise-degree-then-job">Correction 2 — Don&#39;t serialise degree-then-job</h3>
+<p>You chose &quot;degree first, jobs after.&quot; I&#39;ll support that. But the thing to understand is that <strong>the degree only converts into a job if the portfolio exists at the same time.</strong> By the time you sit JELET (~2029–30), the market will have moved further from where it is today — entry-level postings have already fallen ~60% since 2022 <a href="https://www.nucamp.co/blog/the-junior-developer-hiring-crisis-in-2026-how-to-get-your-first-full-stack-job">9</a>, and AI fluency has moved from nice-to-have to baseline <a href="https://www.edstellar.com/blog/most-in-demand-skills-in-it">7</a>.</p>
+<p>The right version of &quot;degree first&quot; is: <strong>the degree is the spine; the portfolio is built in the same 3.5 years, not after it.</strong> The B.Tech years (Sem 7–12) are then where you convert both into a job — and you can start applying during them too, not only after graduation.</p>
+<h3 id="correction-3-you39re-a-beginner-so-the-first-6-months-are-about-one-thing-only">Correction 3 — You&#39;re a beginner, so the first 6 months are about one thing only</h3>
+<p>Not React. Not Docker. Not TypeScript. <strong>Foundations:</strong> one programming language done properly, Git/GitHub genuinely mastered, math and physics understood rather than memorised, and English technical reading/writing fluent enough that a doc isn&#39;t a wall.</p>
+<p>A beginner who tries to build a full-stack app in month 2 burns out and learns nothing. A beginner who spends 6 months on foundations + the JELET subjects + their learning system, then adds the stack, will be employable. The stack in §4 is real — it is just <em>sequenced differently for a beginner</em> (§7).</p>
+<h3 id="one-thing-to-settle-this-week">One thing to settle this week</h3>
+<p><strong>Ask your college office two questions:</strong></p>
+<ol>
+<li><em>&quot;Is a final-semester-appearing diploma candidate eligible to apply for JELET provisionally?&quot;</em> — the WB rules say yes: <em>&quot;Candidates who are appearing in their final semester of the qualifying exam can apply provisionally — admission will be confirmed only after submitting the final marksheet at document verification&quot;</em> <a href="https://collegedunia.com/exams/jelet">Collegedunia — JELET 2026</a>. This single fact determines whether your target is <strong>JELET 2029</strong> (apply while appearing, join after results) or <strong>JELET 2030</strong>.</li>
+<li><em>&quot;For JU, which B.Tech branches can a CST diploma holder apply to under JELET, and what do you know about JU&#39;s 60% rule and the 9 CSE seats?&quot;</em> — <strong>CST → JU CSE is explicitly listed</strong> in the JU seat matrix (as &quot;Computer Science &amp; Engineering / Computer Science &amp; Technology&quot;), so your main target is clean. But the JU brochure also requires the diploma to be <em>&quot;in the relevant branch&quot;</em> for other departments, so <strong>JU IT/ECE may not be open to you</strong> — confirm before you build a tiered list on false assumptions. See §3B.</li>
+</ol>
+<p>Five minutes with the office now prevents a bad surprise in 2029.</p>
+<hr>
+<h2 id="1-where-you-actually-stand">1. Where you actually stand</h2>
+<p>Let&#39;s be precise, because the plan depends on it.</p>
+<p><strong>What you have (and shouldn&#39;t underestimate):</strong></p>
+<ul>
+<li>A 3-year AICTE-recognised diploma in CST from a West Bengal government polytechnic. The WB syllabus for CST is genuinely strong in the fundamentals: C → Java/OOP → Data Structures → DBMS → Computer Networks → Operating Systems → Microprocessor/Microcontroller → IoT → Web Technology → AI/ML electives, plus a <strong>Minor Project</strong> and a <strong>Summer Internship</strong> <a href="https://gsmp.co.in/wp-content/uploads/2023/02/CST_STRUCTURE.pdf">1</a> <a href="https://polytechnic.wbtetsd.gov.in/polytechnic/college/download_file/184260348236f9554fe9375772ff966e/1731949424.pdf">2</a>.</li>
+<li>Your college sits in <strong>Jadavpur, Kolkata</strong> — inside the city&#39;s IT corridor. That matters more than the college name.</li>
+<li>You already have a GitHub repo and an AI agent wired into it. That&#39;s a head start on the &quot;AI-native developer&quot; profile that employers are now paying a premium for.</li>
+</ul>
+<p><strong>What you don&#39;t have (and what actually blocks hiring):</strong></p>
+<ul>
+<li>Publicly, the college reports <strong>no median placement salary</strong> <a href="https://www.shiksha.com/college/acharya-prafulla-chandra-ray-polytechnic-jadavpur-kolkata-58865/course-diploma-in-computer-science-and-technology-640035">3</a>. Which means: <strong>nobody will hire you on the strength of your college.</strong> Your proof has to come from outside it.</li>
+<li>Your syllabus is a 2022 state curriculum. It is not what the job market is hiring for in 2026. That&#39;s fine — it&#39;s a floor, not a ceiling. But do not confuse &quot;I did the syllabus&quot; with &quot;I&#39;m employable.&quot;</li>
+</ul>
+<p><strong>The one piece of good news nobody tells diploma students:</strong> in 2026, <strong>skills-first hiring is real.</strong> Remote junior roles now routinely say <em>&quot;No degree required&quot;</em> and <em>&quot;We do not care about pedigree. We care about passion, potential, and proof of work&quot;</em> <a href="https://www.remoterocketship.com/country/india/jobs/junior-backend-developer/">4</a> <a href="https://www.glassdoor.co.in/Job/india-junior-frontend-developer-remote-working-jobs-SRCH_IL.0,5_IN115_KO6,46.htm">5</a>. A diploma holder with a great GitHub can beat a B.Tech holder with an empty one. But only one of those two things is under your control.</p>
+<hr>
+<h2 id="2-the-market-reality-read-this-part-carefully">2. The market reality (read this part carefully)</h2>
+<h3 id="21-the-numbers">2.1 The numbers</h3>
+<ul>
+<li><strong>AI is now the #2 most-requested hard skill</strong> in tech job postings — 19.8% of 360,336 postings, behind only communication (23.1%) and <em>ahead of</em> Python (18.6%), SQL (11.7%), AWS (11.3%), Java (10.5%) <a href="https://www.qarera.com/reports/most-in-demand-skills-2026">6</a>.</li>
+<li><strong>65% of tech leaders would choose an AI-enabled developer with 2 years of experience over a non-AI developer with 5 years</strong> <a href="https://www.edstellar.com/blog/most-in-demand-skills-in-it">7</a>.</li>
+<li>Python is the #1 skill in AI-adjacent postings (60% of them), with AI agents at 21%, AWS 18%, SQL 16% <a href="https://remoteai.io/articles/ai-skills-in-demand">8</a>.</li>
+</ul>
+<h3 id="22-the-bad-news-and-why-it-actually-favours-you">2.2 The bad news — and why it actually favours you</h3>
+<ul>
+<li><strong>Entry-level postings dropped ~60% between 2022 and 2024.</strong> Explicitly junior roles now sit <strong>under 3% of the market</strong>; senior/cloud-native roles make up about <strong>two-thirds</strong> of openings <a href="https://www.nucamp.co/blog/the-junior-developer-hiring-crisis-in-2026-how-to-get-your-first-full-stack-job">9</a>.</li>
+<li><strong>~70% of hiring managers believe AI can perform much of the work typically assigned to interns</strong> <a href="https://www.nucamp.co/blog/the-junior-developer-hiring-crisis-in-2026-how-to-get-your-first-full-stack-job">9</a>.</li>
+<li>The rung has been cut out. &quot;I did a course and got a certificate&quot; no longer buys you anything.</li>
+</ul>
+<p><strong>But here&#39;s the flip side, and this is your opening:</strong> because grunt work is automated, employers now want juniors who arrive <em>already capable</em>. The scarcity is not &quot;people who know nothing&quot; — it&#39;s &quot;people who can ship.&quot; A diploma student who can show <strong>two deployed full-stack apps, an AI feature, and merged open-source PRs</strong> is a much better bet for a hiring manager than a B.Tech fresher with a syllabus and no proofs <a href="https://www.nucamp.co/blog/the-junior-developer-hiring-crisis-in-2026-how-to-get-your-first-full-stack-job">9</a>.</p>
+<h3 id="23-what-a-diploma-cs-graduate-actually-gets-vs-what-you-should-aim-for">2.3 What a diploma CS graduate actually gets vs. what you should aim for</h3>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Typical pay (India/Kolkata)</th>
+<th>Reality check</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Data Entry Operator</td>
+<td>₹9,000–15,000/mo</td>
+<td>Avoid. Zero skill compounding.</td>
+</tr>
+<tr>
+<td>IT Support / Desktop Support</td>
+<td>₹12,000–25,000/mo</td>
+<td>Fine as a fallback, but caps your trajectory.</td>
+</tr>
+<tr>
+<td>MIS Executive</td>
+<td>₹14,000–22,000/mo</td>
+<td>Excel-heavy. Not a CS career.</td>
+</tr>
+<tr>
+<td>Junior Software Developer (local)</td>
+<td>₹20,000–22,000/mo</td>
+<td>The realistic diploma-floor role. <a href="https://in.indeed.com/q-diploma-computer-science-l-west-bengal-jobs.html">10</a></td>
+</tr>
+<tr>
+<td><strong>Full Stack Developer, fresher</strong></td>
+<td><strong>₹3.2–4.7 LPA (avg ₹4.0 LPA)</strong></td>
+<td>Your realistic target. <a href="https://vtricks.in/salary/full-stack-developer-salary-kolkata.html">11</a></td>
+</tr>
+<tr>
+<td><strong>Junior Software Engineer, remote</strong></td>
+<td><strong>₹5–7 LPA</strong></td>
+<td>React + Node + Prisma + Docker/AWS. No degree required. <a href="https://www.glassdoor.co.in/Job/remote-github-jobs-SRCH_IL.0,6_IS12563_KO7,13.htm">12</a></td>
+</tr>
+<tr>
+<td><strong>Remote AI/Agentic engineer (0–1 yr)</strong></td>
+<td>₹4.5 LPA+ post-internship</td>
+<td>Python, APIs, agents. <a href="https://internshala.com/jobs/github-jobs/">13</a></td>
+</tr>
+</tbody></table>
+<p><strong>Bottom line:</strong> the same diploma gives you ₹12,000/mo at the bottom and ₹6 LPA at the top. <strong>The gap is entirely made of what you build outside the syllabus.</strong> That&#39;s exactly what you said you want to do.</p>
+<hr>
+<h2 id="3-the-positioning-decision-pick-one-spine">3. The positioning decision (pick one spine)</h2>
+<p>Three viable routes. I&#39;m recommending <strong>Track A+</strong>, but all three share the same skill stack and portfolio.</p>
+<p><strong>Track A — Skills-first job hunt (start now, whatever your semester).</strong>
+Diploma is sufficient for remote junior roles and most startups. Build the portfolio, apply hard from month 3 onward. <em>Fastest to income, lowest ceiling.</em></p>
+<p><strong>Track B — B.Tech Lateral Entry via JELET (West Bengal&#39;s own route).</strong></p>
+<ul>
+<li>WBJEEB runs <strong>JELET</strong> for admission to 2nd year B.Tech. Eligibility: 3-year engineering diploma with <strong>45% aggregate</strong> (40% for SC/ST/OBC/PwD), <strong>West Bengal domicile</strong>, and diploma branch matching the target B.Tech branch <a href="https://www.kgec.edu.in/admissions">14</a> <a href="https://collegedunia.com/exams/jelet">15</a>.</li>
+<li>JELET 2026 was held 13 June 2026; <strong>JELET 2027 notification is awaited</strong> <a href="https://www.myeducationwire.com/latest/jelet-2027/">16</a>. Expect ~June 2027.</li>
+<li>You get a full B.Tech in <strong>3 more years</strong> instead of 4, from WB government colleges (KGEC Kalyani, JGEC Jalpaiguri, GCETTS Serampore, JISCE, GNIT, etc.).</li>
+<li><em>Slower to income, much higher ceiling — unlocks campus placements, higher salary bands, and eligibility for master&#39;s.</em></li>
+</ul>
+<p><strong>Track C — AI/ML specialisation.</strong> Highest ceiling, highest risk for a diploma student without a degree. Best entered <em>after</em> A or B, not instead of.</p>
+<blockquote>
+<p><strong>My recommendation: Track A + Track B together.</strong>
+Start Track A immediately (portfolio + apply from month 3). Sit JELET 2027 if your semester maths works out and you want the degree. A job + a JELET rank are not mutually exclusive, and the degree becomes a <em>credential upgrade</em> rather than a <em>four-year delay</em>.</p>
+<p>⚠️ <strong>One check for you:</strong> the WB rule says &quot;Diploma branch must correspond to the target B.Tech branch&quot; in some colleges, and &quot;Often yes (e.g., Mech diploma → CSE lateral)&quot; in others <a href="https://findurcollege.com/direct-second-year-btech">17</a>. Verify that <strong>CST → CSE lateral entry is allowed at the specific colleges you target</strong> before you invest in JELET prep. Ask your college office — this is a 5-minute question that saves 3 months.</p>
+</blockquote>
+<hr>
+<h2 id="3a-the-jelet-track-in-detail">3A. The JELET track, in detail</h2>
+<p>Because you chose this as your spine, here is everything you need, precisely.</p>
+<h3 id="3a1-the-exam">3A.1 The exam</h3>
+<p><strong>JELET (Joint Entrance Examination for Lateral Entry)</strong>, conducted by WBJEEB. Offline, OMR-based, pen-and-paper, <strong>medium: English</strong>, <strong>2 hours (11:00 AM–1:00 PM)</strong>. No re-exam. <a href="https://cdnbbsr.s3waas.gov.in/s3d2a27e83d429f0dcae6b937cf480aeb1/uploads/2026/03/20260318287108702.pdf">JELET 2026 bulletin</a> <a href="https://wbjeeb.nic.in/jelet/">WBJEEB</a></p>
+<p><strong>Paper I</strong> (for Diploma in Engineering/Technology candidates — that&#39;s you):</p>
+<table>
+<thead>
+<tr>
+<th>Subject</th>
+<th>Cat-1 Q (1 mark, −0.25)</th>
+<th>Cat-2 Q (2 marks, partial credit)</th>
+<th>Total Q</th>
+<th>Total marks</th>
+<th>% of paper</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mathematics</td>
+<td>30</td>
+<td>10</td>
+<td>40</td>
+<td>50</td>
+<td><strong>41.7%</strong></td>
+</tr>
+<tr>
+<td>Physics</td>
+<td>25</td>
+<td>5</td>
+<td>30</td>
+<td>35</td>
+<td><strong>29.2%</strong></td>
+</tr>
+<tr>
+<td>Chemistry</td>
+<td>15</td>
+<td>5</td>
+<td>20</td>
+<td>25</td>
+<td><strong>20.8%</strong></td>
+</tr>
+<tr>
+<td>Fundamentals of Electrical &amp; Electronics Engineering</td>
+<td>10</td>
+<td>0</td>
+<td>10</td>
+<td>10</td>
+<td>8.3%</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>80</strong></td>
+<td><strong>20</strong></td>
+<td><strong>100</strong></td>
+<td><strong>120</strong></td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<p><strong>Category 2 scoring</strong> (the one to understand): mark <em>all</em> correct options → +2. Mark only some correct options and no wrong ones → partial credit (2 × correct marked ÷ total correct). Mark even one wrong option → <strong>0</strong>. No negative marking on Cat-2. So in Cat-2, a wrong extra option costs you everything — precision beats guessing.</p>
+<p><strong>Tie-breaking order</strong> (useful if two candidates tie): fewer negative marks → more positive Maths marks → fewer negative Maths → more positive Physics → fewer negative Physics → more positive Chemistry. <strong>Note that Mathematics dominates the tie-break.</strong> Another reason Math is your #1 subject. <a href="https://cdnbbsr.s3waas.gov.in/s3d2a27e83d429f0dcae6b937cf480aeb1/uploads/2026/03/20260318287108702.pdf">JELET 2026 bulletin</a></p>
+<p><strong>Syllabus, in short:</strong></p>
+<ul>
+<li><strong>Maths:</strong> Matrices &amp; determinants (up to order 3), Complex numbers, Coordinate geometry (2D), Vector algebra, Differential calculus, Applications of derivatives, Partial differentiation, Integral calculus, Ordinary differential equations, Probability, Statistics (central tendency &amp; dispersion), Sets/relations/functions, Permutations, Logarithms <a href="https://admission.aglasem.com/wbjee-jelet-syllabus/">JELET syllabus</a> <a href="https://engineering.careers360.com/articles/jelet-syllabus">Careers360</a></li>
+<li><strong>Physics:</strong> Laws of Motion, Work/Power/Energy, Rotational Motion, Thermodynamics, Solid &amp; Liquid properties, Oscillations &amp; Waves, Electrostatics, Current Electricity, Magnetism, EMI &amp; AC, Modern Physics (atoms, nucleus), Semiconductor physics, Optics <a href="https://www.shiksha.com/engineering/wbjee-jelet-exam-syllabus">sib</a></li>
+<li><strong>Chemistry:</strong> Atomic structure, Chemical bonding, Thermodynamics, Equilibrium, Redox, s/p/d/f-block, Coordination compounds, Organic basics, Alcohol/Phenol/Ether, Carboxylic acids, Chemical kinetics, Ionic equilibrium <a href="https://www.shiksha.com/engineering/wbjee-jelet-exam-syllabus">sib</a></li>
+<li><strong>FEEE:</strong> Basic electrical quantities, Ohm&#39;s &amp; Kirchhoff&#39;s laws, DC/AC circuits, series-parallel, Thevenin/Norton, transformers, AC sources, electrical machines, analogue &amp; digital electronics <a href="https://www.shiksha.com/engineering/wbjee-jelet-exam-syllabus">sib</a></li>
+</ul>
+<p><strong>Note what this means for you:</strong> almost none of it is Computer Science. It is <strong>Class 10–12 science + first-year diploma engineering + digital electronics.</strong> Your CST syllabus&#39;s Digital Electronics / Microprocessor units map directly onto FEEE — that&#39;s your 8.3%. Everything else is Maths, Physics and Chemistry.</p>
+<h3 id="3a2-eligibility-the-hard-gate">3A.2 Eligibility (the hard gate)</h3>
+<ul>
+<li>3-year diploma in Engineering/Technology, <strong>≥45% aggregate</strong> (40% for SC/ST/OBC/PwD) <a href="https://cdnbbsr.s3waas.gov.in/s3d2a27e83d429f0dcae6b937cf480aeb1/uploads/2026/03/20260318287108702.pdf">bulletin</a></li>
+<li>Diploma in <strong>any</strong> branch of Engineering &amp; Technology per the AICTE Approval Process Handbook <a href="https://wbjeeb.in/wp-content/uploads/2024/02/2024020274-1-jelet-2024.pdf">bulletin</a></li>
+<li><strong>No upper age limit</strong> for diploma holders <a href="https://www.myeducationwire.com/latest/jelet-2027-eligibility-criteria/">MyEducationWire</a></li>
+<li><strong>West Bengal domicile</strong> required for the counselling/document stage (domicile certificate is in the mandatory documents list for admission) <a href="https://admittanceedutech.in/wb-jelet-round-3-counselling-2026/">seat allotment notice</a></li>
+<li><strong>No minimum score is needed to get a rank</strong> — everyone who appears gets a General Merit Rank. The 45% is the only exam-side filter, and it&#39;s applied at <em>application</em> time <a href="https://collegedunia.com/exams/jelet/results">Collegedunia</a></li>
+<li><strong>Jadavpur University specifically</strong> requires <strong>60%</strong> (45% reserved) for lateral entry <a href="https://findmycollege.com/exam/jelet/eligibility">FindMyCollege</a> — worth knowing given you&#39;re in Jadavpur.</li>
+</ul>
+<h3 id="3a3-your-timeline">3A.3 Your timeline</h3>
+<table>
+<thead>
+<tr>
+<th>Milestone</th>
+<th>Expected date</th>
+<th>Your action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>JELET 2026 (reference cycle)</td>
+<td>Exam 13 Jun 2026 · Result 14 Jul 2026 · Counselling Aug–Oct 2026</td>
+<td>Study the pattern + previous-year papers</td>
+</tr>
+<tr>
+<td><strong>JELET 2027</strong></td>
+<td>Notification ~Mar 2027 · Apply ~Mar–Apr 2027 · Exam ~Jun 2027</td>
+<td><strong>Not your cycle</strong> (diploma not complete) — but use the 2027 paper as your first full mock</td>
+</tr>
+<tr>
+<td><strong>JELET 2028</strong></td>
+<td>Exam ~Jun 2028</td>
+<td>Not your cycle either</td>
+</tr>
+<tr>
+<td><strong>JELET 2029</strong></td>
+<td>Exam ~Jun 2029</td>
+<td>⚠️ <strong>Your target</strong> — provisional application if you&#39;re appearing in the final semester</td>
+</tr>
+<tr>
+<td><strong>JELET 2030</strong></td>
+<td>Exam ~Jun 2030 · Counselling ~Jul–Oct 2030</td>
+<td>Your confirmed-admission cycle</td>
+</tr>
+</tbody></table>
+<p>Application windows have been consistently <strong>~4 weeks</strong> (2026: 19 Mar – 11 Apr; exam 13 Jun) and the exam has been in <strong>June</strong> for two years running <a href="https://wbjeeb.nic.in/jelet/">WBJEEB</a> <a href="https://www.myeducationwire.com/latest/jelet-2027/">MyEducationWire</a>. JELET 2027&#39;s notification was still pending as of 1 September 2026 <a href="https://www.myeducationwire.com/latest/jelet-2027/">MyEducationWire</a>, so treat these as patterns, not promises — <strong>watch wbjeeb.nic.in from February 2029 onward.</strong></p>
+<p><strong>→ So: your first JELET attempt is ~3 years away. That is a gift, not a wait. Use it.</strong></p>
+<h3 id="3a4-the-three-things-that-actually-decide-your-jelet-outcome">3A.4 The three things that actually decide your JELET outcome</h3>
+<ol>
+<li><strong>The 45% diploma aggregate.</strong> You have four semesters left (Sem 3–6). Your WB diploma exams are theory-heavy (typically 60 theory + 10 continuous assessment + 10 assignment/viva per 3-credit subject, per the WB format <a href="https://polytechnic.wbtetsd.gov.in/polytechnic/college/download_file/184260348236f9554fe9375772ff966e/1731949424.pdf">WBTESD</a>). <strong>Aim for 55–60% to be safe</strong>, and treat every subject&#39;s internal as a real exam. Track your running aggregate in your journal every semester. This is the #1 thing that can kill the plan, and it&#39;s fully in your control.</li>
+<li><strong>Mathematics.</strong> 41.7% of the paper <em>and</em> it dominates tie-breaking. Calculus + matrices + vectors + probability is the whole game.</li>
+<li><strong>Physics.</strong> 29.2%, and it has the highest question density. Physics also has the best free-resource ecosystem (MIT OCW, Khan Academy, 3Blue1Brown, Physics Wallah-style free content) — and it maps onto your FEEE prep.</li>
+</ol>
+<h3 id="3a5-the-preparation-method-this-is-where-your-ai-system-earns-its-keep">3A.5 The preparation method (this is where your AI system earns its keep)</h3>
+<p><strong>The loop from <code>LEARNING-JOURNEY.md</code> §6.1, applied to Maths/Physics/Chem:</strong></p>
+<ol>
+<li><strong>Prime</strong> — Before studying a chapter, write 3 prequestions: &quot;What is the derivative of a product?&quot;, &quot;Why does a series diverge?&quot;, &quot;What does Ohm&#39;s law not explain?&quot; Prequestions lift learning of that content by g = 0.66 <a href="https://studycardsai.com/blog/active-recall-statistics">meta-analysis</a>.</li>
+<li><strong>Probe</strong> — Study the chapter from an English source (textbook + video). Pause every 8 minutes, close it, write what you remember and a question you now have.</li>
+<li><strong>Point</strong> — Now use the AI. Paste your attempt first. The AI must ask before it tells (§6.5 of the learning doc). This is the non-negotiable rule: <strong>unguarded AI left students 17% worse on an unaided exam</strong> <a href="https://www.pnas.org/doi/10.1073/pnas.2422633122">Bastani, PNAS</a>.</li>
+<li><strong>Attach</strong> — Ask the AI to connect the new concept to your existing notes and to a real physical or numerical example. Then <strong>solve 3 problems from the previous two JELET papers on that chapter, unaided, timed.</strong></li>
+<li><strong>Strengthen</strong> — AI generates MCQs in the <em>exact JELET format</em> (Cat-1 single-correct with −0.25, Cat-2 multiple-correct with partial credit). You answer. AI grades with the real marking scheme, so you internalise the penalty. <strong>This is the single highest-value use of the AI in your entire plan</strong> — it turns a 1-in-1000 candidate into someone who has seen 500 JELET-format questions.</li>
+<li><strong>Test</strong> — Cards into Anki/FSRS (formulas, conditions, traps). Weekly closed-book, no-AI mock of a full 100-question Paper I under 2 hours, with the real marking scheme.</li>
+</ol>
+<p><strong>JELET-specific additions:</strong></p>
+<ul>
+<li><strong>Solve the previous 10 years&#39; papers, in JELET format, timed.</strong> Nothing else comes close for pattern recognition.</li>
+<li><strong>Negative marking is a strategy question.</strong> At −0.25 per wrong Cat-1 answer, guessing on a question you have 25% confidence on is roughly break-even. Train yourself to <em>skip</em> Cat-1 questions you&#39;re unsure about, and to mark <em>only</em> options you&#39;re sure about on Cat-2 (because one wrong option zeroes the whole question).</li>
+<li><strong>Keep a &quot;JELET traps&quot; note</strong> — the recurring tricks in the paper (e.g., matrix order-3 limits, unit conversions in FEEE, ionic equilibrium approximations). Review it every week.</li>
+<li><strong>Read the English question paper carefully.</strong> The exam is in English and many of your instincts will come from a Bengali-medium or Hindi-medium schooling. English comprehension in exam conditions is a <em>skill you can train</em> — do it deliberately.</li>
+</ul>
+<h3 id="3a6-a-2029-decision-checkpoint">3A.6 A 2029 decision checkpoint</h3>
+<p>Write this in your journal now, and revisit it in <strong>February 2029</strong>:</p>
+<blockquote>
+<p><em>&quot;If my diploma aggregate is ≥45%, I will appear for JELET 2029 provisionally. If I am below 45% in Sem 5 results, I will skip JELET, go straight into the job market with my portfolio, and reconsider MCA/BCA later as a part-time route.&quot;</em></p>
+</blockquote>
+<p>Having the decision rule written in advance stops you from making an emotional choice in a high-stakes week.</p>
+<hr>
+<h2 id="3b-the-jadavpur-university-cse-target-the-exact-seat-you39re-aiming-at">3B. The Jadavpur University CSE target — the exact seat you&#39;re aiming at</h2>
+<p>You named the target. Let&#39;s make it precise, because &quot;Jadavpur University CS&quot; is not one thing — it&#39;s <strong>one seat with 9 people fighting for it</strong>.</p>
+<h3 id="3b1-the-facts">3B.1 The facts</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Detail</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Route</strong></td>
+<td>JELET → 2nd-year B.E./B.Tech (Lateral) at JU, via WBJEEB centralised counselling</td>
+<td><a href="https://admissionju.jadavpuruniversity.in/fengadmission/frontend/upload/brochure/jelet_admission.pdf">JU brochure</a></td>
+</tr>
+<tr>
+<td><strong>Seats at JU (all branches)</strong></td>
+<td><strong>150</strong> lateral-entry seats across all JU B.Tech programmes</td>
+<td><a href="https://www.telegraphindia.com/west-bengal/kolkata/ju-reverses-decision-on-jelet-admissions-allowing-diploma-holders-with-online-classes-prnt/cid/2137208">Telegraph India</a></td>
+</tr>
+<tr>
+<td><strong>JU CSE lateral seats (2026 matrix)</strong></td>
+<td><strong>9</strong> — listed as <em>&quot;Computer Science &amp; Engineering / Computer Science &amp; Technology&quot;</em></td>
+<td><a href="https://engineering.careers360.com/articles/jelet">JELET 2026 seat matrix</a></td>
+</tr>
+<tr>
+<td><strong>Your eligibility bar</strong></td>
+<td><strong>60% diploma aggregate</strong> (45% for SC/ST/OBC-A/OBC-B/PwD)</td>
+<td><a href="https://cdnbbsr.s3waas.gov.in/s3d2a27e83d429f0dcae6b937cf480aeb1/uploads/2026/03/20260318287108702.pdf">JELET 2026 bulletin</a></td>
+</tr>
+<tr>
+<td><strong>Quota</strong></td>
+<td><strong>90% Home State / 10% All India</strong> — WB domicile required even for general-category seats</td>
+<td><a href="https://collegedunia.com/university/26008-jadavpur-university-ju-kolkata/admission">JU admission page</a></td>
+</tr>
+<tr>
+<td><strong>Branch match</strong></td>
+<td>✅ <strong>Your CST diploma is explicitly named in the JU seat matrix</strong> for the CSE seat</td>
+<td><a href="https://engineering.careers360.com/articles/jelet">JELET 2026 seat matrix</a></td>
+</tr>
+</tbody></table>
+<p><strong>That last row is the good news: CST → JU CSE lateral is explicitly allowed.</strong> You don&#39;t have to argue it with the college office.</p>
+<h3 id="3b2-how-competitive-is-it-actually">3B.2 How competitive is it, actually?</h3>
+<p>This is the number you need in your head:</p>
+<table>
+<thead>
+<tr>
+<th>JU lateral seat</th>
+<th>JELET closing rank (Home State)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>CSE / CST (BE Lateral)</strong> — <strong>9 seats</strong></td>
+<td><strong>Round 1 closing rank: 9</strong> (2026) — i.e. it fills on merit, well before the branch-average cut</td>
+</tr>
+<tr>
+<td>CSE expected UR closing (prediction)</td>
+<td><strong>30–55</strong> (2026)</td>
+</tr>
+<tr>
+<td>JU B.Tech Lateral — <strong>all branches</strong> (150 seats)</td>
+<td><strong>74 (2026)</strong>, 107 (2025), 46 (2024)</td>
+</tr>
+<tr>
+<td>JU Civil (17 seats)</td>
+<td>129–1,614</td>
+</tr>
+<tr>
+<td>JU Electrical (16 seats)</td>
+<td>236–472</td>
+</tr>
+<tr>
+<td>JU IT (9 seats)</td>
+<td>320–582</td>
+</tr>
+</tbody></table>
+<p>Sources: <a href="https://collegedunia.com/university/26008-jadavpur-university-ju-kolkata/cutoff">Collegedunia JU cutoff</a> · <a href="https://findmycollege.com/exam/jelet/cutoff">FindMyCollege JELET cutoff trends</a> · <a href="https://collegedunia.com/articles/e-553-jelet-2026-cutoff-previous-year-rank-trends-and-2026-prediction">JELET 2026 expected cutoffs</a> · <a href="https://www.pagalguy.com/colleges/jadavpur-university-kolkata">Pagalguy JU round-1 ranks</a></p>
+<p><strong>Read that table carefully:</strong> CSE at JU closes around rank <strong>9–55</strong>. That is the <strong>top 1% of a state-level engineering entrance.</strong> For comparison, JU&#39;s <em>regular</em> WBJEE 1st-year CSE closing rank is 238 — lateral entry into the <em>same department, same course, same university</em> is <strong>4–25× more competitive</strong>, because the applicant pool is all of WB&#39;s diploma students and the seat count is 9.</p>
+<h3 id="3b3-translating-a-rank-into-a-score-your-actual-target-number">3B.3 Translating a rank into a score — your actual target number</h3>
+<p>JELET Paper I is 120 marks. To land in the top ~50, you need roughly:</p>
+<blockquote>
+<p><strong>Target score: 95–105 out of 120 (≈80–88%)</strong>
+<strong>Stretch target for CSE specifically: 105–112 (≈88–93%)</strong></p>
+</blockquote>
+<p>Work it out yourself, per subject, and track it every week:</p>
+<table>
+<thead>
+<tr>
+<th>Subject</th>
+<th>Marks</th>
+<th>Target for ~100/120</th>
+<th>Target for ~110/120 (CSE)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mathematics</td>
+<td>50</td>
+<td>40 (80%)</td>
+<td>45 (90%)</td>
+</tr>
+<tr>
+<td>Physics</td>
+<td>35</td>
+<td>28 (80%)</td>
+<td>32 (91%)</td>
+</tr>
+<tr>
+<td>Chemistry</td>
+<td>25</td>
+<td>20 (80%)</td>
+<td>22 (88%)</td>
+</tr>
+<tr>
+<td>FEEE</td>
+<td>10</td>
+<td>8 (80%)</td>
+<td>9 (90%)</td>
+</tr>
+</tbody></table>
+<p><strong>80% in every subject is the baseline. Maths is the tie-breaker, so a 45/50 in Maths beats a 42/50 + 4 extra elsewhere.</strong> <a href="https://cdnbbsr.s3waas.gov.in/s3d2a27e83d429f0dcae6b937cf480aeb1/uploads/2026/03/20260318287108702.pdf">bulletin tie-break</a></p>
+<h3 id="3b4-your-academic-position-you39re-already-past-the-hard-gate">3B.4 Your academic position — you&#39;re already past the hard gate</h3>
+<table>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Requirement</th>
+<th>You</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Madhyamik (Class 10)</td>
+<td>—</td>
+<td>88.17%</td>
+<td>Comfortable (not used by JELET, but it says something about your baseline)</td>
+</tr>
+<tr>
+<td>HS (Class 12)</td>
+<td>—</td>
+<td>80%</td>
+<td>Comfortable; also keeps WBJEE-based 1st-year JU open as a fallback (JU 1st-year CSE needs 60% in PCM) <a href="https://collegedunia.com/university/26008-jadavpur-university-ju-kolkata/admission">JU eligibility</a></td>
+</tr>
+<tr>
+<td><strong>Diploma aggregate</strong></td>
+<td><strong>60% at JU</strong></td>
+<td><strong>9.3 GPA in 1st year</strong></td>
+<td>✅ <strong>Already clear</strong> — if 9.3 is on a 10-point scale, that&#39;s ~93%</td>
+</tr>
+</tbody></table>
+<p><strong>Two things follow:</strong></p>
+<ol>
+<li><strong>You already pass the only hard eligibility gate.</strong> JU&#39;s 60% is <em>higher</em> than everyone else&#39;s 45%, and you cleared it in year one. The remaining challenge is <strong>purely the exam rank</strong>, which is a pure skills problem — and skills problems are what the AI learning system is for.</li>
+<li><strong>Don&#39;t get complacent.</strong> Your cushion is large <em>now</em>. The risk isn&#39;t that you&#39;ll suddenly drop below 60% — it&#39;s that polytechnic theory papers (Microprocessor &amp; Microcontroller, Theory of Automata, AI/ML in Sem 5–6) are hard and the aggregate is computed over all six semesters. <strong>Target 70%+ overall and track your running aggregate every semester.</strong> Keep a cushion of 10+ points, not 33.</li>
+</ol>
+<h3 id="3b5-the-one-thing-that-could-cost-you-the-seat-and-it-isn39t-the-exam">3B.5 The one thing that could cost you the seat (and it isn&#39;t the exam)</h3>
+<p><strong>JELET has no re-exam.</strong> And <strong>CSE at JU is 9 seats.</strong> So the plan needs a <em>tiered</em> college list, not a single target. Build this list in the counselling portal in priority order:</p>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Target</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>A</strong></td>
+<td><strong>JU CSE (9 seats)</strong></td>
+<td>Your stated dream. Needs GMR ≲ 40, ideally ≲ 20.</td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td>JU B.Tech Lateral, other branches</td>
+<td>Same university, same degree brand. <em>But check branch correspondence — JU requires the diploma to be &quot;in the relevant branch&quot; <a href="https://admissionju.jadavpuruniversity.in/fengadmission/frontend/upload/brochure/jelet_admission.pdf">JU brochure</a>, and a CST diploma may not qualify for JU IT/ECE.</em> <strong>Ask.</strong></td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>Other WB government engineering colleges with CSE/IT lateral seats (KGEC, JGEC, GCETTS Serampore, MAKAUT, and similar)</td>
+<td>Same WB govt degree, same JELET rank, far better odds. A WB govt B.Tech is a genuine degree at a fraction of the private-college cost.</td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td>Self-financing WB engineering colleges</td>
+<td>Backstop. Still a B.Tech from an AICTE-approved institute.</td>
+</tr>
+<tr>
+<td><strong>E</strong></td>
+<td><strong>The job market with your portfolio, no degree at all</strong></td>
+<td>This tier is <em>always</em> open, and by Sem 6 you will have a portfolio that beats most B.Tech graduates. Never leave this tier empty.</td>
+</tr>
+</tbody></table>
+<p><strong>A note on Tier E, because it&#39;s underrated:</strong> a strong diploma + a strong portfolio + 5 merged open-source PRs is a completely legitimate path to the same junior-developer jobs. JU is the better <em>credential</em>, but it is not the only door. Don&#39;t let Tier A become a reason to neglect Tier E.</p>
+<h3 id="3b6-one-structural-risk-to-watch-for">3B.6 One structural risk to watch for</h3>
+<p>In late 2025, JU <strong>temporarily blocked</strong> JELET lateral entry and then <strong>restored it</strong>, and for the delayed 2025–26 cycle it required JELET students to complete <strong>online bridging coursework</strong> (via central government learning platforms) to cover the 2nd-year syllabus they had missed <a href="https://www.telegraphindia.com/west-bengal/kolkata/ju-reverses-decision-on-jelet-admissions-allowing-diploma-holders-with-online-classes-prnt/cid/2137208">Telegraph India</a>. That was a one-off caused by the exam-delay backlog — <strong>not</strong> a permanent rule. But it teaches you to <strong>read the JELET Information Bulletin each year</strong> rather than relying on last year&#39;s rules. The bulletin is published on <a href="https://wbjeeb.nic.in/jelet/">wbjeeb.nic.in</a> around Feb–March. <strong>Read the 2029 bulletin when it appears, and check for changes to JU&#39;s 60% rule and seat matrix.</strong></p>
+<hr>
+<h2 id="4-the-stack-what-to-learn-and-what-to-ignore">4. The stack: what to learn (and what to ignore)</h2>
+<h3 id="41-the-decision">4.1 The decision</h3>
+<p>Your syllabus is Java-first. The 2026 market is <strong>JavaScript/TypeScript-first for junior full-stack roles</strong>, with <strong>Python-first for AI roles</strong>. Both are defensible. Pick one primary and one AI layer:</p>
+<blockquote>
+<p><strong>Primary stack: TypeScript across the whole stack (Next.js/React + Node/Express + PostgreSQL).</strong>
+<strong>AI layer: Python (FastAPI + LLM APIs + RAG).</strong>
+<strong>Keep Java for DSA practice and as a fallback for enterprise roles</strong> (Java is still 10.5% of postings <a href="https://www.qarera.com/reports/most-in-demand-skills-2026">6</a>, and it&#39;s what your syllabus already gives you).</p>
+</blockquote>
+<p>Why TypeScript-primary: React appears in 43.2% of full-stack postings, JavaScript 34.7%, TypeScript 28.2% <a href="https://www.qarera.com/reports/most-in-demand-skills-2026">6</a>; the remote junior roles explicitly asking for &quot;no degree required&quot; list React, TypeScript, Node, Postgres, Docker, cloud <a href="https://www.remoterocketship.com/country/india/jobs/junior-backend-developer/">4</a>. One language across frontend + backend + AI tooling means one language to learn deeply instead of four shallowly.</p>
+<p><strong>Full-stack posting share of individual skills</strong> <a href="https://interviewstack.io/blog/fullstack-developer-skills-companies-want-2026">18</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Skill</th>
+<th>Share of full-stack postings</th>
+<th>Skill</th>
+<th>Share</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>React</td>
+<td>54.1%</td>
+<td>SQL</td>
+<td>35%</td>
+</tr>
+<tr>
+<td>TypeScript</td>
+<td>45.2%</td>
+<td>APIs</td>
+<td>34.3%</td>
+</tr>
+<tr>
+<td>CI/CD</td>
+<td>42%</td>
+<td>Python</td>
+<td>33.5%</td>
+</tr>
+<tr>
+<td>JavaScript</td>
+<td>41.5%</td>
+<td>Java</td>
+<td>32.8%</td>
+</tr>
+<tr>
+<td>AWS</td>
+<td>39.9%</td>
+<td>Node.js</td>
+<td>31.1%</td>
+</tr>
+</tbody></table>
+<h3 id="42-the-stack-in-layers-with-what-your-syllabus-already-gives-you">4.2 The stack, in layers — with what your syllabus already gives you</h3>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Learn</th>
+<th>Syllabus credit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Language</strong></td>
+<td>TypeScript (primary), Python (AI)</td>
+<td>Java (scripting languages elective — Python is in your syllabus)</td>
+</tr>
+<tr>
+<td><strong>Frontend</strong></td>
+<td>React, Next.js, Tailwind</td>
+<td>— (Web Technology is Sem 6)</td>
+</tr>
+<tr>
+<td><strong>Backend</strong></td>
+<td>Node.js + Express, REST APIs, auth</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Database</strong></td>
+<td>PostgreSQL + Prisma, basic SQL</td>
+<td><strong>DBMS — already in your syllabus. Free.</strong></td>
+</tr>
+<tr>
+<td><strong>DevOps</strong></td>
+<td>Git, Docker, CI/CD, deploy</td>
+<td><strong>Software Engineering — free.</strong></td>
+</tr>
+<tr>
+<td><strong>Cloud</strong></td>
+<td>AWS free tier (or GCP), deploy a real app</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>AI</strong></td>
+<td>LLM APIs, RAG, agents, evals, MCP</td>
+<td><strong>Fundamentals of AI elective — partial credit</strong></td>
+</tr>
+<tr>
+<td><strong>Core CS</strong></td>
+<td>DSA, Networks, OS</td>
+<td><strong>All three already in your syllabus. Use them for interviews.</strong></td>
+</tr>
+<tr>
+<td><strong>Practice</strong></td>
+<td>English communication, GitHub, writing</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<h3 id="43-what-to-deliberately-ignore-for-now">4.3 What to deliberately ignore for now</h3>
+<ul>
+<li><strong>Java Spring Boot, .NET, Angular, PHP/WordPress</strong> — real jobs exist, but they&#39;d split your attention three ways.</li>
+<li><strong>System design, Kubernetes, Terraform</strong> — real, but premature. Come back in year 2.</li>
+<li><strong>A second programming elective</strong> — you already have Python and Java. Add TypeScript, not more languages.</li>
+<li><strong>Paid bootcamps.</strong> Free + a portfolio beats them.</li>
+</ul>
+<h3 id="44-when-to-start-each-layer-sequenced-for-a-beginner">4.4 When to start each layer (sequenced for a beginner)</h3>
+<p>You are at the start. Do <strong>not</strong> open all these doors on day one. This is the order, with the reason:</p>
+<table>
+<thead>
+<tr>
+<th>When</th>
+<th>Open this</th>
+<th>Why then</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Now (Sem 3)</strong></td>
+<td>Python (or C, whichever your college teaches first) · <strong>Git/GitHub properly</strong> · Maths &amp; Physics depth · English technical reading</td>
+<td>These four are the load-bearing walls. Git especially: you are using it <em>right now</em> and most students never learn it properly, and it&#39;s on every job listing.</td>
+</tr>
+<tr>
+<td><strong>Sem 3–4</strong></td>
+<td>The learning system in this repo, fully working (AGENTS.md contract, Anki pipeline, weekly closed-book tests)</td>
+<td>It is your own tooling. Everything you learn afterwards gets captured by it. Building it early is leverage.</td>
+</tr>
+<tr>
+<td><strong>Sem 4</strong></td>
+<td>JavaScript basics → <strong>Node.js + Express</strong> · <strong>SQL/PostgreSQL</strong> (your DBMS course makes this fast) · Docker · first deployed app</td>
+<td>The backend + database is where a diploma student can realistically ship something real.</td>
+</tr>
+<tr>
+<td><strong>Sem 5</strong></td>
+<td><strong>TypeScript</strong> → React/Next.js · GitHub Actions (CI/CD) · AWS free tier deploy · open-source PRs begin</td>
+<td>Frontend + CI/CD + cloud is what turns a project into a portfolio piece.</td>
+</tr>
+<tr>
+<td><strong>Sem 5</strong></td>
+<td><strong>Python + LLM APIs</strong> → RAG → evals → agents/MCP</td>
+<td>The AI layer. Come to it <em>after</em> you can build a boring app properly, or you&#39;ll ship a demo instead of an application.</td>
+</tr>
+<tr>
+<td><strong>B.Tech year 1–2</strong></td>
+<td>System design, Docker deeper, Kubernetes basics, Terraform, more cloud</td>
+<td>Come back to these once you&#39;ve shipped and maintained something real.</td>
+</tr>
+<tr>
+<td><strong>Job-hunt year</strong></td>
+<td>DSA to interview standard, SQL, system design lite, English communication</td>
+<td>Only now do interview-prep skills pay off — you need a portfolio to be worth interviewing for.</td>
+</tr>
+</tbody></table>
+<p><strong>The one thing to internalise:</strong> the order above is roughly <em>decreasing urgency, increasing payoff</em>. Foundations are urgent but invisible on a resume. The AI layer is visible but worthless without the foundations. You have three and a half years — use them in that order and you will not be the beginner who &quot;learned React in 3 weeks&quot; and still can&#39;t write a SQL query.</p>
+<hr>
+<h2 id="5-the-ai-native-layer-this-is-your-actual-edge">5. The AI-native layer — this is your actual edge</h2>
+<p>Since ~84% of developers use AI coding tools weekly or daily <a href="https://www.nucamp.co/blog/most-in-demand-full-stack-skills-in-2026-react-node-typescript-and-beyond">19</a> and 26.5% of full-stack postings explicitly require new-wave GenAI skills <a href="https://interviewstack.io/blog/how-ai-is-changing-fullstack-developer-2026">20</a>, <strong>&quot;I can work with AI agents and ship&quot; is now a job requirement, not a bonus.</strong></p>
+<p><strong>The specific skills to acquire (these are the ones in postings):</strong></p>
+<ol>
+<li><strong>Working with coding agents</strong> — Claude Code / Codex / Cursor / Copilot. You&#39;re already doing this in this repo. Learn to <em>delegate, review, and verify</em> — not just prompt.</li>
+<li><strong>LLM API integration</strong> — streaming, tool/function calling, structured output, error handling, cost control.</li>
+<li><strong>RAG</strong> — chunking, embeddings, vector search, <strong>citations</strong> (source grounding is what makes it trustworthy rather than a hallucination generator).</li>
+<li><strong>Agents &amp; MCP</strong> — agent orchestration, Model Context Protocol, tool design.</li>
+<li><strong>Evals &amp; guardrails</strong> — how do you know the AI feature is correct? This is the single most underrated skill and it separates hobbyists from engineers.</li>
+<li><strong>Prompt design</strong> — as a discipline, not a trick: context, constraints, failure modes.</li>
+</ol>
+<p><strong>The interview angle nobody prepares you for:</strong> they will ask <em>&quot;how did you use AI in this project?&quot;</em> — and most candidates will say &quot;I used Copilot.&quot; The strong answer is: <em>&quot;I built the feature with an agent, but I wrote the tests first; the agent&#39;s output had 3 failures on my test suite that I had to fix; I rejected its caching suggestion because it would have broken freshness guarantees.&quot;</em> <strong>Build that story deliberately.</strong></p>
+<p><strong>And the learning rule from our earlier research still applies to code:</strong> attempt first, then compare. See <code>LEARNING-JOURNEY.md</code> §3 for the evidence — a plain ChatGPT-style workflow left students <strong>17% worse</strong> on unaided exams, and self-regulated &quot;ask AI when stuck&quot; lost more than half the gains vs. system-initiated help <a href="https://www.pnas.org/doi/10.1073/pnas.2422633122">21</a> <a href="https://ssrn.com/abstract/5604932">22</a>.</p>
+<hr>
+<h2 id="6-the-portfolio-architecture-4-repos-built-across-sem-3-sem-6">6. The portfolio architecture (4 repos, built across Sem 3 → Sem 6)</h2>
+<p>This is the job. Four repos, each with a URL, a README, and a live demo.</p>
+<p><strong>Build order matters, and for a beginner the order is:</strong> Repo 1 (now) → Repo 2 (Sem 5) → open source (from Sem 5) → Repo 3 (Sem 6). Do not start Repo 3 first — an AI project built before you can build a boring app properly is a demo, not a portfolio piece.</p>
+<h3 id="repo-1-study-with-ai-this-one-your-ai-learning-agentturn-this-repo-into-a-working-system-spaced-repetition-cards-generated-from-your-own-notes-socratic-questioning-weekly-closed-book-tests-a-human-owned-journal-layer-document-the-ai-safety-design-in-the-readme-guardrails-the-quotattempt-firstquot-rule-the-human-owned-layer">Repo 1 — <code>Study-with-ai</code> (this one). **Your AI learning agent.**Turn this repo into a working system: spaced-repetition cards generated from your own notes, Socratic questioning, weekly closed-book tests, a human-owned journal layer. Document the AI-safety design in the README (guardrails, the &quot;attempt first&quot; rule, the human-owned layer).</h3>
+<blockquote>
+<p><strong>Why this is repo #1 and not a toy:</strong> it demonstrates agentic AI design, retrieval, scheduling, evaluation, and careful human-in-the-loop product thinking — in the exact domain you understand. It&#39;s also genuinely useful to you. One repo, two returns.</p>
+</blockquote>
+<h3 id="repo-2-a-deployed-full-stack-app-solving-a-real-problem-for-real-users">Repo 2 — A deployed full-stack app solving a real problem for real users.</h3>
+<p>Pick a problem you personally understand: college attendance &amp; study timetable, a second-hand textbook marketplace for WB students, a mess/hostel expense tracker, a local-language study assistant for your classmates.
+<strong>Non-negotiables (this is what hiring managers check):</strong> real auth, real database with migrations, a real API, a real deployed URL, tests, CI on every push, Docker, a proper README with architecture and a screenshot, and a <code>LICENSE</code>.</p>
+<blockquote>
+<p>Pick something your classmates will actually use. Usage = a demo you can put in a video call.</p>
+</blockquote>
+<h3 id="repo-3-an-ai-native-product-your-differentiator">Repo 3 — An AI-native product (your differentiator).</h3>
+<p>Extend Repo 2, or build fresh: a RAG assistant over your course materials/PDFs <strong>with clickable citations to the exact page</strong>, an agent that automates something real, or a study-tutor with genuine mastery tracking.
+<strong>This is the repo that makes you &quot;AI-enabled&quot; rather than &quot;uses AI.&quot;</strong> Include an <code>evals/</code> folder showing you measured output quality.</p>
+<h3 id="repo-4-open-source-contributions-35-merged-prs">Repo 4 — Open source contributions (3–5 merged PRs).</h3>
+<p>Not your own repo — <em>merged into someone else&#39;s</em>. This is the signal that reads as &quot;works with other people,&quot; which is what a team needs. Start with small fixes: docs, tests, typo fixes, then a real feature.
+<strong>Where to start:</strong> <code>good first issue</code> labels on beginner-friendly projects; the projects you already use; repos whose maintainers respond to PRs. Target: a Python or TypeScript project with an active issue tracker.</p>
+<h3 id="the-resume-block-copy-this-structure">The resume block (copy this structure)</h3>
+<pre><code>PROJECTS                                    ← above Education, always
+  Study-with-ai — AI study agent (TypeScript, Postgres, LLM APIs, RAG)  → live link
+  &lt;App name&gt;   — &lt;one line problem it solves&gt;  → live link + demo video
+  Open source — N merged PRs in &lt;project&gt;  → link
+
+SKILLS
+  TypeScript, React, Next.js, Node.js, PostgreSQL, Docker, Git/GitHub,
+  Python, FastAPI, LLM APIs, RAG, agents/MCP, AWS | DSA, DBMS, Networks, OS
+</code></pre>
+<blockquote>
+<p>A good detail: recruiters and the nucamp guidance both note that the Projects section should sit <strong>above</strong> Education for exactly your situation <a href="https://www.nucamp.co/blog/top-10-tech-jobs-that-don-t-require-a-degree-in-india-in-2026">23</a>.</p>
+</blockquote>
+<hr>
+<h2 id="7-the-semester-anchored-plan-sem-3-sem-6-jelet-btech-job">7. The semester-anchored plan (Sem 3 → Sem 6 → JELET → B.Tech → job)</h2>
+<h3 id="70-the-shape-of-the-next-35-years">7.0 The shape of the next 3.5 years</h3>
+<table>
+<thead>
+<tr>
+<th>When</th>
+<th>Your job</th>
+<th>Big deliverable</th>
+<th>JELET weight</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Now → Sem 3 end</strong> (~3 months)</td>
+<td>Foundations: one language, Git, Maths/Physics depth, the learning system</td>
+<td><strong>Repo 1 working</strong> (this repo, with AGENTS.md + Anki + weekly test)</td>
+<td>Maths + Physics</td>
+</tr>
+<tr>
+<td><strong>Sem 4</strong> (~2027-28)</td>
+<td>Your core CS subjects <em>properly</em> (DSA, DBMS, Networks, OS) + first backend</td>
+<td>First <strong>deployed</strong> app with a real database</td>
+<td>Physics + Chem</td>
+</tr>
+<tr>
+<td><strong>Sem 5</strong> (~2028-29)</td>
+<td><strong>Summer Internship (SI301)</strong> + TypeScript/React + CI/CD + open source</td>
+<td>2nd deployed app + 2 merged PRs + internship letter</td>
+<td>Full mock papers</td>
+</tr>
+<tr>
+<td><strong>Sem 6</strong> (~2029-30)</td>
+<td>JELET preparation + AI-native project + diploma aggregate defence</td>
+<td><strong>JELET</strong> + Repo 3 (AI project) + full portfolio</td>
+<td><strong>The exam</strong></td>
+</tr>
+<tr>
+<td><strong>B.Tech Yr 1–2</strong> (2030-32)</td>
+<td>System design, deeper DevOps, more open source, English polish</td>
+<td>5 merged PRs, 2 strong deployed apps, AI feature</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>B.Tech Yr 2–3</strong> (2032-33)</td>
+<td><strong>Job conversion</strong>: apply, interview, internship, convert</td>
+<td><strong>Your first job</strong></td>
+<td>—</td>
+</tr>
+</tbody></table>
+<h3 id="71-now-end-of-sem-3-the-foundations-quarter">7.1 Now → end of Sem 3: the foundations quarter</h3>
+<p><strong>This quarter has one job: build the machine that will capture the next 3.5 years.</strong> Everything else is secondary.</p>
+<p><em>Week 1-2 — remove friction:</em></p>
+<ul>
+<li><input disabled="" type="checkbox"> Claim the <strong>GitHub Student Developer Pack</strong> (education.github.com/pack) — GitHub Pro, Codespaces, MongoDB $50 + free certification path, DigitalOcean, Heroku <a href="https://creditforstartups.com/students/cloud-credits-for-students">24</a> <a href="https://spca.education/free-tech-giant-services-for-students-certification-guide/">25</a></li>
+<li><input disabled="" type="checkbox"> Check Copilot / AI-credit eligibility in the pack (terms changed in 2026 — verify on the live page) <a href="https://builder.aws.com/content/3IUXtk3cJbrpRXiG1Y3wenPstPI/free-premium-tech-every-student-should-claim-in-2026-a-verified-guide">26</a></li>
+<li><input disabled="" type="checkbox"> Apply for <strong>Google AI Plus free for 12 months</strong> (Indian college students 18+, redeem by 31 Dec 2026) — <strong>set a calendar reminder, it auto-renews</strong> <a href="https://mylingasia.com/posts/best-ai-tools-students-india-2026">27</a>. Jio ₹349+ 5G users: 18 months Gemini AI Pro free via MyJio <a href="https://mylingasia.com/posts/best-ai-tools-students-india-2026">27</a></li>
+<li><input disabled="" type="checkbox"> Install: Git, VS Code, Python, Anki (FSRS), Node.js, Docker, Ollama</li>
+<li><input disabled="" type="checkbox"> Ask the college office the two JELET questions (§0) and <strong>write the answers in your journal</strong></li>
+<li><input disabled="" type="checkbox"> <strong>Download the JELET Information Bulletin from <a href="https://wbjeeb.nic.in/jelet/">wbjeeb.nic.in/jelet</a></strong> and read the eligibility + seat matrix pages. This is your exam&#39;s rulebook; re-download it every year — JU changed its lateral-entry policy once already <a href="https://www.telegraphindia.com/west-bengal/kolkata/ju-reverses-decision-on-jelet-admissions-allowing-diploma-holders-with-online-classes-prnt/cid/2137208">Telegraph India</a></li>
+<li><input disabled="" type="checkbox"> <strong>Start tutoring this week</strong> (§8A.1): find 2 students — one Class 10, one Class 11–12 — Maths and Physics. ₹250–400/hr to start. Build your teaching kit in <code>teaching/</code></li>
+<li><input disabled="" type="checkbox"> Find your <strong>college SPOC</strong> for Smart India Hackathon — you&#39;re a Sem 3er; the SIH 2027 internal round is ~Aug–Sept 2027, and you need to build a team of 6 + a mentor over a year <a href="https://thenewviews.com/smart-india-hackathon/">SIH</a></li>
+</ul>
+<p><em>Week 3-8 — the learning machine (Repo 1):</em></p>
+<ul>
+<li><input disabled="" type="checkbox"> Create the folder structure: <code>raw/ notes/ journal/ cards/ projects/</code> + <code>AGENTS.md</code></li>
+<li><input disabled="" type="checkbox"> Write your <strong>agent contract</strong> (the 10 rules from <code>LEARNING-JOURNEY.md</code> §6.5) into <code>AGENTS.md</code></li>
+<li><input disabled="" type="checkbox"> Set up the <strong>Anki/FSRS pipeline</strong>: transcript → AI-drafted cards → you curate → deck. Cap the deck; one third of AI cards survive curation <a href="https://www.reddit.com/r/Anki/comments/1mewr8p/problem_with_aigenerated_flashcards/">card-quality discussion</a></li>
+<li><input disabled="" type="checkbox"> Run the <strong>weekly closed-book test</strong> — no AI, no notes, 45 min, every Sunday</li>
+<li><input disabled="" type="checkbox"> Set up the <strong>JELET MCQ generator prompt</strong>: AI produces Paper-I-format questions from your chapter, with the real Cat-1/Cat-2 marking scheme</li>
+<li><input disabled="" type="checkbox"> <strong>Track your running diploma aggregate</strong> in your journal at every internal assessment</li>
+</ul>
+<p><em>Week 9-12 — language + Maths/Physics depth:</em></p>
+<ul>
+<li><input disabled="" type="checkbox"> One programming language done properly (Python if your college uses Java for DSA — Java is fine too, keep it)</li>
+<li><input disabled="" type="checkbox"> <strong>Git/GitHub genuinely mastered</strong>: branching, merging, rebase, PRs, issues, CI on every push, a good README. Most students never get past <code>commit</code>. Your <em>interview</em> will ask.</li>
+<li><input disabled="" type="checkbox"> Maths: <strong>calculus + matrices + vectors + probability</strong>, in English, from a proper source</li>
+<li><input disabled="" type="checkbox"> Physics: mechanics, electricity, magnetism, modern physics, semiconductors</li>
+<li><input disabled="" type="checkbox"> First <strong>tiny</strong> project: a Python CLI tool that does something real (unit converter, budget tracker, marks calculator). Deploy nothing. Just ship it and write a README.</li>
+</ul>
+<p><strong>Weekly template (2.5 hours/day, 6 days):</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Hours</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mon–Fri</td>
+<td>1.5 h</td>
+<td><strong>JELET subject depth</strong> (Math/Phys/Chem) — the exam spine</td>
+</tr>
+<tr>
+<td>Mon–Fri</td>
+<td>1.0 h</td>
+<td><strong>CS skill</strong> (language, DSA, Git, eventually stack) — the job spine</td>
+</tr>
+<tr>
+<td>Sat</td>
+<td>2.5 h</td>
+<td>Weekly closed-book test (1 h) + project work (1.5 h)</td>
+</tr>
+<tr>
+<td>Sun</td>
+<td>1.0 h</td>
+<td>Weekly review: journal, Anki catch-up, plan next week</td>
+</tr>
+<tr>
+<td>Daily</td>
+<td>15 min</td>
+<td>Anki reviews — non-negotiable, this is the compounding engine</td>
+</tr>
+</tbody></table>
+<h3 id="72-sem-4-your-core-cs-subjects-become-the-job">7.2 Sem 4: your core CS subjects become the job</h3>
+<p>Your Sem 4 syllabus is where the CS career track becomes real: <strong>Data Structures, DBMS, Computer Networks, Operating Systems</strong> <a href="https://polytechnic.wbtetsd.gov.in/polytechnic/college/download_file/184260348236f9554fe9375772ff966e/1731949424.pdf">WBTESD</a>. These are the interview subjects <em>and</em> the JELET-supporting disciplines (Networks → Physics intuition, DBMS → the SQL you&#39;ll use forever).</p>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>DSA</strong>: solve 3–5 problems a week in your syllabus&#39; Data Structures course. Start easy. Write the <em>why</em>, not just the code.</li>
+<li><input disabled="" type="checkbox"> <strong>DBMS → SQL → PostgreSQL</strong>: your course is the textbook. Do every lab <em>properly</em>, then build a schema of your own.</li>
+<li><input disabled="" type="checkbox"> <strong>Networks &amp; OS</strong>: understand them; these are cheap interview wins and they&#39;re on your JELET-adjacent Physics.</li>
+<li><input disabled="" type="checkbox"> <strong>JavaScript basics → Node.js + Express</strong>; connect to PostgreSQL; build a small API</li>
+<li><input disabled="" type="checkbox"> <strong>Docker + first deployment</strong> (free tier). A live URL beats a screenshot.</li>
+<li><input disabled="" type="checkbox"> JELET: <strong>solve the last 5 years&#39; papers, chapter by chapter, in JELET format, timed</strong></li>
+<li><input disabled="" type="checkbox"> Your <strong>summer internship (SI301) is coming</strong> — research local IT companies <em>now</em> and line up a dev/IT internship, not data entry. Get a written offer letter.</li>
+</ul>
+<h3 id="73-sem-5-the-portfolio-year-and-your-mandatory-internship">7.3 Sem 5: the portfolio year (and your mandatory internship)</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>Summer Internship (SI301)</strong> — the single most valuable resume line you&#39;ll have. Aim for a <em>development</em> internship at a startup or agency, or an IT role where you write code. Ask for a written offer letter; it goes on your resume under Experience, not under Training.</li>
+<li><input disabled="" type="checkbox"> <strong>TypeScript → React/Next.js</strong> · <strong>GitHub Actions (CI/CD)</strong> · <strong>AWS free tier deploy</strong></li>
+<li><input disabled="" type="checkbox"> <strong>Repo 2</strong>: a deployed full-stack app solving a real problem for real users. Non-negotiables: real auth, real DB with migrations, a real API, tests, CI on every push, Docker, a live URL, a serious README, a <code>LICENSE</code>.</li>
+<li><input disabled="" type="checkbox"> <strong>First 2 open-source PRs</strong> — docs, tests, small fixes. Learn the workflow of someone else&#39;s codebase.</li>
+<li><input disabled="" type="checkbox"> <strong>TypeScript</strong> replaces JavaScript in your stack once you&#39;re comfortable. Java stays for DSA and enterprise fallback.</li>
+<li><input disabled="" type="checkbox"> JELET: full-length timed mocks, 2 hours, exact format, once a week from now on</li>
+<li><input disabled="" type="checkbox"> <strong>Start applying</strong> — see §7.7</li>
+</ul>
+<h3 id="74-sem-6-final-year-jelet-the-ai-project">7.4 Sem 6 (final year): JELET + the AI project</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>JELET exam</strong> (~June) — this is the year. See §3A.5 for the 10-month prep plan.</li>
+<li><input disabled="" type="checkbox"> <strong>Repo 3 (AI-native)</strong> — RAG with clickable citations, or an agent that does something real. Include an <code>evals/</code> folder showing you <em>measured</em> output quality. This is what makes you &quot;AI-enabled&quot; rather than &quot;uses AI&quot; <a href="https://interviewstack.io/blog/how-ai-is-changing-fullstack-developer-2026">InterviewStack</a>.</li>
+<li><input disabled="" type="checkbox"> <strong>Portfolio complete</strong>: 3 shipped repos + open-source PRs + a written LinkedIn profile that leads with Projects, not Education <a href="https://www.nucamp.co/blog/top-10-tech-jobs-that-don-t-require-a-degree-in-india-in-2026">nucamp</a>.</li>
+<li><input disabled="" type="checkbox"> One free certificate only if it attaches to a project (AWS Cloud Practitioner path, Azure AI-900) <a href="https://edubracket.com/articles/best-free-ai-certifications-2026">Edubracket</a></li>
+<li><input disabled="" type="checkbox"> <strong>Apply.</strong> You&#39;re a final-year student with a portfolio and a JELET rank pending. This is the strongest you&#39;ll ever be on paper.</li>
+</ul>
+<h3 id="75-the-jelet-prep-year-12-months-out">7.5 The JELET prep year (12 months out)</h3>
+<table>
+<thead>
+<tr>
+<th>Months out</th>
+<th>Focus</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>12–9</td>
+<td><strong>Maths rebuild</strong>: calculus, matrices, vectors, probability — the 41.7%. Use your AI tutor to diagnose gaps chapter by chapter.</td>
+</tr>
+<tr>
+<td>9–6</td>
+<td><strong>Physics</strong>: mechanics, electricity, magnetism, EMI, modern, semiconductors. + <strong>Chemistry</strong>: bonding, equilibrium, redox, coordination, organic basics.</td>
+</tr>
+<tr>
+<td>6–3</td>
+<td><strong>Full timed mocks</strong> every week. <strong>FEEE</strong> (8.3%) — lean on your Digital Electronics/Microprocessor units. <strong>Previous 10 years&#39; papers</strong>, all of them.</td>
+</tr>
+<tr>
+<td>3–1</td>
+<td>Only mocks and error analysis. No new topics. <strong>Write the &quot;JELET traps&quot; note</strong> and memorise it.</td>
+</tr>
+<tr>
+<td>2–0</td>
+<td>Register, admit card, logistics, sleep, breakfast. Do not study new material.</td>
+</tr>
+<tr>
+<td>June</td>
+<td><strong>The exam.</strong> 2 hours, 100 questions, 120 marks, English, OMR. Skip what you don&#39;t know. Mark only what you&#39;re sure of on Cat-2.</td>
+</tr>
+</tbody></table>
+<p><strong>Remember the tie-break: Mathematics.</strong> <a href="https://cdnbbsr.s3waas.gov.in/s3d2a27e83d429f0dcae6b937cf480aeb1/uploads/2026/03/20260318287108702.pdf">bulletin</a></p>
+<h3 id="76-btech-years-12-the-job-track">7.6 B.Tech years 1–2: the job track</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>Year 1:</strong> System design fundamentals, Docker/Kubernetes basics, Terraform, deeper cloud. More open source (5 merged PRs). Improve English: write everything in English; speak daily.</li>
+<li><input disabled="" type="checkbox"> <strong>Year 2:</strong> <strong>Apply seriously.</strong> Target: Junior Software Engineer, Junior Full Stack Developer, Associate AI Engineer, AI-Engineer Intern, Backend Engineer (remote), Full Stack Intern (remote). Filter on &quot;no degree required&quot; <a href="https://www.remoterocketship.com/country/india/jobs/junior-backend-developer/">Remote RocketShip</a>.</li>
+<li><input disabled="" type="checkbox"> <strong>Interviews:</strong> DSA (your syllabus&#39; DS course), SQL, &quot;explain Repo 3&#39;s architecture in 5 minutes&quot;, and <em>&quot;how did you use AI in this project?&quot;</em> — build that story deliberately.</li>
+<li><input disabled="" type="checkbox"> <strong>Keep going to GSoC / SIH / internships</strong> — GSoC accepts diploma students (enrolment not required since 2022) and pays ₹60,000–2.5 lakh <a href="https://leapscholar.com/blog/google-summer-of-code/">LeapScholar</a>.</li>
+<li><input disabled="" type="checkbox"> <strong>Apply during the B.Tech too.</strong> Don&#39;t wait for graduation — the degree is nice-to-have on paper; the portfolio is what interviews you.</li>
+</ul>
+<h3 id="77-when-to-start-applying-the-honest-answer">7.7 When to start applying — the honest answer</h3>
+<p><strong>Sem 5, with Repo 1 and Repo 2 shipped.</strong> Reason: you need <em>rejection data</em> early, when a single rejection is cheap. Applying in the final year with no rejections behind you means you learn nothing until it&#39;s too late to fix. Applications are a skill too, and they need practice. Keep applying throughout — the offer often arrives from a role you&#39;d have rejected a year earlier.</p>
+<h3 id="78-a-note-on-expectations-because-you-should-plan-around-reality">7.8 A note on expectations, because you should plan around reality</h3>
+<p>A Sem 3 beginner will not be a full-stack developer in 6 months, and any plan that says so is selling something. What <em>is</em> realistic:</p>
+<ul>
+<li><strong>End of Sem 4:</strong> competent in one language + Git + SQL + maths/physics depth + a learning system that works. Already ahead of 90% of your batch.</li>
+<li><strong>End of Sem 5:</strong> one deployed full-stack app, an internship letter, 2 merged PRs. <strong>Employable for junior/IT roles</strong> if you want to earn early.</li>
+<li><strong>End of Sem 6:</strong> JELET attempt + a real portfolio + B.Tech admission. <strong>Employable for ₹4–7 LPA roles</strong> <a href="https://www.glassdoor.co.in/Job/remote-github-jobs-SRCH_IL.0,6_IS12563_KO7,13.htm">Glassdoor — remote junior full stack ₹5–7 LPA</a>.</li>
+<li><strong>B.Tech years 1–2:</strong> real interviews, real offers, real money — with a degree <em>and</em> a portfolio, which is the only combination that beats the market.</li>
+</ul>
+<p>That&#39;s the whole game. It&#39;s boring and it works.</p>
+<hr>
+<h2 id="8-the-opportunity-channels-with-actual-deadlines">8. The opportunity channels (with actual deadlines)</h2>
+<p>These are the &quot;opportunities&quot; half of what you asked for. Ranked by value-to-effort for your situation.</p>
+<h3 id="tier-1-high-value-real-money-or-real-credential">Tier 1 — high value, real money or real credential</h3>
+<table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>What it is</th>
+<th>Timing</th>
+<th>Why for you</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Google Summer of Code (GSoC)</strong></td>
+<td>12-week remote open-source internship, <strong>stipend ₹60,000–2.5 lakh</strong> for Indian contributors</td>
+<td>Apps ~Feb–Apr 2027 for 2027</td>
+<td>⭐ <strong>College enrolment has not been required since 2022 — diploma students are explicitly eligible.</strong> 18+, ~2 yrs max experience, no prior GSoC needed. Your summer-internship slot is the natural place to do it <a href="https://leapscholar.com/blog/google-summer-of-code/">30</a> <a href="https://theinternship.in/gsoc-i/">31</a></td>
+</tr>
+<tr>
+<td><strong>Smart India Hackathon (SIH)</strong></td>
+<td>MoE + AICTE national hackathon, real government problem statements, ₹1L per problem, internship/incubation offers</td>
+<td>SIH 2027: internal hackathon ~Aug–Sept 2027, finale ~Dec 2027</td>
+<td>⭐ Free entry. Needs <strong>6 students from your institute + 1 mentor + ≥1 female member</strong>, entered via your college <strong>SPOC</strong> — so find your SPOC now and start recruiting your team in the spring <a href="https://thenewviews.com/smart-india-hackathon/">32</a> <a href="https://velonx.in/blog/top-company-hackathons-for-students-in-india-2026">33</a></td>
+</tr>
+<tr>
+<td><strong>Your curriculum&#39;s Summer Internship (SI301)</strong></td>
+<td>Compulsory internship in Sem 5</td>
+<td>Per your college&#39;s calendar</td>
+<td>Get a <em>development</em> internship with a written offer letter. It&#39;s mandatory anyway — so spend it on your resume.</td>
+</tr>
+<tr>
+<td><strong>Freelance work</strong></td>
+<td>Real client, real deadline, real money</td>
+<td>Immediate</td>
+<td>Local Kolkata small businesses + agencies need web work. ₹25,000–40,000/month freelance web work is visible in Kolkata listings <a href="https://www.simplyhired.co.in/search?q=diploma+in+computer+science&amp;l=kolkata%2C+west+bengal">34</a>. It&#39;s the fastest proof-of-work generator you have.</td>
+</tr>
+</tbody></table>
+<h3 id="tier-2-portfolio-network-no-guaranteed-cash">Tier 2 — portfolio + network, no guaranteed cash</h3>
+<ul>
+<li><strong>Linux Foundation LFX Mentorship</strong> — remote, ~3 months, ~$5,000 depending on track, open to all <a href="https://ossium.in/home/oss-programs">35</a></li>
+<li><strong>MLH Fellowship</strong> — remote, 12 weeks, paid, open to all <a href="https://ossium.in/home/oss-programs">35</a></li>
+<li><strong>GirlScript Summer of Code (GSSoC)</strong> — beginner-friendly, no formal enrolment restriction, open-source + AI-agents tracks <a href="https://www.prepnplaced.com/apprenticeships/remote">36</a></li>
+<li><strong>Outreachy</strong> — Dec–Mar / May–Aug, remote <a href="https://www.prepnplaced.com/apprenticeships/open-source-programmes">37</a></li>
+<li><strong>Wikimedia GSoC / Julia JSoC / IIIT-Kalyani Winter of Code</strong> — <a href="https://www.prepnplaced.com/apprenticeships/open-source-programmes">37</a> <a href="https://github.com/deepanshu1422/List-Of-Open-Source-Internships-Programs">38</a></li>
+<li><strong>Company hackathons:</strong> Flipkart GRiD (₹6L pool + SDE interviews), Amazon HackOn (GenAI, ₹2.25L), TCS CodeVita, Microsoft Imagine Cup, ET AI Hackathon (PPIs + ₹10L) <a href="https://velonx.in/blog/top-company-hackathons-for-students-in-india-2026">39</a> <a href="https://www.reddit.com/r/developersIndia/comments/1qctgpc/top_hackathons_to_watch_in_2026_ai_ml_tech/">40</a></li>
+<li><strong>Internshala</strong> — 100+ full-stack internships live, ₹3,000–6,000/month, plus a fresher-job board <a href="https://internshala.com/internships/full-stack-development-internship/">41</a> <a href="https://internshala.com/fresher-jobs/software-development-jobs/">42</a></li>
+<li><strong>SarthiQ</strong> — remote, 3–6 months, tracks in AI/LLM training, RAG &amp; Agentic Systems, Full-Stack, Cognitive Science; <em>no formal credential filter</em> — &quot;curiosity, mettle for uncertainty, and willingness to build&quot; <a href="https://sarthiq.com/">43</a></li>
+</ul>
+<h3 id="tier-3-free-credentials-worth-0">Tier 3 — free credentials worth ₹0</h3>
+<table>
+<thead>
+<tr>
+<th>Credential</th>
+<th>Cost</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>AWS Cloud Practitioner</strong> (CLF-C02)</td>
+<td>Free training on AWS Skill Builder; exam $100 — <strong>AWS launched Student Rewards in Aug 2026</strong> giving students free training + credits + a $100 exam voucher (verify current terms)</td>
+<td>Most-recognised entry-level cloud cert; appears in 40%+ of junior cloud postings <a href="https://dev.to/aws-builders/free-aws-certification-for-students-the-complete-step-by-step-guide-3m1m">44</a> <a href="https://www.autoapplymax.com/blog/best-free-cloud-certifications-2026">45</a></td>
+</tr>
+<tr>
+<td><strong>Azure AI-900 (AI Practitioner)</strong></td>
+<td>Free study path, $165 exam</td>
+<td>No programming required; pairs well with your AI direction <a href="https://edubracket.com/articles/best-free-ai-certifications-2026">46</a></td>
+</tr>
+<tr>
+<td><strong>Google ML Crash Course</strong></td>
+<td>Fully free</td>
+<td>15 hours, hands-on TensorFlow — good for the AI layer <a href="https://edubracket.com/articles/best-free-ai-certifications-2026">46</a></td>
+</tr>
+<tr>
+<td><strong>GitHub Foundations</strong></td>
+<td>Free voucher via Student Pack (while supplies last)</td>
+<td>Direct signal for dev roles <a href="https://builder.aws.com/content/3JYOdVPrLqxmcCNGHrKSRraejHL/free-tech-certifications-and-credentials-for-students-in-2026">47</a></td>
+</tr>
+<tr>
+<td><strong>MongoDB certification</strong></td>
+<td>Free via Student Pack + learning path</td>
+<td>Pairs with your PostgreSQL/Prisma work</td>
+</tr>
+<tr>
+<td><strong>Cisco NetAcad</strong></td>
+<td>Free courses + badges</td>
+<td>Networking, Python, Linux, IoT, Cybersecurity — aligns with your syllabus</td>
+</tr>
+<tr>
+<td><strong>NPTEL / SWAYAM</strong></td>
+<td>Free to learn; nominal fee for proctored exam</td>
+<td>Government-recognized; WB placement cells accept it <a href="https://www.taskveda.in/blog/free-certification-programs-2026.html">48</a></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Certification reality check:</strong> certs <em>supplement</em> experience, they don&#39;t replace it. The right way to present one is inline with a project: <em>&quot;Utilised AWS S3 and Lambda for serverless image processing [Cloud Practitioner Certified]&quot;</em> — not in a lonely &quot;Certifications&quot; section at the bottom <a href="https://studenttechprojects.in/blog/student-opportunities/free-online-certifications-value-guide">49</a>. <strong>Never stack more than 2–3.</strong> Portfolio first, then the badge.</p>
+</blockquote>
+<hr>
+<h2 id="8a-part-time-income-earning-without-burning-the-jelet-spine">8A. Part-time income — earning without burning the JELET spine</h2>
+<p>You want money while studying. Good. The rule that makes this work:</p>
+<blockquote>
+<p><strong>Income may come out of your <em>freelancing</em> time and your <em>weekend</em> hours. It may never come out of the JELET hours or the daily learning loop.</strong></p>
+</blockquote>
+<p>Target: <strong>₹8,000–15,000/month from 6–8 hours/week.</strong> That&#39;s realistic, sustainable, funds your gear, and doesn&#39;t cost you the exam.</p>
+<h3 id="8a1-tier-1-tutoring-start-this-week-highest-value-by-a-wide-margin">8A.1 Tier 1 — Tutoring (start this week, highest value by a wide margin)</h3>
+<p><strong>This is not a side hustle for you. It&#39;s your JELET prep with a salary attached.</strong></p>
+<table>
+<thead>
+<tr>
+<th>What you teach</th>
+<th>Online rate</th>
+<th>Home tuition rate</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Class 6–8</td>
+<td>₹300–500/hr</td>
+<td>₹350–600/hr</td>
+</tr>
+<tr>
+<td><strong>Class 9–10 (WB board)</strong></td>
+<td><strong>₹400–700/hr</strong></td>
+<td><strong>₹450–800/hr</strong></td>
+</tr>
+<tr>
+<td><strong>Class 11–12 (WB board)</strong></td>
+<td><strong>₹500–900/hr</strong></td>
+<td><strong>₹600–1,000/hr</strong></td>
+</tr>
+<tr>
+<td>JEE / NEET foundation</td>
+<td>₹800–1,800/hr</td>
+<td>₹1,000–2,000/hr</td>
+</tr>
+</tbody></table>
+<p>Sources: <a href="https://smartteksolutions.in/part-time-online-home-tuition-teaching-opportunities-in-india-mysmartpros/">SmartTek tuition rates</a> · <a href="https://jobipo.com/blog/part-time-online-jobs-for-students/">Jobipo student jobs</a> · <a href="https://powerpro2.blogspot.com/2026/07/make-money-online-student-india-2026.html">PowerPro2</a></p>
+<p><strong>Why tutoring is the correct choice for you, specifically:</strong></p>
+<ol>
+<li><strong>It uses capital you already have.</strong> 88.17% Madhyamik, 80% HS, 9.3 GPA, plus a JELET syllabus you must master anyway. You are already the tutor.</li>
+<li><strong>The subject you teach IS the exam you sit.</strong> Class 11–12 WB-board Maths and Physics overlap heavily with JELET Paper I. <strong>Every hour you teach is an hour you revise — you are getting paid to study.</strong></li>
+<li><strong>It needs no portfolio.</strong> Start in week 1, unlike freelancing which needs ~6 months of skills.</li>
+<li><strong>It deepens your own mastery.</strong> Self-explanation is a <strong>moderate-utility</strong> learning technique (d = 0.54) <a href="https://www.whz.de/fileadmin/lehre/hochschuldidaktik/docs/dunloskiimprovingstudentlearning.pdf">Dunlosky</a>. Explaining calculus to a Class 12 student is the Feynman technique on a topic that appears in your exam — <strong>you will find your own gaps faster than by re-reading.</strong></li>
+<li><strong>Kolkata pays well for it.</strong> Home tuition for Class 9–10 at ₹450–800/hr in a city where coaching institutes charge ₹5,000+/month per student. You are the cheap, personal, effective alternative.</li>
+<li><strong>The hours are evening-weighted</strong> and don&#39;t collide with your daytime study block.</li>
+</ol>
+<p><strong>How to start (this week):</strong></p>
+<ul>
+<li><strong>Direct students = no commission = 3–5× the platform rate.</strong> Platforms (Vedantu, Chegg, SuperProf, Filo, Cuemath) supply students but pay less. Use platforms for <em>reviews</em>; use direct WhatsApp/Google Meet referrals for <em>money</em>.</li>
+<li><strong>Start at ₹250–400/hr.</strong> Two students at ₹300 × 2 hrs/week each = <strong>₹5,000/month</strong> in month one. Raise your rate after 3–5 good reviews.</li>
+<li><strong>Where to find students:</strong> your juniors and their classmates (cheapest, most reliable), WhatsApp/Instagram in your locality, UrbanPro/JustDial tutoring listings, coaching-institute referral (many need part-time faculty for weak students), local schools&#39; evening remedial classes.</li>
+<li><strong>Offer a free 30-minute demo class.</strong> It converts better than any ad.</li>
+<li><strong>Build a one-page &quot;teaching kit&quot;</strong> — a WB Class 12 Maths/Physics syllabus map plus your own notes. You&#39;re building a teaching asset <em>and</em> a revision asset simultaneously. Put it in this repo (<code>teaching/</code>) and it&#39;s a portfolio piece too.</li>
+</ul>
+<p><strong>The guardrail:</strong> max <strong>2 offline + 2–3 online students.</strong> More than that eats the JELET spine. Log tutoring hours in the same journal as study hours — it becomes evidence of teaching, and if you ever consider a teaching-track role, it&#39;s a portfolio piece.</p>
+<h3 id="8a2-tier-2-ai-data-annotation-amp-model-training-tasks-flexible-filler">8A.2 Tier 2 — AI data annotation &amp; model-training tasks (flexible filler)</h3>
+<p>Remote AI companies pay workers to label images, rate chatbot outputs, and verify translations: <strong>₹2,000–15,000/month, per-task, flexible timing</strong> <a href="https://gromo.in/blog/online-part-time-jobs-for-students-in-2026/">Gromo</a> <a href="https://gromo.in/blog/zero-investment-income-ideas-top-14-part-time-jobs-in-india-2026-zero-investment/">Gromo — zero-investment jobs</a>.</p>
+<p><strong>Your specific edge:</strong> Indian-language verification tasks pay a <strong>premium</strong>, and you&#39;re fluent in Bengali (and presumably Hindi). That&#39;s a real, sellable advantage. Intake opens in waves — apply to several.</p>
+<p><strong>Use strictly as gap-filler</strong> (a slow week, exam season). Low pay, builds no portfolio.</p>
+<h3 id="8a3-tier-3-ai-micro-services-for-local-businesses-from-sem-45">8A.3 Tier 3 — AI micro-services for local businesses (from Sem 4–5)</h3>
+<p>Set up AI workflows for small Kolkata businesses: a chatbot for a coaching institute&#39;s FAQ, an automated WhatsApp enquiry responder, a Notion dashboard for a local shop&#39;s inventory, AI-assisted content for a small agency&#39;s social media. Reported range: <strong>₹8,000–40,000/month</strong> for 3 clients <a href="https://teenbucks.in/side-hustle-for-students/">Teenbucks</a> <a href="https://www.mymoneyway.in/2026/06/earn-money-online-for-students-india-2026-zero-investment.html">Mymoneyway</a>.</p>
+<p><strong>This is the only income option that also builds your portfolio</strong> — and it can <em>become</em> Repo 2 or Repo 3 if you build it properly (documented, deployed, with evals). Two birds. <strong>Max 1–2 clients</strong> — client work is sales-shaped and will expand to fill all your time if you let it.</p>
+<h3 id="8a4-tier-4-english-content-writing-small-optional">8A.4 Tier 4 — English content writing (small, optional)</h3>
+<p><strong>₹5,000–35,000/month</strong> for good writers <a href="https://jobipo.com/blog/part-time-online-jobs-for-students/">Jobipo</a>. You have HS 80% English. But this is the <strong>weakest signal for a CS job</strong>, so keep it small — it&#39;s for cash, not for the CV.</p>
+<h3 id="8a5-what-to-avoid">8A.5 What to avoid</h3>
+<ul>
+<li><strong>Data entry (₹5,000–15,000/mo)</strong> — zero skill compounding, and it competes with the same &quot;sit and type&quot; energy that lets you skip learning. A trap disguised as a job.</li>
+<li><strong>Microtask / survey sites</strong> — same reason, lower pay.</li>
+<li><strong>Any hustle needing 4+ hours/day.</strong> With 2–3 hours/day total for everything, a 4-hour hustle means learning stops.</li>
+<li><strong>Anything that asks you to pay upfront.</strong> Legitimate programmes — GSoC, SIH, LFX, MLH, Outreachy — are <strong>free</strong> <a href="https://www.prepnplaced.com/apprenticeships/open-source-programmes">PrepnPlaced</a>.</li>
+</ul>
+<h3 id="8a6-tax-amp-the-money39s-job">8A.6 Tax &amp; the money&#39;s job</h3>
+<ul>
+<li>Freelance/tutoring income above <strong>₹2.5 lakh/year</strong> is taxable (₹3 lakh under the new regime); earnings above <strong>₹40,000/month</strong> from tutoring may carry TDS depending on the platform <a href="https://themoneydecoded.com/blog/make-money-online-student">themoneydecoded</a>.</li>
+<li><strong>Give every rupee a job.</strong> Suggested split of ₹8,000–15,000/month:<ul>
+<li><strong>50% → gear &amp; infrastructure.</strong> A better laptop (RAM matters for Docker + local models), a domain, AWS free tier, one exam fee, one cert.</li>
+<li><strong>30% → safety net</strong>, so you never need a bad job.</li>
+<li><strong>20% → life.</strong> A student who hates their routine quits the routine.</li>
+</ul>
+</li>
+<li><strong>The goal is not ₹40,000/month.</strong> The goal is ₹1.5–2 lakh over your diploma — which buys a laptop, a domain, certs and exam fees, and critically <strong>the freedom to say no to a bad internship when one shows up.</strong></li>
+</ul>
+<h3 id="8a7-how-income-and-the-jelet-plan-reinforce-each-other">8A.7 How income and the JELET plan reinforce each other</h3>
+<ul>
+<li>Tutoring = paid revision of the exact exam syllabus.</li>
+<li>Money = the laptop and cloud credits that make the portfolio possible.</li>
+<li>Teaching = the communication skill every interview tests.</li>
+<li>And a line on your CV: <em>Freelance Tutor, Maths &amp; Physics (Class 9–12), 300+ hours</em> — which a JU panel will read as someone who explains things clearly.</li>
+</ul>
+<blockquote>
+<p><strong>The trap to avoid:</strong> earning ₹10,000/month feels great and will happily consume the 6 hours/week that should have been Maths. Set the cap now, in writing, in <code>roadmap.md</code>. If tutoring starts costing you JELET mock-test scores, <strong>cut students before you cut revision.</strong></p>
+</blockquote>
+<hr>
+<h2 id="9-free-stack-the-full-0-budget">9. Free stack — the full ₹0 budget</h2>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Tool</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Primary AI agent (this repo)</td>
+<td>Arena.ai Agent Mode / Claude Code / Codex CLI</td>
+<td>Free tiers available</td>
+</tr>
+<tr>
+<td>Tutor over your own material</td>
+<td><strong>Gemini Notebook</strong> (was NotebookLM) — 100 notebooks, 50 sources each, 50 chats/day, 3 audio overviews/day</td>
+<td>₹0</td>
+</tr>
+<tr>
+<td>Socratic tutor</td>
+<td>Gemini <strong>Guided Learning</strong> — asks instead of answering</td>
+<td>₹0</td>
+</tr>
+<tr>
+<td>General reasoning / long docs</td>
+<td>Claude Free (daily limit)</td>
+<td>₹0</td>
+</tr>
+<tr>
+<td>Study mode / Q&amp;A</td>
+<td>ChatGPT Free</td>
+<td>₹0</td>
+</tr>
+<tr>
+<td>Cited web research</td>
+<td>Perplexity Free</td>
+<td>₹0</td>
+</tr>
+<tr>
+<td>Local, offline, private</td>
+<td>Ollama + open models — no key, no limits</td>
+<td>₹0</td>
+</tr>
+<tr>
+<td>Spaced repetition</td>
+<td>Anki (desktop/Android/web) + <strong>FSRS</strong> (default since v23.10; 20–30% fewer reviews than SM-2 at equal retention)</td>
+<td>₹0</td>
+</tr>
+<tr>
+<td>AI coding assistant</td>
+<td>GitHub Copilot via Student Pack (verify current terms)</td>
+<td>₹0</td>
+</tr>
+<tr>
+<td>Cloud to deploy on</td>
+<td>AWS Free Tier / GCP $300 credit (90 days) / DigitalOcean via Student Pack</td>
+<td>₹0</td>
+</tr>
+<tr>
+<td>Domains</td>
+<td><code>.me</code> TLD free for 1 year via Student Pack</td>
+<td>₹0</td>
+</tr>
+<tr>
+<td>Video → cards</td>
+<td>YouTube transcript → AI prompt → CSV → Anki import (no length limit; many hosted tools cap at 3–5 min free)</td>
+<td>₹0</td>
+</tr>
+</tbody></table>
+<p><strong>Total: ₹0.</strong> The only thing this plan costs is <strong>time</strong> — roughly 2–3 hours/day, 6 days a week.</p>
+<hr>
+<h2 id="10-the-interview-reality-for-you">10. The interview reality for you</h2>
+<p><strong>What they&#39;ll test:</strong></p>
+<ol>
+<li><strong>DSA</strong> — your syllabus covers it. Use it. Practice on the exact topics in your COPC205 Data Structures course; that alone puts you ahead of most self-taught candidates.</li>
+<li><strong>SQL</strong> — your DBMS course covers it. Free advantage.</li>
+<li><strong>Your projects — deep.</strong> &quot;Walk me through Repo 3&#39;s architecture.&quot; &quot;Why did you choose RAG over fine-tuning?&quot; &quot;What broke, and how did you fix it?&quot;</li>
+<li><strong>AI fluency</strong> — &quot;How do you use AI in your work?&quot; &quot;How do you verify LLM output?&quot; &quot;What is an eval?&quot; <a href="https://arxiv.org/html/2610.31481">50</a></li>
+<li><strong>Communication in English.</strong> This is where most diploma candidates lose. Practice: explain your project out loud in 5 minutes, record yourself, listen back. Write your README in English so you practice writing technical English daily.</li>
+<li><strong>Basic system design</strong> — not &quot;design Twitter.&quot; &quot;Design a URL shortener with 10k writes/sec.&quot;</li>
+</ol>
+<p><strong>Certificates don&#39;t get you interviews. Projects do. Communication gets you hired.</strong></p>
+<hr>
+<h2 id="11-the-quotdon39tquot-list-pre-commit-these-now">11. The &quot;don&#39;t&quot; list (pre-commit these now)</h2>
+<ol>
+<li><strong>Don&#39;t learn 5 languages.</strong> One primary (TypeScript) + one AI layer (Python). Java for DSA.</li>
+<li><strong>Don&#39;t chase certificates.</strong> 2–3 max, each attached to a project.</li>
+<li><strong>Don&#39;t build 10 toy projects.</strong> 4 real ones beat 10 clones of a tutorial.</li>
+<li><strong>Don&#39;t let AI write the code you claim to have written.</strong> In the age of AI, the portfolio <em>is</em> the proof of your skill — and a portfolio you can&#39;t defend in an interview is a liability, not an asset. Write it, then let AI review it.</li>
+<li><strong>Don&#39;t apply only through portals.</strong> Direct email to founders at small studios; GitHub issues on projects you use; community forums. The &quot;hidden market&quot; (GitHub, hackathons, open source, community) is where intern hires actually come from <a href="https://beincareer.com/how-to-get-internship-india-2026/">51</a>.</li>
+<li><strong>Don&#39;t wait until you feel ready.</strong> Apply at month 3.</li>
+<li><strong>Don&#39;t learn in public for applause.</strong> Your journal should be honest, not impressive. The mess is the point.</li>
+<li><strong>Don&#39;t neglect English.</strong> Write everything in English. Speak daily. It is a hiring filter, not a formality.</li>
+<li><strong>Don&#39;t ignore the syllabus&#39;s core CS.</strong> DSA, DBMS, Networks, OS — those <em>are</em> the interview. You&#39;re just using the syllabus as a free textbook, not as a target.</li>
+<li><strong>Don&#39;t let the AI take the wheel.</strong> The chess RCT is the warning: students who could ask for help any time got 30% gains vs. 64% for system-initiated help <a href="https://ssrn.com/abstract/5604932">22</a>. In code: write the test first, then ask.</li>
+</ol>
+<hr>
+<h2 id="12-metrics-review-every-sunday-in-your-journal">12. Metrics (review every Sunday, in your journal)</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Closed-book, no-AI weekly score</strong></td>
+<td>Rising over 12 weeks</td>
+<td>The only honest learning metric <a href="https://www.pnas.org/doi/10.1073/pnas.2422633122">21</a></td>
+</tr>
+<tr>
+<td><strong>JELET mock score (full Paper I, timed, no AI)</strong></td>
+<td><strong>≥95/120 by the end of your prep year; 105+ for a CSE shot</strong></td>
+<td>The number that decides everything (§3B.3)</td>
+</tr>
+<tr>
+<td><strong>Running diploma aggregate</strong></td>
+<td><strong>≥70%</strong> (never below 60%)</td>
+<td>The JU eligibility gate — and 4 semesters of marks decide it</td>
+</tr>
+<tr>
+<td>Weekly Maths/Physics/Chem hours</td>
+<td>7–8 h/week</td>
+<td>The JELET spine</td>
+</tr>
+<tr>
+<td>Repos shipped &amp; deployed</td>
+<td>3 by end of Sem 6</td>
+<td>Portfolio, not notes</td>
+</tr>
+<tr>
+<td>Open-source PRs merged</td>
+<td>5 by end of B.Tech Yr 1</td>
+<td>Team-collaboration signal</td>
+</tr>
+<tr>
+<td>Tutoring hours/week</td>
+<td>6–8 h, capped</td>
+<td>Income without eating the spine</td>
+</tr>
+<tr>
+<td>Part-time income</td>
+<td>₹8,000–15,000/month</td>
+<td>Funds the gear; also paid revision</td>
+</tr>
+<tr>
+<td>Targeted applications/week</td>
+<td>10, from Sem 5</td>
+<td>Volume is a skill</td>
+</tr>
+<tr>
+<td>Interviews per 20 applications</td>
+<td>≥2</td>
+<td>Your funnel health check</td>
+</tr>
+<tr>
+<td><code>git log</code> commits</td>
+<td>No gap &gt;2 days</td>
+<td>Consistency, not learning</td>
+</tr>
+<tr>
+<td>Anki reviews/day</td>
+<td>Done daily</td>
+<td>Retention compounding</td>
+</tr>
+<tr>
+<td><strong>&quot;Can I defend this repo for 5 minutes?&quot;</strong></td>
+<td>Yes, for all of them</td>
+<td>The real readiness test</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="13-the-honest-summary">13. The honest summary</h2>
+<p><strong>What you got right:</strong> You identified early that AI changes the game, and you connected a repo — the one artifact that captures <em>your</em> effort and can&#39;t be faked. That instinct is right, and the repo you&#39;ve started is Repo 1 of your portfolio. You also chose the JELET path, and your academic record (88.17% → 80% → 9.3 GPA) means you&#39;ve already cleared the one hard eligibility gate on that path — <strong>JU&#39;s 60%</strong> — in year one.</p>
+<p><strong>What the plan adds on top of your instinct:</strong></p>
+<ul>
+<li><strong>A spine.</strong> &quot;Learn for knowledge and opportunities&quot; is a direction, not a route. The route is: <strong>JELET spine (Maths + Physics + Chem) and Job spine (TypeScript + Python/AI + portfolio), running in parallel on the same hours → JU CSE (target GMR ≤40, ideally ≤20) → B.Tech → job.</strong></li>
+<li><strong>A number.</strong> JU CSE lateral is <strong>9 seats</strong> and closes around rank <strong>9–55</strong>. So your real target is a score, not a feeling: <strong>95–105 out of 120, stretch 105–112.</strong></li>
+<li><strong>A sequence.</strong> Foundations now, stack later, AI layer last. The 2–3 hours a day you have is enough — but only if you don&#39;t spend it on React in Sem 3.</li>
+<li><strong>An income line that pays you to revise.</strong> Tutoring Class 11–12 Maths/Physics is the same syllabus as JELET Paper I. <strong>You&#39;re getting paid to study.</strong> ₹8,000–15,000/month from 6–8 hours/week, capped so it can never eat the JELET hours.</li>
+</ul>
+<p><strong>What to watch for:</strong></p>
+<ul>
+<li><strong>Don&#39;t serialise.</strong> &quot;Degree first, skills after&quot; is the trap. The degree and the portfolio must be built in the same 3.5 years.</li>
+<li><strong>Don&#39;t lose the 60%.</strong> You have a huge cushion now; polytechnic theory papers in Sem 5–6 (Microprocessor, Automata, AI/ML) are where it can slip. Track the running aggregate every semester.</li>
+<li><strong>Don&#39;t expect 6 months to a job.</strong> End of Sem 5 you&#39;re employable at junior/IT level; end of Sem 6 you&#39;re employable at ₹4–7 LPA; B.Tech Yr 2 is where the good offers live.</li>
+<li><strong>Don&#39;t let the AI write the code you claim you wrote.</strong> A portfolio you can&#39;t defend in an interview is a liability.</li>
+</ul>
+<p><strong>One line to remember:</strong> <em>The JELET rank gets you into Jadavpur. The portfolio gets you the offer. The AI fluency gets you the raise. And the tutoring gets you the laptop.</em></p>
+<hr>
+<h2 id="sources">Sources</h2>
+<p><strong>Your context</strong></p>
+<ol>
+<li><a href="https://gsmp.co.in/wp-content/uploads/2023/02/CST_STRUCTURE.pdf">WB State Council — Diploma CST/CSE/CSWT/IT curriculum structure (Revised 2022)</a> · 2. <a href="https://polytechnic.wbtetsd.gov.in/polytechnic/college/download_file/184260348236f9554fe9375772ff966e/1731949424.pdf">WBTESD — Part-II &amp; III curriculum, incl. SI301 Summer Internship-II</a> · 3. <a href="https://www.shiksha.com/college/acharya-prafulla-chandra-ray-polytechnic-jadavpur-kolkata-58865/course-diploma-in-computer-science-and-technology-640035">APC Ray Polytechnic on Shiksha — 60 seats, no median salary reported</a></li>
+</ol>
+<p><strong>Market</strong>
+4. <a href="https://www.remoterocketship.com/country/india/jobs/junior-backend-developer/">Remote RocketShip — junior backend roles, &quot;no degree required&quot;</a> · 5. <a href="https://www.glassdoor.co.in/Job/india-junior-frontend-developer-remote-working-jobs-SRCH_IL.0,5_IN115_KO6,46.htm">Glassdoor — &quot;We do not care about pedigree&quot;</a> · 6. <a href="https://www.qarera.com/reports/most-in-demand-skills-2026">Qarera — 360,336 job postings skill analysis</a> · 7. <a href="https://www.edstellar.com/blog/most-in-demand-skills-in-it">Edstellar — AI skills shortage &amp; the 2-yrs-AI-vs-5-yrs-non-AI finding</a> · 8. <a href="https://remoteai.io/articles/ai-skills-in-demand">RemoteAI — 419 real AI job posts</a> · 9. <a href="https://www.nucamp.co/blog/the-junior-developer-hiring-crisis-in-2026-how-to-get-your-first-full-stack-job">nucamp — the junior developer hiring crisis in 2026</a> · 10. <a href="https://in.indeed.com/q-diploma-computer-science-l-west-bengal-jobs.html">Indeed — diploma CS jobs in West Bengal</a> · 11. <a href="https://vtricks.in/salary/full-stack-developer-salary-kolkata.html">Vtricks — full-stack salary in Kolkata 2026</a> · 12. <a href="https://www.glassdoor.co.in/Job/remote-github-jobs-SRCH_IL.0,6_IS12563_KO7,13.htm">Glassdoor — Youngun Junior Full Stack, remote ₹5–7 LPA</a> · 13. <a href="https://internshala.com/jobs/github-jobs/">Internshala — AI Engineering, WFH, ₹15,001–45,000/mo</a> · 18. <a href="https://interviewstack.io/blog/fullstack-developer-skills-companies-want-2026">InterviewStack — full-stack skill share in postings</a> · 19. <a href="https://www.nucamp.co/blog/most-in-demand-full-stack-skills-in-2026-react-node-typescript-and-beyond">nucamp — in-demand full-stack skills 2026</a> · 20. <a href="https://interviewstack.io/blog/how-ai-is-changing-fullstack-developer-2026">InterviewStack — GenAI skill demand in full-stack postings</a> · 23. <a href="https://www.nucamp.co/blog/top-10-tech-jobs-that-don-t-require-a-degree-in-india-in-2026">nucamp — tech jobs that don&#39;t require a degree in India</a></p>
+<p><strong>Education &amp; learning</strong>
+21. <a href="https://www.pnas.org/doi/10.1073/pnas.2422633122">Bastani et al. (2025), PNAS — Generative AI without guardrails can harm learning</a> · 22. <a href="https://ssrn.com/abstract/5604932">Poulidis, Bastani &amp; Bastani — Self-regulated AI use hinders long-term learning</a> · 50. <a href="https://arxiv.org/html/2610.31481">arXiv — evaluating AI tutoring; explain AI-assisted solutions in your own words</a></p>
+<p><strong>Degree pathway &amp; JELET</strong>
+14. <a href="https://www.kgec.edu.in/admissions">KGEC — JELET lateral entry eligibility &amp; counselling</a> · 15. <a href="https://collegedunia.com/exams/jelet">Collegedunia — JELET eligibility, WB domicile, branch correspondence</a> · 16. <a href="https://www.myeducationwire.com/latest/jelet-2027/">MyEducationWire — JELET 2027 status</a> · 17. <a href="https://findurcollege.com/direct-second-year-btech">FindUrCollege — branch-change rules for lateral entry</a> · 52. <a href="https://cdnbbsr.s3waas.gov.in/s3d2a27e83d429f0dcae6b937cf480aeb1/uploads/2026/03/20260318287108702.pdf"><strong>JELET 2026 official Information Bulletin</strong> (WBJEEB PDF — pattern, marking scheme, tie-break, eligibility, provisional admission for final-sem appearing candidates)</a> · 53. <a href="https://collegedunia.com/exams/jelet/exam-pattern">JELET 2026 exam pattern &amp; subject-wise weightage</a> · 54. <a href="https://admission.aglasem.com/wbjee-jelet-syllabus/">JELET syllabus — Mathematics, Physics, Chemistry, FEEE</a> · 55. <a href="https://engineering.careers360.com/articles/jelet-syllabus">Careers360 — JELET topic-wise syllabus</a> · 56. <a href="https://www.shiksha.com/engineering/wbjee-jelet-exam-syllabus">Shiksha — JELET syllabus &amp; exam pattern</a> · 57. <a href="https://wbjeeb.nic.in/jelet/">WBJEEB — official JELET page &amp; notices</a> · 58. <a href="https://wbjeeb.in/wp-content/uploads/2024/02/2024020274-1-jelet-2024.pdf">JELET 2024 Information Bulletin (diploma in <em>any</em> branch eligible)</a> · 59. <a href="https://www.myeducationwire.com/latest/jelet-2027-eligibility-criteria/">JELET 2027 eligibility criteria &amp; age limit</a> · 60. <a href="https://collegedunia.com/exams/jelet/results">Collegedunia — no minimum score needed for a merit rank</a> · 61. <a href="https://findmycollege.com/exam/jelet/eligibility">FindMyCollege — Jadavpur University lateral-entry requires 60%</a> · 62. <a href="https://admittanceedutech.in/wb-jelet-round-3-counselling-2026/">JELET seat acceptance &amp; mandatory documents (WB domicile)</a></p>
+<p><strong>Jadavpur University lateral entry</strong>
+63. <a href="https://admissionju.jadavpuruniversity.in/fengadmission/frontend/upload/brochure/jelet_admission.pdf">JU official Information Brochure for JELET admission (60% rule, relevant-branch rule, domicile)</a> · 64. <a href="https://engineering.careers360.com/articles/jelet">JELET 2026 seat matrix — JU branch-wise seats, incl. &quot;CSE / Computer Science &amp; Technology: 9&quot;</a> · 65. <a href="https://collegedunia.com/university/26008-jadavpur-university-ju-kolkata/cutoff">Collegedunia — JU cutoff trends, JELET B.Tech Lateral closing ranks</a> · 66. <a href="https://findmycollege.com/exam/jelet/cutoff">FindMyCollege — JU JELET cutoff trends by category</a> · 67. <a href="https://collegedunia.com/articles/e-553-jelet-2026-cutoff-previous-year-rank-trends-and-2026-prediction">JELET 2026 expected cutoffs — JU CSE UR closing rank 30–55</a> · 68. <a href="https://collegedunia.com/university/26008-jadavpur-university-ju-kolkata/admission">Collegedunia — JU admission, 90% Home State / 10% All India</a> · 69. <a href="https://www.telegraphindia.com/west-bengal/kolkata/ju-reverses-decision-on-jelet-admissions-allowing-diploma-holders-with-online-classes-prnt/cid/2137208">Telegraph India — JU restores JELET lateral entry; 150 seats; bridging coursework</a> · 70. <a href="https://timesofindia.indiatimes.com/city/kolkata/60-in-diploma-for-jadavpur-university-engineering-lateral-entry/articleshow/67155271.cms">Times of India — JU faculty council sets the 60% lateral-entry rule</a> · 71. <a href="https://www.pagalguy.com/colleges/jadavpur-university-kolkata">Pagalguy — JU JELET round-1 branch closing ranks</a> · 72. <a href="https://collegedunia.com/university/26008-jadavpur-university-ju-kolkata/bachelor-of-engineering-be-lateral-computer-science-and-engineering-13082">Collegedunia — JU BE Lateral CSE eligibility &amp; provisional admission</a></p>
+<p><strong>Part-time income</strong>
+73. <a href="https://smartteksolutions.in/part-time-online-home-tuition-teaching-opportunities-in-india-mysmartpros/">SmartTek — online &amp; home tuition hourly rates by class</a> · 74. <a href="https://jobipo.com/blog/part-time-online-jobs-for-students/">Jobipo — student part-time jobs, tutoring rates, direct vs. platform</a> · 75. <a href="https://powerpro2.blogspot.com/2026/07/make-money-online-student-india-2026.html">PowerPro2 — tutoring rates and realistic student earnings</a> · 76. <a href="https://gromo.in/blog/online-part-time-jobs-for-students-in-2026/">Gromo — AI data annotation &amp; model-training tasks for students</a> · 77. <a href="https://teenbucks.in/side-hustle-for-students/">Teenbucks — student side-hustle income milestones</a> · 78. <a href="https://www.mymoneyway.in/2026/06/earn-money-online-for-students-india-2026-zero-investment.html">Mymoneyway — AI services as a student income stream</a> · 79. <a href="https://themoneydecoded.com/blog/make-money-online-student">themoneydecoded — student income by year &amp; income-tax/TDS thresholds</a></p>
+<p><strong>Opportunities</strong>
+30. <a href="https://leapscholar.com/blog/google-summer-of-code/">LeapScholar — GSoC 2027 for Indian students, diploma eligibility</a> · 31. <a href="https://theinternship.in/gsoc-i/">The Internship — GSoC 2026 stipend &amp; eligibility</a> · 32. <a href="https://thenewviews.com/smart-india-hackathon/">The New Views — SIH 2026 schedule &amp; SPOC route</a> · 33. <a href="https://velonx.in/blog/top-company-hackathons-for-students-in-india-2026">Velonx — company hackathons, prizes, eligibility</a> · 34. <a href="https://www.simplyhired.co.in/search?q=diploma+in+computer+science&amp;l=kolkata%2C+west+bengal">SimplyHired — Kolkata freelance web dev pay</a> · 35. <a href="https://ossium.in/home/oss-programs">Ossium — LFX, MLH, Outreachy</a> · 36. <a href="https://www.prepnplaced.com/apprenticeships/remote">PrepnPlaced — remote open-source programmes</a> · 37. <a href="https://www.prepnplaced.com/apprenticeships/open-source-programmes">PrepnPlaced — open-source internship programmes</a> · 38. <a href="https://github.com/deepanshu1422/List-Of-Open-Source-Internships-Programs">List of Open Source Internships</a> · 39. <a href="https://www.reddit.com/r/developersIndia/comments/1qctgpc/top_hackathons_to_watch_in_2026_ai_ml_tech/">r/developersIndia — 2026 hackathon calendar</a> · 40. <a href="https://velonx.in/blog/top-company-hackathons-for-students-in-india-2026">Velonx — company hackathon comparison</a> · 41. <a href="https://internshala.com/internships/full-stack-development-internship/">Internshala — full-stack internships</a> · 42. <a href="https://internshala.com/fresher-jobs/software-development-jobs/">Internshala — software development fresher jobs</a> · 43. <a href="https://sarthiq.com/">SarthiQ — remote AI/RAG/agentic tracks</a> · 51. <a href="https://beincareer.com/how-to-get-internship-india-2026/">Beincareer — the hidden internship market</a></p>
+<p><strong>Free tooling</strong>
+24. <a href="https://creditforstartups.com/students/cloud-credits-for-students">Student cloud credits — GitHub Pack, AWS, GCP, DigitalOcean</a> · 25. <a href="https://spca.education/free-tech-giant-services-for-students-certification-guide/">GitHub Student Developer Pack</a> · 26. <a href="https://builder.aws.com/content/3IUXtk3cJbrpRXiG1Y3wenPstPI/free-premium-tech-every-student-should-claim-in-2026-a-verified-guide">AWS Builder Center — free premium tech for students</a> · 27. <a href="https://mylingasia.com/posts/best-ai-tools-students-india-2026">Free AI tools for students in India 2026</a> · 28. <a href="https://github.com/ugglr/Remote-Developer-jobs-directory">Remote developer jobs directory</a> · 29. <a href="https://www.remoterocketship.com/country/india/jobs/entry-level-software-engineer/">Remote RocketShip — entry-level remote SWE, India</a> · 44. <a href="https://dev.to/aws-builders/free-aws-certification-for-students-the-complete-step-by-step-guide-3m1m">AWS Student Rewards for students</a> · 45. <a href="https://www.autoapplymax.com/blog/best-free-cloud-certifications-2026">Best free cloud certifications 2026</a> · 46. <a href="https://edubracket.com/articles/best-free-ai-certifications-2026">Best free AI certifications 2026</a> · 47. <a href="https://builder.aws.com/content/3JYOdVPrLqxmcCNGHrKSRraejHL/free-tech-certifications-and-credentials-for-students-in-2026">Free tech certifications for students</a> · 48. <a href="https://www.taskveda.in/blog/free-certification-programs-2026.html">Free certification programmes 2026 (NPTEL/SWAYAM, Forage)</a> · 49. <a href="https://studenttechprojects.in/blog/student-opportunities/free-online-certifications-value-guide">Free certifications that actually have value</a></p>
+14:[["$","div",null,{"className":"mx-auto max-w-6xl px-5 pt-16","children":["$","div",null,{"className":"flex flex-wrap gap-3","children":[["$","$L6",null,{"href":"/playbook","className":"rounded-lg border border-line bg-panel px-4 py-2 text-sm text-muted transition hover:text-ink","children":"The learning system"}],["$","$L6",null,{"href":"/playbook/roadmap","className":"rounded-lg border border-brand/40 bg-brand/10 px-4 py-2 text-sm text-brand-soft","children":"The career roadmap"}]]}]}],["$","div",null,{"className":"mx-auto max-w-6xl px-5 py-16","children":[["$","$L6",null,{"href":"/playbook","className":"inline-flex items-center gap-1.5 text-sm text-muted transition hover:text-ink","children":[["$","$L17",null,{"ref":"$undefined","icon":{"name":"arrow-left","size":24,"node":[["path",{"d":"m12 19-7-7 7-7","key":"1l729n"}],["path",{"d":"M19 12H5","key":"x3x0zl"}]]},"className":"$undefined","size":14}],"Back to the playbook"]}],["$","header",null,{"className":"mt-8 max-w-3xl","children":[["$","p",null,{"className":"font-mono text-xs uppercase tracking-[0.2em] text-brand-soft","children":"Playbook · Roadmap"}],["$","h1",null,{"className":"mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl","children":"CS Career Roadmap"}],["$","p",null,{"className":"mt-4 text-[15px] leading-relaxed text-muted","children":"Two spines sharing the same hours: JELET + Jadavpur University CSE on one side, TypeScript + Python/AI + a shipped portfolio on the other. Research current as of 28 October 2026."}]]}],["$","div",null,{"className":"md mt-10","dangerouslySetInnerHTML":{"__html":"$18"}}]]}],"$L19"]
+19:["$","div",null,{"className":"mx-auto max-w-6xl px-5 pb-20","children":["$","$L6",null,{"href":"/","className":"inline-flex items-center gap-1.5 text-sm text-accent transition hover:text-ink","children":["Back to the dashboard ",["$","$L17",null,{"ref":"$undefined","icon":{"name":"arrow-right","size":24,"node":[["path",{"d":"M5 12h14","key":"1ays0h"}],["path",{"d":"m12 5 7 7-7 7","key":"xquz4c"}]]},"className":"$undefined","size":14}]]}]}]
+e:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#06070c"}],["$","meta","3",{"name":"color-scheme","content":"dark"}]]
+12:[["$","title","0",{"children":"Career roadmap · Pabitra"}],["$","meta","1",{"name":"description","content":"The tailored career roadmap: JELET + Jadavpur University CSE, the skill tree, the portfolio, the free stack, and the part-time income plan."}],["$","meta","2",{"name":"author","content":"Pabitra"}],["$","meta","3",{"name":"keywords","content":"portfolio,CS student,AI learning,skill readiness,web development,Kolkata"}],["$","meta","4",{"name":"robots","content":"index, follow"}],["$","meta","5",{"property":"og:title","content":"Pabitra — A diploma CS student in Kolkata building a career-grade skill set with AI — and documenting every step of it."}],["$","meta","6",{"property":"og:description","content":"I'm a Computer Science & Technology diploma student at APC Ray Polytechnic, Kolkata. I'm using AI as a study partner, Git as memory, and the web as proof. This site is the live output of that system: skills I'm building, projects I've shipped, and what I got wrong along the way."}],["$","meta","7",{"property":"og:url","content":"https://pabitra27706-oss.github.io/Study-with-ai/Study-with-ai/"}],["$","meta","8",{"property":"og:type","content":"website"}],["$","meta","9",{"name":"twitter:card","content":"summary"}],["$","meta","10",{"name":"twitter:title","content":"Pabitra — A diploma CS student in Kolkata building a career-grade skill set with AI — and documenting every step of it."}],["$","meta","11",{"name":"twitter:description","content":"I'm a Computer Science & Technology diploma student at APC Ray Polytechnic, Kolkata. I'm using AI as a study partner, Git as memory, and the web as proof. This site is the live output of that system: skills I'm building, projects I've shipped, and what I got wrong along the way."}]]
+16:null
