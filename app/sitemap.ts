@@ -43,11 +43,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
      code. Sixty-nine of them is the largest single body of work on this
      site, so it belongs in the sitemap — otherwise a crawler has to find
      it by walking the archive page. */
-  const archiveRoutes: MetadataRoute.Sitemap = getArchiveIndex().topics.map((topic) => ({
-    url: `${origin}${basePath}/archive/${topic.id}`,
-    lastModified: new Date(topic.lastUpdated ?? topic.dateCreated),
-    priority: 0.5,
-  }));
+  const archive = getArchiveIndex();
+  const fallback = archive.metadata.lastUpdated || new Date().toISOString();
+  const archiveRoutes: MetadataRoute.Sitemap = archive.topics.map((topic) => {
+    const stamp = new Date(topic.lastUpdated || topic.dateCreated || fallback);
+    return {
+      url: `${origin}${basePath}/archive/${topic.id}`,
+      lastModified: Number.isNaN(stamp.getTime()) ? new Date(fallback) : stamp,
+      priority: 0.5,
+    };
+  });
 
   return [...staticRoutes, ...learnRoutes, ...journalRoutes, ...archiveRoutes];
 }

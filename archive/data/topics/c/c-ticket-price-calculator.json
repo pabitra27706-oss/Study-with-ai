@@ -1,0 +1,49 @@
+{
+  "topic": {
+    "id": "c-ticket-price-calculator",
+    "title": "Ticket Price Calculator",
+    "language": "C",
+    "dateCreated": "2026-08-06",
+    "lastUpdated": "2026-08-06",
+    "tags": [
+      "ticket",
+      "price",
+      "calculator"
+    ],
+    "description": "",
+    "learningNotes": {
+      "whatILearned": "Age, weekend and student status each move one price, and the two discounts have to apply in a fixed order — student first, then group.",
+      "challenges": "I never checked whether `scanf` actually read anything, so one missing answer left the ticket count as whatever was on the stack.",
+      "nextSteps": "Check every `scanf` return value, then put the pricing rules in a comment on each branch so the order of the discounts is visible in the code and not only in my head."
+    },
+    "source": "adopted"
+  },
+  "files": [
+    {
+      "id": "file-001",
+      "fileName": "ticket-price-calculator.c",
+      "filePath": "content/c/ticket-price-calculator.c",
+      "description": "",
+      "dateAdded": ""
+    }
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 60,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`scanf` does not tell you whether it worked unless you ask — it returns how many items it read, and the variable is left untouched when that is zero",
+      "A price that depends on earlier prices needs its order written down — student discount then group discount is a different number from the other way round",
+      "The 'enter a valid age' branch is nearly dead code: every non-negative age is already caught by one of the three ranges above it"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted and it was never in the catalogue, so there was nothing to grade it\nagainst. I graded the file on the three things that have always mattered\nhere:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 20 + 0 = 60%**\n\n**What is solid**\n\nThe pricing is right. I ran it three ways and checked every number: 25 / not\nweekend / student / 3 tickets comes to ₹250 − ₹50 student = ₹200 each, ₹600\ntotal. A child of 10 gets ₹100 each, ₹200 for two. 30 / weekend / not\nstudent / 4 tickets is ₹250 + ₹50 = ₹300, minus the 10% group discount of\n₹30 = ₹270 each, ₹1080 for four.\n\nEvery branch of the discount ladder is correct. That is the hard part of\nthis program and you got it right.\n\n**Fix this first**\n\n`scanf` is never checked, and that is a real bug, not a style note.\n\nI ran it with only an age on the input — `7` — and the program cheerfully\nprinted *Number of tickets: 0* and *Total price: ₹0.00*. The first `scanf`\nate the `7`; the next three found nothing left to read, failed, and left\n`age`, `weekend`, `student` and `n` exactly as they were in memory. It\nprinted zero only because that is what happened to be there.\n\n`scanf` returns the number of items it read. Check it, and stop when it\ndoes not return what you asked for. This is the single most common way a C\nprogram goes wrong, and it is worth learning now rather than after it\nhappens to you.\n\n**Then this**\n\nThere is not one comment in this file. Nothing says what the age bands are,\nnothing says the student discount is 20% or the group discount 10%, and\nnothing says the order matters. I had to work the percentages out from\n`base_price / 5` and `base_price / 10` and then trust that the student\ndiscount running first was deliberate.\n\nIt was right. But a reader — including you in six months — should not have\nto reconstruct it.\n\n**One thing to re-read**\n\nYour own `else` branch: *Enter a valid age.* Every non-negative age is\nalready caught by one of the three ranges above it, so that branch only fires\nfor a negative number. It is not wrong, but it tells me you were not sure\nwhat the ranges covered. Write the bands out in a comment and it becomes\nobvious.\n"
+  }
+}

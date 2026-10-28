@@ -1,9 +1,9 @@
 import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
-import hljs from "highlight.js";
 import type { ArchiveIndex, ArchiveTopic } from "@/lib/archive-shared";
 
 export { archiveLanguageSlug } from "@/lib/archive-shared";
+export { highlightArchiveFile } from "@/lib/highlight";
 export type { ArchiveIndex, ArchiveIndexEntry, ArchiveFile, ArchiveTopic } from "@/lib/archive-shared";
 
 /**
@@ -66,19 +66,6 @@ export function getArchiveTopicIds(): string[] {
 /* Code                                                                       */
 /* -------------------------------------------------------------------------- */
 
-const LANGUAGE_BY_EXTENSION: Record<string, string> = {
-  ".c": "c",
-  ".h": "c",
-  ".py": "python",
-  ".js": "javascript",
-  ".html": "xml",
-  ".css": "css",
-  ".java": "java",
-  ".sql": "sql",
-  ".json": "json",
-  ".md": "markdown",
-};
-
 /** The raw text of a file in the archive, or "" if it is missing. */
 export function getArchiveFileText(filePath: string): string {
   const path = join(ARCHIVE, filePath);
@@ -90,29 +77,3 @@ export function getArchiveFileText(filePath: string): string {
   }
 }
 
-/**
- * Syntax-highlighted markup for a code file.
- *
- * Done at build time, not in the browser: the page ships the finished HTML
- * and the visitor's phone does no highlighting work at all.
- */
-export function highlightArchiveFile(fileName: string, code: string): string {
-  const extension = fileName.slice(fileName.lastIndexOf("."));
-  const language = LANGUAGE_BY_EXTENSION[extension] ?? "";
-  if (!language || !hljs.getLanguage(language)) {
-    return escapeHtml(code);
-  }
-  try {
-    return hljs.highlight(code, { language, ignoreIllegals: true }).value;
-  } catch {
-    return escapeHtml(code);
-  }
-}
-
-function escapeHtml(value: string): string {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
-}

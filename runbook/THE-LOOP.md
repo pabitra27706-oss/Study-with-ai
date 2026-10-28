@@ -124,6 +124,25 @@ score, and never touches a hand-written entry.
 Commit that alongside the verdict — or run `bash scripts/publish-archive.sh`
 to do the commit and the push for you.
 
+## Step 8 — when the work lands in the archive directly
+
+Sometimes the code is not a graded task. It is a file written straight into
+`archive/content/<language>/` — a script, an experiment, something with no
+task sheet behind it.
+
+1. `node scripts/build-archive.mjs` **adopts** it: it finds the topic from
+   the file's own header, or gives it one, and it never overwrites what is
+   already there.
+2. I read the file, run it if it runs, and judge it on the archive's
+   rubric — does it run (40), is it right (30), does it explain itself (30).
+3. I write the notes and the `engine` block into that topic's JSON: the
+   verdict, the score, the misconceptions and the review.
+4. `node scripts/build-archive.mjs` again lifts the verdict into the
+   catalogue, and the site shows it.
+
+The generator never touches step 3. An adopted topic is written once and
+then it is a hand-written entry, so the notes survive every build.
+
 
 ## Adding a topic
 

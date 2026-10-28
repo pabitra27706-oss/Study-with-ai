@@ -341,6 +341,30 @@ overwritten.
 
 The archive's own folder documents the schema: [`archive/README.md`](archive/README.md).
 
+### The archive is also an input
+
+The archive is not only what the engine writes out. It is also a place you
+can write code into, and the generator will find it.
+
+Drop a file into `archive/content/<language>/` and the next build will:
+
+- work out which topic it belongs to from the header the file carries
+  (`Topic`, `Created`, `Purpose`), or give it a topic of its own;
+- copy it into the catalogue with a date, a description and a download;
+- **never overwrite it again.** An adopted topic is written once and then it
+  is a hand-written entry, so the notes, the verdict and the score written
+  into it afterwards survive every build.
+
+Five files were sitting in the archive this way, from before the engine
+existed, and not one of them was in the catalogue: `functions.py`,
+`lists.py`, `arrays.js`, `dom-manipulation.js` and
+`ticket-price-calculator.c`. They are topics now, with verdicts.
+
+**And then I judge it.** A file in the archive has no task sheet, so it is
+graded on the archive's own rubric — does it run (40), is it right (30),
+does it explain itself (30) — and the review says which rubric it used. The
+rules are in [`runbook/JUDGING.md`](runbook/JUDGING.md).
+
 ---
 
 ## 9. Commands

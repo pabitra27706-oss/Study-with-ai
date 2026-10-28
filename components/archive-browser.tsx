@@ -1,14 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useCallback, useMemo, useState, useSyncExternalStore } from "react";
 import { Download, Grid2X2, List, Rows3, Search, X } from "lucide-react";
 import type { ArchiveIndex, ArchiveIndexEntry } from "@/lib/archive-shared";
-import {
-  archiveDate,
-  archiveLanguageTone,
-  archiveMonthLabel,
-} from "@/lib/archive-shared";
+import { archiveMonthLabel } from "@/lib/archive-shared";
+import { ArchiveTopicCard } from "@/components/archive-topic-card";
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -360,124 +356,47 @@ export function ArchiveBrowser({ index }: { index: ArchiveIndex }) {
                 </p>
                 <div className="space-y-2">
                   {group.items.map((topic) => (
-                    <Link
-                      key={topic.id}
-                      href={`/archive/${topic.id}`}
-                      className="block rounded-[14px] border border-line bg-panel p-4 transition-colors hover:border-brand/50"
-                    >
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span
-                          className={`rounded-full border px-2 py-0.5 font-mono text-[11px] ${archiveLanguageTone(topic.language)}`}
-                        >
-                          {topic.language}
-                        </span>
-                        <span className="text-[14px] font-medium text-ink">{topic.title}</span>
-                        {topic.source === "engine" && (
-                          <span className="rounded-full border border-accent/40 px-2 py-0.5 font-mono text-[11px] text-accent">
-                            graded
-                          </span>
-                        )}
-                      </div>
-                      {topic.description && (
-                        <p className="mt-1.5 text-[13px] leading-relaxed text-muted">
-                          {topic.description}
-                        </p>
-                      )}
-                      <p className="mt-2 font-mono text-[11px] text-faint">
-                        {archiveDate(topic.dateCreated)} · {topic.fileCount ?? 0} file
-                        {topic.fileCount === 1 ? "" : "s"}
-                      </p>
-                    </Link>
+                    <ArchiveTopicCard key={topic.id} topic={topic} dense />
                   ))}
                 </div>
               </div>
             ))}
           </div>
         ) : view === "list" ? (
-          <div className="overflow-hidden rounded-[14px] border border-line bg-panel">
+          <div className="space-y-2">
             {visible.map((topic) => (
-              <div
+              <ArchiveTopicCard
                 key={topic.id}
-                className="flex flex-wrap items-center gap-3 border-b border-line-soft px-4 py-3 last:border-b-0"
-              >
-                <input
-                  type="checkbox"
-                  checked={selectedSet.has(topic.id)}
-                  onChange={(event) => toggleSelected(topic.id, event.target.checked)}
-                  aria-label={`Select ${topic.title}`}
-                  className="h-3.5 w-3.5 accent-[#8b5cf6]"
-                />
-                <span
-                  className={`rounded-full border px-2 py-0.5 font-mono text-[11px] ${archiveLanguageTone(topic.language)}`}
-                >
-                  {topic.language}
-                </span>
-                <Link
-                  href={`/archive/${topic.id}`}
-                  className="min-w-0 flex-1 truncate text-[14px] text-ink transition hover:text-brand-soft"
-                >
-                  {topic.title}
-                </Link>
-                <span className="font-mono text-[11px] text-faint">
-                  {archiveDate(topic.dateCreated)} · {topic.fileCount ?? 0}f
-                </span>
-              </div>
+                topic={topic}
+                dense
+                aside={
+                  <input
+                    type="checkbox"
+                    checked={selectedSet.has(topic.id)}
+                    onChange={(event) => toggleSelected(topic.id, event.target.checked)}
+                    aria-label={`Select ${topic.title}`}
+                    className="h-3.5 w-3.5 accent-[#8b5cf6]"
+                  />
+                }
+              />
             ))}
           </div>
         ) : (
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {visible.map((topic) => (
-              <div
+              <ArchiveTopicCard
                 key={topic.id}
-                className="group relative rounded-[14px] border border-line bg-panel p-4 transition-colors hover:border-brand/50"
-              >
-                <input
-                  type="checkbox"
-                  checked={selectedSet.has(topic.id)}
-                  onChange={(event) => toggleSelected(topic.id, event.target.checked)}
-                  aria-label={`Select ${topic.title}`}
-                  className="absolute right-3 top-3 h-3.5 w-3.5 accent-[#8b5cf6]"
-                />
-                <div className="flex flex-wrap items-center gap-2 pr-6">
-                  <span
-                    className={`rounded-full border px-2 py-0.5 font-mono text-[11px] ${archiveLanguageTone(topic.language)}`}
-                  >
-                    {topic.language}
-                  </span>
-                  {topic.source === "engine" && (
-                    <span className="rounded-full border border-accent/40 px-2 py-0.5 font-mono text-[11px] text-accent">
-                      graded
-                    </span>
-                  )}
-                  {topic.score !== null && topic.score !== undefined && (
-                    <span className="font-mono text-[11px] text-faint">{topic.score}%</span>
-                  )}
-                </div>
-                <h3 className="mt-2.5 text-[15px] font-semibold text-ink">
-                  <Link href={`/archive/${topic.id}`} className="transition hover:text-brand-soft">
-                    {topic.title}
-                  </Link>
-                </h3>
-                {topic.description && (
-                  <p className="mt-1.5 line-clamp-3 text-[13px] leading-relaxed text-muted">
-                    {topic.description}
-                  </p>
-                )}
-                <div className="mt-3 flex flex-wrap gap-1">
-                  {(topic.tags ?? []).slice(0, 4).map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-md border border-line-soft bg-panel-2 px-1.5 py-0.5 font-mono text-[10px] text-faint"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-                <p className="mt-3 font-mono text-[11px] text-faint">
-                  {archiveDate(topic.dateCreated)} · {topic.fileCount ?? 0} file
-                  {topic.fileCount === 1 ? "" : "s"}
-                </p>
-              </div>
+                topic={topic}
+                aside={
+                  <input
+                    type="checkbox"
+                    checked={selectedSet.has(topic.id)}
+                    onChange={(event) => toggleSelected(topic.id, event.target.checked)}
+                    aria-label={`Select ${topic.title}`}
+                    className="h-3.5 w-3.5 accent-[#8b5cf6]"
+                  />
+                }
+              />
             ))}
           </div>
         )}

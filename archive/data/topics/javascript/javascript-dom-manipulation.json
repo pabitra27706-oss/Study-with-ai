@@ -1,0 +1,49 @@
+{
+  "topic": {
+    "id": "javascript-dom-manipulation",
+    "title": "JavaScript DOM Manipulation",
+    "language": "JavaScript",
+    "dateCreated": "2026-05-14",
+    "lastUpdated": "2026-05-14",
+    "tags": [
+      "javascript",
+      "dom",
+      "manipulation"
+    ],
+    "description": "Core DOM skills: selecting elements, changing content/styles, handling events and creating new elements dynamically. Built as a tiny todo-list so every technique is used in a real way.",
+    "learningNotes": {
+      "whatILearned": "One listener on the parent can handle every item, so a list of a thousand rows costs one handler instead of a thousand.",
+      "challenges": "I left `markAllDone` defined but never called, and I add a class and then immediately remove it without saying why.",
+      "nextSteps": "Call `markAllDone` from somewhere real or delete it, and say in a comment that the add-then-toggle pair is meant to cancel out."
+    },
+    "source": "adopted"
+  },
+  "files": [
+    {
+      "id": "file-001",
+      "fileName": "dom-manipulation.js",
+      "filePath": "content/javascript/dom-manipulation.js",
+      "description": "Core DOM skills: selecting elements, changing content/styles, handling events and creating new elements dynamically. Built as a tiny todo-list so every technique is used in a real way.",
+      "dateAdded": "2026-05-14"
+    }
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "correct",
+      "score": 96,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`textContent` and `innerHTML` are not interchangeable — one sets text, the other parses markup, and only one of them is safe for user input",
+      "A listener on the container is not the same as a listener on every item — `event.target.closest()` is what makes the difference",
+      "`classList.toggle()` on a class that is already there removes it — that is why the first item is not marked done at the end"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted and it was never in the catalogue, so there was nothing to grade it\nagainst. I graded the file on the three things that have always mattered\nhere:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 28 + 28 = 96%**\n\n**What is solid**\n\nI could not run this in node — `document` does not exist there — so I ran it\nunder a real DOM instead. It works: the heading is created and appended, the\nthree demo tasks land in the list, the button and the input are wired, and\nthe first item ends up *not* marked done.\n\nThat last one is the interesting part. You add `done` and then toggle it, so\nit is gone again. That is not a bug — it is the demonstration — but you do\nnot say so anywhere, and I had to work it out.\n\n**Fix this first**\n\nTwo small things, and neither is wrong:\n\n- `markAllDone()` is defined and never called. Either call it from the\n  button, or delete it. Dead code in a teaching file is worse than no code,\n  because the reader assumes it was left in on purpose.\n- `classList.add(\"done\")` immediately followed by `classList.toggle(\"done\")`\n  looks like a mistake. One line of comment — *the toggle removes it again;\n  that is the point* — turns it into the lesson it was meant to be.\n\n**Then this**\n\nYour comments are already the good kind. The event-delegation one is\ngenuinely excellent: *ONE listener on the parent handles every item. Far\nbetter than attaching hundreds of listeners.* That is a why, and it is the\nreason the whole pattern exists.\n\nThe `innerHTML` warning is the same: *only for trusted HTML!* — that is a\nsecurity note attached to the exact line where it applies.\n\n**One thing to re-read**\n\nThe closing block, *Key takeaways I keep in mind*. Five lines, each one a\nrule you would actually want to remember. That is the part of this file\nworth copying into whatever you write next.\n"
+  }
+}

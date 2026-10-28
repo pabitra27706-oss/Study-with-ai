@@ -1,0 +1,50 @@
+{
+  "topic": {
+    "id": "python-lists",
+    "title": "Python Lists - deep dive",
+    "language": "Python",
+    "dateCreated": "2026-03-28",
+    "lastUpdated": "2026-03-28",
+    "tags": [
+      "python",
+      "lists",
+      "deep",
+      "dive"
+    ],
+    "description": "Everything important about Python lists in one file: creating, indexing, slicing, methods, comprehensions and the aliasing pitfall.",
+    "learningNotes": {
+      "whatILearned": "Assigning a list does not copy it. `b = a` is two names for one list, and that is the trap I kept walking into.",
+      "challenges": "My inline comments mostly explain what Python does. The ones that say why — the aliasing section — are the ones worth keeping.",
+      "nextSteps": "Rewrite the aliasing comment so it says what breaks rather than what `b = a` means, then find the same trap in dictionaries and in sets."
+    },
+    "source": "adopted"
+  },
+  "files": [
+    {
+      "id": "file-001",
+      "fileName": "lists.py",
+      "filePath": "content/python/lists.py",
+      "description": "Everything important about Python lists in one file: creating, indexing, slicing, methods, comprehensions and the aliasing pitfall.",
+      "dateAdded": "2026-03-28"
+    }
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "correct",
+      "score": 92,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`b = a` is not a copy — it is a second name for the same list, so `b.append(4)` changes `a` as well",
+      "`sort()` mutates the list it is called on; there is no `sorted()` in Python to do it without, which is why `sorted(nums, reverse=True)` leaves `nums` alone",
+      "Slicing `numbers[1:4]` stops *before* 4, so it gives three items, not four"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted and it was never in the catalogue, so there was nothing to grade it\nagainst. I graded the file on the three things that have always mattered\nhere:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 22 = 92%**\n\n**What is solid**\n\nI ran it. Every output is right: `numbers[1:4]` is `[20, 30, 40]`,\n`numbers[::-1]` reverses, `numbers[::2]` steps by two, `matrix[1][2]` is 6,\nthe flattened matrix is 1 through 9 in order, and the aliasing section ends\nwith `a` still `[1, 2, 3, 4]` after `c.append(99)`.\n\nThat last section is the best thing in the file. You did not write a\nparagraph about it — you wrote the bug, ran it, and showed the reader that\n`a` changed too. The comment `# b points to the SAME list, not a copy` is\nexactly the kind of comment this whole system is trying to produce.\n\n**Fix this first**\n\nMost of your other comments explain what Python does rather than why you\nreached for it: `# add at the end`, `# remove by value`, `# sorts in place`.\nThose are correct, and they are also things the method names already said.\n\nThe aliasing section is the opposite, and it shows what the rest of the file\ncould be.\n\n**Then this**\n\nTwo places where a why is waiting:\n\n- `fruits.insert(1, \"orange\")` — why *index* 1 and not append? Inserting at a\n  position is a different intent from adding to the end, and the choice\n  changes what happens to the order.\n- `sorted(nums, reverse=True)` — you use `nums.sort()` and then `sorted(...)`\n  in the same line. That is deliberate and worth a word: one changes the list,\n  the other leaves it alone.\n\n**One thing to re-read**\n\nThe nested-list section. `matrix[1][2]` is 6 because indexing happens one\nlevel at a time — `matrix[1]` is a list, and `[2]` picks from it. Writing\nthat down is the kind of sentence that saves you an hour later.\n"
+  }
+}
