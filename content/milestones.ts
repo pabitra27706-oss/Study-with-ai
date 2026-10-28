@@ -1,6 +1,7 @@
 /**
- * The timeline. Semesters on one axis, deliverables on the other.
- * This is the honest view of how far along the journey actually is.
+ * The timeline. Where the work actually is, in order.
+ * Rewritten 28 October 2026 after the GitHub audit — the old version was
+ * planned around a "coding beginner" who did not exist.
  */
 
 export type MilestoneState = "done" | "active" | "upcoming";
@@ -19,60 +20,86 @@ export interface Milestone {
 export const milestones: Milestone[] = [
   {
     id: "m0",
-    when: "Oct 2026",
-    title: "Sem 3 — foundations",
+    when: "2026 · done",
+    title: "Ship things from a phone",
     detail:
-      "One language done properly. Git genuinely mastered. Maths + Physics depth in English. The learning system in this repo running end to end.",
-    state: "active",
+      "CodeC (3★), Tilefold, Day Ledger, AppFlow. Android apps, a developer tool and a written doctrine, all built in a Termux terminal with GitHub Actions as the build machine.",
+    state: "done",
+    href: "https://github.com/pabiwilliams/CodeC",
+    hrefLabel: "CodeC",
   },
   {
     id: "m1",
-    when: "Sem 4",
-    title: "Core CS becomes the job",
+    when: "2026 · done",
+    title: "Ship a full-stack AI product",
     detail:
-      "Data Structures, DBMS, Networks, OS — done properly, not just passed. JavaScript → Node → PostgreSQL. First deployed app with a real database.",
-    state: "upcoming",
+      "InsightAI: Next.js 16 + FastAPI + Gemini 2.5 Flash over a million-row dataset, with NL→SQL, dynamic charts, KPI cards and injection guards. Built for a hackathon.",
+    state: "done",
+    href: "https://github.com/pabitra27706-oss/matriq",
+    hrefLabel: "InsightAI",
   },
   {
     id: "m2",
-    when: "Sem 5",
-    title: "The portfolio year",
+    when: "2026 · done",
+    title: "Build an audience",
     detail:
-      "Summer Internship used for a development role. TypeScript + React + CI/CD + cloud. Project Two shipped. First open-source PRs merged.",
-    state: "upcoming",
+      "A 15-module Termux textbook, two diploma study hubs, a seven-year JELET PYQ archive and a live learning-archive site — all for students in my own stream.",
+    state: "done",
+    href: "https://github.com/pabitra27706-oss/Termux-Mastery",
+    hrefLabel: "Termux-Mastery",
   },
   {
     id: "m3",
-    when: "Sem 6",
-    title: "JELET + the AI project",
+    when: "Now — Oct 2026",
+    title: "Make it legible",
     detail:
-      "JELET attempt. Project Three (AI-native, with evals) shipped. Portfolio complete: three live repos and merged PRs.",
-    state: "upcoming",
+      "One GitHub identity instead of two. A real profile README. A live demo link on every project. Descriptions, licences and READMEs. Right now the work exists and nobody can see it.",
+    state: "active",
+    href: "/audit",
+    hrefLabel: "Read the audit",
   },
   {
     id: "m4",
-    when: "2029 / 2030",
-    title: "JELET → B.Tech lateral entry",
+    when: "Next 30 days",
+    title: "Close the four gaps that decide interviews",
     detail:
-      "Target seat: Jadavpur University, Computer Science & Technology. Nine seats. Target rank inside the top 40 — target score 95–105 / 120.",
-    state: "upcoming",
+      "Automated tests. A CI workflow in every repo. Three merged PRs in other people's codebases. A DSA practice log with a weekly score. These are the whole gap list.",
+    state: "active",
   },
   {
     id: "m5",
-    when: "B.Tech Yr 1–2",
-    title: "Convert to a job",
+    when: "Sem 4 — 2027",
+    title: "JELET becomes an instrument",
     detail:
-      "System design, deeper DevOps, five merged PRs, English polish. Then: applications, interviews, offers. Target Junior Software Engineer / Full-Stack / Associate AI Engineer.",
+      "Jelet-prep already holds the syllabus and seven years of papers. Add the scoring engine, the forced error log and a topic heat map — then run one full mock every Sunday.",
     state: "upcoming",
+    href: "https://github.com/pabitra27706-oss/Jelet-prep",
+    hrefLabel: "Jelet-prep",
   },
   {
     id: "m6",
-    when: "Always",
-    title: "Weekly closed-book test",
+    when: "2029 / 2030",
+    title: "JELET → Jadavpur University CSE",
     detail:
-      "No AI, no notes, 45 minutes, every Sunday. The only metric that separates learning from performing. Never skip it.",
+      "Nine lateral seats. Target score 95–105 out of 120, which is a top-40 rank, because JU CSE closes around GMR 9–55. The seat is reachable; the syllabus is half the battle and the mocks are the other half.",
+    state: "upcoming",
+  },
+  {
+    id: "m7",
+    when: "B.Tech Yr 1–2",
+    title: "Convert to a job",
+    detail:
+      "System design from memory, deeper DevOps, five merged PRs, English polish. Then applications, interviews, offers. Target: Android / Full-Stack Developer or AI Engineer.",
+    state: "upcoming",
+  },
+  {
+    id: "m8",
+    when: "Every Sunday",
+    title: "Closed-book, no-AI test",
+    detail:
+      "45 minutes, no AI, no notes, no browser. The only score that separates learning from performing. Never skip it.",
     state: "active",
-    href: "/journal/",
+    href: "/journal",
     hrefLabel: "See the journal",
   },
 ];

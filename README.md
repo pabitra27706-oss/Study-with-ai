@@ -3,8 +3,9 @@
 **A skill-readiness journey, tracked in Git and published to the web.**
 
 I am a Computer Science & Technology diploma student at APC Ray Polytechnic,
-Kolkata. This repository is where I build the skills that a diploma does not
-teach — and where I prove them.
+Kolkata. I have no computer — a Termux terminal on Android is my only
+machine, so everything in this repository was typed on a phone, and GitHub
+Actions is the build machine.
 
 🌐 **Live site:** <https://pabitra27706-oss.github.io/Study-with-ai/>
 
@@ -14,21 +15,25 @@ teach — and where I prove them.
 
 | Path | What it is |
 | ---- | ---------- |
-| [`LEARNING-JOURNEY.md`](LEARNING-JOURNEY.md) | The research-backed design of the learning system: how AI is used, what Git is for, and the guardrails that keep it honest. 12 sections, 40 sources. |
-| [`ROADMAP.md`](ROADMAP.md) | The career roadmap — JELET + Jadavpur University CSE on one spine, TypeScript + AI + a shipped portfolio on the other, plus the part-time income plan. 13 sections, 79 sources. |
+| [`GITHUB-AUDIT.md`](GITHUB-AUDIT.md) | **Start here.** A full audit of both GitHub accounts — 47 repositories, what each one proves, what is broken, and a 30-day fix list. |
+| [`LEARNING-JOURNEY.md`](LEARNING-JOURNEY.md) | The research-backed design of the learning system: how AI is used, what Git is for, the guardrails that keep it honest, and how all of it works from a phone. 11 sections, 40 sources. |
+| [`ROADMAP.md`](ROADMAP.md) | The career roadmap — JELET + Jadavpur University CSE on one spine, Android/Full-Stack/AI on the other, plus the part-time income plan. 79 sources. |
 | `app/` `components/` `content/` `lib/` | The website. Next.js 16 + Tailwind v4, static export, content generated from `content/*.ts` and `journal/*.md`. |
 | `journal/` | The learning log. **Human-owned.** An AI agent may read it but must never write it. |
 | `raw/` | Append-only source material, exactly as collected. |
 | `notes/` | AI-compiled, human-owned topic notes. |
 | `cards/` | Spaced-repetition cards, curated by hand from mistakes. |
 | [`AGENTS.md`](AGENTS.md) | The contract for any AI working in this repo. Read it before touching anything. |
-| `docs/` | The **built site**, committed so GitHub Pages can serve it straight from the `main` branch (`/docs`). Regenerate with `npm run build:pages`. |
-| [`DEPLOY.md`](DEPLOY.md) | How to build and deploy the site (GitHub Pages, Vercel, Netlify, Cloudflare). |
+| `scripts/` | `termux-setup.sh` (one-command deploy from Android), `termux-build.sh` (optional on-device build), `stats.mjs`, `serve-static.mjs`. |
+| `docs/` | The **built site**, committed so GitHub Pages can serve it straight from `main`. Regenerate with `npm run build:pages`. |
+| [`DEPLOY.md`](DEPLOY.md) | How to build and deploy the site (GitHub Pages, Vercel, Netlify, Cloudflare) — including the Termux walkthrough. |
 
 > **JELET is deliberately a separate repository.** This repo is skill-readiness
-> and the web interface. The exam track (syllabus tracker, MCQ practice, mock
-> tests, error log) belongs in its own project so that neither one pollutes the
-> other.
+> and the web interface. The exam track lives in
+> [`Jelet-prep`](https://github.com/pabitra27706-oss/Jelet-prep) — which already
+> holds the complete 2026 syllabus and seven years of previous-year papers.
+> The missing half is instrumentation: a scoring engine, an error log and a
+> topic heat map. See ROADMAP §3A.7.
 
 ---
 
@@ -42,9 +47,9 @@ Everything in this repository follows from two rules.
    one hint, then asks a harder question. I write my attempt *before* the AI
    sees the problem.
 2. **A weekly closed-book, no-AI test.** Every Sunday: 45 minutes, no AI, no
-   notes, no browser. Whatever I can reproduce is what I actually know. It is
-   the only score that counts — and it goes on the website, including the bad
-   weeks.
+   notes, no browser — and, on a phone, **in a different room**. Whatever I
+   can reproduce is what I actually know. It is the only score that counts,
+   and it goes on the website, including the bad weeks.
 
 ---
 
@@ -54,6 +59,9 @@ Everything in this repository follows from two rules.
 > Use AI to be *grilled*, not to be *told*.
 > Use Git to *remember*, not to *store*.
 > Let the closed-book test — not the feeling of progress — be the judge.
+>
+> And on a phone: **use the phone to think and commit, use CI to compile,
+> use the closed-book test to prove it.**
 
 ---
 
@@ -107,6 +115,8 @@ bash scripts/termux-setup.sh
 **Primary:** TypeScript end to end — Next.js + React, Node + Express,
 PostgreSQL + Prisma, Docker, CI/CD.
 **AI layer:** Python, LLM APIs, RAG, agents, MCP, evaluation harnesses.
+**Mobile:** Kotlin and Android — already shipped, and it is where the recent
+work is.
 **Fallback:** Java for DSA and enterprise roles.
 **Also free:** the syllabus subjects (DBMS, DSA, Networks, OS, SE) double as
 interview preparation, so nothing is wasted.
