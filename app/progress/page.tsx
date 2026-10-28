@@ -208,7 +208,7 @@ export default function ProgressPage() {
                   )}
                 </div>
                 <span className="shrink-0 font-mono text-[11px] text-faint">
-                  {entry.date}
+                  {formatDate(entry.date)}
                 </span>
               </Link>
             ))}
