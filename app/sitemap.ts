@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getJournalEntries } from "@/lib/journal";
 import { getCurriculumIndex } from "@/lib/curriculum";
+import { getArchiveIndex } from "@/lib/archive";
 
 export const dynamic = "force-static";
 
@@ -38,5 +39,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...learnRoutes, ...journalRoutes];
+  /* Every topic in the archive has its own page, and each one is a page of
+     code. Sixty-nine of them is the largest single body of work on this
+     site, so it belongs in the sitemap — otherwise a crawler has to find
+     it by walking the archive page. */
+  const archiveRoutes: MetadataRoute.Sitemap = getArchiveIndex().topics.map((topic) => ({
+    url: `${origin}${basePath}/archive/${topic.id}`,
+    lastModified: new Date(topic.lastUpdated ?? topic.dateCreated),
+    priority: 0.5,
+  }));
+
+  return [...staticRoutes, ...learnRoutes, ...journalRoutes, ...archiveRoutes];
 }
