@@ -223,3 +223,27 @@ N — cannot exist in it, and none of its three comments explain a why.
 **Also.** `runbook/START-HERE.md` is new: a permanent, copy-paste prompt for
 starting a new chat, with a table for reading a push before guessing, and the
 instruction to ask when it is ambiguous.
+
+---
+
+## 2026-10-28 — PR #8 merged
+
+**Done.** PR #8 squashed into `main` as `e6973cd`. The Pages deployment for it
+returned `success`. It carried the sensor's leniency fix, the corrected
+verdict on the learner's `t2.c`, the *output carries extra text* display on the
+site, and `runbook/START-HERE.md`.
+
+**Also decided here.** The PR ledger in `STATE.md` now points at
+`gh pr list --state all` as the source of truth, and the table records only
+the decisions that matter. A merge on its own is no longer worth a runbook
+edit — which stops this file needing a new commit after every single merge.
+
+**The PR ledger, for the record.**
+
+| PR | State | What it was |
+|---|---|---|
+| #1–#4 | merged | the site, the Termux tooling, the audit, the roadmap |
+| #5 | closed | duplicate of #6 — do not merge |
+| #6 | merged | the learning engine: CodeC → push → Claude judges |
+| #7 | closed | superseded by #8 |
+| #8 | merged | the first real judgement, and the sensor fix |

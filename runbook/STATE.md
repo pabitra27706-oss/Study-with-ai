@@ -1,7 +1,9 @@
 # State
 
-**Written: 2026-10-28. Last updated: 2026-10-28, after the first judgement of the learner's own work.**
-Update this file whenever something in it changes.
+**Written: 2026-10-28. Last updated: 2026-10-28, after PR #8 merged.**
+Update this file when something *decides* something. A merge on its own is
+not worth an edit — the live ledger is `gh pr list --state all`, and the
+append-only record is [`HISTORY.md`](HISTORY.md).
 
 ## The two accounts
 
@@ -31,9 +33,9 @@ Update this file whenever something in it changes.
 | Clone | `https://github.com/pabitra27706-oss/Study-with-ai.git` |
 | Canonical branch | `main` |
 | Working branch | `arena/0daea56d-study-with-ai` (this session) |
-| Merged | **PR #6** — merged as `a8add89`, deployed to Pages, green. |
-| Closed | **PR #5** — closed as a duplicate of #6. Its only remaining diff was the `docs/` build output, which #6 deliberately removed. Never merge it. |
-| Also closed | PR #7 — superseded by this branch; its runbook updates are folded in here. |
+| Live PR ledger | `gh pr list --state all` — **this is the source of truth, not the table below.** The table records the decisions that matter, not every merge. |
+| Merged | **#6** (the learning engine) · **#8** (the first real judgement, and the sensor fix) |
+| Closed, do not merge | **#5** — duplicate of #6; its only diff was the `docs/` build output #6 removed. **#7** — superseded by #8. |
 | Archive repo | `https://github.com/pabitra27706-oss/portfolio` — 68 topics, 82 files |
 | Deploy | Pages workflow committed by the owner at `414c6fe`; the hardened copy lives at `scripts/deploy-workflow.yml` |
 
