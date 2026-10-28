@@ -22,7 +22,7 @@ append-only record is [`HISTORY.md`](HISTORY.md).
 | This site | `https://pabitra27706-oss.github.io/Study-with-ai/` |
 | The learn route | `https://pabitra27706-oss.github.io/Study-with-ai/learn` |
 | One topic | `https://pabitra27706-oss.github.io/Study-with-ai/learn/data-structures-c` |
-| The archive | `https://pabitra27706-oss.github.io/Study-with-ai/archive` — 69 topics, 82 files |
+| The archive | `https://pabitrawriters06-oss.github.io/Study-with-ai/archive` — 74 topics, 86 files |
 | The progress map | `https://pabitra27706-oss.github.io/Study-with-ai/progress` |
 | The Learning Archive | `https://pabitra27706-oss.github.io/Study-with-ai/archive` — now part of this site |
 | CodeC (Pages) | `https://pabi217.github.io/CodeC/` |
