@@ -2,7 +2,13 @@
 
 **Tailored plan for: Computer Science & Technology diploma (3 years, after Class 10), Kolkata.**
 Goal: **CS career ready** — skills, job, and the opportunities that come with both.
-Everything here is *outside* your syllabus on purpose, except where I explicitly say to reuse it.
+Target seat: **Jadavpur University B.E./B.Tech (Lateral), Computer Science & Engineering.**
+
+> **One structural note up front:** this plan has **two spines that share the same hours.**
+> - **JELET spine** — Maths + Physics + Chemistry + FEEE. This is your *exam*, and it is 100% your syllabus (or your Class 10–12 science).
+> - **Job spine** — TypeScript + Python/AI + portfolio. This is your *career*, and it is entirely outside your syllabus.
+>
+> Everything else in this doc is either one of those two spines, or the operating system that runs them both (your repo, your agent, your loop).
 
 *Research current as of 28 October 2026.*
 
@@ -10,7 +16,9 @@ Everything here is *outside* your syllabus on purpose, except where I explicitly
 
 ## 0. Your position, updated (after your answers)
 
-**Sem 3 · JELET-priority · beginner at coding · 2–3 hours/day.**
+**Sem 3 · JELET-priority → JU CSE · beginner at coding · 2–3 hours/day · 9.3 GPA in 1st year · 88.17% Madhyamik · 80% HS.**
+
+**Your academic profile is a genuine asset here.** 88.17% in Class 10, 80% in Class 12, and a 1st-year diploma GPA of 9.3 (≈93% if that's a 10-point scale) put you comfortably over the single hardest gate on your entire path: **Jadavpur University's lateral entry demands a 60% diploma aggregate** — 15 points higher than every other college in West Bengal [JELET 2026 bulletin](https://cdnbbsr.s3waas.gov.in/s3d2a27e83d429f0dcae6b937cf480aeb1/uploads/2026/03/20260318287108702.pdf). You cleared that in year one. **The remaining challenge is not paperwork. It's the exam rank** — a pure skills problem, which is exactly what the AI learning system is for.
 
 Good news first: **2–3 hours/day for 3.5 years is roughly 3,000+ hours.** That is a professional-level runway, and it is the single biggest thing in your favour. A beginner who starts in Sem 3 with daily consistency reaches a completely different place by graduation than someone who starts learning in their final year. Your timing is genuinely good.
 
@@ -42,7 +50,7 @@ A beginner who tries to build a full-stack app in month 2 burns out and learns n
 ### One thing to settle this week
 **Ask your college office two questions:**
 1. *"Is a final-semester-appearing diploma candidate eligible to apply for JELET provisionally?"* — the WB rules say yes: *"Candidates who are appearing in their final semester of the qualifying exam can apply provisionally — admission will be confirmed only after submitting the final marksheet at document verification"* [Collegedunia — JELET 2026](https://collegedunia.com/exams/jelet). This single fact determines whether your target is **JELET 2029** (apply while appearing, join after results) or **JELET 2030**.
-2. *"Which colleges and branches are available under JELET lateral entry from our polytechnic, and does CST → CSE lateral entry apply?"* — some WB colleges require the diploma branch to correspond to the target B.Tech branch [17](https://findurcollege.com/direct-second-year-btech), while others allow any branch [22](https://wbjeeb.in/wp-content/uploads/2024/02/2024020274-1-jelet-2024.pdf).
+2. *"For JU, which B.Tech branches can a CST diploma holder apply to under JELET, and what do you know about JU's 60% rule and the 9 CSE seats?"* — **CST → JU CSE is explicitly listed** in the JU seat matrix (as "Computer Science & Engineering / Computer Science & Technology"), so your main target is clean. But the JU brochure also requires the diploma to be *"in the relevant branch"* for other departments, so **JU IT/ECE may not be open to you** — confirm before you build a tiered list on false assumptions. See §3B.
 
 Five minutes with the office now prevents a bad surprise in 2029.
 
@@ -196,6 +204,90 @@ Having the decision rule written in advance stops you from making an emotional c
 
 ---
 
+## 3B. The Jadavpur University CSE target — the exact seat you're aiming at
+
+You named the target. Let's make it precise, because "Jadavpur University CS" is not one thing — it's **one seat with 9 people fighting for it**.
+
+### 3B.1 The facts
+
+| | Detail | Source |
+|---|---|---|
+| **Route** | JELET → 2nd-year B.E./B.Tech (Lateral) at JU, via WBJEEB centralised counselling | [JU brochure](https://admissionju.jadavpuruniversity.in/fengadmission/frontend/upload/brochure/jelet_admission.pdf) |
+| **Seats at JU (all branches)** | **150** lateral-entry seats across all JU B.Tech programmes | [Telegraph India](https://www.telegraphindia.com/west-bengal/kolkata/ju-reverses-decision-on-jelet-admissions-allowing-diploma-holders-with-online-classes-prnt/cid/2137208) |
+| **JU CSE lateral seats (2026 matrix)** | **9** — listed as *"Computer Science & Engineering / Computer Science & Technology"* | [JELET 2026 seat matrix](https://engineering.careers360.com/articles/jelet) |
+| **Your eligibility bar** | **60% diploma aggregate** (45% for SC/ST/OBC-A/OBC-B/PwD) | [JELET 2026 bulletin](https://cdnbbsr.s3waas.gov.in/s3d2a27e83d429f0dcae6b937cf480aeb1/uploads/2026/03/20260318287108702.pdf) |
+| **Quota** | **90% Home State / 10% All India** — WB domicile required even for general-category seats | [JU admission page](https://collegedunia.com/university/26008-jadavpur-university-ju-kolkata/admission) |
+| **Branch match** | ✅ **Your CST diploma is explicitly named in the JU seat matrix** for the CSE seat | [JELET 2026 seat matrix](https://engineering.careers360.com/articles/jelet) |
+
+**That last row is the good news: CST → JU CSE lateral is explicitly allowed.** You don't have to argue it with the college office.
+
+### 3B.2 How competitive is it, actually?
+
+This is the number you need in your head:
+
+| JU lateral seat | JELET closing rank (Home State) |
+|---|---|
+| **CSE / CST (BE Lateral)** — **9 seats** | **Round 1 closing rank: 9** (2026) — i.e. it fills on merit, well before the branch-average cut |
+| CSE expected UR closing (prediction) | **30–55** (2026) |
+| JU B.Tech Lateral — **all branches** (150 seats) | **74 (2026)**, 107 (2025), 46 (2024) |
+| JU Civil (17 seats) | 129–1,614 | 
+| JU Electrical (16 seats) | 236–472 |
+| JU IT (9 seats) | 320–582 |
+
+Sources: [Collegedunia JU cutoff](https://collegedunia.com/university/26008-jadavpur-university-ju-kolkata/cutoff) · [FindMyCollege JELET cutoff trends](https://findmycollege.com/exam/jelet/cutoff) · [JELET 2026 expected cutoffs](https://collegedunia.com/articles/e-553-jelet-2026-cutoff-previous-year-rank-trends-and-2026-prediction) · [Pagalguy JU round-1 ranks](https://www.pagalguy.com/colleges/jadavpur-university-kolkata)
+
+**Read that table carefully:** CSE at JU closes around rank **9–55**. That is the **top 1% of a state-level engineering entrance.** For comparison, JU's *regular* WBJEE 1st-year CSE closing rank is 238 — lateral entry into the *same department, same course, same university* is **4–25× more competitive**, because the applicant pool is all of WB's diploma students and the seat count is 9.
+
+### 3B.3 Translating a rank into a score — your actual target number
+
+JELET Paper I is 120 marks. To land in the top ~50, you need roughly:
+
+> **Target score: 95–105 out of 120 (≈80–88%)**
+> **Stretch target for CSE specifically: 105–112 (≈88–93%)**
+
+Work it out yourself, per subject, and track it every week:
+
+| Subject | Marks | Target for ~100/120 | Target for ~110/120 (CSE) |
+|---|---|---|---|
+| Mathematics | 50 | 40 (80%) | 45 (90%) |
+| Physics | 35 | 28 (80%) | 32 (91%) |
+| Chemistry | 25 | 20 (80%) | 22 (88%) |
+| FEEE | 10 | 8 (80%) | 9 (90%) |
+
+**80% in every subject is the baseline. Maths is the tie-breaker, so a 45/50 in Maths beats a 42/50 + 4 extra elsewhere.** [bulletin tie-break](https://cdnbbsr.s3waas.gov.in/s3d2a27e83d429f0dcae6b937cf480aeb1/uploads/2026/03/20260318287108702.pdf)
+
+### 3B.4 Your academic position — you're already past the hard gate
+
+| Gate | Requirement | You | Status |
+|---|---|---|---|
+| Madhyamik (Class 10) | — | 88.17% | Comfortable (not used by JELET, but it says something about your baseline) |
+| HS (Class 12) | — | 80% | Comfortable; also keeps WBJEE-based 1st-year JU open as a fallback (JU 1st-year CSE needs 60% in PCM) [JU eligibility](https://collegedunia.com/university/26008-jadavpur-university-ju-kolkata/admission) |
+| **Diploma aggregate** | **60% at JU** | **9.3 GPA in 1st year** | ✅ **Already clear** — if 9.3 is on a 10-point scale, that's ~93% |
+
+**Two things follow:**
+
+1. **You already pass the only hard eligibility gate.** JU's 60% is *higher* than everyone else's 45%, and you cleared it in year one. The remaining challenge is **purely the exam rank**, which is a pure skills problem — and skills problems are what the AI learning system is for.
+2. **Don't get complacent.** Your cushion is large *now*. The risk isn't that you'll suddenly drop below 60% — it's that polytechnic theory papers (Microprocessor & Microcontroller, Theory of Automata, AI/ML in Sem 5–6) are hard and the aggregate is computed over all six semesters. **Target 70%+ overall and track your running aggregate every semester.** Keep a cushion of 10+ points, not 33.
+
+### 3B.5 The one thing that could cost you the seat (and it isn't the exam)
+
+**JELET has no re-exam.** And **CSE at JU is 9 seats.** So the plan needs a *tiered* college list, not a single target. Build this list in the counselling portal in priority order:
+
+| Tier | Target | Why |
+|---|---|---|
+| **A** | **JU CSE (9 seats)** | Your stated dream. Needs GMR ≲ 40, ideally ≲ 20. |
+| **B** | JU B.Tech Lateral, other branches | Same university, same degree brand. *But check branch correspondence — JU requires the diploma to be "in the relevant branch" [JU brochure](https://admissionju.jadavpuruniversity.in/fengadmission/frontend/upload/brochure/jelet_admission.pdf), and a CST diploma may not qualify for JU IT/ECE.* **Ask.** |
+| **C** | Other WB government engineering colleges with CSE/IT lateral seats (KGEC, JGEC, GCETTS Serampore, MAKAUT, and similar) | Same WB govt degree, same JELET rank, far better odds. A WB govt B.Tech is a genuine degree at a fraction of the private-college cost. |
+| **D** | Self-financing WB engineering colleges | Backstop. Still a B.Tech from an AICTE-approved institute. |
+| **E** | **The job market with your portfolio, no degree at all** | This tier is *always* open, and by Sem 6 you will have a portfolio that beats most B.Tech graduates. Never leave this tier empty. |
+
+**A note on Tier E, because it's underrated:** a strong diploma + a strong portfolio + 5 merged open-source PRs is a completely legitimate path to the same junior-developer jobs. JU is the better *credential*, but it is not the only door. Don't let Tier A become a reason to neglect Tier E.
+
+### 3B.6 One structural risk to watch for
+In late 2025, JU **temporarily blocked** JELET lateral entry and then **restored it**, and for the delayed 2025–26 cycle it required JELET students to complete **online bridging coursework** (via central government learning platforms) to cover the 2nd-year syllabus they had missed [Telegraph India](https://www.telegraphindia.com/west-bengal/kolkata/ju-reverses-decision-on-jelet-admissions-allowing-diploma-holders-with-online-classes-prnt/cid/2137208). That was a one-off caused by the exam-delay backlog — **not** a permanent rule. But it teaches you to **read the JELET Information Bulletin each year** rather than relying on last year's rules. The bulletin is published on [wbjeeb.nic.in](https://wbjeeb.nic.in/jelet/) around Feb–March. **Read the 2029 bulletin when it appears, and check for changes to JU's 60% rule and seat matrix.**
+
+---
+
 ## 4. The stack: what to learn (and what to ignore)
 
 ### 4.1 The decision
@@ -333,6 +425,8 @@ SKILLS
 - [ ] Apply for **Google AI Plus free for 12 months** (Indian college students 18+, redeem by 31 Dec 2026) — **set a calendar reminder, it auto-renews** [27](https://mylingasia.com/posts/best-ai-tools-students-india-2026). Jio ₹349+ 5G users: 18 months Gemini AI Pro free via MyJio [27](https://mylingasia.com/posts/best-ai-tools-students-india-2026)
 - [ ] Install: Git, VS Code, Python, Anki (FSRS), Node.js, Docker, Ollama
 - [ ] Ask the college office the two JELET questions (§0) and **write the answers in your journal**
+- [ ] **Download the JELET Information Bulletin from [wbjeeb.nic.in/jelet](https://wbjeeb.nic.in/jelet/)** and read the eligibility + seat matrix pages. This is your exam's rulebook; re-download it every year — JU changed its lateral-entry policy once already [Telegraph India](https://www.telegraphindia.com/west-bengal/kolkata/ju-reverses-decision-on-jelet-admissions-allowing-diploma-holders-with-online-classes-prnt/cid/2137208)
+- [ ] **Start tutoring this week** (§8A.1): find 2 students — one Class 10, one Class 11–12 — Maths and Physics. ₹250–400/hr to start. Build your teaching kit in `teaching/`
 - [ ] Find your **college SPOC** for Smart India Hackathon — you're a Sem 3er; the SIH 2027 internal round is ~Aug–Sept 2027, and you need to build a team of 6 + a mentor over a year [SIH](https://thenewviews.com/smart-india-hackathon/)
 
 *Week 3-8 — the learning machine (Repo 1):*
@@ -461,6 +555,86 @@ These are the "opportunities" half of what you asked for. Ranked by value-to-eff
 
 ---
 
+## 8A. Part-time income — earning without burning the JELET spine
+
+You want money while studying. Good. The rule that makes this work:
+
+> **Income may come out of your *freelancing* time and your *weekend* hours. It may never come out of the JELET hours or the daily learning loop.**
+
+Target: **₹8,000–15,000/month from 6–8 hours/week.** That's realistic, sustainable, funds your gear, and doesn't cost you the exam.
+
+### 8A.1 Tier 1 — Tutoring (start this week, highest value by a wide margin)
+
+**This is not a side hustle for you. It's your JELET prep with a salary attached.**
+
+| What you teach | Online rate | Home tuition rate |
+|---|---|---|
+| Class 6–8 | ₹300–500/hr | ₹350–600/hr |
+| **Class 9–10 (WB board)** | **₹400–700/hr** | **₹450–800/hr** |
+| **Class 11–12 (WB board)** | **₹500–900/hr** | **₹600–1,000/hr** |
+| JEE / NEET foundation | ₹800–1,800/hr | ₹1,000–2,000/hr |
+
+Sources: [SmartTek tuition rates](https://smartteksolutions.in/part-time-online-home-tuition-teaching-opportunities-in-india-mysmartpros/) · [Jobipo student jobs](https://jobipo.com/blog/part-time-online-jobs-for-students/) · [PowerPro2](https://powerpro2.blogspot.com/2026/07/make-money-online-student-india-2026.html)
+
+**Why tutoring is the correct choice for you, specifically:**
+1. **It uses capital you already have.** 88.17% Madhyamik, 80% HS, 9.3 GPA, plus a JELET syllabus you must master anyway. You are already the tutor.
+2. **The subject you teach IS the exam you sit.** Class 11–12 WB-board Maths and Physics overlap heavily with JELET Paper I. **Every hour you teach is an hour you revise — you are getting paid to study.**
+3. **It needs no portfolio.** Start in week 1, unlike freelancing which needs ~6 months of skills.
+4. **It deepens your own mastery.** Self-explanation is a **moderate-utility** learning technique (d = 0.54) [Dunlosky](https://www.whz.de/fileadmin/lehre/hochschuldidaktik/docs/dunloskiimprovingstudentlearning.pdf). Explaining calculus to a Class 12 student is the Feynman technique on a topic that appears in your exam — **you will find your own gaps faster than by re-reading.**
+5. **Kolkata pays well for it.** Home tuition for Class 9–10 at ₹450–800/hr in a city where coaching institutes charge ₹5,000+/month per student. You are the cheap, personal, effective alternative.
+6. **The hours are evening-weighted** and don't collide with your daytime study block.
+
+**How to start (this week):**
+- **Direct students = no commission = 3–5× the platform rate.** Platforms (Vedantu, Chegg, SuperProf, Filo, Cuemath) supply students but pay less. Use platforms for *reviews*; use direct WhatsApp/Google Meet referrals for *money*.
+- **Start at ₹250–400/hr.** Two students at ₹300 × 2 hrs/week each = **₹5,000/month** in month one. Raise your rate after 3–5 good reviews.
+- **Where to find students:** your juniors and their classmates (cheapest, most reliable), WhatsApp/Instagram in your locality, UrbanPro/JustDial tutoring listings, coaching-institute referral (many need part-time faculty for weak students), local schools' evening remedial classes.
+- **Offer a free 30-minute demo class.** It converts better than any ad.
+- **Build a one-page "teaching kit"** — a WB Class 12 Maths/Physics syllabus map plus your own notes. You're building a teaching asset *and* a revision asset simultaneously. Put it in this repo (`teaching/`) and it's a portfolio piece too.
+
+**The guardrail:** max **2 offline + 2–3 online students.** More than that eats the JELET spine. Log tutoring hours in the same journal as study hours — it becomes evidence of teaching, and if you ever consider a teaching-track role, it's a portfolio piece.
+
+### 8A.2 Tier 2 — AI data annotation & model-training tasks (flexible filler)
+
+Remote AI companies pay workers to label images, rate chatbot outputs, and verify translations: **₹2,000–15,000/month, per-task, flexible timing** [Gromo](https://gromo.in/blog/online-part-time-jobs-for-students-in-2026/) [Gromo — zero-investment jobs](https://gromo.in/blog/zero-investment-income-ideas-top-14-part-time-jobs-in-india-2026-zero-investment/).
+
+**Your specific edge:** Indian-language verification tasks pay a **premium**, and you're fluent in Bengali (and presumably Hindi). That's a real, sellable advantage. Intake opens in waves — apply to several.
+
+**Use strictly as gap-filler** (a slow week, exam season). Low pay, builds no portfolio.
+
+### 8A.3 Tier 3 — AI micro-services for local businesses (from Sem 4–5)
+
+Set up AI workflows for small Kolkata businesses: a chatbot for a coaching institute's FAQ, an automated WhatsApp enquiry responder, a Notion dashboard for a local shop's inventory, AI-assisted content for a small agency's social media. Reported range: **₹8,000–40,000/month** for 3 clients [Teenbucks](https://teenbucks.in/side-hustle-for-students/) [Mymoneyway](https://www.mymoneyway.in/2026/06/earn-money-online-for-students-india-2026-zero-investment.html).
+
+**This is the only income option that also builds your portfolio** — and it can *become* Repo 2 or Repo 3 if you build it properly (documented, deployed, with evals). Two birds. **Max 1–2 clients** — client work is sales-shaped and will expand to fill all your time if you let it.
+
+### 8A.4 Tier 4 — English content writing (small, optional)
+
+**₹5,000–35,000/month** for good writers [Jobipo](https://jobipo.com/blog/part-time-online-jobs-for-students/). You have HS 80% English. But this is the **weakest signal for a CS job**, so keep it small — it's for cash, not for the CV.
+
+### 8A.5 What to avoid
+- **Data entry (₹5,000–15,000/mo)** — zero skill compounding, and it competes with the same "sit and type" energy that lets you skip learning. A trap disguised as a job.
+- **Microtask / survey sites** — same reason, lower pay.
+- **Any hustle needing 4+ hours/day.** With 2–3 hours/day total for everything, a 4-hour hustle means learning stops.
+- **Anything that asks you to pay upfront.** Legitimate programmes — GSoC, SIH, LFX, MLH, Outreachy — are **free** [PrepnPlaced](https://www.prepnplaced.com/apprenticeships/open-source-programmes).
+
+### 8A.6 Tax & the money's job
+- Freelance/tutoring income above **₹2.5 lakh/year** is taxable (₹3 lakh under the new regime); earnings above **₹40,000/month** from tutoring may carry TDS depending on the platform [themoneydecoded](https://themoneydecoded.com/blog/make-money-online-student).
+- **Give every rupee a job.** Suggested split of ₹8,000–15,000/month:
+  - **50% → gear & infrastructure.** A better laptop (RAM matters for Docker + local models), a domain, AWS free tier, one exam fee, one cert.
+  - **30% → safety net**, so you never need a bad job.
+  - **20% → life.** A student who hates their routine quits the routine.
+- **The goal is not ₹40,000/month.** The goal is ₹1.5–2 lakh over your diploma — which buys a laptop, a domain, certs and exam fees, and critically **the freedom to say no to a bad internship when one shows up.**
+
+### 8A.7 How income and the JELET plan reinforce each other
+- Tutoring = paid revision of the exact exam syllabus.
+- Money = the laptop and cloud credits that make the portfolio possible.
+- Teaching = the communication skill every interview tests.
+- And a line on your CV: *Freelance Tutor, Maths & Physics (Class 9–12), 300+ hours* — which a JU panel will read as someone who explains things clearly.
+
+> **The trap to avoid:** earning ₹10,000/month feels great and will happily consume the 6 hours/week that should have been Maths. Set the cap now, in writing, in `roadmap.md`. If tutoring starts costing you JELET mock-test scores, **cut students before you cut revision.**
+
+---
+
 ## 9. Free stack — the full ₹0 budget
 
 | Need | Tool | Cost |
@@ -516,31 +690,38 @@ These are the "opportunities" half of what you asked for. Ranked by value-to-eff
 | Metric | Target | Why |
 |---|---|---|
 | **Closed-book, no-AI weekly score** | Rising over 12 weeks | The only honest learning metric [21](https://www.pnas.org/doi/10.1073/pnas.2422633122) |
-| Repos shipped & deployed | 4 by month 9 | Portfolio, not notes |
-| Open-source PRs merged | 5 by month 9 | Team-collaboration signal |
-| Targeted applications/week | 10 by month 6 | Volume is a skill |
-| Interviews per 20 applications | ≥2 by month 8 | Your funnel health check |
+| **JELET mock score (full Paper I, timed, no AI)** | **≥95/120 by the end of your prep year; 105+ for a CSE shot** | The number that decides everything (§3B.3) |
+| **Running diploma aggregate** | **≥70%** (never below 60%) | The JU eligibility gate — and 4 semesters of marks decide it |
+| Weekly Maths/Physics/Chem hours | 7–8 h/week | The JELET spine |
+| Repos shipped & deployed | 3 by end of Sem 6 | Portfolio, not notes |
+| Open-source PRs merged | 5 by end of B.Tech Yr 1 | Team-collaboration signal |
+| Tutoring hours/week | 6–8 h, capped | Income without eating the spine |
+| Part-time income | ₹8,000–15,000/month | Funds the gear; also paid revision |
+| Targeted applications/week | 10, from Sem 5 | Volume is a skill |
+| Interviews per 20 applications | ≥2 | Your funnel health check |
 | `git log` commits | No gap >2 days | Consistency, not learning |
 | Anki reviews/day | Done daily | Retention compounding |
-| **"Can I defend this repo for 5 minutes?"** | Yes, for all 4 | The real readiness test |
+| **"Can I defend this repo for 5 minutes?"** | Yes, for all of them | The real readiness test |
 
 ---
 
 ## 13. The honest summary
 
-**What you got right:** You identified early that AI changes the game, and you connected a repo — the one artifact that captures *your* effort and can't be faked. That instinct is right, and the repo you've started is Repo 1 of your portfolio. You also chose the JELET path, which is a real, well-defined credential with a hard eligibility gate you can still clear comfortably.
+**What you got right:** You identified early that AI changes the game, and you connected a repo — the one artifact that captures *your* effort and can't be faked. That instinct is right, and the repo you've started is Repo 1 of your portfolio. You also chose the JELET path, and your academic record (88.17% → 80% → 9.3 GPA) means you've already cleared the one hard eligibility gate on that path — **JU's 60%** — in year one.
 
 **What the plan adds on top of your instinct:**
-- **A spine.** "Learn for knowledge and opportunities" is a direction, not a route. The route is: **JELET (Maths + Physics + Chem spine) → TypeScript + Python/AI stack (job spine) → 4 repos → open source → apply from Sem 5 → B.Tech → job.** Two spines, running in parallel, sharing the same hours.
+- **A spine.** "Learn for knowledge and opportunities" is a direction, not a route. The route is: **JELET spine (Maths + Physics + Chem) and Job spine (TypeScript + Python/AI + portfolio), running in parallel on the same hours → JU CSE (target GMR ≤40, ideally ≤20) → B.Tech → job.**
+- **A number.** JU CSE lateral is **9 seats** and closes around rank **9–55**. So your real target is a score, not a feeling: **95–105 out of 120, stretch 105–112.**
 - **A sequence.** Foundations now, stack later, AI layer last. The 2–3 hours a day you have is enough — but only if you don't spend it on React in Sem 3.
-- **A hard deadline.** The **45% diploma aggregate** is the one thing that can kill the JELET plan, and it's decided by the next four semesters. Track it every semester.
+- **An income line that pays you to revise.** Tutoring Class 11–12 Maths/Physics is the same syllabus as JELET Paper I. **You're getting paid to study.** ₹8,000–15,000/month from 6–8 hours/week, capped so it can never eat the JELET hours.
 
 **What to watch for:**
 - **Don't serialise.** "Degree first, skills after" is the trap. The degree and the portfolio must be built in the same 3.5 years.
+- **Don't lose the 60%.** You have a huge cushion now; polytechnic theory papers in Sem 5–6 (Microprocessor, Automata, AI/ML) are where it can slip. Track the running aggregate every semester.
 - **Don't expect 6 months to a job.** End of Sem 5 you're employable at junior/IT level; end of Sem 6 you're employable at ₹4–7 LPA; B.Tech Yr 2 is where the good offers live.
 - **Don't let the AI write the code you claim you wrote.** A portfolio you can't defend in an interview is a liability.
 
-**One line to remember:** *The JELET rank gets you into the room. The portfolio gets you the offer. The AI fluency gets you the raise.*
+**One line to remember:** *The JELET rank gets you into Jadavpur. The portfolio gets you the offer. The AI fluency gets you the raise. And the tutoring gets you the laptop.*
 
 ---
 
@@ -557,6 +738,12 @@ These are the "opportunities" half of what you asked for. Ranked by value-to-eff
 
 **Degree pathway & JELET**
 14. [KGEC — JELET lateral entry eligibility & counselling](https://www.kgec.edu.in/admissions) · 15. [Collegedunia — JELET eligibility, WB domicile, branch correspondence](https://collegedunia.com/exams/jelet) · 16. [MyEducationWire — JELET 2027 status](https://www.myeducationwire.com/latest/jelet-2027/) · 17. [FindUrCollege — branch-change rules for lateral entry](https://findurcollege.com/direct-second-year-btech) · 52. [**JELET 2026 official Information Bulletin** (WBJEEB PDF — pattern, marking scheme, tie-break, eligibility, provisional admission for final-sem appearing candidates)](https://cdnbbsr.s3waas.gov.in/s3d2a27e83d429f0dcae6b937cf480aeb1/uploads/2026/03/20260318287108702.pdf) · 53. [JELET 2026 exam pattern & subject-wise weightage](https://collegedunia.com/exams/jelet/exam-pattern) · 54. [JELET syllabus — Mathematics, Physics, Chemistry, FEEE](https://admission.aglasem.com/wbjee-jelet-syllabus/) · 55. [Careers360 — JELET topic-wise syllabus](https://engineering.careers360.com/articles/jelet-syllabus) · 56. [Shiksha — JELET syllabus & exam pattern](https://www.shiksha.com/engineering/wbjee-jelet-exam-syllabus) · 57. [WBJEEB — official JELET page & notices](https://wbjeeb.nic.in/jelet/) · 58. [JELET 2024 Information Bulletin (diploma in *any* branch eligible)](https://wbjeeb.in/wp-content/uploads/2024/02/2024020274-1-jelet-2024.pdf) · 59. [JELET 2027 eligibility criteria & age limit](https://www.myeducationwire.com/latest/jelet-2027-eligibility-criteria/) · 60. [Collegedunia — no minimum score needed for a merit rank](https://collegedunia.com/exams/jelet/results) · 61. [FindMyCollege — Jadavpur University lateral-entry requires 60%](https://findmycollege.com/exam/jelet/eligibility) · 62. [JELET seat acceptance & mandatory documents (WB domicile)](https://admittanceedutech.in/wb-jelet-round-3-counselling-2026/)
+
+**Jadavpur University lateral entry**
+63. [JU official Information Brochure for JELET admission (60% rule, relevant-branch rule, domicile)](https://admissionju.jadavpuruniversity.in/fengadmission/frontend/upload/brochure/jelet_admission.pdf) · 64. [JELET 2026 seat matrix — JU branch-wise seats, incl. "CSE / Computer Science & Technology: 9"](https://engineering.careers360.com/articles/jelet) · 65. [Collegedunia — JU cutoff trends, JELET B.Tech Lateral closing ranks](https://collegedunia.com/university/26008-jadavpur-university-ju-kolkata/cutoff) · 66. [FindMyCollege — JU JELET cutoff trends by category](https://findmycollege.com/exam/jelet/cutoff) · 67. [JELET 2026 expected cutoffs — JU CSE UR closing rank 30–55](https://collegedunia.com/articles/e-553-jelet-2026-cutoff-previous-year-rank-trends-and-2026-prediction) · 68. [Collegedunia — JU admission, 90% Home State / 10% All India](https://collegedunia.com/university/26008-jadavpur-university-ju-kolkata/admission) · 69. [Telegraph India — JU restores JELET lateral entry; 150 seats; bridging coursework](https://www.telegraphindia.com/west-bengal/kolkata/ju-reverses-decision-on-jelet-admissions-allowing-diploma-holders-with-online-classes-prnt/cid/2137208) · 70. [Times of India — JU faculty council sets the 60% lateral-entry rule](https://timesofindia.indiatimes.com/city/kolkata/60-in-diploma-for-jadavpur-university-engineering-lateral-entry/articleshow/67155271.cms) · 71. [Pagalguy — JU JELET round-1 branch closing ranks](https://www.pagalguy.com/colleges/jadavpur-university-kolkata) · 72. [Collegedunia — JU BE Lateral CSE eligibility & provisional admission](https://collegedunia.com/university/26008-jadavpur-university-ju-kolkata/bachelor-of-engineering-be-lateral-computer-science-and-engineering-13082)
+
+**Part-time income**
+73. [SmartTek — online & home tuition hourly rates by class](https://smartteksolutions.in/part-time-online-home-tuition-teaching-opportunities-in-india-mysmartpros/) · 74. [Jobipo — student part-time jobs, tutoring rates, direct vs. platform](https://jobipo.com/blog/part-time-online-jobs-for-students/) · 75. [PowerPro2 — tutoring rates and realistic student earnings](https://powerpro2.blogspot.com/2026/07/make-money-online-student-india-2026.html) · 76. [Gromo — AI data annotation & model-training tasks for students](https://gromo.in/blog/online-part-time-jobs-for-students-in-2026/) · 77. [Teenbucks — student side-hustle income milestones](https://teenbucks.in/side-hustle-for-students/) · 78. [Mymoneyway — AI services as a student income stream](https://www.mymoneyway.in/2026/06/earn-money-online-for-students-india-2026-zero-investment.html) · 79. [themoneydecoded — student income by year & income-tax/TDS thresholds](https://themoneydecoded.com/blog/make-money-online-student)
 
 **Opportunities**
 30. [LeapScholar — GSoC 2027 for Indian students, diploma eligibility](https://leapscholar.com/blog/google-summer-of-code/) · 31. [The Internship — GSoC 2026 stipend & eligibility](https://theinternship.in/gsoc-i/) · 32. [The New Views — SIH 2026 schedule & SPOC route](https://thenewviews.com/smart-india-hackathon/) · 33. [Velonx — company hackathons, prizes, eligibility](https://velonx.in/blog/top-company-hackathons-for-students-in-india-2026) · 34. [SimplyHired — Kolkata freelance web dev pay](https://www.simplyhired.co.in/search?q=diploma+in+computer+science&l=kolkata%2C+west+bengal) · 35. [Ossium — LFX, MLH, Outreachy](https://ossium.in/home/oss-programs) · 36. [PrepnPlaced — remote open-source programmes](https://www.prepnplaced.com/apprenticeships/remote) · 37. [PrepnPlaced — open-source internship programmes](https://www.prepnplaced.com/apprenticeships/open-source-programmes) · 38. [List of Open Source Internships](https://github.com/deepanshu1422/List-Of-Open-Source-Internships-Programs) · 39. [r/developersIndia — 2026 hackathon calendar](https://www.reddit.com/r/developersIndia/comments/1qctgpc/top_hackathons_to_watch_in_2026_ai_ml_tech/) · 40. [Velonx — company hackathon comparison](https://velonx.in/blog/top-company-hackathons-for-students-in-india-2026) · 41. [Internshala — full-stack internships](https://internshala.com/internships/full-stack-development-internship/) · 42. [Internshala — software development fresher jobs](https://internshala.com/fresher-jobs/software-development-jobs/) · 43. [SarthiQ — remote AI/RAG/agentic tracks](https://sarthiq.com/) · 51. [Beincareer — the hidden internship market](https://beincareer.com/how-to-get-internship-india-2026/)
