@@ -1,0 +1,220 @@
+{
+  "generatedAt": "2026-10-28T16:52:01.539Z",
+  "compiler": {
+    "bin": "gcc",
+    "version": "gcc (Debian 12.2.0-14+deb12u1) 12.2.0"
+  },
+  "topics": {
+    "c-loops": {
+      "id": "c-loops",
+      "title": "Loops in C",
+      "language": "C",
+      "submitted": 1,
+      "tasks": {
+        "t1": {
+          "id": "t1",
+          "title": "Print 1 to N",
+          "status": "passed",
+          "passed": 3,
+          "total": 3,
+          "points": 10,
+          "maxPoints": 10,
+          "compileError": null,
+          "failing": [],
+          "explain": {
+            "score": 100,
+            "flags": [],
+            "stats": {
+              "lines": 18,
+              "comments": 2,
+              "whyComments": 2,
+              "significantLines": 1
+            }
+          }
+        },
+        "t2": {
+          "id": "t2",
+          "title": "Factorial of N",
+          "status": "not-submitted",
+          "passed": 0,
+          "total": 4,
+          "points": 0,
+          "maxPoints": 15,
+          "compileError": null,
+          "failing": [],
+          "explain": null
+        },
+        "t3": {
+          "id": "t3",
+          "title": "Sum of digits",
+          "status": "not-submitted",
+          "passed": 0,
+          "total": 4,
+          "points": 0,
+          "maxPoints": 15,
+          "compileError": null,
+          "failing": [],
+          "explain": null
+        },
+        "t4": {
+          "id": "t4",
+          "title": "Reverse a number",
+          "status": "not-submitted",
+          "passed": 0,
+          "total": 4,
+          "points": 0,
+          "maxPoints": 15,
+          "compileError": null,
+          "failing": [],
+          "explain": null
+        },
+        "t5": {
+          "id": "t5",
+          "title": "FizzBuzz",
+          "status": "not-submitted",
+          "passed": 0,
+          "total": 4,
+          "points": 0,
+          "maxPoints": 20,
+          "compileError": null,
+          "failing": [],
+          "explain": null
+        },
+        "t6": {
+          "id": "t6",
+          "title": "Multiplication table",
+          "status": "not-submitted",
+          "passed": 0,
+          "total": 4,
+          "points": 0,
+          "maxPoints": 25,
+          "compileError": null,
+          "failing": [],
+          "explain": null
+        }
+      },
+      "code": {
+        "t1": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    /* The range is 1..n inclusive, so the test is i <= n - using i < n would\n       stop one short and never print n itself. */\n    for (int i = 1; i <= n; i++) {\n        /* A space goes before every number except the first, so the output\n           has no trailing space and still separates the numbers. */\n        if (i > 1) printf(\" \");\n        printf(\"%d\", i);\n    }\n    printf(\"\\n\");\n    return 0;\n}\n"
+      },
+      "answers": {
+        "q1": "Use for when the number of iterations is known in advance; use while when it is not known in advance.",
+        "q2": "The boundary is included or excluded wrongly. Decide the range in English first, then write that range down as a comment.",
+        "q3": "It jumps to the step expression, not back to the condition, so the loop still terminates.",
+        "q4": "Because initialising it inside the body resets it every iteration, so each pass overwrites the previous total."
+      },
+      "learnerNotes": {},
+      "written": {
+        "score": 83,
+        "answered": 4,
+        "total": 4,
+        "perQuestion": [
+          {
+            "id": "q1",
+            "q": "When is a for-loop better than a while-loop?",
+            "answered": true,
+            "score": 0.67,
+            "hits": [
+              "known",
+              "advance"
+            ],
+            "missing": [
+              "count"
+            ],
+            "feedback": "Partly right. Missing: count. Mentions that the count is known in advance."
+          },
+          {
+            "id": "q2",
+            "q": "What is an off-by-one error and how do you avoid it?",
+            "answered": true,
+            "score": 1,
+            "hits": [
+              "boundary",
+              "range",
+              "comment"
+            ],
+            "missing": [],
+            "feedback": "Full marks."
+          },
+          {
+            "id": "q3",
+            "q": "Inside a for-loop, where does `continue` jump to?",
+            "answered": true,
+            "score": 0.67,
+            "hits": [
+              "step",
+              "not"
+            ],
+            "missing": [
+              "increment"
+            ],
+            "feedback": "Partly right. Missing: increment. Says it goes to the increment/step rather than the condition."
+          },
+          {
+            "id": "q4",
+            "q": "Why must an accumulator be initialised before the loop and not inside it?",
+            "answered": true,
+            "score": 1,
+            "hits": [
+              "reset",
+              "every",
+              "iteration"
+            ],
+            "missing": [],
+            "feedback": "Full marks."
+          }
+        ]
+      },
+      "notes": {
+        "score": 0,
+        "filledCount": 0,
+        "total": 3,
+        "perField": [
+          {
+            "field": "whatILearned",
+            "label": "What I learned",
+            "filled": false,
+            "tooLong": false,
+            "chars": 0,
+            "text": "",
+            "feedback": "Empty — fill this in."
+          },
+          {
+            "field": "challenges",
+            "label": "What broke",
+            "filled": false,
+            "tooLong": false,
+            "chars": 0,
+            "text": "",
+            "feedback": "Empty — fill this in."
+          },
+          {
+            "field": "nextSteps",
+            "label": "What is next",
+            "filled": false,
+            "tooLong": false,
+            "chars": 0,
+            "text": "",
+            "feedback": "Empty — fill this in."
+          }
+        ]
+      },
+      "explain": {
+        "score": 100,
+        "flags": [],
+        "perFile": [
+          {
+            "id": "t1",
+            "score": 100,
+            "flags": [],
+            "stats": {
+              "lines": 18,
+              "comments": 2,
+              "whyComments": 2,
+              "significantLines": 1
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -39,3 +39,6 @@ yarn-error.log*
 .idea/
 .vscode/*
 !.vscode/extensions.json
+
+# transient: the review the workflow posts as an issue comment
+/data/last-review.md

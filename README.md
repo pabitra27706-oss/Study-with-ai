@@ -17,10 +17,10 @@ Actions is the build machine.
 | ---- | ---------- |
 | [`GITHUB-AUDIT.md`](GITHUB-AUDIT.md) | **Start here.** A full audit of both GitHub accounts — 47 repositories, what each one proves, what is broken, and a 30-day fix list. |
 | [`LEARNING-JOURNEY.md`](LEARNING-JOURNEY.md) | The research-backed design of the learning system: how AI is used, what Git is for, the guardrails that keep it honest, and how all of it works from a phone. 11 sections, 40 sources. |
-| [`LEARNING-SYSTEM.md`](LEARNING-SYSTEM.md) | **The machine that grades you.** AI-written topics with curated video sources, machine-checked tasks, a why-comment checker and a written rubric. How it works, how to add a topic, how to publish into the archive. |
+| [`LEARNING-SYSTEM.md`](LEARNING-SYSTEM.md) | **The machine that judges you.** AI-written topics with curated video sources, machine-checked tasks, a why-comment checker, a written rubric — and the agent that reads all of it and writes its notes back. How it works, how to add a topic, how to publish into the archive. |
 | `curriculum/` | **Topic packs** — the teaching half. Explanation, videos with a reason for each, tasks with hidden test cases, rubric. Written by AI. |
-| `learn/` | **Your half.** Your code, your three lines of notes, your four short answers. |
-| `runner/` | The grader: compiles your C, runs the tests, checks your comments explain *why*, scores your answers, writes `data/progress.json`. |
+| `learn/` | **Your half and the agent's half.** You write `solutions/*.c` and `answers.json`; the agent writes `notes.json`, `review.md` and `history.md` back. |
+| `runner/` | The agent: `evidence.mjs` is the sensor (compile, test, comment check); `agent.mjs` is the judge, the note-taker and the keeper. Writes `data/progress.json` and `learn/<topic>/notes.json`. |
 | [`ROADMAP.md`](ROADMAP.md) | The career roadmap — JELET + Jadavpur University CSE on one spine, Android/Full-Stack/AI on the other, plus the part-time income plan. 79 sources. |
 | `app/` `components/` `content/` `lib/` | The website. Next.js 16 + Tailwind v4, static export, content generated from `content/*.ts` and `journal/*.md`. |
 | `journal/` | The learning log. **Human-owned.** An AI agent may read it but must never write it. |
@@ -28,7 +28,7 @@ Actions is the build machine.
 | `notes/` | AI-compiled, human-owned topic notes. |
 | `cards/` | Spaced-repetition cards, curated by hand from mistakes. |
 | [`AGENTS.md`](AGENTS.md) | The contract for any AI working in this repo. Read it before touching anything. |
-| `scripts/` | `termux-setup.sh` (one-command deploy from Android), `termux-build.sh` (optional on-device build), `stats.mjs`, `serve-static.mjs`. |
+| `scripts/` | `termux-setup.sh` (one-command deploy from Android), `review-and-commit.sh` (the learning loop in one command), `export-to-portfolio.mjs` (publish into the archive), `learn-workflow.yml` (CI that judges on every push and issue). |
 | `scripts/deploy-workflow.yml` | The canonical Pages workflow. Copy it into `.github/workflows/deploy.yml` and push — that is what makes every push to `main` redeploy the site. |
 | [`DEPLOY.md`](DEPLOY.md) | How to build and deploy the site (GitHub Pages, Vercel, Netlify, Cloudflare) — including the Termux walkthrough. |
 
@@ -126,7 +126,7 @@ bash scripts/termux-setup.sh
 
 ---
 
-## The learning system — AI writes it, the compiler judges it
+## The learning system — AI writes it, the AI judges it
 
 The single biggest hole in the audit was this: **47 repositories, zero
 automated tests.** A repository that cannot tell you whether you understood
@@ -137,29 +137,35 @@ So this repository now has one.
 | | |
 |---|---|
 | **The topic** | AI writes it out in full — the idea, the exact evaluation order, the bugs that cost marks. Plus curated video links, each with a *reason* it is on the list. |
-| **The task** | You write the code. The grader compiles it with `gcc -std=c17 -Wall -Wextra` and runs it against **hidden edge cases** — zero, one, leading zeros, the boundary. |
-| **The answer** | Four short questions, scored by key-idea coverage. A dumb scorer is honest: it cannot be fooled by a confident paragraph that says nothing. |
-| **The explanation** | Every loop header and every accumulator needs a comment that says **why**, not **what**. Comments that restate the code are flagged. |
-| **The score** | 70% tasks · 15% written · 5% notes · 10% explainability. Committed to `data/progress.json`, so your history is a CV line with receipts. |
+| **Your code** | Written anywhere: in this repo, in a notes app, on another machine. Pushed here, or pasted into a GitHub issue. |
+| **The sensor** | `gcc -std=c17 -Wall -Wextra` compiles it and runs the **hidden edge cases** — zero, one, leading zeros, the boundary. The comment checker flags every line that restates the code instead of explaining it. |
+| **The judge** | The AI reads the topic, your code, your answers and that evidence, and decides what it means. It is explicitly told to give the correction, not the finished program. |
+| **The notes** | The agent writes your three notes lines, in your voice, from what your submission actually showed — not what you hoped it showed. |
+| **The keeping** | Notes, written review, a dated history line, the refreshed topic and the verdict all go back into the repository. Git history is the record of what you could do on which day. |
 
-**Your writing stays minimal. Your code does the explaining.** Three lines of
-notes per topic, 220 characters each, and the comments in the code carry the
-reasoning. On a phone, that is the difference between a system you will
-actually use and one you will not.
+**The compiler is not the judge.** A test runner can tell you a program failed
+on `n = 0`. It cannot tell you whether you understand why — and those two cases
+look identical to `gcc` and completely different to a teacher. One is a typo.
+The other is a broken mental model. The agent sees the evidence *and* your
+comments *and* your answers, and it says which one this is.
+
+**Your writing stays minimal. Your code does the explaining.** Four short
+answers, and the comments in the code carry the reasoning. On a phone, that is
+the difference between a system you will actually use and one you will not.
 
 **The whole loop, from Termux:**
 
 ```bash
-pkg install nodejs clang          # once
+pkg install nodejs clang            # once
 
-nano learn/c-loops/solutions/t1.c # your attempt
-node runner/grade.mjs             # compile, test, score — no key, no cost
-bash scripts/grade-and-commit.sh  # grade, commit, push
+nano learn/c-loops/solutions/t1.c   # your attempt
+node runner/agent.mjs               # sense -> judge -> note -> keep
+bash scripts/review-and-commit.sh   # judge, commit, push
 ```
 
-No API key, no network, no laptop. The grader is local because `clang` is a
-Termux package — a learning system that needs a paid service is a system that
-stops.
+No paid service, no laptop. `clang` is a Termux package, so the loop runs on
+the phone; the free Gemini tier supplies the judgement. A learning system that
+needs a subscription is a system that stops.
 
 See **[`LEARNING-SYSTEM.md`](LEARNING-SYSTEM.md)** for the full design, and
 **[/learn](https://pabitrahews06-oss.github.io/Study-with-ai/learn)** for the

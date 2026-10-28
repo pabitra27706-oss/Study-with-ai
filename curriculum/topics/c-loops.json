@@ -6,19 +6,29 @@
     "category": "Control Flow",
     "difficulty": "beginner",
     "dateCreated": "2026-10-28T00:00:00Z",
-    "lastUpdated": "2026-10-28T00:00:00Z",
-    "tags": ["for-loop", "while", "do-while", "iteration", "break", "continue", "off-by-one"],
+    "lastUpdated": "2026-10-28T16:52:01.541Z",
+    "tags": [
+      "for-loop",
+      "while",
+      "do-while",
+      "iteration",
+      "break",
+      "continue",
+      "off-by-one"
+    ],
     "description": "for, while and do-while: how a loop actually evaluates, how to pick the right one, and the four bugs that cost more marks than any other topic in C.",
     "learningNotes": {
-      "whatILearned": "",
-      "challenges": "",
-      "nextSteps": ""
+      "whatILearned": "I solved 1 of 6 tasks and the code compiles.",
+      "challenges": "Still failing: t2 0/4 test cases pass; t3 0/4 test cases pass; t4 0/4 test cases pass; t5 0/4 test cases pass; t6 0/4 test cases pass.",
+      "nextSteps": "Take on t2 next."
     }
   },
   "files": [],
   "curriculum": {
     "summary": "A loop is one idea: do a thing again until a condition stops being true. C gives you three spellings of it, and they are not equally good. This topic teaches the evaluation order of `for` (the part everyone gets wrong), how to choose between the three forms, how to avoid off-by-one errors by deciding the range *before* you write the loop, and how `scanf` and loops interact — the single most common source of \"my program skips my input\" bugs.",
-    "prerequisites": ["c-basics"],
+    "prerequisites": [
+      "c-basics"
+    ],
     "estimatedMinutes": 90,
     "rules": {
       "writingMaxChars": 220,
@@ -143,9 +153,21 @@
           "The boundary decision: does your range include N? Write that down in English first."
         ],
         "tests": [
-          { "stdin": "5\n", "stdout": "1 2 3 4 5", "public": true },
-          { "stdin": "1\n", "stdout": "1", "public": true },
-          { "stdin": "10\n", "stdout": "1 2 3 4 5 6 7 8 9 10", "public": false }
+          {
+            "stdin": "5\n",
+            "stdout": "1 2 3 4 5",
+            "public": true
+          },
+          {
+            "stdin": "1\n",
+            "stdout": "1",
+            "public": true
+          },
+          {
+            "stdin": "10\n",
+            "stdout": "1 2 3 4 5 6 7 8 9 10",
+            "public": false
+          }
         ]
       },
       {
@@ -161,10 +183,26 @@
           "Think about what happens to the product if you ever multiply by zero."
         ],
         "tests": [
-          { "stdin": "5\n", "stdout": "120", "public": true },
-          { "stdin": "0\n", "stdout": "1", "public": true },
-          { "stdin": "1\n", "stdout": "1", "public": false },
-          { "stdin": "10\n", "stdout": "3628800", "public": false }
+          {
+            "stdin": "5\n",
+            "stdout": "120",
+            "public": true
+          },
+          {
+            "stdin": "0\n",
+            "stdout": "1",
+            "public": true
+          },
+          {
+            "stdin": "1\n",
+            "stdout": "1",
+            "public": false
+          },
+          {
+            "stdin": "10\n",
+            "stdout": "3628800",
+            "public": false
+          }
         ]
       },
       {
@@ -180,10 +218,26 @@
           "Order matters: take the remainder first, or you will divide away the digit you wanted."
         ],
         "tests": [
-          { "stdin": "1234\n", "stdout": "10", "public": true },
-          { "stdin": "0\n", "stdout": "0", "public": true },
-          { "stdin": "9\n", "stdout": "9", "public": false },
-          { "stdin": "9999\n", "stdout": "36", "public": false }
+          {
+            "stdin": "1234\n",
+            "stdout": "10",
+            "public": true
+          },
+          {
+            "stdin": "0\n",
+            "stdout": "0",
+            "public": true
+          },
+          {
+            "stdin": "9\n",
+            "stdout": "9",
+            "public": false
+          },
+          {
+            "stdin": "9999\n",
+            "stdout": "36",
+            "public": false
+          }
         ]
       },
       {
@@ -199,10 +253,26 @@
           "rev * 10 shifts the existing digits left by one place, then you add the new digit."
         ],
         "tests": [
-          { "stdin": "1234\n", "stdout": "4321", "public": true },
-          { "stdin": "100\n", "stdout": "1", "public": true },
-          { "stdin": "7\n", "stdout": "7", "public": false },
-          { "stdin": "9000\n", "stdout": "9", "public": false }
+          {
+            "stdin": "1234\n",
+            "stdout": "4321",
+            "public": true
+          },
+          {
+            "stdin": "100\n",
+            "stdout": "1",
+            "public": true
+          },
+          {
+            "stdin": "7\n",
+            "stdout": "7",
+            "public": false
+          },
+          {
+            "stdin": "9000\n",
+            "stdout": "9",
+            "public": false
+          }
         ]
       },
       {
@@ -218,10 +288,26 @@
           "15 is divisible by both 3 and 5 — one test covers both."
         ],
         "tests": [
-          { "stdin": "5\n", "stdout": "1\n2\nFizz\n4\nBuzz", "public": true },
-          { "stdin": "15\n", "stdout": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz", "public": true },
-          { "stdin": "3\n", "stdout": "1\n2\nFizz", "public": false },
-          { "stdin": "1\n", "stdout": "1", "public": false }
+          {
+            "stdin": "5\n",
+            "stdout": "1\n2\nFizz\n4\nBuzz",
+            "public": true
+          },
+          {
+            "stdin": "15\n",
+            "stdout": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz",
+            "public": true
+          },
+          {
+            "stdin": "3\n",
+            "stdout": "1\n2\nFizz",
+            "public": false
+          },
+          {
+            "stdin": "1\n",
+            "stdout": "1",
+            "public": false
+          }
         ]
       },
       {
@@ -237,10 +323,26 @@
           "There is more than one correct shape here — pick one and defend it in a comment."
         ],
         "tests": [
-          { "stdin": "3\n", "stdout": "3 6 9 12 15 18 21 24 27 30", "public": true },
-          { "stdin": "1\n", "stdout": "1 2 3 4 5 6 7 8 9 10", "public": true },
-          { "stdin": "12\n", "stdout": "12 24 36 48 60 72 84 96 108 120", "public": false },
-          { "stdin": "5\n", "stdout": "5 10 15 20 25 30 35 40 45 50", "public": false }
+          {
+            "stdin": "3\n",
+            "stdout": "3 6 9 12 15 18 21 24 27 30",
+            "public": true
+          },
+          {
+            "stdin": "1\n",
+            "stdout": "1 2 3 4 5 6 7 8 9 10",
+            "public": true
+          },
+          {
+            "stdin": "12\n",
+            "stdout": "12 24 36 48 60 72 84 96 108 120",
+            "public": false
+          },
+          {
+            "stdin": "5\n",
+            "stdout": "5 10 15 20 25 30 35 40 45 50",
+            "public": false
+          }
         ]
       }
     ],
@@ -250,28 +352,44 @@
           "id": "q1",
           "q": "When is a for-loop better than a while-loop?",
           "a": "Use for when the number of iterations is known or computable up front; use while when it is not known in advance.",
-          "keywords": ["known", "advance", "count"],
+          "keywords": [
+            "known",
+            "advance",
+            "count"
+          ],
           "partial": "Mentions that the count is known in advance."
         },
         {
           "id": "q2",
           "q": "What is an off-by-one error and how do you avoid it?",
           "a": "The loop boundary includes or excludes one element too many or too few. Avoid it by deciding the range in English before writing the loop, then writing that range as a comment.",
-          "keywords": ["boundary", "range", "comment"],
+          "keywords": [
+            "boundary",
+            "range",
+            "comment"
+          ],
           "partial": "Names the boundary/range as the thing that must be decided first."
         },
         {
           "id": "q3",
           "q": "Inside a for-loop, where does `continue` jump to?",
           "a": "It jumps to the step expression (the increment), not back to the condition — so the loop still terminates.",
-          "keywords": ["step", "increment", "not"],
+          "keywords": [
+            "step",
+            "increment",
+            "not"
+          ],
           "partial": "Says it goes to the increment/step rather than the condition."
         },
         {
           "id": "q4",
           "q": "Why must an accumulator be initialised before the loop and not inside it?",
           "a": "Initialising inside the body resets it on every iteration, so each iteration overwrites the previous total and the final value is just the last iteration's contribution.",
-          "keywords": ["reset", "every", "iteration"],
+          "keywords": [
+            "reset",
+            "every",
+            "iteration"
+          ],
           "partial": "Says it is reset each iteration."
         }
       ]

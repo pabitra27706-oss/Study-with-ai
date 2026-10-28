@@ -4,7 +4,7 @@
  *
  *   node scripts/export-to-portfolio.mjs [path-to-portfolio-clone]
  *
- * The archive (pabitrahews06-oss/portfolio) is where the code lives and where
+ * The archive (pabitra27706-oss/portfolio) is where the code lives and where
  * people can read it, download it and zip it. This script takes what you
  * solved here and writes it into the archive's own data format, so the topic
  * pages, the code preview, the search and the ZIP download all just work.
@@ -27,7 +27,7 @@ if (!existsSync(join(target, "data"))) {
   console.error(
     `No portfolio clone at ${target}\n\n` +
       `Clone it once:\n` +
-      `  git clone https://github.com/pabitrahews06-oss/portfolio.git ../portfolio\n\n` +
+      `  git clone https://github.com/pabitra27706-oss/portfolio.git ../portfolio\n\n` +
       `then re-run:\n` +
       `  node scripts/export-to-portfolio.mjs ../portfolio`,
   );

@@ -2,39 +2,75 @@
 
 Read the topic first: **https://pabitrahews06-oss.github.io/Study-with-ai/learn/c-loops**
 
-Then do this, in this order. Nothing here needs a laptop, an API key or a network.
+> **Seeded example.** `solutions/t1.c`, `answers.json`, `notes.json`,
+> `review.md` and `history.md` in this folder are one attempt that has already
+> been judged, so you can see exactly what the agent writes back. **Overwrite
+> them with your own** — the agent notices the change and re-judges.
 
-## 1. The three files you create
+## Submit from anywhere
+
+You do not need this repository, this machine, or even a terminal. Write the
+code wherever you like and deliver it one of two ways.
+
+### A. Push it
 
 ```bash
 cd ~/Study-with-ai
-mkdir -p learn/c-loops/solutions
-
-nano learn/c-loops/solutions/t1.c    # your code for task 1
-nano learn/c-loops/solutions/t2.c    # task 2 ... and so on up to t6
-nano learn/c-loops/notes.json        # three lines
-nano learn/c-loops/answers.json      # four short answers
+nano learn/c-loops/solutions/t1.c     # your code
+nano learn/c-loops/answers.json       # your four short answers
+git add -A && git commit -m "c-loops: t1" && git push
 ```
 
-`notes.json` and `answers.json` already exist as empty templates. Fill them in.
+### B. Open an issue and paste it
 
-## 2. The three lines (`notes.json`)
+This is the path for when you wrote the code somewhere else — a notes app, a
+different machine, a browser.
 
-One sentence each. 220 characters maximum. The code carries the explanation, so
-these can be short.
+```bash
+gh issue create --title "[c-loops] t1" --label "topic:c-loops" --body "$(cat <<'EOF'
+# Topic: c-loops
+# Task: t1
 
-```json
-{
-  "whatILearned": "for-loop = init; test; step. Product, not sum.",
-  "challenges": "Used i=0 and got an off-by-one on the first term.",
-  "nextSteps": "Rewrite t2 using a while-loop."
-}
+```c
+// your code
 ```
 
-## 3. The rule for your comments
+# Answers
+q1: your answer
+q2: your answer
+q3: your answer
+q4: your answer
+EOF
+)"
+```
+
+The agent reads the issue, stages the code, judges it, posts the review back as
+a comment, and writes the notes into the repository.
+
+## What the agent does with it
+
+1. **Sense** — compiles your C, runs the hidden test cases, checks that your
+   comments say *why*, measures which key ideas your answers contain.
+2. **Judge** — reads the topic, your code, your answers and that evidence, and
+   decides what it means. Correctness alone is not enough: a program that
+   passes every test and a wrong mental model in the answers look identical to
+   a test runner and completely different to a teacher.
+3. **Note** — writes your three notes lines, in your voice, from what your
+   submission actually shows.
+4. **Keep** — writes `notes.json`, `review.md` and a dated line in
+   `history.md` back into the repository, refreshes the topic, and updates
+   `data/progress.json`. The site picks it up on the next build.
+
+## Your two jobs
+
+### 1. Answer four questions
+
+One short answer each. The agent reads the *meaning*, not just keywords.
+
+### 2. Comment with why, never what
 
 Every loop header and every value that changes each iteration needs a comment
-**on it or on the line above it** — and the comment has to say *why*.
+**on it or on the line above it** — and it has to say why.
 
 ```c
 /* ✗ restates the code */
@@ -44,33 +80,7 @@ multi = i * multi;
 multi = i * multi;   // multiply, not add: factorial is a product of 1..n
 ```
 
-The grader flags comments that only repeat what the code says. It never tries
-to understand your program — it only checks whether you explained the parts
-that are easy to get wrong.
-
-## 4. Grade it
-
-```bash
-node runner/grade.mjs
-```
-
-You get a table: which tasks passed, which failed, the exact expected-vs-got
-output for each failing case, any compile error, every comment it did not like,
-and which rubric answers are missing a key idea.
-
-The hidden edge cases run too — zero, one, leading zeros, the boundary. A
-program that only works on the visible example does not pass.
-
-## 5. Ship it
-
-```bash
-bash scripts/grade-and-commit.sh
-```
-
-That grades, commits and pushes. Pages rebuilds and your score updates on the
-site.
-
-## 6. If you get stuck
+## If you get stuck
 
 - The topic page has **hints** under every task, and the starter code.
 - Each task says, in one line, **what your comment must explain**.
@@ -78,9 +88,9 @@ site.
 - Still stuck? **Ask the AI — but paste your attempt first.** A pasted answer
   is an illusion of competence; a critique of your attempt is a lesson.
 
-## 7. Look at a good answer
+## Look at a good answer
 
 `curriculum/reference/c-loops/` holds a worked solution for every task, with
-the comments written the way the grader wants them. **Look only after you have
+the comments written the way the agent wants them. **Look only after you have
 attempted it yourself.** Looking first is how you end up able to recognise code
 but not write it.

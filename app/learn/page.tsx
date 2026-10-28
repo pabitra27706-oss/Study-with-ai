@@ -21,17 +21,17 @@ const STEPS = [
   {
     n: "02",
     title: "Attempt",
-    body: "You write the code and answer four short questions. You write as little prose as possible — three lines of notes and a commented program. The code carries the explanation.",
+    body: "You write the code and answer four short questions. You write as little prose as possible — a commented program and four one-line answers. The code carries the explanation.",
   },
   {
     n: "03",
-    title: "Commit",
-    body: "One commit from your phone. The grader compiles your C, runs it against hidden test cases, checks that your comments explain why, and scores your written answers.",
+    title: "Deliver",
+    body: "One commit from your phone — or paste the code into a GitHub issue from anywhere. The agent senses it (compiles, runs the hidden test cases, checks your comments) and judges it.",
   },
   {
     n: "04",
-    title: "See the number",
-    body: "The score lands in the site and in your repo history. A topic is not finished because it felt good — it is finished because the tests pass and you can answer without the notes.",
+    title: "Read the notes",
+    body: "The agent writes the verdict, the review and your three notes lines back into the repository, and the site shows them. A topic is not finished because it felt good — it is finished because the agent says so, and you can answer without the notes.",
   },
 ];
 
@@ -83,10 +83,8 @@ export default function LearnPage() {
           {index.topics.map((topic) => {
             const result = progress?.topics?.[topic.id];
             const score = result?.score ?? 0;
-            const done = result
-              ? Object.values(result.tasks).filter((task) => task.status === "passed").length
-              : 0;
-            const total = index.topics.length ? topic.points : 0;
+            const done = result?.tasksPassed ?? 0;
+            const total = result?.tasksTotal ?? topic.points;
 
             return (
               <Link
@@ -103,13 +101,15 @@ export default function LearnPage() {
                       {result && (
                         <span
                           className={`rounded-full border px-2 py-0.5 font-mono text-[11px] ${
-                            result.status === "mastered"
+                            result.status === "correct"
                               ? "border-ok/40 text-ok"
-                              : result.status === "done"
+                              : result.status === "mostly-correct"
                                 ? "border-accent/40 text-accent"
-                                : result.status === "learning"
+                                : result.status === "incomplete"
                                   ? "border-warn/40 text-warn"
-                                  : "border-line text-faint"
+                                  : result.status === "incorrect"
+                                    ? "border-bad/40 text-bad"
+                                    : "border-line text-faint"
                           }`}
                         >
                           {result.status}
@@ -119,6 +119,11 @@ export default function LearnPage() {
                     <p className="mt-2 max-w-2xl text-[13.5px] leading-relaxed text-muted">
                       {topic.description}
                     </p>
+                    {result?.notes?.whatILearned && (
+                      <p className="mt-3 border-l-2 border-brand/40 pl-3 text-[13px] leading-relaxed text-muted">
+                        {result.notes.whatILearned}
+                      </p>
+                    )}
                     <div className="mt-3 flex flex-wrap gap-1.5">
                       {topic.tags.slice(0, 6).map((tag) => (
                         <Tag key={tag}>{tag}</Tag>
@@ -132,7 +137,7 @@ export default function LearnPage() {
                         {score}%
                       </p>
                       <p className="mt-0.5 text-[11px] uppercase tracking-wider text-faint">
-                        {done} tasks done
+                        {done}/{result?.tasksTotal ?? topic.points} tasks
                       </p>
                     </div>
                     <ArrowRight className="h-4 w-4 text-faint transition-transform group-hover:translate-x-0.5 group-hover:text-brand-soft" />
@@ -172,8 +177,8 @@ export default function LearnPage() {
 # 2. write your attempt
 nano ~/Study-with-ai/learn/c-loops/solutions/t1.c
 
-# 3. grade it — compiles your C, runs the tests, writes the score
-node runner/grade.mjs
+# 3. the agent — sense, judge, note, keep
+node runner/agent.mjs
 
 # 4. ship it — Pages rebuilds and your scoreboard updates
 git add -A && git commit -m "c-loops: t1 done" && git push`}</code>
@@ -196,7 +201,7 @@ git add -A && git commit -m "c-loops: t1 done" && git push`}</code>
             <CircleCheck className="h-4 w-4 text-brand-soft" />
             <h3 className="mt-3 text-sm font-semibold text-ink">Hidden test cases</h3>
             <p className="mt-2 text-[13px] leading-relaxed text-muted">
-              You see one example per task. The grader runs the edge cases too —
+              You see one example per task. The agent runs the edge cases too —
               zero, one, leading zeros, the boundary. A program that only works
               on the example does not pass.
             </p>

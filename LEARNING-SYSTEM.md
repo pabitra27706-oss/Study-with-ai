@@ -1,7 +1,8 @@
 # The learning system
 
-> AI writes the topic. You attempt it. The compiler decides whether you got it.
-> Nothing here asks you to feel like you are learning.
+> **The AI judges. The compiler only reports.** The agent reads your code, your
+> answers and the machine evidence, decides what it means, and writes its notes
+> back into the repository.
 
 This is the machine behind the `/learn` route. It exists because of one
 uncomfortable finding in the GitHub audit: **47 repositories, zero automated
@@ -12,41 +13,83 @@ notebook, not a learning system.
 
 ---
 
-## 1. What is in the box
+## 1. The shape of it
+
+```
+   you write the code anywhere
+              │
+              ├── push it to learn/<topic>/solutions/
+              └── or paste it into a GitHub issue
+                          │
+                          ▼
+              ┌───────────────────────────┐
+              │  1. SENSE  (the compiler) │   compiles · runs the hidden tests
+              │     machine evidence      │   checks the comments · measures the answers
+              └─────────────┬─────────────┘
+                            │  data/evidence.json
+                            ▼
+              ┌───────────────────────────┐
+              │  2. JUDGE  (the AI)       │   reads the topic + your code + your
+              │     the verdict            │   answers + the evidence
+              └─────────────┬─────────────┘
+                            │  verdict · score · review · notes
+                            ▼
+              ┌───────────────────────────┐
+              │  3. NOTE + KEEP            │   writes learn/<topic>/notes.json
+              │     the agent keeps the    │   learn/<topic>/review.md
+              │     repository current     │   learn/<topic>/history.md
+              │                           │   curriculum/topics/<id>.json
+              │                           │   data/progress.json
+              └─────────────┬─────────────┘
+                            ▼
+                     commit → Pages rebuilds → the scoreboard moves
+```
+
+**Why the compiler is not the judge.** A test runner can tell you that a
+program failed on `n = 0`. It cannot tell you whether you understand why.
+Those two cases look identical to `gcc` and completely different to a teacher:
+one is a typo, the other is a broken mental model. The AI sees both the machine
+evidence *and* your comments *and* your written answers, and it says which one
+this is.
+
+**Why the notes are the AI's.** Your three lines should describe what your
+submission actually demonstrated — not what you intended. If you write them
+yourself, they drift towards what you hoped happened. The agent derives them
+from what actually ran.
+
+---
+
+## 2. What is in the box
 
 | Path | What it is | Who writes it |
 |---|---|---|
 | `curriculum/topics/*.json` | The **topic pack**: explanation, curated videos, tasks, rubric | AI |
-| `curriculum/reference/*/` | Worked solutions that show what a good answer looks like | AI |
+| `curriculum/reference/*/` | Worked solutions showing what a good answer looks like | AI |
 | `learn/<topic>/solutions/*.c` | **Your code** | You |
-| `learn/<topic>/notes.json` | Your three lines | You |
-| `learn/<topic>/answers.json` | Your four short answers | You |
-| `runner/grade.mjs` | Compiles, tests, scores, explains | — |
-| `data/progress.json` | The score. Committed, so it survives and shows on the site | The grader |
-| `scripts/grade-and-commit.sh` | The whole loop in one command | — |
-| `scripts/learn-workflow.yml` | Optional CI that grades on every push | — |
+| `learn/<topic>/answers.json` | **Your four short answers** | You |
+| `learn/<topic>/notes.json` | **The notes the agent wrote about your work** | Agent |
+| `learn/<topic>/review.md` | **The written review** | Agent |
+| `learn/<topic>/history.md` | Every judgement, dated | Agent |
+| `runner/agent.mjs` | The judge, the note-taker, the keeper | — |
+| `runner/evidence.mjs` | The sensor: compile, test, comment check | — |
+| `runner/lib/judge.mjs` | The prompt and the verdict parsing | — |
+| `runner/lib/providers/` | `gemini.mjs` (real) · `mock.mjs` (offline fallback) | — |
+| `data/evidence.json` | The machine facts | Agent |
+| `data/progress.json` | The verdict. Committed, so it survives and shows on the site | Agent |
+| `scripts/review-and-commit.sh` | The whole loop in one command | — |
+| `scripts/learn-workflow.yml` | CI that judges on every push and every issue | — |
 | `scripts/export-to-portfolio.mjs` | Publishes your work into the Learning Archive | — |
 
 ---
 
-## 2. The two rules
+## 3. The two rules
 
-Everything else in this document is mechanics. These two rules are the point.
+Everything else in this document is mechanics. These two are the point.
 
 ### Rule 1 — your writing is minimal, your code is not
 
-You write **three lines** of notes per topic:
-
-```json
-{
-  "whatILearned": "for-loop = init; test; step. Product, not sum.",
-  "challenges": "Used i=0 and got an off-by-one on the first term.",
-  "nextSteps": "Rewrite t2 using a while-loop."
-}
-```
-
-Maximum 220 characters each. If it needs more than a sentence, it is not
-understood yet — and the grader tells you so.
+You write **four short answers** and that is all. The three notes lines are the
+agent's job.
 
 **The code carries the explanation.** That is why the notes can be short.
 
@@ -62,189 +105,142 @@ A what-comment adds nothing and rots the moment the code changes. A why-comment
 survives edits and it is the only thing that will still make sense to you in
 six months.
 
-`runner/lib/explain.mjs` checks this mechanically:
-
-- every loop header and every value that changes each iteration needs a
-  comment on it or on the line above;
-- a comment that only restates the code is flagged;
-- a comment with no causal marker (`because`, `so`, `not`, `instead of`, `must`,
-  `to avoid`, `rather than`, …) is flagged.
+`runner/lib/explain.mjs` checks this mechanically: every loop header and every
+value that changes each iteration needs a comment on it or on the line above,
+a comment that only restates the code is flagged, and a comment with no causal
+marker (`because`, `so`, `not`, `instead of`, `must`, `to avoid`, …) is flagged.
 
 It never tries to understand your program. It only asks whether you explained
 the parts that are easy to get wrong. **Repeatable is what makes it a system.**
 
 ---
 
-## 3. The loop, from a phone
+## 4. Submitting from anywhere
+
+You do not need this repository, this machine, or a terminal.
+
+### Push it
 
 ```bash
-# 1. read the topic:  https://pabitrahews06-oss.github.io/Study-with-ai/learn
-
-# 2. write your attempt
-mkdir -p learn/c-loops/solutions
 nano learn/c-loops/solutions/t1.c
-nano learn/c-loops/notes.json
 nano learn/c-loops/answers.json
-
-# 3. grade — compiles your C, runs the hidden tests, writes the score
-node runner/grade.mjs
-
-# 4. ship
-bash scripts/grade-and-commit.sh
+git add -A && git commit -m "c-loops: t1" && git push
 ```
 
-**Setup on Termux, once:**
+### Or open an issue and paste it
 
 ```bash
-pkg install nodejs clang
+gh issue create --title "[c-loops] t1" --label "topic:c-loops" --body "$(cat <<'EOF'
+# Topic: c-loops
+# Task: t1
+
+```c
+// your code
 ```
 
-No API key, no cost, no network. The grader is local.
+# Answers
+q1: your answer
+EOF
+)"
+```
+
+The agent reads the issue, stages the code into `learn/<topic>/solutions/`,
+merges the answers, judges, posts the review back as a comment, and writes the
+notes into the repository.
+
+This is the path for work done in a notes app, on another machine, or in a
+browser — and it is the reason the agent exists rather than a local script.
 
 ---
 
-## 4. How the score is built
+## 5. What the agent writes back
 
-A topic score is four parts:
-
-| Part | Weight | What it measures |
-|---|---|---|
-| **tasks** | 70% | Do the programs actually work? |
-| **written** | 15% | Do the four answers contain the key ideas? |
-| **notes** | 5% | Are all three lines written, and short enough? |
-| **explain** | 10% | Does the code argue for itself? |
-
-### Tasks (70%)
-
-Each task compiles with `gcc -std=c17 -Wall -Wextra` and runs against test
-cases. You see one public example per task; the grader also runs the hidden
-edge cases — zero, one, leading zeros, the boundary. A program that only works
-on the example does not pass.
-
-A task earns partial credit per test, so a partially-correct program shows a
-gradient rather than a cliff.
-
-### Written answers (15%)
-
-Each rubric question has key ideas attached. The scorer counts how many your
-answer contains. It is deliberately dumb — keyword coverage, not judgement.
-A dumb scorer is honest: it cannot be fooled by a confident paragraph that
-says nothing, and it never silently rewards a lucky phrase.
-
-### Notes (5%)
-
-Three fields filled, each under 220 characters. Over the limit costs points.
-
-### Explainability (10%)
-
-The checker described in rule 2.
-
-### Status
-
-| Status | Meaning |
+| File | Contents |
 |---|---|
-| `not-started` | No submission yet |
-| `learning` | Something submitted, not finished |
-| `done` | ≥70% and every task passed |
-| `mastered` | ≥90%, every task passed, all tasks submitted |
+| `learn/<topic>/notes.json` | The three notes lines, in your voice, derived from what your submission showed |
+| `learn/<topic>/review.md` | The written review: what is solid, what to fix first, what to fix next, the one section to re-read |
+| `learn/<topic>/history.md` | One dated line per judgement — the record of what you could do on which day |
+| `curriculum/topics/<id>.json` | The topic's `learningNotes` are refreshed with the same notes |
+| `data/progress.json` | The verdict, the score and the review |
+| `data/evidence.json` | The machine facts, for anyone who wants to check the agent's reasoning |
+
+The notes are capped at 220 characters and forced onto one line. A note that
+needs a bullet list is a note that is not understood yet.
 
 ---
 
-## 5. Adding a topic
+## 6. The AI key (optional but recommended)
 
-A topic pack is one JSON file. The agent writes the teaching half; you write
-the doing half.
+The agent runs without a key — it falls back to the machine-only evaluation and
+says so in the review. But the difference is the whole point: without a key it
+tells you *what* happened; with a key it tells you *why*.
 
-```bash
-cp curriculum/topics/c-loops.json curriculum/topics/c-pointers.json
-```
-
-Then edit it:
-
-1. `topic` — id, title, language, category, difficulty, tags, description.
-2. `curriculum.explanation` — an array of `{h, md}` sections. **Write the whole
-   thing.** The order people get wrong, the bugs that cost marks, the idiomatic
-   choice. Not a teaser and not a summary.
-3. `curriculum.videos` — **each one needs a `why`.** A link without a reason is
-   a list; a link with a reason is a curriculum. Prefer specific videos over
-   channels. Say what each one is *for*.
-4. `curriculum.references` — text references for the parts videos gloss over.
-5. `curriculum.tasks` — prompt, starter code, `tests` (mark the ones the learner
-   may see with `"public": true`), `explainTarget`, `hints`.
-6. `curriculum.rubric.written` — questions with `keywords` for scoring.
-7. `curriculum.rules` — `writingMaxChars`, `commentPolicy`, `notePolicy`.
-
-Then register it in `curriculum/index.json` and create `learn/<id>/` with empty
-`notes.json` and `answers.json`.
-
-**The `explainTarget` field is the one people skip.** It states, in one line,
-what your comment for that task has to explain. It is the difference between
-"write a factorial" and "write a factorial and say why the accumulator starts
-at 1".
-
----
-
-## 6. The AI review (optional)
-
-The deterministic grader is the judge. The AI review is the extra pair of eyes.
-
-Set a **free-tier Gemini key** at <https://aistudio.google.com/apikey>, then:
+Get a free Gemini key at <https://aistudio.google.com/apikey>, then:
 
 ```bash
 export GEMINI_API_KEY=...
-node runner/grade.mjs
+node runner/agent.mjs
 ```
 
-The review reads your three lines, your four answers and the task results, and
-returns exactly four things: what is solid, what to fix first, what to fix
-next, and the one section to re-read.
+Or add it as a repository secret named `GEMINI_API_KEY` and install the
+workflow (section 7) and it runs unattended.
 
-It is **strictly optional** — without a key, nothing else changes.
+The prompt asks for JSON:
 
-To make it automatic, add `GEMINI_API_KEY` as a repository secret and install
-the workflow (section 7).
+```json
+{
+  "verdict": "correct | mostly-correct | incomplete | incorrect",
+  "score": 0,
+  "whatILearned": "one sentence, first person",
+  "challenges": "one sentence, first person",
+  "nextSteps": "one sentence, first person",
+  "misconceptions": ["..."],
+  "review": "150-300 words of markdown"
+}
+```
+
+And it is told, explicitly: *never hand over the full solution as a fix; give
+the correction, not the finished program.* You have to write the next one.
 
 ---
 
-## 7. Installing the CI grader
-
-The grader works locally, which is the point. But if you would rather never
-think about it, install the workflow:
+## 7. Installing the CI agent
 
 ```bash
 cp scripts/learn-workflow.yml .github/workflows/learn.yml
 git add .github/workflows/learn.yml
-git commit -m "Add the learning grader workflow"
+git commit -m "Add the learning agent workflow"
 git push
 ```
 
-After that, every push that touches `learn/` is graded automatically and the
-score is committed back. `gh run watch` shows it happening.
+After that:
+
+- every push that touches `learn/` is judged and the notes are committed back;
+- every issue opened or edited is staged, judged, and the review is posted as
+  a comment;
+- `gh run watch` shows it happening.
+
+**The workflow will not loop.** The agent fingerprints each submission
+(SHA-256 of the code and the answers) and skips anything it has already judged,
+so its own commit does not trigger another judgement.
 
 ---
 
 ## 8. Publishing into the Learning Archive
 
-Your archive lives at `pabitrahews06-oss/portfolio` — 68 topics, 82 files, and
-the only place people can read your code, preview it, and download it.
+Your archive lives at `pabitra27706-oss/portfolio` — 68 topics, 82 files, and
+the only place people can read your code, preview it and download it.
 
 ```bash
-git clone https://github.com/pabitrahews06-oss/portfolio.git ../portfolio
+git clone https://github.com/pabitra27706-oss/portfolio.git ../portfolio
 node scripts/export-to-portfolio.mjs ../portfolio
 cd ../portfolio && git status && git diff
 git commit -am "Add loops in C from the AI curriculum" && git push
 ```
 
-That writes:
-
-- `data/topics/<lang>/<id>.json` in the archive's own schema, so the topic
-  page, the code preview, the search and the ZIP download all work;
-- `content/<lang>/<id>-<task>.c` — your actual code;
-- `data/curriculum/<id>.json` — the full pack, so an agent can read the
-  teaching material later;
-- an updated `data/index.json`.
-
-It writes and never pushes. Review the diff, then commit.
+That writes the topic in the archive's own schema, copies your actual code
+into `content/`, and refreshes `data/index.json` — including the agent's notes,
+so the archive shows your latest judgement, not a one-line summary.
 
 ---
 
@@ -252,12 +248,13 @@ It writes and never pushes. Review the diff, then commit.
 
 | Command | What it does |
 |---|---|
-| `node runner/grade.mjs` | Grade everything, write `data/progress.json` |
-| `node runner/grade.mjs c-loops` | Grade one topic |
-| `node runner/grade.mjs --json` | Machine-readable output |
-| `node runner/grade.mjs --solutions DIR` | Grade a different solutions folder |
-| `node runner/grade.mjs --no-ai` | Skip the AI review even if a key is set |
-| `bash scripts/grade-and-commit.sh` | Grade, commit, push — the whole loop |
+| `node runner/agent.mjs` | Sense, judge, note, keep |
+| `node runner/agent.mjs c-loops` | One topic |
+| `node runner/agent.mjs --issue` | Judge a submission that arrived as an issue |
+| `node runner/agent.mjs --force` | Re-judge even if the submission is unchanged |
+| `node runner/agent.mjs --dry-run` | Print the prompt the judge would receive |
+| `node runner/agent.mjs --provider mock` | Run without a key |
+| `bash scripts/review-and-commit.sh` | Judge, commit, push — the whole loop |
 | `node scripts/export-to-portfolio.mjs ../portfolio` | Publish into the archive |
 | `npm run preview` | Serve the built site locally |
 
@@ -265,21 +262,20 @@ It writes and never pushes. Review the diff, then commit.
 
 ## 10. Why it is built this way
 
-- **The grader is local and free.** No API key, no quota, no network. It runs
-  in Termux because `clang` is a Termux package. A system that needs a paid
+- **The AI judges, because only a judge can distinguish a typo from a broken
+  mental model.** The compiler is kept, but demoted to a sensor.
+- **The notes are the agent's, because they must describe what happened, not
+  what you hoped happened.**
+- **The grader is local and free.** `clang` is a Termux package, so the whole
+  loop runs on the phone with no key and no network. A system that needs a paid
   service is a system that stops.
-- **The checks are mechanical, not clever.** Keyword coverage and comment
-  shape. Clever graders fail in ways you cannot debug from a phone; mechanical
-  ones fail in ways you can read.
+- **Everything comes back into the repository.** The agent writes its notes,
+  its review and a dated history line, so the repo is the memory and the site
+  is the scoreboard. Nothing lives in a chat window that is gone tomorrow.
 - **The score is committed.** Git history becomes the record of what you could
   do on which day. That is a CV line with receipts.
-- **The explanation is written once, in full.** Re-reading the same concept in
-  six different videos is not revision, it is a tax. One written explanation
-  plus one video for the part that will not stick is cheaper and better.
-- **Your writing stays minimal on purpose.** Writing is expensive on a phone
-  and it is not where the learning happens. The thinking goes into the code.
 
 ---
 
-**The one sentence:** *use AI to be grilled, not to be told; use the compiler
-to judge, not the feeling of progress.*
+**The one sentence:** *use AI to be grilled, not to be told; use Git to remember
+what you actually understood, not what you hoped you did.*

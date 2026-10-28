@@ -7,9 +7,11 @@ import { renderMarkdown } from "@/lib/markdown";
 import {
   getCurriculumIndex,
   getCurriculumTopic,
+  getEvidence,
+  getTopicHistory,
   getTopicProgress,
   type CurriculumTask,
-  type TaskProgress,
+  type TaskEvidence,
 } from "@/lib/curriculum";
 
 export const dynamic = "force-static";
@@ -32,31 +34,33 @@ export async function generateMetadata({
   };
 }
 
-const STATUS_STYLE: Record<string, string> = {
+const VERDICT_STYLE: Record<string, string> = {
+  correct: "border-ok/40 text-ok",
+  "mostly-correct": "border-accent/40 text-accent",
+  incomplete: "border-warn/40 text-warn",
+  incorrect: "border-bad/40 text-bad",
+  "judge-error": "border-bad/40 text-bad",
+};
+
+const TASK_STYLE: Record<string, string> = {
   passed: "border-ok/40 text-ok",
   partial: "border-warn/40 text-warn",
   failed: "border-bad/40 text-bad",
   "compile-error": "border-bad/40 text-bad",
+  "not-submitted": "border-line text-faint",
   "not-started": "border-line text-faint",
 };
 
-function TaskBlock({
-  task,
-  result,
-}: {
-  task: CurriculumTask;
-  result?: TaskProgress;
-}) {
-  const status = result?.status ?? "not-started";
+function TaskBlock({ task, result }: { task: CurriculumTask; result?: TaskEvidence }) {
+  const status = result?.status ?? "not-submitted";
   const publicTests = task.tests.filter((test) => test.public !== false);
+  const hidden = task.tests.length - publicTests.length;
 
   return (
     <Card className="overflow-hidden">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-5 py-3.5">
         <div className="flex items-center gap-3">
-          <span
-            className={`rounded-md border px-2 py-0.5 font-mono text-[11px] ${STATUS_STYLE[status]}`}
-          >
+          <span className={`rounded-md border px-2 py-0.5 font-mono text-[11px] ${TASK_STYLE[status]}`}>
             {status}
           </span>
           <h3 className="text-[15px] font-semibold text-ink">{task.title}</h3>
@@ -73,9 +77,7 @@ function TaskBlock({
 
         {result?.compileError && (
           <div className="rounded-lg border border-bad/30 bg-bad/5 px-4 py-3">
-            <p className="font-mono text-[11px] uppercase tracking-wider text-bad">
-              compile error
-            </p>
+            <p className="font-mono text-[11px] uppercase tracking-wider text-bad">compile error</p>
             <p className="mt-1.5 font-mono text-[12.5px] leading-relaxed text-ink">
               {result.compileError}
             </p>
@@ -84,9 +86,7 @@ function TaskBlock({
 
         {result?.failing && result.failing.length > 0 && (
           <div className="space-y-2">
-            <p className="font-mono text-[11px] uppercase tracking-wider text-warn">
-              failing cases
-            </p>
+            <p className="font-mono text-[11px] uppercase tracking-wider text-warn">failing cases</p>
             {result.failing.map((failure, index) => (
               <div
                 key={index}
@@ -113,8 +113,7 @@ function TaskBlock({
               <code>{`input:  ${publicTests[0]?.stdin.trim() ?? "-"}\nexpect: ${publicTests[0]?.stdout ?? "-"}`}</code>
             </pre>
             <p className="mt-2 text-[11.5px] leading-relaxed text-faint">
-              {task.tests.length - publicTests.length} hidden edge case
-              {task.tests.length - publicTests.length === 1 ? "" : "s"} run by the grader too.
+              {hidden} hidden edge case{hidden === 1 ? "" : "s"} run by the agent too.
             </p>
           </div>
 
@@ -159,7 +158,11 @@ export default async function LearnTopicPage({
   if (!pack) notFound();
 
   const { topic, curriculum } = pack;
-  const result = getTopicProgress(id);
+  const verdict = getTopicProgress(id);
+  const evidence = getEvidence();
+  const topicEvidence = evidence?.topics?.[id];
+  const history = getTopicHistory(id);
+
   const sections = await Promise.all(
     curriculum.explanation.map(async (section) => ({
       ...section,
@@ -167,7 +170,9 @@ export default async function LearnTopicPage({
     })),
   );
 
-  const score = result?.score ?? 0;
+  const score = verdict?.score ?? 0;
+  const notes = verdict?.notes;
+  const reviewHtml = verdict?.review ? await renderMarkdown(verdict.review) : null;
 
   return (
     <main className="mx-auto max-w-4xl px-5 py-12 sm:py-16">
@@ -184,19 +189,9 @@ export default async function LearnTopicPage({
           <Tag>{topic.language}</Tag>
           <Tag>{topic.category}</Tag>
           <Tag>{topic.difficulty}</Tag>
-          {result && (
-            <span
-              className={`rounded-full border px-2 py-0.5 font-mono text-[11px] ${
-                result.status === "mastered"
-                  ? "border-ok/40 text-ok"
-                  : result.status === "done"
-                    ? "border-accent/40 text-accent"
-                    : result.status === "learning"
-                      ? "border-warn/40 text-warn"
-                      : "border-line text-faint"
-              }`}
-            >
-              {result.status}
+          {verdict && (
+            <span className={`rounded-full border px-2 py-0.5 font-mono text-[11px] ${VERDICT_STYLE[verdict.status] ?? "border-line text-faint"}`}>
+              {verdict.status}
             </span>
           )}
         </div>
@@ -204,55 +199,111 @@ export default async function LearnTopicPage({
         <h1 className="mt-4 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
           {topic.title}
         </h1>
-        <p className="mt-4 text-[15px] leading-relaxed text-muted">
-          {curriculum.summary}
-        </p>
+        <p className="mt-4 text-[15px] leading-relaxed text-muted">{curriculum.summary}</p>
+      </header>
 
-        <div className="mt-6 rounded-[14px] border border-line bg-panel px-5 py-4">
-          <div className="flex items-end justify-between gap-4">
-            <div>
-              <p className="font-mono text-[11px] uppercase tracking-wider text-faint">
-                your score
+      {verdict && (
+        <section className="mb-12">
+          <Card className="overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line px-5 py-4">
+              <div>
+                <p className="font-mono text-[11px] uppercase tracking-wider text-faint">
+                  the agent&apos;s verdict
+                </p>
+                <p className="mt-1.5 flex items-center gap-2.5">
+                  <span className={`rounded-md border px-2 py-0.5 font-mono text-[11px] ${VERDICT_STYLE[verdict.status] ?? "border-line text-faint"}`}>
+                    {verdict.status}
+                  </span>
+                  <span className="font-mono text-2xl font-semibold text-ink">{score}%</span>
+                </p>
+              </div>
+              <p className="font-mono text-[11px] leading-relaxed text-faint">
+                judged {verdict.lastRun?.slice(0, 16).replace("T", " ")}
+                {verdict.provider ? ` by ${verdict.provider}` : ""}
+                {verdict.tasksTotal ? ` · ${verdict.tasksPassed}/${verdict.tasksTotal} tasks` : ""}
               </p>
-              <p className="mt-1 font-mono text-3xl font-semibold text-ink">{score}%</p>
             </div>
-            {result && (
-              <div className="text-right font-mono text-[11px] leading-relaxed text-faint">
-                <p>tasks {result.breakdown.tasks}%</p>
-                <p>written {result.breakdown.written}%</p>
-                <p>notes {result.breakdown.notes}%</p>
-                <p>explain {result.breakdown.explain}%</p>
+
+            {notes && (
+              <div className="grid gap-px bg-line sm:grid-cols-3">
+                {[
+                  { label: "What I learned", value: notes.whatILearned },
+                  { label: "What broke", value: notes.challenges },
+                  { label: "What is next", value: notes.nextSteps },
+                ].map((line) => (
+                  <div key={line.label} className="bg-panel px-5 py-4">
+                    <p className="font-mono text-[11px] uppercase tracking-wider text-faint">
+                      {line.label}
+                    </p>
+                    <p className="mt-2 text-[13px] leading-relaxed text-ink">
+                      {line.value || <span className="text-faint">—</span>}
+                    </p>
+                  </div>
+                ))}
               </div>
             )}
-          </div>
-          <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-line-soft">
-            <div
-              className="h-full rounded-full bg-accent transition-[width] duration-700"
-              style={{ width: `${score}%` }}
-            />
-          </div>
-        </div>
-      </header>
+
+            {reviewHtml && (
+              <div className="border-t border-line px-5 py-5">
+                <div className="md max-w-none" dangerouslySetInnerHTML={{ __html: reviewHtml }} />
+              </div>
+            )}
+
+            {verdict.misconceptions && verdict.misconceptions.length > 0 && (
+              <div className="border-t border-line px-5 py-5">
+                <p className="font-mono text-[11px] uppercase tracking-wider text-warn">
+                  misconceptions to unlearn
+                </p>
+                <ul className="mt-3 space-y-1.5">
+                  {verdict.misconceptions.map((item, index) => (
+                    <li key={index} className="flex gap-2 text-[13px] leading-relaxed text-muted">
+                      <span className="font-mono text-faint">·</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </Card>
+        </section>
+      )}
 
       <section className="mb-12">
         <Card className="overflow-hidden">
           <div className="flex items-center gap-2 border-b border-line px-4 py-2.5">
             <Terminal className="h-3.5 w-3.5 text-faint" />
             <span className="font-mono text-[11px] uppercase tracking-wider text-faint">
-              how to submit
+              submit from anywhere
             </span>
           </div>
-          <pre className="overflow-x-auto px-4 py-4 font-mono text-[12.5px] leading-relaxed text-muted">
-            <code>{`mkdir -p learn/${topic.id}/solutions
-nano learn/${topic.id}/solutions/t1.c     # your code
-
-# three lines, no essays
-nano learn/${topic.id}/notes.json
+          <div className="space-y-4 px-4 py-4">
+            <p className="text-[13px] leading-relaxed text-muted">
+              You do not have to be in this repository, or on this machine. Write the
+              code wherever you like and push it here — or open an issue on GitHub and
+              paste it in. The agent picks it up either way and writes its notes back
+              into the repository.
+            </p>
+            <pre className="overflow-x-auto rounded-lg border border-line bg-panel-2 px-4 py-3 font-mono text-[12.5px] leading-relaxed text-muted">
+              <code>{`# A. push it
+nano learn/${topic.id}/solutions/t1.c
 nano learn/${topic.id}/answers.json
+git add -A && git commit -m "${topic.id}: t1" && git push
 
-node runner/grade.mjs                # compile, test, score
-git add -A && git commit -m "${topic.id}: t1" && git push`}</code>
-          </pre>
+# B. or open an issue — paste the code and the answers
+gh issue create --title "[${topic.id}] t1" --label "topic:${topic.id}" --body "$(cat <<'EOF'
+# Topic: ${topic.id}
+# Task: t1
+
+\`\`\`c
+// your code
+\`\`\`
+
+# Answers
+q1: your answer
+EOF
+)"`}</code>
+            </pre>
+          </div>
         </Card>
       </section>
 
@@ -262,10 +313,7 @@ git add -A && git commit -m "${topic.id}: t1" && git push`}</code>
           {sections.map((section) => (
             <article key={section.h}>
               <h3 className="mb-3 text-base font-semibold text-ink">{section.h}</h3>
-              <div
-                className="md max-w-none"
-                dangerouslySetInnerHTML={{ __html: section.html }}
-              />
+              <div className="md max-w-none" dangerouslySetInnerHTML={{ __html: section.html }} />
             </article>
           ))}
         </div>
@@ -322,13 +370,12 @@ git add -A && git commit -m "${topic.id}: t1" && git push`}</code>
       <section className="mb-12">
         <h2 className="mb-2 text-xl font-semibold text-ink">Tasks</h2>
         <p className="mb-5 text-[13.5px] leading-relaxed text-muted">
-          Attempt before you look at the hints. The grader runs the hidden edge
-          cases as well, and it will not accept a program that only works on the
-          example.
+          Attempt before you look at the hints. The agent runs the hidden edge cases
+          as well, and it will not accept a program that only works on the example.
         </p>
         <div className="space-y-4">
           {curriculum.tasks.map((task) => (
-            <TaskBlock key={task.id} task={task} result={result?.tasks?.[task.id]} />
+            <TaskBlock key={task.id} task={task} result={topicEvidence?.tasks?.[task.id]} />
           ))}
         </div>
       </section>
@@ -336,13 +383,13 @@ git add -A && git commit -m "${topic.id}: t1" && git push`}</code>
       <section className="mb-12">
         <h2 className="mb-2 text-xl font-semibold text-ink">Written rubric</h2>
         <p className="mb-5 text-[13.5px] leading-relaxed text-muted">
-          Four questions, four short answers. The scorer checks which key ideas
-          your answer contains — it cannot be fooled by a confident paragraph
-          that says nothing.
+          Four questions, four short answers. The keyword coverage below is a hint
+          for you; the agent judges the meaning itself.
         </p>
         <div className="space-y-3">
           {curriculum.rubric.written.map((item) => {
-            const scored = result?.written.perQuestion?.find((entry) => entry.id === item.id);
+            const scored = topicEvidence?.written.perQuestion?.find((entry) => entry.id === item.id);
+            const answer = topicEvidence?.answers?.[item.id];
             return (
               <Card key={item.id} className="p-5">
                 <div className="flex items-start justify-between gap-4">
@@ -361,10 +408,13 @@ git add -A && git commit -m "${topic.id}: t1" && git push`}</code>
                     {scored ? `${Math.round(scored.score * 100)}%` : "—"}
                   </span>
                 </div>
-                {scored?.feedback && (
-                  <p className="mt-3 border-l-2 border-line pl-3 text-[13px] leading-relaxed text-muted">
-                    {scored.feedback}
+                {answer && (
+                  <p className="mt-3 border-l-2 border-brand/40 pl-3 text-[13px] leading-relaxed text-muted">
+                    {answer}
                   </p>
+                )}
+                {scored?.feedback && scored.score < 1 && (
+                  <p className="mt-2 text-[12.5px] leading-relaxed text-faint">{scored.feedback}</p>
                 )}
               </Card>
             );
@@ -372,38 +422,15 @@ git add -A && git commit -m "${topic.id}: t1" && git push`}</code>
         </div>
       </section>
 
-      <section className="mb-12">
-        <h2 className="mb-2 text-xl font-semibold text-ink">Your three lines</h2>
-        <p className="mb-5 text-[13.5px] leading-relaxed text-muted">
-          {curriculum.rules?.notePolicy ??
-            "One sentence each. If it needs more than a sentence, it is not understood yet."}
-        </p>
-        <div className="grid gap-3 sm:grid-cols-3">
-          {(result?.notes.perField ?? []).map((field) => (
-            <Card key={field.field} className="p-4">
-              <p className="font-mono text-[11px] uppercase tracking-wider text-faint">
-                {field.label}
-              </p>
-              <p className="mt-2 min-h-[3rem] text-[13px] leading-relaxed text-ink">
-                {field.text || <span className="text-faint">empty</span>}
-              </p>
-              <p className="mt-2 text-[11.5px] leading-relaxed text-faint">
-                {field.filled ? `${field.chars} chars` : "not written yet"}
-              </p>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {result && result.explain.flags.length > 0 && (
+      {topicEvidence?.explain.flags && topicEvidence.explain.flags.length > 0 && (
         <section className="mb-12">
-          <h2 className="mb-2 text-xl font-semibold text-ink">Explainability</h2>
+          <h2 className="mb-2 text-xl font-semibold text-ink">Comment problems</h2>
           <p className="mb-5 text-[13.5px] leading-relaxed text-muted">
             {curriculum.rules?.commentPolicy ??
               "Every non-obvious line needs a why-comment, not a what-comment."}
           </p>
           <div className="space-y-2">
-            {result.explain.flags.map((flag, index) => (
+            {topicEvidence.explain.flags.map((flag, index) => (
               <div
                 key={index}
                 className="rounded-lg border border-warn/25 bg-warn/5 px-4 py-3 font-mono text-[12px] leading-relaxed"
@@ -419,13 +446,19 @@ git add -A && git commit -m "${topic.id}: t1" && git push`}</code>
         </section>
       )}
 
-      {result?.aiReview?.markdown && (
+      {history.length > 0 && (
         <section className="mb-12">
-          <h2 className="mb-2 text-xl font-semibold text-ink">Review</h2>
-          <div
-            className="md max-w-none"
-            dangerouslySetInnerHTML={{ __html: await renderMarkdown(result.aiReview.markdown) }}
-          />
+          <h2 className="mb-2 text-xl font-semibold text-ink">Review history</h2>
+          <p className="mb-4 text-[13.5px] leading-relaxed text-muted">
+            Every judgement the agent has made on this topic, newest last.
+          </p>
+          <ul className="space-y-1.5">
+            {history.map((line, index) => (
+              <li key={index} className="font-mono text-[12px] leading-relaxed text-muted">
+                {line}
+              </li>
+            ))}
+          </ul>
         </section>
       )}
 
@@ -436,9 +469,9 @@ git add -A && git commit -m "${topic.id}: t1" && git push`}</code>
           </p>
           <ul className="mt-3 space-y-2 text-[13px] leading-relaxed text-muted">
             <li>
-              <span className="text-ink">Minimal writing.</span> Three lines of notes,
-              each under {curriculum.rules?.writingMaxChars ?? 220} characters. The code
-              carries the explanation.
+              <span className="text-ink">Minimal writing.</span> Four short answers — and
+              the agent writes the three notes lines, from what your code and answers
+              actually show.
             </li>
             <li>
               <span className="text-ink">Why-comments.</span> A comment that restates

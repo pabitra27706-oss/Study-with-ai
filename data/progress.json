@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T15:35:52.840Z",
+  "generatedAt": "2026-10-28T16:52:01.540Z",
   "compiler": {
     "bin": "gcc",
     "version": "gcc (Debian 12.2.0-14+deb12u1) 12.2.0"
@@ -9,181 +9,27 @@
       "id": "c-loops",
       "title": "Loops in C",
       "language": "C",
-      "status": "not-started",
-      "score": 0,
-      "breakdown": {
-        "tasks": 0,
-        "written": 0,
-        "notes": 0,
-        "explain": 0
-      },
-      "tasks": {
-        "t1": {
-          "id": "t1",
-          "title": "Print 1 to N",
-          "status": "not-started",
-          "passed": 0,
-          "total": 3,
-          "points": 0,
-          "maxPoints": 10,
-          "failing": [],
-          "compileError": null
-        },
-        "t2": {
-          "id": "t2",
-          "title": "Factorial of N",
-          "status": "not-started",
-          "passed": 0,
-          "total": 4,
-          "points": 0,
-          "maxPoints": 15,
-          "failing": [],
-          "compileError": null
-        },
-        "t3": {
-          "id": "t3",
-          "title": "Sum of digits",
-          "status": "not-started",
-          "passed": 0,
-          "total": 4,
-          "points": 0,
-          "maxPoints": 15,
-          "failing": [],
-          "compileError": null
-        },
-        "t4": {
-          "id": "t4",
-          "title": "Reverse a number",
-          "status": "not-started",
-          "passed": 0,
-          "total": 4,
-          "points": 0,
-          "maxPoints": 15,
-          "failing": [],
-          "compileError": null
-        },
-        "t5": {
-          "id": "t5",
-          "title": "FizzBuzz",
-          "status": "not-started",
-          "passed": 0,
-          "total": 4,
-          "points": 0,
-          "maxPoints": 20,
-          "failing": [],
-          "compileError": null
-        },
-        "t6": {
-          "id": "t6",
-          "title": "Multiplication table",
-          "status": "not-started",
-          "passed": 0,
-          "total": 4,
-          "points": 0,
-          "maxPoints": 25,
-          "failing": [],
-          "compileError": null
-        }
-      },
-      "written": {
-        "score": 0,
-        "answered": 0,
-        "total": 4,
-        "perQuestion": [
-          {
-            "id": "q1",
-            "q": "When is a for-loop better than a while-loop?",
-            "answered": false,
-            "score": 0,
-            "hits": [],
-            "missing": [
-              "known",
-              "advance",
-              "count"
-            ],
-            "feedback": "Not answered yet."
-          },
-          {
-            "id": "q2",
-            "q": "What is an off-by-one error and how do you avoid it?",
-            "answered": false,
-            "score": 0,
-            "hits": [],
-            "missing": [
-              "boundary",
-              "range",
-              "comment"
-            ],
-            "feedback": "Not answered yet."
-          },
-          {
-            "id": "q3",
-            "q": "Inside a for-loop, where does `continue` jump to?",
-            "answered": false,
-            "score": 0,
-            "hits": [],
-            "missing": [
-              "step",
-              "increment",
-              "not"
-            ],
-            "feedback": "Not answered yet."
-          },
-          {
-            "id": "q4",
-            "q": "Why must an accumulator be initialised before the loop and not inside it?",
-            "answered": false,
-            "score": 0,
-            "hits": [],
-            "missing": [
-              "reset",
-              "every",
-              "iteration"
-            ],
-            "feedback": "Not answered yet."
-          }
-        ]
-      },
+      "status": "incomplete",
+      "score": 29,
+      "provider": "mock",
       "notes": {
-        "score": 0,
-        "filledCount": 0,
-        "total": 3,
-        "perField": [
-          {
-            "field": "whatILearned",
-            "label": "What I learned",
-            "filled": false,
-            "tooLong": false,
-            "chars": 0,
-            "text": "",
-            "feedback": "Empty — fill this in."
-          },
-          {
-            "field": "challenges",
-            "label": "What broke",
-            "filled": false,
-            "tooLong": false,
-            "chars": 0,
-            "text": "",
-            "feedback": "Empty — fill this in."
-          },
-          {
-            "field": "nextSteps",
-            "label": "What is next",
-            "filled": false,
-            "tooLong": false,
-            "chars": 0,
-            "text": "",
-            "feedback": "Empty — fill this in."
-          }
-        ]
+        "whatILearned": "I solved 1 of 6 tasks and the code compiles.",
+        "challenges": "Still failing: t2 0/4 test cases pass; t3 0/4 test cases pass; t4 0/4 test cases pass; t5 0/4 test cases pass; t6 0/4 test cases pass.",
+        "nextSteps": "Take on t2 next."
       },
-      "explain": {
-        "score": 0,
-        "flags": [],
-        "perFile": []
-      },
-      "lastRun": "2026-10-28T15:35:52.840Z"
+      "misconceptions": [
+        "t2: 0/4 test cases pass",
+        "t3: 0/4 test cases pass",
+        "t4: 0/4 test cases pass",
+        "t5: 0/4 test cases pass",
+        "t6: 0/4 test cases pass"
+      ],
+      "tasksPassed": 1,
+      "tasksTotal": 6,
+      "reviewPath": "learn/c-loops/review.md",
+      "review": "**Offline evaluation.** No AI key was available, so this verdict comes from the machine evidence alone — what compiled, what passed, what the comments said. It cannot tell you whether you understood the idea, only whether the program behaved.\n\n- Tasks passed: 1/6\n- Explainability: 100%\n- Written answers: 83% (keyword coverage, not judgement)\n\n**Still failing**\n- `t2` 0/4 test cases pass\n- `t3` 0/4 test cases pass\n- `t4` 0/4 test cases pass\n- `t5` 0/4 test cases pass\n- `t6` 0/4 test cases pass\n\nAdd a free Gemini key — `https://aistudio.google.com/apikey` — and this becomes a written review of the thinking, not just the result.\n\n_The agent writes the same three notes either way. The difference is that with a key it can tell you why._",
+      "lastRun": "2026-10-28T16:52:01.541Z"
     }
-  }
+  },
+  "provider": "mock"
 }
