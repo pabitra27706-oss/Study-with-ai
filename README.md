@@ -17,6 +17,10 @@ Actions is the build machine.
 | ---- | ---------- |
 | [`GITHUB-AUDIT.md`](GITHUB-AUDIT.md) | **Start here.** A full audit of both GitHub accounts — 47 repositories, what each one proves, what is broken, and a 30-day fix list. |
 | [`LEARNING-JOURNEY.md`](LEARNING-JOURNEY.md) | The research-backed design of the learning system: how AI is used, what Git is for, the guardrails that keep it honest, and how all of it works from a phone. 11 sections, 40 sources. |
+| [`LEARNING-SYSTEM.md`](LEARNING-SYSTEM.md) | **The machine that grades you.** AI-written topics with curated video sources, machine-checked tasks, a why-comment checker and a written rubric. How it works, how to add a topic, how to publish into the archive. |
+| `curriculum/` | **Topic packs** — the teaching half. Explanation, videos with a reason for each, tasks with hidden test cases, rubric. Written by AI. |
+| `learn/` | **Your half.** Your code, your three lines of notes, your four short answers. |
+| `runner/` | The grader: compiles your C, runs the tests, checks your comments explain *why*, scores your answers, writes `data/progress.json`. |
 | [`ROADMAP.md`](ROADMAP.md) | The career roadmap — JELET + Jadavpur University CSE on one spine, Android/Full-Stack/AI on the other, plus the part-time income plan. 79 sources. |
 | `app/` `components/` `content/` `lib/` | The website. Next.js 16 + Tailwind v4, static export, content generated from `content/*.ts` and `journal/*.md`. |
 | `journal/` | The learning log. **Human-owned.** An AI agent may read it but must never write it. |
@@ -107,6 +111,49 @@ git clone https://github.com/pabitra27706-oss/Study-with-ai.git
 cd Study-with-ai
 bash scripts/termux-setup.sh
 ```
+
+---
+
+---
+
+## The learning system — AI writes it, the compiler judges it
+
+The single biggest hole in the audit was this: **47 repositories, zero
+automated tests.** A repository that cannot tell you whether you understood
+something is a notebook, not a learning system.
+
+So this repository now has one.
+
+| | |
+|---|---|
+| **The topic** | AI writes it out in full — the idea, the exact evaluation order, the bugs that cost marks. Plus curated video links, each with a *reason* it is on the list. |
+| **The task** | You write the code. The grader compiles it with `gcc -std=c17 -Wall -Wextra` and runs it against **hidden edge cases** — zero, one, leading zeros, the boundary. |
+| **The answer** | Four short questions, scored by key-idea coverage. A dumb scorer is honest: it cannot be fooled by a confident paragraph that says nothing. |
+| **The explanation** | Every loop header and every accumulator needs a comment that says **why**, not **what**. Comments that restate the code are flagged. |
+| **The score** | 70% tasks · 15% written · 5% notes · 10% explainability. Committed to `data/progress.json`, so your history is a CV line with receipts. |
+
+**Your writing stays minimal. Your code does the explaining.** Three lines of
+notes per topic, 220 characters each, and the comments in the code carry the
+reasoning. On a phone, that is the difference between a system you will
+actually use and one you will not.
+
+**The whole loop, from Termux:**
+
+```bash
+pkg install nodejs clang          # once
+
+nano learn/c-loops/solutions/t1.c # your attempt
+node runner/grade.mjs             # compile, test, score — no key, no cost
+bash scripts/grade-and-commit.sh  # grade, commit, push
+```
+
+No API key, no network, no laptop. The grader is local because `clang` is a
+Termux package — a learning system that needs a paid service is a system that
+stops.
+
+See **[`LEARNING-SYSTEM.md`](LEARNING-SYSTEM.md)** for the full design, and
+**[/learn](https://pabitrahews06-oss.github.io/Study-with-ai/learn)** for the
+live version.
 
 ---
 

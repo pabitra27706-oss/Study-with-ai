@@ -1,0 +1,61 @@
+# ---------------------------------------------------------------------------
+# Canonical copy of the learning grader workflow.
+#
+# I cannot push files under .github/workflows/ from the agent sandbox, so this
+# lives here and you install it with:
+#
+#     cp scripts/learn-workflow.yml .github/workflows/learn.yml
+#     git add .github/workflows/learn.yml
+#     git commit -m "Add the learning grader workflow"
+#     git push
+#
+# Once installed, every push that touches learn/ or curriculum/ is graded
+# automatically and the score is committed back. You do not have to run the
+# grader by hand.
+#
+# Optional: add a repository secret named GEMINI_API_KEY (free tier at
+# https://aistudio.google.com/apikey) and the workflow also produces a written
+# AI review of your notes and answers.
+# ---------------------------------------------------------------------------
+name: Grade learning submissions
+
+on:
+  push:
+    paths:
+      - "learn/**"
+      - "curriculum/**"
+      - "runner/**"
+      - ".github/workflows/learn.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: grade-learning
+  cancel-in-progress: true
+
+jobs:
+  grade:
+    name: Compile, test and score
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+
+      - name: Grade
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node runner/grade.mjs
+
+      - name: Commit the score
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "chore(progress): update learning scores"
+          file_pattern: data/progress.json

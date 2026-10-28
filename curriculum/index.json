@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "siteName": "AI Curriculum",
+    "lastUpdated": "2026-10-28T00:00:00Z",
+    "totalTopics": 1,
+    "languages": ["C"]
+  },
+  "topics": [
+    {
+      "id": "c-loops",
+      "title": "Loops in C",
+      "language": "C",
+      "category": "Control Flow",
+      "difficulty": "beginner",
+      "dateCreated": "2026-10-28",
+      "lastUpdated": "2026-10-28",
+      "minutes": 90,
+      "points": 100,
+      "tags": ["for-loop", "while", "do-while", "iteration", "break", "continue", "off-by-one"],
+      "description": "for, while and do-while: how a loop actually evaluates, how to pick the right one, and the four bugs that cost more marks than any other topic in C.",
+      "topicFile": "curriculum/topics/c-loops.json",
+      "learnDir": "learn/c-loops"
+    }
+  ]
+}

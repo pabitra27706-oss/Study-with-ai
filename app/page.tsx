@@ -56,6 +56,13 @@ export default function HomePage() {
               />
             </Link>
             <Link
+              href="/learn"
+              className="inline-flex items-center gap-2 rounded-xl border border-line bg-panel px-5 py-2.5 text-sm text-ink transition hover:border-brand/40"
+            >
+              Start a topic
+              <ArrowRight size={15} />
+            </Link>
+            <Link
               href="/audit"
               className="inline-flex items-center gap-2 rounded-xl border border-line bg-panel px-5 py-2.5 text-sm text-ink transition hover:border-brand/40"
             >
