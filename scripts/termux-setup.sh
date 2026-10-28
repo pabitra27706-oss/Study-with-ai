@@ -67,19 +67,42 @@ fi
 
 # ------------------------------------------------------------------ 3. gh auth
 step "Checking GitHub CLI login"
-if command -v gh >/dev/null 2>&1; then
-  if gh auth status >/dev/null 2>&1; then
-    echo "  logged in as $(gh api user --jq .login)"
+if ! command -v gh >/dev/null 2>&1; then
+  fail "gh is not installed. Run:  pkg install gh   then re-run this script."
+fi
+
+if ! gh auth status >/dev/null 2>&1; then
+  echo "  not logged in yet."
+  echo
+  echo "  Run this, then open the printed URL in your phone browser and paste the code:"
+  echo
+  echo "      gh auth login --hostname github.com --git-protocol https --web"
+  echo
+  echo "  Tip: in Termux, 'termux-open-url <url>' opens the link in your browser."
+  echo
+  echo "  Then re-run: bash scripts/termux-setup.sh"
+  warn "stopping here — nothing was changed yet"
+  exit 0
+fi
+
+echo "  logged in as $(gh api user --jq .login)"
+
+# The 'workflow' scope is what allows pushing files under .github/workflows/.
+# gh's default scopes do NOT include it, so refresh if it is missing.
+if ! gh auth status 2>&1 | grep -q "workflow"; then
+  echo "  token is missing the 'workflow' scope — requesting it now"
+  echo "  (a browser window will open; approve and paste the code back)"
+  if gh auth refresh -h github.com -s workflow 2>&1 | tail -3; then
+    echo "  scope added."
   else
-    echo "  not logged in."
-    echo "  Run this now (it prints a one-time code, open the URL in your phone browser):"
-    echo
-    echo "      gh auth login --hostname github.com --git-protocol https --web"
-    echo
-    echo "  Then re-run: bash scripts/termux-setup.sh"
-    warn "stopping here — nothing was changed yet"
+    warn "could not refresh automatically."
+    echo "  Create a classic personal access token instead:"
+    echo "    github.com/settings/tokens/new  ->  scopes: repo, workflow  ->  Generate"
+    echo "  then run:  gh auth login --with-token < token.txt"
     exit 0
   fi
+else
+  echo "  token has the 'workflow' scope"
 fi
 
 # ---------------------------------------------------------------- 4. workflow
@@ -109,8 +132,15 @@ echo "  pushing to origin/${BRANCH} (current branch: ${CURRENT})"
 if git push origin "HEAD:${BRANCH}"; then
   echo "  pushed."
 else
-  fail "push failed — check that gh is logged in with the 'workflow' scope:
-  gh auth refresh -h github.com -s workflow"
+  warn "direct push to ${BRANCH} was refused — trying a pull request instead."
+  PR_BRANCH="add-pages-deploy-workflow"
+  git checkout -B "$PR_BRANCH"
+  git push -u origin "$PR_BRANCH"
+  gh pr create --base "$BRANCH" --head "$PR_BRANCH" \
+    --title "Add GitHub Pages deploy workflow" \
+    --body "Adds .github/workflows/deploy.yml so the site deploys to GitHub Pages on every push to ${BRANCH}." || true
+  warn "A pull request was opened. Merge it on GitHub, then re-run this script to switch Pages on."
+  exit 0
 fi
 
 # ------------------------------------------------------------- 6. enable pages
