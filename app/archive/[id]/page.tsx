@@ -225,6 +225,11 @@ export default async function ArchiveTopicPage({
             <p className="text-[14px] text-muted">
               Nothing written yet for this topic. It is here, waiting.
             </p>
+            <p className="mx-auto mt-3 max-w-md text-[13px] text-faint">
+              Every file you submit for this topic arrives here on its own —
+              the code, the score it earned, and the notes. There is nothing
+              to upload and nothing to publish.
+            </p>
           </Card>
         ) : (
           <div className="space-y-4">
