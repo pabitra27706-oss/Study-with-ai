@@ -14,9 +14,9 @@
     ],
     "description": "Any can find if a year is leap-year or not.",
     "learningNotes": {
-      "whatILearned": "How the if, else, else if work.",
-      "challenges": "Some common mistakes i made like brackets missing.",
-      "nextSteps": "I will strong this space of mine."
+      "whatILearned": "A leap year is every fourth year — except every hundredth, and except every fourth hundredth, which *is* one.",
+      "challenges": "I never checked the year I read, so an empty answer tests whatever was on the stack against the leap-year rule.",
+      "nextSteps": "Check the read, and write the rule itself in a comment above the conditions — the rule is the content here, and the code should carry it."
     }
   },
   "files": [
@@ -27,5 +27,23 @@
       "description": "Any can find if a year is leap-year or not.",
       "dateAdded": "2026-08-06T10:13:27Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 75,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`scanf` returns how many items it read — the value is only ever set if you check that, so a missing answer leaves the variable untouched",
+      "The century rule is the exception to the four-year rule, and it has to come first: 400 divides by 400, so it must be tested before the 100 rule excludes it"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 5 = 75%**\n\n**What is solid**\n\nThe rule is complete, and most people get this wrong. It checks `y % 400 == 0` first — so 2000 and 2400 are leap years — and only then `y % 4 == 0 && y % 100 != 0`, which catches 2024 but rejects 1900. I ran both: 2024 prints *is a leap-year*, 1900 prints *is not a leap year*. Both right, and 1900 is exactly the case that separates a real rule from a `y % 4 == 0` shortcut. It compiles clean.\n\n**What is not**\n\nThe year is read without being checked, and the file has no comment at all — which is a shame, because *the rule* is the content of this program. `y % 400 == 0` is not code, it is the sentence 'except every hundredth, and except every fourth hundredth, which is one'. That sentence should be in the file.\n\n**The one thing to fix first**\n\nWrite the rule above the code:\n\n```c\n/* A leap year is every 4th year, except every 100th,\n   except every 400th - which is one after all. */\n```\n\nThe comment is not decoration here. It *is* the lesson, and the conditions are just the rule written in C.\n"
+  }
 }

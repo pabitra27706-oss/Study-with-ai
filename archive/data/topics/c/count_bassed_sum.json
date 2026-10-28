@@ -13,9 +13,9 @@
     ],
     "description": "It a simple project to get some of numbers with a finite known numbers.",
     "learningNotes": {
-      "whatILearned": "How the c works and a little looping concept",
-      "challenges": "I forgot to give ; in 2 lines, i use ai for help to dig up idea.",
-      "nextSteps": "Try to do with other operators."
+      "whatILearned": "Ask how many numbers, then read exactly that many and keep a running total.",
+      "challenges": "Neither the count nor the numbers are checked, so the loop can ask for a number that never comes.",
+      "nextSteps": "Check the count and each number, and say in a comment why the running total starts at zero."
     }
   },
   "files": [
@@ -26,5 +26,23 @@
       "description": "Sum of n numbers",
       "dateAdded": "2026-08-05T15:34:56Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 70,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`scanf` returns how many items it read — the value is only ever set if you check that, so a missing answer leaves the variable untouched",
+      "A running total has to start at zero, not at the first number, or the first number is counted twice"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 0 = 70%**\n\n**What is solid**\n\nThe shape is right: ask how many, read that many, keep a running total. Given 3 and the numbers 10, 20 and 30 it prints `Sum=60`, which is right. It compiles clean.\n\n**What is not**\n\nNothing is checked. `scanf(\"%d\", &n)` decides how many times the loop runs, and if that read failed the loop runs against a meaningless count — and each `scanf(\"%d\", &num)` inside the loop can fail too, adding an untouched number to the total instead of the one the user meant. There is no comment, and the two things worth saying out loud here are *why the total starts at zero* and *why the count is read before the numbers*.\n\n**The one thing to fix first**\n\nCheck the count, then check each number:\n\n```c\nif (scanf(\"%d\", &n) != 1 || n < 0) {\n    printf(\"How many numbers?\\n\");\n    return 1;\n}\nfor (int i = 1; i <= n; i++) {\n    if (scanf(\"%d\", &num) != 1) return 1;\n    sum += num;\n}\n```\n"
+  }
 }

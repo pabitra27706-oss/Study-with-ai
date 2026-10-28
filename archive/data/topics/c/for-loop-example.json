@@ -14,9 +14,9 @@
     ],
     "description": "Iteration using for loops. Understanding loop initialization, condition, and increment/decrement.",
     "learningNotes": {
-      "whatILearned": "Ai generated.",
-      "challenges": "Nothing",
-      "nextSteps": "I will try."
+      "whatILearned": "One file that holds ten shapes of the same `for` loop — counting down, stepping by two, walking an array, nesting, breaking and continuing.",
+      "challenges": "Every comment in the file says what the code does, or repeats the output it produces. Not one of them says why.",
+      "nextSteps": "Keep the ten examples, but make the comments carry the reason — why the step is two, why the inner loop runs to three — and the file stops being a transcript and starts being an explanation."
     }
   },
   "files": [
@@ -27,5 +27,23 @@
       "description": "",
       "dateAdded": "2026-08-08T12:10:12Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 85,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "A comment that repeats the output is a copy of the code, not an explanation of it",
+      "`for(;;)` with a `break` is the same loop as any other with a condition you forgot to write down — saying so is what makes it readable"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 15 = 85%**\n\n**What is solid**\n\nThis is the most complete file in the batch and it compiles clean. Ten worked shapes of the `for` loop, in order: basic, counting backwards, stepping by two, walking an array with `sizeof` divided by `sizeof`, nested, `break`, `continue`, summing, a multiplication table, and an infinite loop that breaks. I ran it and every section printed what the comment above it promised, including the array sizes and the nested pairs.\n\n**What is not**\n\nThe comments are a transcript, not an explanation. Thirty-two of them, and almost all of them are either a banner (`=== 4. FOR LOOP WITH ARRAY ===`) or a copy of the output that follows (`/* Output: i = 0, i = 1, ... */`). A copy of the output is a copy of the code — it tells you what happened, not why it was written that way.\n\nThe one comment with real content is `/* skip even numbers */` on the `continue`, and even that says what rather than why.\n\n**The one thing to fix first**\n\nKeep the output blocks — they are useful. Add the missing half: why does the step become 2, why does the inner loop stop at 3, why is the array length `sizeof(numbers) / sizeof(numbers[0])` and not `5`. Three sentences, and the file becomes the explanation it was meant to be.\n"
+  }
 }

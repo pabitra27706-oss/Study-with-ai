@@ -17,9 +17,9 @@
     ],
     "description": "Iteration using for loops. Understanding loop initialization, condition, and increment/decrement.",
     "learningNotes": {
-      "whatILearned": "For loop use.",
-      "challenges": "None",
-      "nextSteps": "More harder."
+      "whatILearned": "A `for` loop from 1 to `n` prints every number in between, and the loop bound does the counting for me.",
+      "challenges": "I never checked whether `scanf` actually read a number, so an empty answer leaves `n` as whatever was on the stack.",
+      "nextSteps": "Check the `scanf` return value before the loop, and say in a comment why the counter starts at 1 and not 0."
     }
   },
   "files": [
@@ -30,5 +30,23 @@
       "description": "User can print 1 to n numbers with this code.",
       "dateAdded": "2026-08-10T15:16:19Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 70,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`scanf` returns how many items it read — the value is only ever set if you check that, so a missing answer leaves the variable untouched",
+      "A loop bound that is never validated means the program cannot tell the difference between 'print nothing' and 'print a million numbers'"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 0 = 70%**\n\n**What is solid**\n\nThe loop is the whole program, and the loop is right: given `5` it prints `1 2 3 4 5`, one number per line, in order. It compiles clean under `-Wall -Wextra` — no warnings at all, which is more than most of this batch manages.\n\n**What is not**\n\nTwo things, and they are the same two things as in most of the C files here.\n\n1. **The input is never checked.** `scanf(\"%d\", &n)` is called and its result is thrown away. If there is no number to read, `n` keeps whatever value it had, and the loop runs to that number — which may be a very large one.\n2. **There is not one comment in the file.** Not a why, not a what. The code says *what* it does by doing it.\n\n**The one thing to fix first**\n\nRead the return value of `scanf` and stop when it did not read. One line:\n\n```c\nif (scanf(\"%d\", &n) != 1) {\n    printf(\"Please enter a number.\\n\");\n    return 1;\n}\n```\n\nThen add one comment above the loop saying why it starts at 1: the program prints the numbers *from* 1 *to* `n`, so 1 is the first number in the range and 0 is not part of it.\n"
+  }
 }

@@ -13,9 +13,9 @@
     ],
     "description": "To find the highest number among 3 numbers.",
     "learningNotes": {
-      "whatILearned": "If statement in a little extrA.",
-      "challenges": "If statement condition create.",
-      "nextSteps": "I will learn the if statement in depth."
+      "whatILearned": "Start with the first number as the champion and let each new number challenge it — one comparison at a time.",
+      "challenges": "I never check the numbers I read, so three missing answers compare garbage.",
+      "nextSteps": "Check the reads, and put one comment on the `max = a` line saying why the first number is the starting champion."
     }
   },
   "files": [
@@ -26,5 +26,23 @@
       "description": "To find the highest number among 3 numbers.",
       "dateAdded": "2026-08-06T09:01:02Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 70,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`scanf` returns how many items it read — the value is only ever set if you check that, so a missing answer leaves the variable untouched",
+      "Starting the champion at the first value is what makes the loop-free version work — there is no 'nothing seen yet' state to handle"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 0 = 70%**\n\n**What is solid**\n\nThis is the clean version of the problem. `max` starts as `a`, then `b` is compared against it and `c` is compared against it. Given 3, 9 and 5 it prints `The highest number is 9`. It compiles clean, and it is shorter than the nested-`if` version in this same folder — which is worth noticing: two files, one question, and this one needs no nesting at all.\n\n**What is not**\n\nThe three numbers are read without being checked, so all three can be missing. And there is no comment on the one line that carries the idea — `max = a`, which is the reason the rest of the program works: there is no empty state to worry about because the champion starts as a real number.\n\n**The one thing to fix first**\n\nOne comment on the first line of the logic:\n\n```c\n/* Start the champion as a real number, so there is no empty case. */\nmax = a;\n```\n\nThen check the read.\n"
+  }
 }

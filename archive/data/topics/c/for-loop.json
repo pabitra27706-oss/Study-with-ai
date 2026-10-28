@@ -16,9 +16,9 @@
     ],
     "description": "Iteration using for loops. Understanding loop initialization, condition, and increment/decrement.",
     "learningNotes": {
-      "whatILearned": "How the for loop works.",
-      "challenges": "The ; and , are wrongly placed.",
-      "nextSteps": "More practice."
+      "whatILearned": "A factorial is a running product: start at 1, and multiply by every number up to `n`.",
+      "challenges": "My `multi` is an `int`, and `int` runs out long before the maths does — 13! came back as 1932053504.",
+      "nextSteps": "Change `multi` to `unsigned long long` and add a guard for a negative number, and this program is finished."
     }
   },
   "files": [
@@ -29,5 +29,23 @@
       "description": "Factorial of any integer numbers.",
       "dateAdded": "2026-08-07T08:55:23Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 55,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`int` holds up to about 2 billion, and 13! is 6.2 billion — the overflow arrives before the program looks wrong",
+      "The running product starts at 1, not 0, because 0 would make every answer 0"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 15 + 0 = 55%**\n\n**What is solid**\n\nThe idea is exactly right. `multi` starts at 1, the loop walks `i` from 1 to `n`, and each turn multiplies one more factor in. Given `5` it prints `Factorial=120`, which is right. The loop is the correct shape for a factorial and it compiles clean.\n\n**What is not**\n\n**The answer is wrong for anything above 12.** `int` holds up to about 2.1 billion. 12! is 479,001,600 and fits; 13! is 6,227,020,800 and does not. I ran it with `13` and it printed `Factorial=1932053504` — a number that is not 13! and never was. The program does not crash and does not say anything is wrong; it just quietly lies, which is the worst kind of wrong.\n\nThere is also no check on the input, so a negative `n` gives you `Factorial=1` (the loop never runs) and a missing number gives you whatever was on the stack.\n\n**The one thing to fix first**\n\nOne word:\n\n```c\nunsigned long long multi = 1;\n```\n\nThat carries the answer up to 20!. Then check the `scanf` result, and refuse a negative `n` with a message — a factorial of a negative number is not a number at all.\n"
+  }
 }

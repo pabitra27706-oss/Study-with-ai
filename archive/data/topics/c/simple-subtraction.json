@@ -12,9 +12,9 @@
     ],
     "description": "It simply subtract 2 digits.",
     "learningNotes": {
-      "whatILearned": "It was easy but i can't apply loop i will make it latter.",
-      "challenges": "Loops i can't apply.",
-      "nextSteps": "I will learn loops more deeply."
+      "whatILearned": "Two numbers in, one number out: read, subtract, print.",
+      "challenges": "I did not check that either number was actually read.",
+      "nextSteps": "Check both reads, and add one comment saying what the program is for."
     }
   },
   "files": [
@@ -25,5 +25,22 @@
       "description": "Subtraction 2 numbers.",
       "dateAdded": "2026-08-06T05:24:02Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 70,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`scanf` returns how many items it read — the value is only ever set if you check that, so a missing answer leaves the variable untouched"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 0 = 70%**\n\n**What is solid**\n\nIt does exactly one thing and it does it correctly. Given 10 and 4 it prints `Subtraction=6`. It compiles clean under `-Wall -Wextra`.\n\n**What is not**\n\nNeither `scanf` is checked, so both numbers can be missing and the program subtracts whatever was on the stack. There is no comment, and for a two-number program a comment is not decoration — one line saying what this is *for* is the difference between a program and a scratch file.\n\n**The one thing to fix first**\n\nCheck the reads:\n\n```c\nif (scanf(\"%d %d\", &a, &b) != 2) {\n    printf(\"Please enter two numbers.\\n\");\n    return 1;\n}\n```\n\nReading both in one `scanf` also means one check instead of two.\n"
+  }
 }

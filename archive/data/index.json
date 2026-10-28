@@ -151,7 +151,9 @@
       ],
       "description": "Iteration using for loops. Understanding loop initialization, condition, and increment/decrement.",
       "topicFile": "data/topics/c/multiplication-table.json",
-      "langSlug": "c"
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "c-1-to-n-odd-even",
@@ -171,7 +173,9 @@
       ],
       "description": "Iteration using for loops. Understanding loop initialization, condition, and increment/decrement.",
       "topicFile": "data/topics/c/1-to-n-odd-even.json",
-      "langSlug": "c"
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 75
     },
     {
       "id": "c-1-to-n-number-print",
@@ -190,7 +194,9 @@
       ],
       "description": "Iteration using for loops. Understanding loop initialization, condition, and increment/decrement.",
       "topicFile": "data/topics/c/1-to-n-number-print.json",
-      "langSlug": "c"
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "c-for-loop-example",
@@ -206,7 +212,9 @@
       ],
       "description": "Iteration using for loops. Understanding loop initialization, condition, and increment/decrement.",
       "topicFile": "data/topics/c/for-loop-example.json",
-      "langSlug": "c"
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 85
     },
     {
       "id": "c-nasted-if-else-statement-in-c",
@@ -224,7 +232,9 @@
       ],
       "description": "Conditional execution using if-else statements. Decision making and branching logic in C programs.",
       "topicFile": "data/topics/c/nasted-if-else-for-max-no-find.json",
-      "langSlug": "c"
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "c-for-loop-in-c",
@@ -242,7 +252,9 @@
       ],
       "description": "Iteration using for loops. Understanding loop initialization, condition, and increment/decrement.",
       "topicFile": "data/topics/c/for-loop.json",
-      "langSlug": "c"
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 55
     },
     {
       "id": "c-if-else-statement-in-c",
@@ -274,7 +286,9 @@
       ],
       "description": "To understand how if else work.",
       "topicFile": "data/topics/c/grade-calculator.json",
-      "langSlug": "c"
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 60
     },
     {
       "id": "c-leap-year-finder",
@@ -290,7 +304,9 @@
       ],
       "description": "Any can find if a year is leap-year or not.",
       "topicFile": "data/topics/c/leap-year-finder.json",
-      "langSlug": "c"
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 75
     },
     {
       "id": "c-highest-number-among-3-numbers",
@@ -305,7 +321,9 @@
       ],
       "description": "To find the highest number among 3 numbers.",
       "topicFile": "data/topics/c/highest-number-among-3-numbers.json",
-      "langSlug": "c"
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "c-divider",
@@ -319,7 +337,9 @@
       ],
       "description": "Didier of 2 integer numbers.",
       "topicFile": "data/topics/c/divider.json",
-      "langSlug": "c"
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 60
     },
     {
       "id": "c-simple-subtraction",
@@ -333,7 +353,9 @@
       ],
       "description": "It simply subtract 2 digits.",
       "topicFile": "data/topics/c/simple-subtraction.json",
-      "langSlug": "c"
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "c-simple-multiplication",
@@ -348,7 +370,9 @@
       ],
       "description": "How to multiply numbers",
       "topicFile": "data/topics/c/simple-multiplication.json",
-      "langSlug": "c"
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "c-count-bassed-sum-c",
@@ -363,7 +387,9 @@
       ],
       "description": "It a simple project to get some of numbers with a finite known numbers.",
       "topicFile": "data/topics/c/count_bassed_sum.json",
-      "langSlug": "c"
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-hello-world",

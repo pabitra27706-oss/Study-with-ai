@@ -12,9 +12,9 @@
     ],
     "description": "Didier of 2 integer numbers.",
     "learningNotes": {
-      "whatILearned": "Work of % to find reminder.",
-      "challenges": "Not much.",
-      "nextSteps": "A little advance forward."
+      "whatILearned": "Division has two answers — the quotient and the remainder — and `%` gives the second one for free.",
+      "challenges": "I divide by whatever the user typed without checking it, and a zero divisor kills the program.",
+      "nextSteps": "Refuse a zero divisor before dividing, and check that the two reads worked."
     }
   },
   "files": [
@@ -25,5 +25,23 @@
       "description": "Simply divider.",
       "dateAdded": "2026-08-06T06:34:50Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 60,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "Dividing by zero does not return zero — it stops the program, and on some systems it is a hard crash",
+      "`/` gives the quotient and `%` gives the remainder, and together they carry the whole division"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 20 + 0 = 60%**\n\n**What is solid**\n\nThe arithmetic is right. Given 17 and 5 it prints `Quotient=3` and `Reminder=2`, which is exactly right, and it compiles clean.\n\n**What is not**\n\n**The program crashes on a zero divisor.** I ran it with `17` and `0` and it died with a floating point exception — exit code 136, no output at all. A user who types `0` into the second box gets nothing: no message, no explanation, just a program that stops.\n\nNeither `scanf` is checked either, so both numbers can be missing.\n\n**The one thing to fix first**\n\nThe guard, before the division:\n\n```c\nif (divisor == 0) {\n    printf(\"Cannot divide by zero.\\n\");\n    return 1;\n}\n```\n\nOne check, and the program stops being able to die on ordinary input.\n"
+  }
 }
