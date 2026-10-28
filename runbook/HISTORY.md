@@ -248,6 +248,7 @@ edit — which stops this file needing a new commit after every single merge.
 | #7 | closed | superseded by #8 |
 | #8 | merged | the first real judgement, and the sensor fix |
 | #9 | closed | the PR #8 bookkeeping — folded into the topic-swap PR |
+| #10 | open | the `data-structures-c` topic, and the authoring system |
 
 ---
 
