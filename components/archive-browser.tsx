@@ -273,7 +273,7 @@ export function ArchiveBrowser({ index }: { index: ArchiveIndex }) {
               type="search"
               value={query}
               onChange={(event) => update({ q: event.target.value })}
-              placeholder="Search 69 topics…"
+              placeholder={`Search ${topics.length} topics…`}
               className="w-full rounded-lg border border-line bg-panel py-2 pl-9 pr-9 text-[13px] text-ink outline-none transition placeholder:text-faint focus:border-brand/50"
             />
             {query && (
