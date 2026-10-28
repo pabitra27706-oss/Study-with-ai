@@ -440,3 +440,44 @@ breaks while this waits.
 **The rule.** Never design a task that needs two repositories to be writable
 at once. If a step genuinely needs a second repository, prepare the files
 here and hand the owner one command.
+
+## 2026-10-29 — "Repository not found" is not a typo
+
+The owner ran `scripts/publish-moved-notice.sh` from Termux and got:
+
+```
+remote: Repository not found.
+fatal: repository 'https://github.com/pabitra27706-oss/portfolio.git/' not found
+```
+
+followed by "Wrong github username". The URL was **right**. It was in the
+script, and it was the canonical one.
+
+GitHub answers `Repository not found` for a repository you are not allowed to
+see, exactly as it answers it for one that does not exist. The clone had gone
+out **anonymous**, because the credential helper `gh auth setup-git` installs
+reads the token from `GH_TOKEN`, and `GH_TOKEN` was not exported in that
+shell. `SETUP.md` tells the owner to clear the token from shell history when
+they are done — which is right, and which is also exactly how a new Termux
+session ends up with no credential at all.
+
+**The lesson worth keeping.** A 404 from GitHub is not a statement about the
+URL. It is a statement about *the requester*. Before changing a URL that
+appears wrong, check who is asking:
+
+```bash
+gh api repos/pabitra27706-oss/portfolio --jq .full_name
+```
+
+If that prints the name, the URL is fine and the credential is not.
+
+**A second trap, in the same session.** `gh auth status` was used as a
+pre-flight check. It makes a **live network call** to validate the token, so
+on a flaky connection it reports *"The github.com token in GH_TOKEN is no
+longer valid"* for a token that is perfectly fine. It was doing exactly the
+thing it was meant to detect, and it was wrong. The script now asks the only
+question that matters — *can GitHub see this repository with the credential I
+have right now?* — and answers it with the API call itself.
+
+**The rule.** Never pre-flight a push with a check that depends on the
+network. Try the thing. If it fails, read the real error.

@@ -26,7 +26,7 @@ can do it now. "Owner" means only the user can.
 | 17 | The next topic: trees and BSTs in C | It is the natural follow-on — MyCodeSchool's same course covers it next, and it reuses the node struct the learner will have just built. | Claude, on request |
 | 18 | The next topic after that: sorting and searching | `O(n log n)` is where the complexity talk in `data-structures-c` starts to pay off. | Claude, on request |
 | 19 | ~~Export the learner's work into the Learning Archive~~ | **Done** — the archive came home. `scripts/build-archive.mjs` regenerates it from the engine on every build, so it can never fall behind the work. | — |
-| 20 | Apply the "moved" notice to the old `portfolio` repository | The landing page and the pointer README are **prepared** at `archive/legacy/moved-page/`. The sandbox token is scoped to this repository and cannot write to that one, so this is one command the owner runs: `bash scripts/publish-moved-notice.sh`. | Owner |
+| 20 | ~~Apply the "moved" notice to the old `portfolio` repository~~ | **Done** — the branch `move/archive-into-the-learning-engine` is pushed to `portfolio`, carrying the landing page and the pointer README. Only the pull request is left to open, on the phone: **https://github.com/pabitra27706-oss/portfolio/pull/new/move/archive-into-the-learning-engine** | Owner |
 
 ## Not to be done without being asked
 
