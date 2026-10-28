@@ -49,9 +49,9 @@ if [ -z "$SOURCE" ]; then
   SEARCH_DIRS=(
     "$HOME/codec-out"
     "$HOME/storage/downloads"
-    "${EXTERNAL_STORAGE:-}/Download"
     "/sdcard/Download"
   )
+  [ -n "${EXTERNAL_STORAGE:-}" ] && SEARCH_DIRS+=("$EXTERNAL_STORAGE/Download")
   FOUND=""
   for dir in "${SEARCH_DIRS[@]}"; do
     [ -d "$dir" ] || continue
