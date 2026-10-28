@@ -670,3 +670,29 @@ meant to stop the same code appearing twice was the thing that created the
 empty card. A rule that fixes one fault and creates a worse one is not a
 rule yet.
 
+---
+
+## 2026-10-29 — Merged, deployed, and read back
+
+**Done.** PR #17 merged by the owner's word as `a6e66f8` (squash, the way every
+PR in this repository has landed). The Pages deploy for that commit returned
+**success**.
+
+**Verified on the live site, not on a local build.** `fetch_page` to
+`*.github.io` works again — the earlier failure was a sandbox egress block, not
+a broken site, and the rule stays: *do not re-deploy when a fetch fails; retry
+later.* What the live site says now:
+
+- `/archive` — *Nothing waiting · Every topic has been read. Real code, read,
+  run and reviewed.* 74 topics, 87 code files, 3 languages, 293 days learning,
+  **73 topics judged, 1 straight from the engine**.
+- a topic page — the verdict, the notes, the review, the misconceptions, **and
+  the code open by default**, with download and copy.
+- `/projects` — every repository link resolves to an account that exists.
+
+**Fixed on the way.** The portfolio entry on `/projects` still said *69 topics,
+82 files*. It says **74 topics, 87 files** now.
+
+**The rule that held.** Merging happened because the owner said so. Everything
+else in this branch was written, pushed and left as a pull request for review.
+

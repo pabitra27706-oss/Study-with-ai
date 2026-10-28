@@ -150,7 +150,7 @@ export const projects: Project[] = [
     proves:
       "That I can design information architecture and ship something people can actually navigate - and that I can take a working static site and rebuild it inside a real framework without losing a single feature.",
     highlights: [
-      "69 topics, 82 files, searchable and downloadable.",
+      "74 topics, 87 files, searchable and downloadable.",
       "Started as a framework-free JSON site; rebuilt inside this one, with the catalogue baked in at build time instead of fetched in the browser.",
       "The graded entries carry the verdict, the score and the misconceptions - not just the code.",
       "Direct ancestor of this site, and the reason it exists.",
