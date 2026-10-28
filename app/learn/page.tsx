@@ -31,7 +31,7 @@ const STEPS = [
   {
     n: "04",
     title: "Read the notes",
-    body: "You say \"check c-loops\". I read the brief — the topic, your code, the machine facts, your answers — and write the verdict, the review and your three notes lines back into the repository. A topic is not finished because it felt good — it is finished because I say so, and you can answer without the notes.",
+    body: "You say \"check data-structures-c\". I read the brief — the topic, your code, the machine facts, your answers — and write the verdict, the review and your three notes lines back into the repository. A topic is not finished because it felt good — it is finished because I say so, and you can answer without the notes.",
   },
 ];
 
@@ -176,12 +176,12 @@ export default function LearnPage() {
           <pre className="overflow-x-auto px-4 py-4 font-mono text-[12.5px] leading-relaxed text-muted">
             <code>{`# 1. read the topic on the site
 # 2. write your attempt in CodeC, save it
-#    (file: learn/c-loops/solutions/t1.c)
+#    (file: learn/data-structures-c/solutions/t1.c)
 
 # 3. push it
-git add -A && git commit -m "c-loops: t1" && git push
+git add -A && git commit -m "data-structures-c: t1" && git push
 
-# 4. then, in this chat: "check c-loops"
+# 4. then, in this chat: "check data-structures-c"
 #    I read the brief, judge it, and write the notes back`}</code>
           </pre>
         </Card>

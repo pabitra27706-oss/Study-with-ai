@@ -2,8 +2,8 @@
 /**
  * brief.mjs — the judging brief.
  *
- *   node runner/brief.mjs c-loops          one topic
- *   node runner/brief.mjs c-loops --task t1 one task only
+ *   node runner/brief.mjs data-structures-c          one topic
+ *   node runner/brief.mjs data-structures-c --task t1 one task only
  *   node runner/brief.mjs --write          also writes data/evidence.json
  *
  * This prints everything needed to judge a submission: what the learner was

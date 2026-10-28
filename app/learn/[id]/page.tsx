@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink, PlayCircle, Terminal } from "lucide-react";
 import { Card, Tag } from "@/components/ui";
 import { renderMarkdown } from "@/lib/markdown";
+import { formatCount } from "@/lib/utils";
 import {
   getCurriculumIndex,
   getCurriculumTopic,
@@ -363,6 +364,31 @@ git push
                   <span className="truncate">{video.title}</span>
                   <ExternalLink className="h-3 w-3 shrink-0 text-faint" />
                 </p>
+                {video.views ? (
+                  <p className="mt-1 flex flex-wrap items-center gap-x-2 font-mono text-[11px] text-faint">
+                    <span className="text-brand-soft/80">{video.channel}</span>
+                    <span aria-hidden>·</span>
+                    <span>{formatCount(video.views)} views</span>
+                    {video.likes ? (
+                      <>
+                        <span aria-hidden>·</span>
+                        <span>{formatCount(video.likes)} likes</span>
+                      </>
+                    ) : null}
+                    {video.length ? (
+                      <>
+                        <span aria-hidden>·</span>
+                        <span>{video.length}</span>
+                      </>
+                    ) : null}
+                    {video.measuredOn ? (
+                      <>
+                        <span aria-hidden>·</span>
+                        <span>checked {video.measuredOn}</span>
+                      </>
+                    ) : null}
+                  </p>
+                ) : null}
                 <p className="mt-1.5 text-[13px] leading-relaxed text-muted">{video.why}</p>
               </div>
             </a>

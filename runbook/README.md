@@ -17,6 +17,7 @@ when you have time; read this folder when you need to act.
 | [`START-HERE.md`](START-HERE.md) | **The prompt for a new chat.** Copy-paste blocks for "check my work", "learn me X", "explore X" — and how to read a push before guessing. |
 | [`STATE.md`](STATE.md) | Where everything stands right now: accounts, URLs, branches, PR, live site, what is verified. |
 | [`THE-LOOP.md`](THE-LOOP.md) | The learning loop, step by step, with the exact commands. Start here when the user says *check*. |
+| [`NEW-TOPIC.md`](NEW-TOPIC.md) | **How to write a topic.** The whole sequence — decide, scaffold, explain, measure the videos, tasks, reference solutions, rubric, validate — with the commands. |
 | [`JUDGING.md`](JUDGING.md) | How to judge a submission: the rules, the verdict format, the review shape, a worked example. |
 | [`SETUP.md`](SETUP.md) | One-time setup on the phone — Termux, git, CodeC, dependencies. |
 | [`HISTORY.md`](HISTORY.md) | Append-only decision log. What was decided, when, and **what was rejected and why**. Read this before changing the design. |

@@ -6,7 +6,7 @@ code and mention it.
 ## The shape of it
 
 ```
-CodeC (write code)  ->  push  ->  GitHub  ->  you say "check c-loops"
+CodeC (write code)  ->  push  ->  GitHub  ->  you say "check data-structures-c"
                                                      |
                                         runner/brief.mjs  ->  Claude judges
                                                      |

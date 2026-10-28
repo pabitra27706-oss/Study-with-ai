@@ -1,3 +1,29 @@
+# Loops in C — finished, archived
+
+> **This topic is closed.** The pack has been removed from the curriculum and
+> this folder has moved here. Nothing is lost — your work, my verdict, the
+> review and the history are all still in this folder, and still in the git
+> history.
+
+## Why it was archived
+
+| | |
+|---|---|
+| **Closed** | 2026-10-29 |
+| **The pack** | `curriculum/topics/c-loops.json` — removed |
+| **Reference solutions** | `curriculum/reference/c-loops/` — removed |
+| **Where it moved** | `learn/c-loops/` → `learn/archive/c-loops/` |
+| **Why** | It was a demo pack. Its one video had **327 views and 12 likes**, so it was not worth a learner's afternoon, and it was not a real topic — a real one is `data-structures-c`. |
+| **What you finished** | `t2.c` — a recursive factorial. Every value correct (5! = 120, 0! = 1, 10! = 3628800, 20! = 2432902008176640000), all four test cases passing, clean under `-Wall -Wextra`. |
+| **What was missing** | It was recursion in a loops topic, so the comment the task asked for — why the accumulator starts at 1, why the boundary includes N — could not exist in it. All three comments stated what, not why. |
+| **Final verdict** | `mostly-correct`, **45%** (machine 30%) |
+| **Next** | `data-structures-c` — the real beginner topic. It starts where this one ended: with pointers, `malloc` and `free`, because every node in it is a pointer you own. |
+
+Your `t2.c` is still in `solutions/`, my review is still in `review.md`, and
+every judgement is a dated line in `history.md`.
+
+---
+
 # Loops in C
 
 > **You write it in CodeC. You push it here. I judge it.**

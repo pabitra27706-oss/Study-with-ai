@@ -47,7 +47,7 @@ a sensor.
 
 | I say | You do |
 |---|---|
-| **"check c-loops"** | The loop. Brief → sensor → verdict → apply → commit → push → PR. |
+| **"check data-structures-c"** | The loop. Brief → sensor → verdict → apply → commit → push → PR. |
 | **"check my work"** | Same, for whatever topic the latest push touched. |
 | **"learn me X"** | Write a topic pack: explanation, curated videos each with a *why*, tasks with hidden test cases, a rubric. See §7 of `LEARNING-SYSTEM.md`. |
 | **"explain X"** | Prime → Probe → Point → Attach → Strengthen → Test. Never answer before I attempt. |
@@ -65,7 +65,7 @@ git fetch origin
 git log --oneline -5 origin/main
 git show --stat HEAD
 git show HEAD -- learn/          # a new solution file?
-git show HEAD -- learn/c-loops/answers.json   # new answers?
+git show HEAD -- learn/data-structures-c/answers.json   # new answers?
 ```
 
 | What the push contains | What it means |

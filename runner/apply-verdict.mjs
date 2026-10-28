@@ -2,7 +2,7 @@
 /**
  * apply-verdict.mjs — write a verdict into the repository.
  *
- *   node runner/apply-verdict.mjs c-loops
+ *   node runner/apply-verdict.mjs data-structures-c
  *
  * Reads learn/<topic>/verdict.json (the judgement), and writes everything that
  * follows from it:

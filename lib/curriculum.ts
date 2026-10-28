@@ -16,6 +16,16 @@ export type CurriculumVideo = {
   url: string;
   channel?: string;
   minutes?: number;
+  /** The length as YouTube shows it, e.g. "17:13". */
+  length?: string;
+  /** Views when the pack was written. Measured off the watch page, never guessed. */
+  views?: number;
+  /** Likes at the same moment. */
+  likes?: number;
+  /** The date the video was uploaded. */
+  published?: string;
+  /** The date the numbers above were read. If this is missing, the numbers are stale. */
+  measuredOn?: string;
   why: string;
   order?: number;
 };
