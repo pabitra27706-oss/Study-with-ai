@@ -50,13 +50,25 @@ folder both work.
 
 ### 2 · Push it
 
+Save the file anywhere CodeC puts it — `~/codec-out/` or your Downloads folder
+both work. Then:
+
 ```bash
 bash scripts/collect.sh c-loops t1
 ```
 
-That copies the file into `solutions/t1.c`, compiles it, runs the test cases,
-checks the comments, commits and pushes. You can also just paste the code into
-this chat and I will do all of it.
+That finds the file, copies it into `solutions/t1.c`, compiles it, runs the test
+cases, checks the comments, commits and pushes. If it cannot find the file it
+prints the paths it tried; give it the path yourself:
+
+```bash
+bash scripts/collect.sh c-loops t1 /storage/emulated/0/Download/t1.c
+```
+
+If CodeC already pushes to GitHub by itself, skip the script entirely — commit
+straight to `learn/c-loops/solutions/t1.c` and say **check c-loops**.
+
+You can also just paste the code into this chat and I will do all of it.
 
 ### 3 · Ask me to judge it
 

@@ -163,7 +163,52 @@ needs a bullet list is a note that is not understood yet.
 
 ---
 
-## 5. The two scores
+## 5. The CodeC side
+
+CodeC is your editor. This repository is the notebook. The bridge between them
+is one file on the phone.
+
+**Option A — CodeC saves to a folder (works today, nothing to configure).**
+
+Point CodeC's save location at `~/codec-out/` in Termux, or just use the normal
+Android Downloads folder. Then:
+
+```bash
+bash scripts/collect.sh c-loops t1
+```
+
+`collect.sh` looks in `~/codec-out/`, `~/storage/downloads/`,
+`$EXTERNAL_STORAGE/Download/` and `/sdcard/Download/`, takes the newest file
+matching the task id, copies it into `learn/<topic>/solutions/<task>.c`,
+compiles it, runs the test cases, checks the comments, commits and pushes.
+
+If it cannot find the file it tells you the paths it tried, and you pass the
+path yourself:
+
+```bash
+bash scripts/collect.sh c-loops t1 /storage/emulated/0/Download/t1.c
+```
+
+**Option B — CodeC pushes to GitHub itself.**
+
+If CodeC already talks to GitHub, point it at this repository and commit
+straight to `learn/<topic>/solutions/<task>.c`. Then `collect.sh` is not needed
+at all — the file is already in the right place. Say **check \<topic\>** and I
+take it from there.
+
+Either way the rule is the same: **you decide when the work is ready to be
+judged.** Nothing runs on a schedule, and nothing posts to your repository
+behind your back.
+
+> The `CodeC` repository URL could not be confirmed from the build sandbox
+> (`git clone https://github.com/pabiwilliams/CodeC.git` returns *Repository not
+> found* — the account or the repo name is different). Nothing above depends on
+> it: the bridge only needs the file on your phone and this repository. Send me
+> the real URL and I will wire the docs to it.
+
+---
+
+## 6. The two scores
 
 The site shows both, and they are not the same thing.
 
@@ -182,7 +227,7 @@ still gets the mark.
 
 ---
 
-## 6. Adding a topic
+## 7. Adding a topic
 
 A topic pack is one JSON file. I write the teaching half; you write the doing
 half.
@@ -210,7 +255,7 @@ at 1".
 
 ---
 
-## 7. Publishing into the Learning Archive
+## 8. Publishing into the Learning Archive
 
 Your archive lives at `pabitra27706-oss/portfolio` — 68 topics, 82 files, and
 the only place people can read your code, preview it and download it.
@@ -228,7 +273,7 @@ archive shows your latest judgement, not a one-line summary.
 
 ---
 
-## 8. Commands
+## 9. Commands
 
 | Command | What it does |
 |---|---|
@@ -242,7 +287,7 @@ archive shows your latest judgement, not a one-line summary.
 
 ---
 
-## 9. Why it is built this way
+## 10. Why it is built this way
 
 - **The judge is a conversation.** You can argue with a person. You cannot argue
   with a CI log. And the whole point of the feedback loop is to change what you

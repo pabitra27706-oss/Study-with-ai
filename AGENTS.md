@@ -85,7 +85,29 @@ once first — the request is usually a symptom, not the need.
 - **Sunday, after:** classify errors (concept / recall / application /
   attention), curate cards, lint the wiki, write the week summary and commit.
 
-## 7. For agents working on the website
+## 7. How to judge a submission
+
+The judge is a person — in practice, Claude, in the conversation. There is no
+model provider, no API key and no automated agent. If you are judging:
+
+1. **Read the brief.** `node runner/brief.mjs <topic>` prints what was taught,
+   what the task asked, the code, the machine facts, the written answers, and
+   the rules to apply. Do not judge without reading it.
+2. **The machine facts are a sensor, not a verdict.** A failing test can be a
+   typo or a broken mental model. The comments and the answers tell you which.
+3. **Judge the comments.** A comment must say *why*, never *what*.
+4. **Be specific.** Name the task, the line, the test case, the misconception.
+5. **Never hand over the finished program.** Give the correction. The next
+   attempt is the learner's to write.
+6. **Do not invent problems.** If the work is correct, say it is correct.
+7. **Write the verdict, then apply it.** Write `learn/<topic>/verdict.json`
+   (the shape is printed at the end of the brief), run
+   `node runner/apply-verdict.mjs <topic>`, then commit and push.
+
+The notes are three lines, first person, under 220 characters each, derived
+from what the submission actually showed — not what it was meant to show.
+
+## 8. For agents working on the website
 
 - The site is generated from `content/`. Editing `content/skills.ts`,
   `content/projects.ts`, `content/milestones.ts` or `content/links.ts` changes
@@ -97,7 +119,7 @@ once first — the request is usually a symptom, not the need.
 - The site must build to a **static export** (`NEXT_OUTPUT=export`) — no server
   runtime, no database, no API keys in the client.
 
-## 8. Tone
+## 9. Tone
 
 Direct, specific, and honest about what is known versus probable. No
 flattery, no "great question", no fake enthusiasm. If I am wrong, say so and
