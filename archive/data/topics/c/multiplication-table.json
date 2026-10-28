@@ -1,0 +1,33 @@
+{
+  "topic": {
+    "id": "c-multiplication-table",
+    "title": "Multiplication Table",
+    "language": "C",
+    "category": "Control Flow",
+    "difficulty": "beginner",
+    "dateCreated": "2026-08-10T15:53:39Z",
+    "lastUpdated": "2026-08-10T15:53:39Z",
+    "tags": [
+      "for-loop",
+      "loops",
+      "iteration",
+      "printf",
+      "scanf"
+    ],
+    "description": "Iteration using for loops. Understanding loop initialization, condition, and increment/decrement.",
+    "learningNotes": {
+      "whatILearned": "Previously used functions .",
+      "challenges": "None.",
+      "nextSteps": "More practice."
+    }
+  },
+  "files": [
+    {
+      "id": "file-001",
+      "fileName": "multiplication-table.c",
+      "filePath": "content/c/multiplication-table.c",
+      "description": "Create a Multiplication table for user.",
+      "dateAdded": "2026-08-10T15:53:39Z"
+    }
+  ]
+}
