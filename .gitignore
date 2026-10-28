@@ -8,6 +8,9 @@ node_modules/
 /out/
 next-env.d.ts
 
+# published site (built by CI, deployed by the Pages workflow)
+/docs/
+
 # production
 build/
 
@@ -36,3 +39,6 @@ yarn-error.log*
 .idea/
 .vscode/*
 !.vscode/extensions.json
+
+# transient: the review the workflow posts as an issue comment
+/data/last-review.md

@@ -1,0 +1,6 @@
+{
+  "q1": "Use for when the number of iterations is known in advance; use while when it is not known in advance.",
+  "q2": "The boundary is included or excluded wrongly. Decide the range in English first, then write that range down as a comment.",
+  "q3": "It jumps to the step expression, not back to the condition, so the loop still terminates.",
+  "q4": "Because initialising it inside the body resets it every iteration, so each pass overwrites the previous total."
+}

@@ -1,0 +1,5 @@
+{
+  "whatILearned": "I can write a for-loop that gets the boundary right, and say why in the comment.",
+  "challenges": "Only one of the six tasks is written — the other five are still blank.",
+  "nextSteps": "Do t2 (factorial) next: it is the same loop, but with an accumulator that starts at 1."
+}

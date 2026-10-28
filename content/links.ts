@@ -39,7 +39,7 @@ export const links: LinkItem[] = [
   {
     id: "l-github-alt",
     label: "GitHub — second account",
-    url: "https://github.com/pabiwilliams",
+    url: "https://github.com/pabi277",
     kind: "code",
     note: "Phone-first work: CodeC, AppFlow, Tilefold, Day Ledger",
   },
@@ -53,14 +53,14 @@ export const links: LinkItem[] = [
   {
     id: "l-codec",
     label: "CodeC IDE",
-    url: "https://github.com/pabiwilliams/CodeC",
+    url: "https://github.com/pabi277/CodeC",
     kind: "code",
     note: "A phone-based coding workspace · 3★",
   },
   {
     id: "l-appflow",
     label: "AppFlow — Phone-First Indie Playbook",
-    url: "https://github.com/pabiwilliams/AppFlow",
+    url: "https://github.com/pabi277/AppFlow",
     kind: "doc",
     note: "The doctrine: build on a phone, let CI be the build machine",
   },

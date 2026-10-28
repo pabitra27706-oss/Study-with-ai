@@ -9,7 +9,7 @@ costing you.
 
 **The two accounts:**
 
-| | `pabitra27706-oss` | `pabiwilliams` |
+| | `pabitra27706-oss` | `pabi277` |
 |---|---|---|
 | Created | 2026-02-07 | 2025-03-25 |
 | Public repos | 17 | 30 |
@@ -18,7 +18,7 @@ costing you.
 | Best asset | `matriq` (InsightAI), `Jelet-prep`, `Termux-Mastery` | `CodeC` (3★), `AppFlow`, 2 shipped Android apps |
 
 Both accounts push to the same repositories, and `pabitra27706-oss` has
-already been pushing to `pabiwilliams/CodeC`. **You are effectively one
+already been pushing to `pabi277/CodeC`. **You are effectively one
 developer with two logins.** That is the single biggest fix on the list.
 
 ---
@@ -79,7 +79,7 @@ That is a completely different, and much shorter, list.
 
 - `pabitra27706-oss` has **no profile repository at all**. A recruiter who
   clicks your avatar sees a default card with no README.
-- `pabiwilliams/pabiwilliams` contains the **untouched GitHub template** —
+- `pabi277/pabi277` contains the **untouched GitHub template** —
   literally `👀 I'm interested in ...`, `🌱 I'm currently learning ...`.
   Last pushed 2025-06-08, i.e. it has been sitting there for 16 months.
 
@@ -120,18 +120,18 @@ it becomes the centrepiece of the portfolio.
 
 ### 3.5 The two-account split
 
-A recruiter searching "Pabitra Williams" finds `pabiwilliams` (30 repos,
+A recruiter searching "Pabitra Williams" finds `pabi277` (30 repos,
 mostly forks) and `pabitra27706-oss` (17 repos, mostly originals). The
 signal is diluted and they look like two different people.
 
 **Recommendation:** make **`pabitra27706-oss`** the single public identity —
 it is the one with the originals, the live sites, and the `pabitra27706-oss.github.io`
-Pages domain. Move or re-point anything worth keeping from `pabiwilliams`
+Pages domain. Move or re-point anything worth keeping from `pabi277`
 (the Android work: `CodeC`, `AppFlow`, `Tilefold`, `Day Ledger`, the profile
-repo) and then make `pabiwilliams` a *single* private-or-archive account
+repo) and then make `pabi277` a *single* private-or-archive account
 rather than a second public storefront.
 
-The one thing not to lose: the **`pabiwilliams` profile repository** — it is
+The one thing not to lose: the **`pabi277` profile repository** — it is
 the right artefact, it just needs real content and to live in the surviving
 account.
 
@@ -180,10 +180,10 @@ invented alongside it.
 ## 5. The 30-day fix list
 
 **Week 1 — the face**
-1. Write the profile README on `pabitra27706-oss` (the `pabiwilliams`
+1. Write the profile README on `pabitra27706-oss` (the `pabi277`
    profile repo is the raw material — paste, then rewrite).
 2. Add descriptions + MIT licences to the ten most important repos.
-3. Delete the `pabiwilliams` profile template and repoint the Android work
+3. Delete the `pabi277` profile template and repoint the Android work
    at one account.
 
 **Week 2 — the hygiene**

@@ -22,7 +22,7 @@ export const site = {
     /** The account that holds the original work and the live sites. */
     github: "https://github.com/pabitra27706-oss",
     /** The second account — Android tools and phone-first work. */
-    githubAlt: "https://github.com/pabiwilliams",
+    githubAlt: "https://github.com/pabi277",
     repo: "https://github.com/pabitra27706-oss/Study-with-ai",
     linkedin: "https://www.linkedin.com/in/your-handle",
     twitter: "",

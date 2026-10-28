@@ -1,0 +1,37 @@
+{
+  "generatedAt": "2026-10-28T17:23:34.999Z",
+  "compiler": {
+    "bin": "gcc",
+    "version": "gcc (Debian 12.2.0-14+deb12u1) 12.2.0"
+  },
+  "topics": {
+    "c-loops": {
+      "id": "c-loops",
+      "title": "Loops in C",
+      "language": "C",
+      "verdict": {
+        "status": "incomplete",
+        "score": 28,
+        "by": "Claude",
+        "at": "2026-10-28T17:23:34.999Z",
+        "review": "**What is here right now**\n\n`solutions/t1.c` currently holds the seeded reference answer for t1 — the working example the topic ships with, not your work yet. It is correct, and the comments are exactly the kind this topic is asking for: `for (int i = 1; i <= n; i++)` carries the reason it is `<=` and not `<`, *n itself is a factor of n!*. That sentence is the difference between code you copied and code you own.\n\n**Fix this first**\n\nFive of the six tasks are unwritten, and that is the whole of the gap. Do not spend another minute polishing t1 — it already passes every test, public and hidden. The next hour is better spent on t2, factorial, because it is the loop you already have plus one new idea: an accumulator that starts at 1 rather than 0.\n\n**Then this**\n\nThe four written answers are correct, but they are written to be marked rather than to be understood. *\"Because initialising it inside the body resets it every iteration\"* is the right reason; the next version would say what that reset **costs** — the previous total is thrown away and only the last iteration survives.\n\n**One thing to re-read**\n\nSection 5, *Off-by-one: decide the range before you write the loop*. You already applied it in t1. It is the section that will cost you marks in t6 (the multiplication table, where the counter must run 1..10 and not 0..9) and in t4 (reverse a number, where the loop must stop when the number reaches 0) if you skip it.\n\n**How this gets better**\n\nReplace `solutions/t1.c` with your own version in CodeC, then `bash scripts/collect.sh c-loops t1`, then say **check c-loops** and I will read it, judge it and write the verdict back. The score below is the seeded example's, not yours.",
+        "misconceptions": []
+      },
+      "machine": {
+        "score": 29,
+        "tasksPassed": 1,
+        "tasksTotal": 6,
+        "written": 83,
+        "explain": 100,
+        "compileErrors": 0
+      },
+      "notes": {
+        "whatILearned": "I can write a for-loop that gets the boundary right, and say why in the comment.",
+        "challenges": "Only one of the six tasks is written — the other five are still blank.",
+        "nextSteps": "Do t2 (factorial) next: it is the same loop, but with an accumulator that starts at 1."
+      },
+      "reviewPath": "learn/c-loops/review.md",
+      "lastRun": "2026-10-28T17:23:34.999Z"
+    }
+  }
+}

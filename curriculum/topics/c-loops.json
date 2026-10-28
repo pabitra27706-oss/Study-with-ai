@@ -1,0 +1,398 @@
+{
+  "topic": {
+    "id": "c-loops",
+    "title": "Loops in C",
+    "language": "C",
+    "category": "Control Flow",
+    "difficulty": "beginner",
+    "dateCreated": "2026-10-28T00:00:00Z",
+    "lastUpdated": "2026-10-28T17:23:34.999Z",
+    "tags": [
+      "for-loop",
+      "while",
+      "do-while",
+      "iteration",
+      "break",
+      "continue",
+      "off-by-one"
+    ],
+    "description": "for, while and do-while: how a loop actually evaluates, how to pick the right one, and the four bugs that cost more marks than any other topic in C.",
+    "learningNotes": {
+      "whatILearned": "I can write a for-loop that gets the boundary right, and say why in the comment.",
+      "challenges": "Only one of the six tasks is written — the other five are still blank.",
+      "nextSteps": "Do t2 (factorial) next: it is the same loop, but with an accumulator that starts at 1."
+    }
+  },
+  "files": [],
+  "curriculum": {
+    "summary": "A loop is one idea: do a thing again until a condition stops being true. C gives you three spellings of it, and they are not equally good. This topic teaches the evaluation order of `for` (the part everyone gets wrong), how to choose between the three forms, how to avoid off-by-one errors by deciding the range *before* you write the loop, and how `scanf` and loops interact — the single most common source of \"my program skips my input\" bugs.",
+    "prerequisites": [
+      "c-basics"
+    ],
+    "estimatedMinutes": 90,
+    "rules": {
+      "writingMaxChars": 220,
+      "commentPolicy": "Every non-obvious line needs a WHY comment, not a WHAT comment. A comment that restates the code is deleted. A comment that states the reason is kept.",
+      "notePolicy": "Write three lines maximum: what you learned, what broke, what is next. If it needs more than 220 characters per line, it is not understood yet."
+    },
+    "explanation": [
+      {
+        "h": "1. Why loops exist",
+        "md": "Before loops, repetition meant copy-paste.\n\n```c\nprintf(\"5 x 1 = 5\\n\");\nprintf(\"5 x 2 = 10\\n\");\nprintf(\"5 x 3 = 15\\n\");\n/* ... 100 more lines */\n```\n\nThat is not a style complaint, it is a correctness problem. Change the number, change the message, or print to 1000 rows, and you have to edit every copy — and you will miss one. A loop replaces *N copies of the statement* with *one statement plus a counter*.\n\nThe entire job of a loop is to answer one question: **how many times, and when do I stop?** Everything else in this topic is detail."
+      },
+      {
+        "h": "2. The three forms, and when each is right",
+        "md": "C has exactly three loops. They are the same idea in different clothes.\n\n| Form | Shape | Idiomatic when |\n|---|---|---|\n| `for` | init; test; step | the number of iterations is known or computable up front |\n| `while` | test only | the loop runs until something changes that you did not count |\n| `do...while` | body first, test after | the body must run **at least once** |\n\n**The rule of thumb:** if you can write the count down before the loop starts, use `for`. If you genuinely cannot, use `while`. Use `do...while` only when \"at least once\" is part of the requirement — menu loops, input validation, and reading until EOF.\n\n`while` is not the \"beginner\" version of `for`. It is the *honest* version: it says \"I do not know how many times yet\", and that is a real and common situation."
+      },
+      {
+        "h": "3. The four parts of a for loop — and the exact order they run",
+        "md": "```c\nfor ( init ; test ; step ) { body }\n```\n\nThe execution order is the part that gets memorised wrong. It is:\n\n1. `init` runs **once**, before anything else.\n2. `test` is evaluated. **If false, the loop exits immediately** — the body never runs.\n3. `body` runs.\n4. `step` runs.\n5. Go back to step 2.\n\nTwo consequences people miss:\n\n- **A `for` loop can run zero times.** `for (i = 10; i < 5; i++)` never executes its body. If a program must do something at least once, `for` is the wrong tool — that is what `do...while` is for.\n- **The `step` runs *after* the body.** This matters the moment you write `continue`:\n\n```c\nfor (i = 1; i <= 5; i++) {\n    if (i == 3) continue;\n    printf(\"%d \", i);\n}\n/* prints: 1 2 4 5  — NOT 1 2 3 4 5, and NOT an infinite loop */\n```\n\n`continue` jumps to the **step**, not back to the test. That is why the loop still terminates."
+      },
+      {
+        "h": "4. A for loop is just a while loop in disguise",
+        "md": "If you understand this, you never have to memorise the `for` syntax again.\n\n```c\nfor (i = 0; i < n; i++) { body }\n```\n\nis exactly equivalent to\n\n```c\ni = 0;\nwhile (i < n) { body; i++; }\n```\n\nSo `for` is not a different mechanism. It is `while` with the counter's lifecycle written next to the condition so you cannot forget to update it. That is the whole reason `for` exists as a separate keyword — it is a *safety* feature, not a new capability."
+      },
+      {
+        "h": "5. Off-by-one: decide the range before you write the loop",
+        "md": "The single most common bug in beginner C is being off by exactly one. It happens because the boundary is decided *while writing the loop*, at the moment you are least focused.\n\n**Decide the range in English first, then translate it.**\n\n| The English | The C | Common mistake |\n|---|---|---|\n| \"from 1 to n, both included\" | `i = 1; i <= n; i++` | writing `i < n` and dropping `n` |\n| \"the first n items, 0-indexed\" | `i = 0; i < n; i++` | writing `i <= n` and reading one past the end |\n| \"from 0 to n-1 inclusive\" | `i = 0; i < n; i++` | — |\n\nTwo habits kill the bug:\n\n1. **Write the range as a comment on the line above the loop**, in English: `/* i runs 1..n inclusive */`.\n2. **Print the boundaries once** while testing: `printf(\"first=%d last=%d\\n\", i_first, i_last);`\n\nNote the asymmetry that trips people up: `i <= n` and `i < n` are *both* correct — for different ranges. The bug is not using `<=`; the bug is using it **without deciding which range you meant**.\n\nThe genuinely dangerous case is `i <= n` on an **array**, because `array[n]` is one past the last valid element. There, `i < n` is not a style choice, it is memory safety."
+      },
+      {
+        "h": "6. break and continue",
+        "md": "```c\nfor (i = 1; i <= 100; i++) {\n    if (i > 10 && i % 2 == 0) continue;  /* skip this one */\n    if (i > 20) break;                    /* leave the loop entirely */\n    printf(\"%d \", i);\n}\n```\n\n- `break` leaves the **innermost** loop (or `switch`) immediately.\n- `continue` skips the rest of the current iteration.\n\n**Nested loops:** `break` only breaks the inner loop. If you need to leave both, that is a signal your loop nesting is wrong, or that you need a flag:\n\n```c\nint found = 0;\nfor (int i = 0; i < n && !found; i++) {\n    for (int j = 0; j < m; j++) {\n        if (a[i][j] == target) { found = 1; break; }\n    }\n}\n```\n\nPrefer restructuring over flags when you can. A flag variable is a loop with two exit conditions wearing a disguise."
+      },
+      {
+        "h": "7. Nested loops and their cost",
+        "md": "A nested loop runs the inner loop once for **every** iteration of the outer one. That is `O(n × m)`.\n\n```c\nfor (int i = 0; i < 1000; i++)\n    for (int j = 0; j < 1000; j++)\n        count++;   /* 1,000,000 iterations */\n```\n\nOne million iterations is fine. One billion is not, and on a phone it is already too slow at ten million. The rule that matters:\n\n> **Before you write a second loop inside the first, ask what you can precompute.**\n\nThe classic example is summing all pairs of an array. `O(n²)` is the naive answer; hoisting the inner sum into a running total makes it `O(n)`:\n\n```c\n/* O(n^2) — recomputes sum(a[0..j]) every time */\nfor (int i = 0; i < n; i++)\n    for (int j = i + 1; j < n; j++)\n        total += sum(a, i, j);\n\n/* O(n) — keep a running prefix sum */\nlong long prefix = 0, total = 0;\nfor (int j = 0; j < n; j++) {\n    total += prefix * a[j];\n    prefix += a[j];\n}\n```\n\nYou do not need the clever version on day one. You need to **know it exists**, so that when `n` grows you recognise the shape."
+      },
+      {
+        "h": "8. The scanf trap — why your loop skips input",
+        "md": "This bug costs beginners more hours than any other in C, so it gets its own section.\n\n`scanf(\"%d\", &n)` **leaves the newline in the input buffer**. On the next `scanf`, that newline is still there, and `%d` skips whitespace — including newlines — so it waits for a real number. The symptom: the program appears to ignore the first input.\n\n```c\nint age, height;\nscanf(\"%d\", &age);\nscanf(\"%d\", &height);   /* may appear to skip */\n```\n\n**The fix:** read a line of text and convert it with `strtol`, which also gives you error handling for free.\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nchar line[100];\nlong v = strtol(line, NULL, 10);   /* v is 0 and errno is set if it failed */\n```\n\n**Inside a loop, this becomes input validation** — a real, idiomatic use of `while`:\n\n```c\nint n;\ndo {\n    printf(\"Enter a number: \");\n    scanf(\" %d\", &n);      /* note the leading space — skips whitespace */\n} while (n < 0);\n```\n\nThat leading space in `\" %d\"` is the idiom: **a space in the format string means \"skip any whitespace, including newlines\"**. It is the smallest fix and it is worth memorising.\n\nA cleaner habit that avoids the whole class of bug: read with `fgets` into a buffer and parse with `strtol`/`strtod`. Slower to write, and it never surprises you."
+      },
+      {
+        "h": "9. Infinite loops, and breaking out on purpose",
+        "md": "An infinite loop is not always a bug.\n\n```c\nfor (;;) {                 /* the idiomatic \"forever\" in C */\n    char line[100];\n    if (!fgets(line, sizeof line, stdin)) break;   /* EOF ends it */\n    if (line[0] == 'q') break;\n    process(line);\n}\n```\n\nThree notes:\n\n- `for (;;)` has all three parts **empty**, which is legal and means *forever*. `while (1)` does the same thing and is more readable to beginners.\n- The **exit condition** should be at the top, checked before the work. That way the loop cannot do one iteration too many.\n- A loop that reads input must handle **EOF** (`fgets` returns `NULL`), or it will spin forever on a closed pipe.\n\nIf your loop *should* terminate and does not, look at the step: `i++` missing, `i` never changing, or the condition comparing the wrong thing."
+      },
+      {
+        "h": "10. The four bugs to check for",
+        "md": "When a loop misbehaves, check these in order:\n\n1. **Off-by-one.** Is the boundary `<` or `<=` — and did you *decide* which range you meant?\n2. **The step is missing or wrong.** `i++` vs `i += 2` vs `i = i + 1`.\n3. **The accumulator is reset inside the loop.** `sum = 0` inside the body means every iteration starts from zero — the classic cause of \"the answer is always the last number\". Initialise **before** the loop.\n4. **The input is never consumed.** The `scanf` trap from section 8 — a loop that reads but never advances, so the same value is read forever.\n\nA fifth, for the curious: **integer overflow in the step**. `i++` on an `int` that has reached `INT_MAX` is undefined behaviour. It is not your problem today, but it is why `long long` exists for factorials."
+      }
+    ],
+    "videos": [
+      {
+        "title": "For Loop in C Programming (With Examples for Beginners)",
+        "url": "https://www.youtube.com/watch?v=RLZXhMb5G3w",
+        "channel": "Beginner-friendly walkthrough",
+        "minutes": 12,
+        "why": "The shortest path to for-loop muscle memory. Watch this one first — it covers init/test/step without ever naming them, which is exactly how you should meet them.",
+        "order": 1
+      },
+      {
+        "title": "Loops in C | 4 Important C Programs + Scenario Based Problem",
+        "url": "https://www.youtube.com/watch?v=mjrQMxkvwdo",
+        "channel": "Problem-solving series",
+        "minutes": 18,
+        "why": "Scenario-based, which is how loops actually get asked. The four programs here (table, factorial, sum, reverse) are the exact shapes of six of the tasks in this topic.",
+        "order": 2
+      },
+      {
+        "title": "Loops in One Shot",
+        "url": "https://www.youtube.com/watch?v=1NkXoiBoUOQ",
+        "channel": "Raghav Garg",
+        "minutes": 40,
+        "why": "One continuous pass over for, while and do-while. Use it to revise and to see the three side by side — not to learn from scratch.",
+        "order": 3
+      },
+      {
+        "title": "Jenny's Lectures — Programming in C (loops are lectures 33 to 45)",
+        "url": "https://www.youtube.com/playlist?list=PLdo5W4Nhv31a8UcMN9-35ghv8qyFWD9_S",
+        "channel": "Jenny's Lectures CS IT",
+        "minutes": 190,
+        "why": "The reference. Thirteen consecutive lectures covering loops, break, continue, nested loops, and while/do-while separately. This is the syllabus, in order, with Indian exam framing.",
+        "order": 4
+      },
+      {
+        "title": "C_34 For loop in C | C Programming Tutorials",
+        "url": "https://youtu.be/kzZXbdUhCf4",
+        "channel": "Jenny's Lectures CS IT",
+        "minutes": 12,
+        "why": "Single lecture, no playlist hunting. Use it as the direct substitute for the for-loop lectures if you only have twenty minutes.",
+        "order": 5
+      },
+      {
+        "title": "While Loop in C — GeeksforGeeks",
+        "url": "https://www.geeksforgeeks.org/c/c-while-loop/",
+        "channel": "GeeksforGeeks (text)",
+        "minutes": 8,
+        "why": "Not a video — a clean step-by-step of the evaluation order in pictures. Read it after the videos, not before, so you have a frame to hang it on.",
+        "order": 6
+      }
+    ],
+    "references": [
+      {
+        "title": "Programiz — C while and do...while loop",
+        "url": "https://www.programiz.com/c-programming/c-do-while-loops",
+        "why": "Best text reference for the two loop forms the videos tend to gloss over. Small, example-heavy, no sign-up wall."
+      },
+      {
+        "title": "GeeksforGeeks — do...while Loop in C",
+        "url": "https://www.geeksforgeeks.org/c/c-do-while-loop/",
+        "why": "Shows the do-while body running at least once, including the false-condition case that shows the difference from while."
+      }
+    ],
+    "tasks": [
+      {
+        "id": "t1",
+        "title": "Print 1 to N",
+        "points": 10,
+        "prompt": "Read one integer N from stdin. Print the integers 1 through N on a single line, separated by one space. If N is 1, print `1`.",
+        "starter": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    /* your code here */\n\n    return 0;\n}\n",
+        "solutionFile": "learn/c-loops/solutions/t1.c",
+        "explainTarget": "Your comment must state WHY the loop starts at 1 and not at 0.",
+        "hints": [
+          "Print the number, then print a space only if it is not the last one.",
+          "The boundary decision: does your range include N? Write that down in English first."
+        ],
+        "tests": [
+          {
+            "stdin": "5\n",
+            "stdout": "1 2 3 4 5",
+            "public": true
+          },
+          {
+            "stdin": "1\n",
+            "stdout": "1",
+            "public": true
+          },
+          {
+            "stdin": "10\n",
+            "stdout": "1 2 3 4 5 6 7 8 9 10",
+            "public": false
+          }
+        ]
+      },
+      {
+        "id": "t2",
+        "title": "Factorial of N",
+        "points": 15,
+        "prompt": "Read one integer N. Print N! (the product of 1..N). Define 0! as 1. Use `long long` so the answer stays correct up to 20.",
+        "starter": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    /* your code here */\n\n    return 0;\n}\n",
+        "solutionFile": "learn/c-loops/solutions/t2.c",
+        "explainTarget": "Your comment must state WHY the accumulator starts at 1 and not at 0, and why the boundary includes N.",
+        "hints": [
+          "The accumulator must be initialised before the loop, not inside it.",
+          "Think about what happens to the product if you ever multiply by zero."
+        ],
+        "tests": [
+          {
+            "stdin": "5\n",
+            "stdout": "120",
+            "public": true
+          },
+          {
+            "stdin": "0\n",
+            "stdout": "1",
+            "public": true
+          },
+          {
+            "stdin": "1\n",
+            "stdout": "1",
+            "public": false
+          },
+          {
+            "stdin": "10\n",
+            "stdout": "3628800",
+            "public": false
+          }
+        ]
+      },
+      {
+        "id": "t3",
+        "title": "Sum of digits",
+        "points": 15,
+        "prompt": "Read one non-negative integer N. Print the sum of its digits. For example, 1234 gives 10.",
+        "starter": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    /* your code here */\n\n    return 0;\n}\n",
+        "solutionFile": "learn/c-loops/solutions/t3.c",
+        "explainTarget": "Your comment must state WHY you take the remainder before dividing.",
+        "hints": [
+          "The last digit of a number is n % 10. The rest of the number is n / 10.",
+          "Order matters: take the remainder first, or you will divide away the digit you wanted."
+        ],
+        "tests": [
+          {
+            "stdin": "1234\n",
+            "stdout": "10",
+            "public": true
+          },
+          {
+            "stdin": "0\n",
+            "stdout": "0",
+            "public": true
+          },
+          {
+            "stdin": "9\n",
+            "stdout": "9",
+            "public": false
+          },
+          {
+            "stdin": "9999\n",
+            "stdout": "36",
+            "public": false
+          }
+        ]
+      },
+      {
+        "id": "t4",
+        "title": "Reverse a number",
+        "points": 15,
+        "prompt": "Read one non-negative integer N. Print N with its digits reversed. Leading zeros in the result are dropped: 120 becomes 21.",
+        "starter": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    /* your code here */\n\n    return 0;\n}\n",
+        "solutionFile": "learn/c-loops/solutions/t4.c",
+        "explainTarget": "Your comment must state WHY the accumulator is `rev * 10 + digit` and not `rev + digit`.",
+        "hints": [
+          "You build the answer from the right. Each new digit goes on the left of what you have.",
+          "rev * 10 shifts the existing digits left by one place, then you add the new digit."
+        ],
+        "tests": [
+          {
+            "stdin": "1234\n",
+            "stdout": "4321",
+            "public": true
+          },
+          {
+            "stdin": "100\n",
+            "stdout": "1",
+            "public": true
+          },
+          {
+            "stdin": "7\n",
+            "stdout": "7",
+            "public": false
+          },
+          {
+            "stdin": "9000\n",
+            "stdout": "9",
+            "public": false
+          }
+        ]
+      },
+      {
+        "id": "t5",
+        "title": "FizzBuzz",
+        "points": 20,
+        "prompt": "Read one integer N. For each number from 1 to N print one line: `Fizz` if it is divisible by 3, `Buzz` if by 5, `FizzBuzz` if by both, otherwise the number itself.",
+        "starter": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    /* your code here */\n\n    return 0;\n}\n",
+        "solutionFile": "learn/c-loops/solutions/t5.c",
+        "explainTarget": "Your comment must state WHY you test divisibility by 15 (or check FizzBuzz first) instead of testing 3 and 5 independently.",
+        "hints": [
+          "If you test 3 first and print Fizz, you can never print FizzBuzz.",
+          "15 is divisible by both 3 and 5 — one test covers both."
+        ],
+        "tests": [
+          {
+            "stdin": "5\n",
+            "stdout": "1\n2\nFizz\n4\nBuzz",
+            "public": true
+          },
+          {
+            "stdin": "15\n",
+            "stdout": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz",
+            "public": true
+          },
+          {
+            "stdin": "3\n",
+            "stdout": "1\n2\nFizz",
+            "public": false
+          },
+          {
+            "stdin": "1\n",
+            "stdout": "1",
+            "public": false
+          }
+        ]
+      },
+      {
+        "id": "t6",
+        "title": "Multiplication table",
+        "points": 25,
+        "prompt": "Read one integer N (1 to 10). Print the multiples of N from N×1 to N×10, separated by one space.",
+        "starter": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    /* your code here */\n\n    return 0;\n}\n",
+        "solutionFile": "learn/c-loops/solutions/t6.c",
+        "explainTarget": "Your comment must state WHY the counter runs 1..10 rather than 0..9.",
+        "hints": [
+          "You need ten multiples. Decide whether the counter is the multiple itself or the index.",
+          "There is more than one correct shape here — pick one and defend it in a comment."
+        ],
+        "tests": [
+          {
+            "stdin": "3\n",
+            "stdout": "3 6 9 12 15 18 21 24 27 30",
+            "public": true
+          },
+          {
+            "stdin": "1\n",
+            "stdout": "1 2 3 4 5 6 7 8 9 10",
+            "public": true
+          },
+          {
+            "stdin": "12\n",
+            "stdout": "12 24 36 48 60 72 84 96 108 120",
+            "public": false
+          },
+          {
+            "stdin": "5\n",
+            "stdout": "5 10 15 20 25 30 35 40 45 50",
+            "public": false
+          }
+        ]
+      }
+    ],
+    "rubric": {
+      "written": [
+        {
+          "id": "q1",
+          "q": "When is a for-loop better than a while-loop?",
+          "a": "Use for when the number of iterations is known or computable up front; use while when it is not known in advance.",
+          "keywords": [
+            "known",
+            "advance",
+            "count"
+          ],
+          "partial": "Mentions that the count is known in advance."
+        },
+        {
+          "id": "q2",
+          "q": "What is an off-by-one error and how do you avoid it?",
+          "a": "The loop boundary includes or excludes one element too many or too few. Avoid it by deciding the range in English before writing the loop, then writing that range as a comment.",
+          "keywords": [
+            "boundary",
+            "range",
+            "comment"
+          ],
+          "partial": "Names the boundary/range as the thing that must be decided first."
+        },
+        {
+          "id": "q3",
+          "q": "Inside a for-loop, where does `continue` jump to?",
+          "a": "It jumps to the step expression (the increment), not back to the condition — so the loop still terminates.",
+          "keywords": [
+            "step",
+            "increment",
+            "not"
+          ],
+          "partial": "Says it goes to the increment/step rather than the condition."
+        },
+        {
+          "id": "q4",
+          "q": "Why must an accumulator be initialised before the loop and not inside it?",
+          "a": "Initialising inside the body resets it on every iteration, so each iteration overwrites the previous total and the final value is just the last iteration's contribution.",
+          "keywords": [
+            "reset",
+            "every",
+            "iteration"
+          ],
+          "partial": "Says it is reset each iteration."
+        }
+      ]
+    }
+  }
+}
