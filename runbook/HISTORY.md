@@ -189,3 +189,37 @@ That is why the score went *down* from 28% to 20% while the work went up.
 
 **Also.** `learn/c-loops/.fingerprint` was removed: it belonged to the deleted
 agent design and nothing read it.
+
+---
+
+## 2026-10-28 — The sensor was too strict, and the verdict was wrong
+
+**The correction.** The owner, on the first judged submission: *"You say it
+wrong because of a space? `Factorial of 5 = 120` is not `120`. Don't be so
+strict all outputs are ok so it should be passed."*
+
+**What was actually wrong.** The sensor compared stdout byte for byte. A
+program that prints `Factorial of 5 = 120` computed 5! perfectly and was
+failed for formatting. That is a noisy sensor: it makes the judge argue with
+the sensor instead of judging the work.
+
+**The change.** The sensor now asks one question — **is the right value there?**
+The expected answer must appear as a whole token, or a whole line for
+multi-line expectations. `120` matches `Factorial of 5 = 120`; it does not
+match `1200`. Output with extra text still passes, but is recorded as
+**noisy** and shown to the judge, who decides whether the extra text is
+acceptable. The site shows it too, under *output carries extra text*.
+
+**Verified it did not weaken the sensor.** Deliberately broken programs still
+fail: off-by-one, wrong value, trailing digits, and exiting non-zero on an
+edge case. Only cosmetics are forgiven.
+
+**The verdict changed.** `incomplete` 20% → **`mostly-correct` 45%** (machine
+30%). The programme was never wrong about the mathematics. What is missing is
+the thing the task asked for: it is recursion in a loops topic, so the comment
+the task requires — why the accumulator starts at 1, why the boundary includes
+N — cannot exist in it, and none of its three comments explain a why.
+
+**Also.** `runbook/START-HERE.md` is new: a permanent, copy-paste prompt for
+starting a new chat, with a table for reading a push before guessing, and the
+instruction to ask when it is ambiguous.

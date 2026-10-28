@@ -1,5 +1,5 @@
 {
-  "whatILearned": "My factorial maths is right — 5! is 120 and 0! is 1 — but I printed the answer wrongly.",
-  "challenges": "My program prints a prompt and a sentence instead of just the number, so it fails all four test cases.",
-  "nextSteps": "Print only the number, then rewrite it as a for loop and say why the accumulator starts at 1 and why the loop stops at N."
+  "whatILearned": "My factorial works for every case — 5! is 120, 0! is 1 — and it handles a negative input.",
+  "challenges": "I solved it with recursion instead of a loop, so the comment about the accumulator cannot exist, and none of my comments say why.",
+  "nextSteps": "Rewrite t2 as a for loop, say why the accumulator starts at 1 and why the loop stops at N, then write my own four answers."
 }

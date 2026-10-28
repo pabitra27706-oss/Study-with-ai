@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T17:57:58.923Z",
+  "generatedAt": "2026-10-28T18:09:06.300Z",
   "compiler": {
     "bin": "gcc",
     "version": "gcc (Debian 12.2.0-14+deb12u1) 12.2.0"
@@ -26,32 +26,29 @@
         "t2": {
           "id": "t2",
           "title": "Factorial of N",
-          "status": "failed",
-          "passed": 0,
+          "status": "passed",
+          "passed": 4,
           "total": 4,
-          "points": 0,
+          "points": 15,
           "maxPoints": 15,
           "compileError": null,
-          "failing": [
+          "failing": [],
+          "noisy": [
             {
               "expected": "120",
-              "actual": "Enter an integer: Factorial of 5 = 120",
-              "error": null
+              "actual": "Enter an integer: Factorial of 5 = 120"
             },
             {
               "expected": "1",
-              "actual": "Enter an integer: Factorial of 0 = 1",
-              "error": null
+              "actual": "Enter an integer: Factorial of 0 = 1"
             },
             {
               "expected": "1",
-              "actual": "Enter an integer: Factorial of 1 = 1",
-              "error": null
+              "actual": "Enter an integer: Factorial of 1 = 1"
             },
             {
               "expected": "3628800",
-              "actual": "Enter an integer: Factorial of 10 = 3628800",
-              "error": null
+              "actual": "Enter an integer: Factorial of 10 = 3628800"
             }
           ],
           "explain": {

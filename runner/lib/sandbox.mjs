@@ -116,12 +116,15 @@ export async function compileAndRun(source, tests, options = {}) {
 
       const expected = normalizeOutput(test.stdout);
       const actual = normalizeOutput(run.stdout);
-      const ok = run.code === 0 && actual === expected;
+      const match = matchesExpected(actual, expected);
+      const ok = run.code === 0 && match.ok;
 
       if (ok) passed += 1;
 
       results.push({
         ok,
+        exact: match.exact,
+        noisy: match.ok && !match.exact,
         expected,
         actual,
         exitCode: run.code,
@@ -182,6 +185,39 @@ function runProcess(bin, args, { timeoutMs = 5000, stdin = "" } = {}) {
     }
     child.stdin.end();
   });
+}
+
+/**
+ * Does the output contain the expected answer?
+ *
+ * The sensor measures one thing: **is the right value there?** A program that
+ * prints `Factorial of 5 = 120` has computed 5! correctly. Requiring a byte-
+ * for-byte match would fail it for a formatting difference and leave the
+ * judge arguing with the sensor instead of judging the work.
+ *
+ * So: the expected answer must appear as a whole token (or a whole line, for
+ * multi-line expectations). `120` matches `Factorial of 5 = 120`; it does not
+ * match `1200`, and it does not match a program that only ever prints 120.
+ *
+ * When the output carries extra text, the result is still a pass — but it is
+ * marked `noisy`, so the judge can see the difference and decide whether the
+ * extra text is acceptable. The sensor reports; it does not scold.
+ */
+function matchesExpected(actual, expected) {
+  if (actual === expected) return { ok: true, exact: true };
+
+  const expectedLines = expected.split("\n").map((line) => line.trim()).filter(Boolean);
+  if (expectedLines.length === 0) return { ok: actual.trim() === "", exact: false };
+
+  if (expectedLines.length > 1) {
+    const actualLines = actual.split("\n").map((line) => line.trim());
+    const ok = expectedLines.every((line) => actualLines.includes(line));
+    return { ok, exact: false };
+  }
+
+  const want = expectedLines[0];
+  const tokens = actual.split(/\s+/).filter(Boolean);
+  return { ok: tokens.includes(want), exact: false };
 }
 
 function firstErrorLine(stderr) {

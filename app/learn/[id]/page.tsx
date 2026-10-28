@@ -104,6 +104,33 @@ function TaskBlock({ task, result }: { task: CurriculumTask; result?: TaskEviden
           </div>
         )}
 
+        {result?.noisy && result.noisy.length > 0 && (
+          <div className="mt-4">
+            <p className="font-mono text-[11px] uppercase tracking-wider text-accent">
+              output carries extra text
+            </p>
+            <p className="mt-1.5 text-[12.5px] leading-relaxed text-muted">
+              The expected answer is in there, so it passes. The rest is noise in
+              the answer — a prompt, a label, anything beyond the value itself.
+            </p>
+            <div className="mt-2.5 space-y-2">
+              {result.noisy.map((caseItem, index) => (
+                <div
+                  key={index}
+                  className="rounded-lg border border-accent/25 bg-accent/5 px-4 py-3 font-mono text-[12px] leading-relaxed"
+                >
+                  <p className="text-faint">
+                    expected: <span className="text-ink">{caseItem.expected}</span>
+                  </p>
+                  <p className="text-accent">
+                    got: <span className="text-ink">{caseItem.actual}</span>
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <p className="mb-2 font-mono text-[11px] uppercase tracking-wider text-faint">

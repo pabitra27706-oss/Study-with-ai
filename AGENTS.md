@@ -4,6 +4,9 @@
 > `runbook/STATE.md` and `runbook/THE-LOOP.md`. The runbook holds the current
 > state, the exact steps, the judging rules, the decision log and the open
 > list. It is written for a session that has no memory of this project.
+>
+> A copy-paste prompt for starting a fresh chat is in
+> [`runbook/START-HERE.md`](runbook/START-HERE.md).
 
 This repository is not a codebase that an AI writes. It is a **learning
 system** that a human runs, with AI as a constrained tutor. An agent that

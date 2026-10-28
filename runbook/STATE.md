@@ -43,9 +43,10 @@ Update this file whenever something in it changes.
 |---|---|
 | Topic | `c-loops` — the only topic pack so far |
 | The learner's work | `learn/c-loops/solutions/t2.c` — their first submission |
-| Verdict | `incomplete`, **20%** (machine 19%), judged by Claude |
-| What broke | The program prints a prompt and a sentence instead of just the number, so it fails all four test cases. The factorial maths itself is correct. |
-| What is next | Print only the number, then rewrite it as a for loop, and say why the accumulator starts at 1 and why the loop stops at N. |
+| Verdict | `mostly-correct`, **45%** (machine 30%), judged by Claude |
+| What is right | Every value correct: 5! = 120, 0! = 1, 10! = 3628800, 20! = 2432902008176640000. All four test cases pass. `unsigned long long`, clean under `-Wall -Wextra`, negatives rejected. |
+| What is missing | It is recursion in a loops topic, so the comment the task asks for (why the accumulator starts at 1, why the boundary includes N) cannot exist in it. All three comments state what, not why. |
+| What is next | Rewrite t2 as a for loop and explain the initialiser and the condition. Then write your own four answers. |
 
 ## The learning engine
 

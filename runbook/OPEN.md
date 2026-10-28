@@ -18,7 +18,7 @@ can do it now. "Owner" means only the user can.
 | 9 | Write the first real topic pack | `c-loops` is the only one. The engine is proven; it needs a second topic to prove it again. | Claude, on request |
 | 10 | Send the CodeC repository URL | Already resolved to `pabi277/CodeC` — but the owner should confirm it is the repo they use. | Owner |
 | 11 | Check the open issues on CodeC | Three open issues on a starred repository is three chances to make it better. | Owner |
-| 12 | The learner's `t2.c` is not a loop | It is correct arithmetic but it is recursion, in a loops topic, and it fails every test on output format. Worth one more round. | Owner |
+| 12 | The learner's `t2.c` is recursion, not a loop | The arithmetic is right and it now passes all four tests, but in a loops topic the required comment (accumulator, boundary) cannot exist in a recursive program. Worth one more round. | Owner |
 | 13 | The four written answers are still the shipped examples | `learn/c-loops/answers.json` has never been replaced, so the "answers" score is not yet the learner's. | Owner |
 
 ## Not to be done without being asked
