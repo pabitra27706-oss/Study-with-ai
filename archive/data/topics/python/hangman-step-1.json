@@ -15,9 +15,9 @@
     ],
     "description": "First step of building Hangman: randomly choose a word and check if a single guessed letter is in the word. Introduces the in operator with strings.",
     "learningNotes": {
-      "whatILearned": "Using random.choice on a word list and the in operator to test membership.",
-      "challenges": "None — this step focuses on a single guess check.",
-      "nextSteps": "Step 2: show blanks and reveal correct guesses."
+      "whatILearned": "The first hangman step: pick a word, ask for a letter, and say whether that letter is in the word.",
+      "challenges": "The check is done letter by letter, so it prints one 'Wrong' for every letter that is not the guess — six wrong answers for a correct guess.",
+      "nextSteps": "Check the guess against the whole word once, instead of against each letter in turn."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Hangman step 1: single letter guess check.",
       "dateAdded": "2026-01-07T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 55,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "'Is this letter in the word?' is one question about the whole word, not one question per letter",
+      "A loop that checks every letter prints once per letter - which is a different program from the one that was asked for"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 20 + 15 = 55%**\n\n**What is right, by reading and by running**\n\nThe bones are right. `random.choice(word_list)` picks a word, `input(...).lower()` takes the guess in lower case, and there is a loop over the letters of the chosen word. The TODO comments are honest — this file is a work-in-progress with the exercise written above it, which is exactly how these files should look at step one.\n\nAnd it runs: I ran it, and it printed the chosen word, took my guess, and responded.\n\n**What is not**\n\n**The check is the wrong shape.** The TODO says *Check if the letter the user guessed (guess) is one of the letters in the chosen_word* — that is **one question about the whole word**. The code asks it once per letter instead:\n\n```python\nfor letter in chosen_word:\n    if letter == guess:\n        print('Right')\n    else:\n        print('Wrong')\n```\n\nSo with the word `baboon` and the guess `a`, it prints:\n\n```\nWrong\nRight\nWrong\nWrong\nWrong\nWrong\n```\n\nOne line of output per letter in the word. The player guessed correctly and the program told them six times that they were wrong.\n\nThe right shape is a membership test — `if guess in chosen_word:` — which is one line and asks the question that was actually asked.\n\n**The file also prints the answer.** `print(chosen_word)` puts the word on screen before the player has guessed a single letter, so the game gives itself away on the first line.\n\nSmall one: the prompt says *Guess a latter*.\n\n**The one thing to fix first**\n\nOne line instead of the loop:\n\n```python\nif guess in chosen_word:   # one question about the whole word, not one per letter\n    print('Right')\nelse:\n    print('Wrong')\n```\n\nand take the `print(chosen_word)` out — that line is the answer key, printed where everyone can read it.\n"
+  }
 }

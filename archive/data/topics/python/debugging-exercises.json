@@ -16,9 +16,9 @@
     ],
     "description": "A collection of buggy programs covering off-by-one errors, type mismatches, indentation errors, and logical mistakes — each paired with a corrected version.",
     "learningNotes": {
-      "whatILearned": "How to identify syntax errors (caught by interpreter immediately), runtime errors (crash during execution), and logical errors (wrong output silently). Using print statements to trace flow.",
-      "challenges": "Logical errors are hardest to find because the program runs without crashing.",
-      "nextSteps": "Learn Python logging module and try using pdb (Python debugger)."
+      "whatILearned": "Five bug-hunting exercises: each file has a deliberate mistake, and the solution file shows the fix.",
+      "challenges": "One of the five files, `Debug.py`, still does not compile — the last exercise in it was never finished.",
+      "nextSteps": "Finish `Debug.py`, and add a comment to every fix saying what the bug *was*, not what the fix *is*."
     }
   },
   "files": [
@@ -57,5 +57,23 @@
       "description": "Odd/even checker with comparison operator error.",
       "dateAdded": "2026-01-16T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 80,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "A debugger is a tool, but reading the error message's last line is usually faster than a debugger",
+      "An off-by-one on a list index is the most common bug in Python and it always looks like the wrong number of items"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**30 + 30 + 20 = 80%**\n\n**What is right**\n\nThe set covers the classic beginner bugs, and you found most of them:\n\n- **`range(1, 20)` never reaches 20.** `range` stops *before* the end, so `i == 20` was never true. The fix is `range(1, 21)`, and the comment says so.\n- **A dice roll that could index off the end.** `randint(1, 6)` on a six-element list picks index 6, which does not exist. The fix changes the list to seven entries and the roll to `randint(0, 5)` — and the comment says *list start from 0*.\n- **A year of 1994 falling through every branch.** `year > 1994` misses 1994 itself; `year >= 1994` catches it. The comment names it: *only made > to >= to take also 1994 in logic*.\n- **`input()` returning a string.** `age > 18` compares a string with a number and raises a TypeError. The fix is `int(input(...))`.\n\nThe `Debugging_fizz_buzz.py` and `Debugging_leap_year.py` files explain their fixes in docstrings, which is the right place for a lesson.\n\n**What is not**\n\n**`Debug.py` does not compile.** The last exercise in it is half-done:\n\n```python\nif age > 18:\nprint(f\"You can drive at age {age}.\")\n```\n\nThe `print` is not indented, so the file ends with an `IndentationError: expected an indented block after 'if' statement` and *nothing* in it runs — not the four exercises above it either, because Python refuses to start the file at all. `Debug_solution.py` has the fix; `Debug.py` never got it. A file of debugging exercises that cannot be opened is an exercise in nothing.\n\nThe other thing: the fixes are described as *what changed* (*change 20 to 31*, *add int function to say it's a integer*). What a debugging exercise should teach is the *bug* — why the original was wrong. The best comment in the set is the one that does exactly that: *return is working for (x-1) so it's count 1 to 19 so 20 never come*.\n\n**The one thing to fix first**\n\nFinish `Debug.py`:\n\n```python\nage = int(input(\"How old are you? \"))  # input() gives a string; comparing a string with 18 raises TypeError.\nif age > 18:\n  print(f\"You can drive at age {age}.\")\n```\n\nThen the same rule for the comments: write *what was wrong*, not *what I changed*.\n"
+  }
 }

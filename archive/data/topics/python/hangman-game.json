@@ -16,9 +16,9 @@
     ],
     "description": "The complete polished Hangman game with logo, word list, lives, and ASCII art stages. Combines all previous steps into a fully playable game.",
     "learningNotes": {
-      "whatILearned": "How to assemble multiple concepts — random selection, loops, lists, and conditionals — into a complete working game.",
-      "challenges": "Handling repeated guesses and keeping the display state consistent across turns.",
-      "nextSteps": "Add a GUI using tkinter or expand the word list from an external file."
+      "whatILearned": "The full hangman game: a logo, seven drawings of the gallows, a two-hundred-word dictionary and the game loop.",
+      "challenges": "The word is a well-known list, and the game does not stop you from guessing a letter more than once — it warns you instead.",
+      "nextSteps": "Make a repeated guess cost nothing, and add a limit on the number of guesses."
     }
   },
   "files": [
@@ -29,5 +29,23 @@
       "description": "Complete Hangman game with logo, stages, and word list.",
       "dateAdded": "2026-01-08T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 85,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "Hangman is really two small programs: the display of the word, and the check of one guess",
+      "A list of dictionaries of the same shape is a table - and a table of one kind of thing is a class"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 15 = 85%**\n\n**What is right**\n\nIt runs, and it is the complete game. I played it far enough to see the loop ask for a guess and track the state correctly.\n\nThe pieces are all there and each one does its job:\n\n- `stages` is a list of seven ASCII drawings, indexed by the number of lives left — so `stages[lives]` is the drawing for the current state, and no special-casing is needed.\n- `display` starts as one underscore per letter and each correct guess replaces the underscore **in the right position**, which is the loop over `range(word_length)`.\n- `guessed_letters` remembers what has been tried.\n- The win check is `if \"_\" not in display` — the underscore is the marker, so the test is simply *are there any blanks left*.\n- The losing check is `lives == 0`, and the word is revealed.\n\nThe word list is the famous one — *abruptly, absurd, abyss, askew* — and it is a good list: no plurals, no proper nouns, no short words that make the game trivial.\n\n**What is not**\n\n**A repeated guess is only warned about, not stopped.** The code prints *You've already guessed the letter 'x'. Try again.* and then carries on into the same block anyway — the `else:` makes the repeat harmless (it does not cost a life and it does not change the display), but the message says *Try again* when the program has actually already tried again. Either `continue` the loop after the warning, or reword the message to *You've already guessed that one*.\n\n**The gallows is printed after the game ends.** `print(stages[lives])` is the last line of the loop, so when the player loses, the final drawing appears *after* the message — which reads oddly: the man is drawn after he is dead.\n\nThere is also no limit on how long a round goes. If the player keeps typing letters that are in the word, the game continues; there is no maximum number of guesses, only the life count for wrong ones.\n\n**The one thing to fix first**\n\nStop the repeat properly:\n\n```python\nif guess in guessed_letters:\n    print(f\"You've already guessed the letter '{guess}'. Try again.\")\n    continue   # go back to the top and ask again - do not spend a guess\n```\n"
+  }
 }

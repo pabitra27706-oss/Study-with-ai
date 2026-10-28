@@ -16,9 +16,9 @@
     ],
     "description": "Defines a User class with id, username, followers, and following attributes, plus a follow() method. A clean introduction to object-oriented programming.",
     "learningNotes": {
-      "whatILearned": "Writing a class with __init__ to set initial state and defining instance methods that modify attributes. Understanding self as the instance reference.",
-      "challenges": "Remembering to use self for every attribute access inside methods.",
-      "nextSteps": "Add an unfollow method, a bio attribute, and experiment with multiple User instances interacting."
+      "whatILearned": "Your first class: a `User` object that keeps its own id, name and follower counts, and can follow somebody else.",
+      "challenges": "The class works, but nothing in the file says what a class is *for*.",
+      "nextSteps": "Add a `__repr__` so a user prints as a user, and guard against following the same person twice."
     }
   },
   "files": [
@@ -29,5 +29,23 @@
       "description": "User class with follow() method.",
       "dateAdded": "2026-01-18T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 80,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`self` is the object the method was called on - `user_1.follow(user_2)` means `user_1`'s `self`",
+      "`__init__` runs once when the object is made; it is where the object's starting values are set"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 10 = 80%**\n\n**What is right**\n\nThe class is right. `__init__` sets `id`, `username`, `followers = 0` and `following = 0` on the object, so every user starts from the same clean state. `follow(self, user)` does the one thing a follower relationship needs: it adds one to the *other* user's followers and one to *this* user's following — note that it reaches across to `user` rather than adding to `self.followers`, which is the correct direction and the thing people get wrong.\n\nI ran it. It prints `0` and `1`, and `1` is right: user_1 is following one person, and nobody is following user_1.\n\n**What is not**\n\n**Not one comment.** A class file is the one place where a comment is most valuable, because the whole point of the file is a rule you cannot see in the code: *an object keeps its own data, and a method changes that data*. One line above `__init__` and one above `follow` would carry it.\n\nTwo design gaps worth naming, both invisible in the output:\n\n- **Nothing stops a double follow.** Call `user_1.follow(user_2)` twice and user_2's follower count becomes 2 and user_1's following count becomes 2. Real networks do not do that. A guard — `if user not in self.following` — would fix it, and it would make the class worth more than the exercise.\n- **The link goes one way.** `user_1` knows it is following user_2, but `user_2` has no list of followers — only a count. A real model stores `user_2.followers` as a *list of users*, and the count becomes `len(user_2.followers)`. The count is a number you cannot ask questions of.\n\n**The one thing to fix first**\n\nMake the relationship real in one line — store the users, not a count:\n\n```python\nself.followers = []   # a list, not a number - then len(self.followers) is the count\n```\n\n```python\ndef follow(self, user):\n    if user not in self.following:\n        user.followers.append(self)\n        self.following.append(user)\n```\n\nThat one change is the difference between a class that counts and a class that *knows who*.\n"
+  }
 }

@@ -15,9 +15,9 @@
     ],
     "description": "Completes the Hangman mechanics by adding a lives counter and ASCII art stages that update with each wrong guess.",
     "learningNotes": {
-      "whatILearned": "Decrementing a lives counter on wrong guesses and indexing a stages list to display matching ASCII art.",
-      "challenges": "Calculating the correct stage index from remaining lives.",
-      "nextSteps": "Refactor into functions and then into a class for full Hangman."
+      "whatILearned": "Step four: the complete hangman — lives, the gallows drawings, and a word list.",
+      "challenges": "The chosen word is printed before the game starts, so the answer is on screen from the first line.",
+      "nextSteps": "Delete the line that prints the word, and let a repeated guess cost nothing."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Hangman step 4: lives counter and ASCII stages.",
       "dateAdded": "2026-01-07T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 70,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "The gallows drawing is indexed by the lives remaining - `stages[lives]` - so the list and the number have to agree",
+      "Printing the secret to the screen is the same as not having a secret"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 15 = 70%**\n\n**What is right**\n\nThis is the real hangman and it runs. The whole design is in place and it is the design most people arrive at:\n\n- `stages` is the list of seven gallows drawings, indexed by lives remaining, so `print(stages[lives])` prints the drawing for the current state with no special-casing.\n- The word list is ten words: `ardvark, baboon, camel, apple, banana, grape, elephant, tiger, zebra, lion`.\n- `display = [\"_\" for _ in range(word_length)]` builds the blanks in one line — cleaner than the loop used in step two.\n- The wrong guess costs a life, `lives` reaches 0, and the word is revealed.\n- The win check is the same `\"_\" not in display` as step three.\n\nI ran it: it printed the logo, the word, the blanks, and waited for a guess.\n\n**What is not**\n\n**The word is printed before the game starts.** `print(chosen_word)` sits right under *# Choose a random word*, so the answer is on screen before the first guess. Every other line of the file is careful — the logo, the blanks, the lives — and this one line gives the whole game away. It is a leftover from testing, and it is the single most important thing to remove from this file.\n\n**A repeated guess is only announced, not handled.** The code prints *You've already guessed 'a'* and then falls through into the checking code anyway. It does not cost a life, so the game is not broken by it — but the message implies something is being prevented, and nothing is.\n\n**The word list has a typo.** `ardvark` is in this list; the other hangman files in the archive use `aardvark`. The word is spelled wrongly in the only file where the spelling is visible to the player.\n\nThere are no comments on the parts that need them — the gallows index, the life count, the win check — and the file is 100 lines of code with the comments all on the art.\n\n**The one thing to fix first**\n\nOne line:\n\n```python\nchosen_word = random.choice(word_list)   # no print - the word is the secret\n```\n\nand fix the spelling to `aardvark`. Then one comment where the gallows is drawn:\n\n```python\nprint(stages[lives])  # The drawing is indexed by lives left, so 6 is full and 0 is empty.\n```\n"
+  }
 }

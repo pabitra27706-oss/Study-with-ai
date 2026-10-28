@@ -605,3 +605,68 @@ nothing anywhere listed the work that was waiting. Now it does.
 **The rule.** A feature that is invisible is a feature that does not
 exist. If work can arrive somewhere, that somewhere has to be able to say
 what is waiting in it.
+
+---
+
+## 2026-10-29 — The backlog is judged. The queue is empty.
+
+**Decided.** Work through `archive/data/archive-pending.json` in order, oldest
+last, judging every topic the way the archive rubric says: 40 for *it runs*, 30
+for *is it right*, 30 for *does it explain itself*. Run the code where it can be
+run; where it cannot, say so and judge it by reading.
+
+**Done.** 74 topics judged — 13 C, 43 Python, 5 adopted files, the rest of the
+catalogue. The pending queue is **empty**. `build-archive.mjs --check` reports
+*the archive is in step with the engine*.
+
+**Why it mattered.** The archive had 67 topics with real code and no verdict,
+which made it a gallery rather than a record. Now every topic on the site
+answers the three questions a reader actually has: does it run, is it right, and
+does the code explain itself.
+
+**What running the code found that reading it did not.** A file that subtracts
+weeks from days and prints 31810 where the answer is 25550. A love
+calculator that lowercases one name and not the other, so *Tim* scores 12 and
+*tim* scores 22. A pizza order that charges a lowercase `s` as a large pizza.
+A treasure map that tries to turn a letter into a number, so `B2` and `2B` both
+crash. A debugger exercise file with an unindented `print` that stops the whole
+file from starting. These are not things a reader would catch and a runner
+catches every time.
+
+**The environment decision that mattered most.** Eleven files need `tkinter`.
+There is no `tkinter` here, and **there is none on Termux either** — so those
+files can never run on the phone this whole system is built around. They were
+judged by reading, they lose the 40 points for running, and the review says so
+in the first line rather than pretending otherwise. Two of them (`Bassic_knowledge.py`
+and `3_turtle_challange.py`) also close their window instantly, because they
+never call `exitonclick()` — a bug that only shows up on a machine with a screen.
+
+**Kept.** The rubric never fails a correct program over cosmetic output, the
+verdict is always mine and never the compiler's, and no second AI ever enters
+the loop.
+
+---
+
+## 2026-10-29 — The ghost card, and a duplicate that was not a bug
+
+**Decided.** When the duplicate-ownership repair found one file claimed by
+two topics, it took the file away from one of them. That is right when the
+loser still has other code, and wrong when it does not: a topic left with no
+files is a card with a title and nothing to open. **The repair now refuses
+to empty a topic.** A file shared by two topics stays with both, and the
+generator says which file and which topics.
+
+**Also fixed.** The catalogue pointed *If-Else Statement in C* at
+`if-else-statement.json`, a clone of a different topic that carried that
+other topic's id and no code at all. The pointer now names the file that
+actually holds the topic, and the clone is deleted. The learner keeps their
+own note - *How to create a long logic and add new one as well* - and the
+topic has a verdict of its own: **60%, mostly-correct**, on the same program
+the archive also shows under *Ticket Price Calculator*.
+
+**Why it mattered.** One card in seventy-four opened to an empty box, and
+the file count on the site was wrong because of it. The repair that was
+meant to stop the same code appearing twice was the thing that created the
+empty card. A rule that fixes one fault and creates a worse one is not a
+rule yet.
+

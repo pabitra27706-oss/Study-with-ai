@@ -16,9 +16,9 @@
     ],
     "description": "Extracts a color palette from an image using the colorgram library and recreates it as a dot painting with turtle. Combines external libraries with turtle graphics.",
     "learningNotes": {
-      "whatILearned": "Installing and using the colorgram library to extract RGB color tuples from images and positioning turtles on a grid to create a dot painting.",
-      "challenges": "Getting the grid positioning calculation right and installing colorgram in the project environment.",
-      "nextSteps": "Try different dot sizes, spacing, or source images for varied visual effects."
+      "whatILearned": "A dot painting: a turtle lays coloured dots across the canvas in a grid, each row starting further left.",
+      "challenges": "I cannot run it here, and neither can you — there is no tkinter on this machine or on Termux.",
+      "nextSteps": "Get a Python with tkinter onto a machine with a screen, and read the colourgram part: that is where the real idea is."
     }
   },
   "files": [
@@ -36,5 +36,23 @@
       "description": "Alternative painting project entry point.",
       "dateAdded": "2026-01-17T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 30,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`colorgram` reads the colours out of an image file - the dots are then painted in colours taken from that image",
+      "A turtle that lays dots and moves on is a different tool from a turtle that draws lines - `dot()` fills, `forward()` draws"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**0 + 25 + 5 = 30%**\n\n**This file cannot be run here.** It needs `tkinter`, and this\nmachine has no display and no `tkinter`. The 40 points for *it runs* are\ntherefore not points I can give, and I do not give them.\n\nThe larger point: **`tkinter` does not exist on Termux either.** These\nfiles cannot be run on the phone this whole system is built around. They\nare not broken — they are stranded.\n\n**What is right, by reading**\n\nThe idea is the famous one and the code matches it. `colormode(255)` lets the colours be three numbers from 0 to 255, `color_list` is a list of 26 such RGB triples, and the loop lays 100 dots of size 20 with a random colour from the list, moving 50 units between them. Every tenth dot the turtle turns 90 degrees, steps down 50, turns again, and steps back 500 — which is what makes the rows line up as a grid instead of a single long line.\n\n`main.py` in the same topic is a smaller version of the same thing: it makes the colour list, makes a turtle, draws one big red dot and stops. It is the first step of the project, kept next to the finished one.\n\n**What is not**\n\nThe interesting half of the project is commented out at the top of the file — the `colorgram` block that reads the colours out of an actual image. That block is the *point* of the exercise: the whole design is *take the colours from a picture, then paint a picture made of those colours*. With the block commented out, the file paints random colours from a hand-written list, which is a different (and much easier) program.\n\nThe comment at the top does say this — *This code will not work in repl.it as there is no access to the colorgram package here* — but the honest consequence is not spelled out: **the file as it stands cannot do the thing it is named after.** It needs an image file that is not in the archive, and a package that is not installed.\n\n**The one thing to fix first**\n\nGet an image and the package, then the commented block becomes the program:\n\n```python\nimport colorgram\n\nrgb_colors = [(c.rgb.r, c.rgb.g, c.rgb.b) for c in colorgram.extract('image.jpg', 30)]\n```\n\nThen the dot loop uses `rgb_colors` instead of the hand-written list, and the painting is made of the colours in your photograph.\n"
+  }
 }

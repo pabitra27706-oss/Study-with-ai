@@ -4,7 +4,7 @@
     "lastUpdated": "2026-10-29",
     "firstEntryDate": "2026-01-08",
     "totalTopics": 74,
-    "totalFiles": 86,
+    "totalFiles": 87,
     "languages": [
       "C",
       "JavaScript",
@@ -262,15 +262,17 @@
       "language": "C",
       "dateCreated": "2026-08-06",
       "lastUpdated": "2026-08-06",
-      "fileCount": 0,
+      "fileCount": 1,
       "tags": [
         "if-else",
         "conditional",
         "printf"
       ],
       "description": "Conditional execution using if-else statements. Decision making and branching logic in C programs.",
-      "topicFile": "data/topics/c/if-else-statement.json",
-      "langSlug": "c"
+      "topicFile": "data/topics/c/ticket-price-calculator.json",
+      "langSlug": "c",
+      "verdict": "mostly-correct",
+      "score": 60
     },
     {
       "id": "c-grade-calculator",
@@ -768,7 +770,9 @@
       ],
       "description": "Finds the highest score in a list of student scores without using the built-in max() function. Builds algorithmic thinking from scratch.",
       "topicFile": "data/topics/python/find-highest-score.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 80
     },
     {
       "id": "python-fizzbuzz",
@@ -785,7 +789,9 @@
       ],
       "description": "The classic FizzBuzz challenge: print Fizz for multiples of 3, Buzz for multiples of 5, FizzBuzz for both, and the number otherwise. Tests logical condition ordering.",
       "topicFile": "data/topics/python/fizzbuzz.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 80
     },
     {
       "id": "python-rock-paper-scissors",
@@ -802,7 +808,9 @@
       ],
       "description": "A text-based Rock Paper Scissors game against the computer with ASCII art displays. Consolidates conditionals, random choice, and user input handling.",
       "topicFile": "data/topics/python/rock-paper-scissors.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 80
     },
     {
       "id": "python-password-generator",
@@ -820,7 +828,9 @@
       ],
       "description": "Generates a random password with a user-specified number of letters, symbols, and numbers. Offers easy (ordered) and hard (shuffled) modes.",
       "topicFile": "data/topics/python/password-generator.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 80
     },
     {
       "id": "python-hangman-step-1",
@@ -837,7 +847,9 @@
       ],
       "description": "First step of building Hangman: randomly choose a word and check if a single guessed letter is in the word. Introduces the in operator with strings.",
       "topicFile": "data/topics/python/hangman-step-1.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 55
     },
     {
       "id": "python-hangman-step-2",
@@ -854,7 +866,9 @@
       ],
       "description": "Adds a display list of underscores and reveals correctly guessed letters in their positions. Builds on step 1 with list manipulation.",
       "topicFile": "data/topics/python/hangman-step-2.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-hangman-step-3",
@@ -871,7 +885,9 @@
       ],
       "description": "Adds a while loop so the player keeps guessing until the word is fully revealed. Introduces loop termination based on a win condition.",
       "topicFile": "data/topics/python/hangman-step-3.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-hangman-step-4",
@@ -888,7 +904,9 @@
       ],
       "description": "Completes the Hangman mechanics by adding a lives counter and ASCII art stages that update with each wrong guess.",
       "topicFile": "data/topics/python/hangman-step-4.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 70
     },
     {
       "id": "python-hangman",
@@ -906,7 +924,9 @@
       ],
       "description": "The complete polished Hangman game with logo, word list, lives, and ASCII art stages. Combines all previous steps into a fully playable game.",
       "topicFile": "data/topics/python/hangman-game.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 85
     },
     {
       "id": "python-formatted-name",
@@ -923,7 +943,9 @@
       ],
       "description": "Takes a first and last name and returns them formatted in title case. A gentle introduction to defining and calling functions with return values.",
       "topicFile": "data/topics/python/formatted-name-practice.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 85
     },
     {
       "id": "python-basic-calculator",
@@ -940,7 +962,9 @@
       ],
       "description": "A simple four-operation calculator using functions stored in a dictionary. Demonstrates how to map operators to functions for clean dispatch logic.",
       "topicFile": "data/topics/python/basic-calculator.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 80
     },
     {
       "id": "python-days-in-month",
@@ -957,7 +981,9 @@
       ],
       "description": "Determines the number of days in any given month for any year, accounting correctly for leap years. Combines function design with list indexing.",
       "topicFile": "data/topics/python/days-in-month-calculator.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "correct",
+      "score": 90
     },
     {
       "id": "python-turtle-hello-world",
@@ -974,7 +1000,9 @@
       ],
       "description": "First steps with the Turtle graphics module: importing, creating a Turtle object, and calling movement methods. A graphical equivalent of Hello World.",
       "topicFile": "data/topics/python/turtle-hello-world.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 30
     },
     {
       "id": "python-turtle-library",
@@ -1202,7 +1230,9 @@
       ],
       "description": "Creates a colorful spirograph pattern by drawing circles with a small heading change each iteration. Combines loops, geometry, and random color generation.",
       "topicFile": "data/topics/python/spirograph.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 35
     },
     {
       "id": "python-number-guessing-explained",
@@ -1220,7 +1250,9 @@
       ],
       "description": "A heavily commented number guessing implementation that explains variable scope, function definitions, and global variables in detail.",
       "topicFile": "data/topics/python/number-guessing-game-explained.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 85
     },
     {
       "id": "python-number-guessing-game",
@@ -1238,7 +1270,9 @@
       ],
       "description": "Two implementations of a number guessing game with limited attempts and difficulty selection. Covers while loops, conditionals, and modular function design.",
       "topicFile": "data/topics/python/number-guessing-game.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "correct",
+      "score": 90
     },
     {
       "id": "python-variable-scope",
@@ -1256,7 +1290,9 @@
       ],
       "description": "Three files demonstrating Python scope rules: global vs local, block scope absence, and modifying globals. Covers the LEGB rule in practice.",
       "topicFile": "data/topics/python/variable-scope.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "correct",
+      "score": 90
     },
     {
       "id": "python-debugging-exercises",
@@ -1274,7 +1310,9 @@
       ],
       "description": "A collection of buggy programs covering off-by-one errors, type mismatches, indentation errors, and logical mistakes — each paired with a corrected version.",
       "topicFile": "data/topics/python/debugging-exercises.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 80
     },
     {
       "id": "python-higher-lower-game",
@@ -1292,7 +1330,9 @@
       ],
       "description": "A game where the player guesses which celebrity has more social media followers. Uses lists of dictionaries, score tracking, and a continuous game loop.",
       "topicFile": "data/topics/python/higher-lower-game.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 85
     },
     {
       "id": "python-blackjack",
@@ -1310,7 +1350,9 @@
       ],
       "description": "A text-based Blackjack (21) game against the computer. Implements card drawing, Ace value adjustment (11→1), and computer AI that draws until 17.",
       "topicFile": "data/topics/python/blackjack-game.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "correct",
+      "score": 90
     },
     {
       "id": "python-painting-project",
@@ -1328,7 +1370,9 @@
       ],
       "description": "Extracts a color palette from an image using the colorgram library and recreates it as a dot painting with turtle. Combines external libraries with turtle graphics.",
       "topicFile": "data/topics/python/painting-project.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 30
     },
     {
       "id": "python-oop-user-class",
@@ -1346,7 +1390,9 @@
       ],
       "description": "Defines a User class with id, username, followers, and following attributes, plus a follow() method. A clean introduction to object-oriented programming.",
       "topicFile": "data/topics/python/oop-user-class.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 80
     },
     {
       "id": "python-quiz-game",
@@ -1364,7 +1410,9 @@
       ],
       "description": "A True/False quiz game built with OOP across four files: Question model, QuizBrain controller, question data, and main entry point. Demonstrates real multi-file Python project structure.",
       "topicFile": "data/topics/python/quiz-game.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 85
     },
     {
       "id": "python-prettytable",
@@ -1381,7 +1429,9 @@
       ],
       "description": "Uses the PrettyTable library to display structured tabular data with a Pokémon example. Introduces third-party library usage and table formatting.",
       "topicFile": "data/topics/python/prettytable-demo.json",
-      "langSlug": "python"
+      "langSlug": "python",
+      "verdict": "mostly-correct",
+      "score": 85
     }
   ]
 }

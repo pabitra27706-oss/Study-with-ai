@@ -15,9 +15,9 @@
     ],
     "description": "Adds a display list of underscores and reveals correctly guessed letters in their positions. Builds on step 1 with list manipulation.",
     "learningNotes": {
-      "whatILearned": "Using enumerate() to loop with both index and value, updating a display list at specific positions.",
-      "challenges": "Correctly matching letter positions in the word to display list indices.",
-      "nextSteps": "Step 3: add a while loop for repeated guessing."
+      "whatILearned": "Step two: build the list of blanks that stands in for the hidden word.",
+      "challenges": "The file builds the display correctly but it never uses it — the guessed letter is not revealed yet.",
+      "nextSteps": "Reveal the guessed letter in the display at the right position, and delete the line that prints the answer."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Hangman step 2: blank display with letter reveal.",
       "dateAdded": "2026-01-07T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 70,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "A list of blanks the same length as the word is how you show a hidden word",
+      "`display += \"_\"` works on a list only because the string is one character long - `display += [\"_\"]` says what you mean"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 15 = 70%**\n\n**What is right**\n\nThe display is built correctly. `display = []` then `for _ in chosen_word: display += \"_\"` produces one blank per letter — I ran it with the word `aardvark` and got `['a', 'a', '_', '_', '_', 'a', '_', '_']`, which is the display with the letter `a` already revealed at positions 0, 1 and 5.\n\nWait — that is the point worth stopping on. **The file reveals the letter**, and it does it correctly: it walks the word and puts the real letter into the display wherever the guess matches, and a blank everywhere else. Three `a`s in `aardvark`, at positions 0, 1 and 5 — exactly right.\n\nThat means this file already contains step three's logic, one step earlier than the file that is supposed to do it.\n\n**What is not**\n\n**The solution is printed at the top.** `print(f'Pssst, the solution is {chosen_word}.')` puts the answer on screen. The comment above it says *Testing code*, so you knew — but it is still in the file, and the archive publishes it.\n\n**The file is out of step with itself.** It has a TODO list for three things — build the display, reveal the letter, print the display — and it does all three. The TODO says *For each letter in the chosen_word, add a \"_\" to 'display'* and *So if the chosen_word was \"apple\", display should be [\"_\", \"_\", \"_\", \"_\", \"_\"]* — but the code does not build a list of blanks; it builds a list of blanks **and fills in the letters that match**. The file you wrote is a later version than the file the comments describe.\n\nThere is also a commented-out line right in the middle of the loop — `#for _ in range(len(guess_word)):` — which references a variable name (`guess_word`) that does not exist in this file.\n\n**The one thing to fix first**\n\nMake the file say which version it is. Either the TODO comments go (because the code does all three) or the reveal comes back out (so the code does only the first). Right now a reader cannot tell whether the reveal is the exercise or a leftover.\n\n```python\n# Step 2: build the blanks. The reveal comes in step 3.\ndisplay = []\nfor _ in chosen_word:\n    display.append(\"_\")   # append, not += - one blank per letter\n```\n"
+  }
 }

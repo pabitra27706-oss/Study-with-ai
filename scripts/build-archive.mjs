@@ -255,6 +255,24 @@ for (const entry of index.topics) {
       }
     }
 
+    /* Two topics can genuinely share one program: the original topic and
+       the copy the adoption rule makes of a file written straight into the
+       archive. Stripping the file from the loser would leave that topic
+       with nothing to open — a card with a title and no code — which is a
+       worse fault than the one being repaired. When the loser would be
+       emptied, the file stays with both and is reported. */
+    const emptied = ids.filter((id) => {
+      if (id === keeper) return false;
+      const payload = payloads.get(id);
+      return payload && (payload.files ?? []).length <= 1;
+    });
+    if (emptied.length) {
+      console.log(
+        `  ${filePath} is shared by ${ids.length} topics (${ids.join(", ")}) — kept in both, because taking it away would leave one of them empty.`,
+      );
+      continue;
+    }
+
     for (const id of ids) {
       if (id === keeper) continue;
       const payload = payloads.get(id);

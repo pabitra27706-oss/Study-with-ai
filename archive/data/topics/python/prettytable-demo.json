@@ -15,9 +15,9 @@
     ],
     "description": "Uses the PrettyTable library to display structured tabular data with a Pokémon example. Introduces third-party library usage and table formatting.",
     "learningNotes": {
-      "whatILearned": "Installing PrettyTable via pip, adding columns of data, setting alignment, and printing a formatted table to the console.",
-      "challenges": "None — library is straightforward. Focus is on understanding library documentation.",
-      "nextSteps": "Display data loaded from a CSV file or an API response in a PrettyTable."
+      "whatILearned": "A table in the terminal: two columns, left-aligned, printed with a library that draws the box for you.",
+      "challenges": "It does not run on a bare Python. It needs `prettytable`, which is not installed by default.",
+      "nextSteps": "Install it once with `pip install prettytable`, then read how the library is meant to be used before writing more of these by hand."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "PrettyTable demo with Pokémon dataset.",
       "dateAdded": "2026-01-19T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 85,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "A library is just a file of functions you did not write - `pip install` is how it gets onto your machine",
+      "Data and code live in different places: 'Charijard' is a typo in the *data*, and it is still your bug"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 15 = 85%**\n\n**What is right**\n\nThe code is correct. `PrettyTable()` makes an empty table, `add_column` adds a named column with its rows, `table.align = \"l\"` left-aligns everything, and `print(table)` draws the box. I checked the shape of it by reading it against the library's own docs.\n\nThe dependency is the only thing between you and a running program.\n\n**What is not**\n\nIt did not run here, and not because of your code — `prettytable` is simply not installed. That is worth knowing rather than hiding: **a program with a dependency is a program with a setup step**, and on the phone that step is `pip install prettytable` inside Termux. It works there; it just has to be done.\n\nThe two comments are typos rather than explanations — *This make it with prettytable*, *For more informatin visit--*. And the data has two spelling mistakes in it: **'Charijard'** for Charizard and **'Electic'** for Electric. Those are in the rows, not in the code, which is a useful thing to notice: **a typo in data shows up in the output and a typo in code shows up as a crash.**\n\n**The one thing to fix first**\n\nThe data, not the code:\n\n```python\ntable.add_column(\"Pokemon_name\", [\"Pikachu\", \"Charizard\", \"Phonix\"])\ntable.add_column(\"Type\", [\"Electric\", \"Fire\", \"Fire\"])\n```\n\nAnd one comment that earns its place:\n\n```python\ntable.align = \"l\"  # Left-align: .centre is the default and this looks better for short words.\n```\n"
+  }
 }

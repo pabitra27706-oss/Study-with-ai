@@ -16,9 +16,9 @@
     ],
     "description": "Two implementations of a number guessing game with limited attempts and difficulty selection. Covers while loops, conditionals, and modular function design.",
     "learningNotes": {
-      "whatILearned": "Using while loops for game continuation, giving high/low hints, managing an attempts counter, and separating game logic into functions.",
-      "challenges": "Managing the attempts variable scope and resetting state between rounds.",
-      "nextSteps": "Add difficulty levels, a scoring system, and a replay loop."
+      "whatILearned": "The number guessing game, twice: the version you got working, and the same game rewritten with the reasoning written in.",
+      "challenges": "The first version loses instantly if the player types a difficulty that is not 'easy' or 'hard'.",
+      "nextSteps": "Move the answer-checking into a function in the first file too, so both files are the same shape."
     }
   },
   "files": [
@@ -36,5 +36,23 @@
       "description": "Alternative implementation with cleaner loop structure.",
       "dateAdded": "2026-01-15T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "correct",
+      "score": 90,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`attempts` has to be set on every path through the difficulty choice, or the loop below it never runs",
+      "`attempts += 10` adds to what is there; `attempts = 10` sets it - the second version uses the right one"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 20 = 90%**\n\n**What is right**\n\nBoth files work, and the second one is the better file.\n\n`Number_guessing_deep.py` is the one to keep. It has the right structure — a `while attempts > 0` loop, the guess checked inside the loop, `break` on a win — and it is the **only file in the whole archive whose comments explain the decision rather than describe the code**:\n\n- `# Use 100, not 101, to get 1-100` — why the number is what it is.\n- `# Use =, not +=, to set the value` — the difference between adding and setting.\n- `# This means u_input must be greater than thinking_no` — why the `else` branch is safe.\n- `# This code runs after the while loop finishes (either by break or running out of attempts)` — why the code is *outside* the loop.\n\n`Number_guessing_won.py` is the earlier version, and it has one real bug.\n\n**What is not**\n\n**In `Number_guessing_won.py`, a difficulty that is not 'easy' or 'hard' ends the game before it starts.**\n\n```python\nattempts = 0\nif ask1 == \"easy\":\n    attempts += 10\nelif ask1 == \"hard\":\n    attempts += 5\n# and nothing else\n```\n\nType `medium` — or anything with a typo — and `attempts` stays 0, the `while` loop never runs, and the game prints *You've run out of guesses. You lose.* without ever asking for a guess. The `deep` version fixes exactly this with an `else` branch that defaults to easy, and says why in a comment.\n\n`Number_guessing_won.py` also has a good idea the `deep` version dropped: a `check_guess` function that tells you *Very close! Just a little too low* when you are within 5. That is a nicer game, and it belongs in the final version.\n\nOne small thing in both: `attempts` is decremented even on the winning guess, so the final message *You have 0 attempts left* can print after a win.\n\n**The one thing to fix first**\n\nTake the good parts of each. From `won`:\n\n```python\nelse:\n    attempts = 10  # Any other answer still gets a game, not an instant loss.\n```\n\nand keep the *Very close* hint from `check_guess`. Then both files become one file that is better than either.\n"
+  }
 }

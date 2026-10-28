@@ -15,9 +15,9 @@
     ],
     "description": "Adds a while loop so the player keeps guessing until the word is fully revealed. Introduces loop termination based on a win condition.",
     "learningNotes": {
-      "whatILearned": "Using a while loop that checks if any blanks remain in the display list to continue or stop the game.",
-      "challenges": "Updating the display list correctly on each iteration and detecting the win.",
-      "nextSteps": "Step 4: add lives counter and ASCII art stages."
+      "whatILearned": "Step three: the loop that keeps asking until the word is complete.",
+      "challenges": "The loop has no way to end — a wrong guess costs nothing and the game never says so.",
+      "nextSteps": "Add a life count and a wrong-guess branch, so the loop can end in a loss as well as a win."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Hangman step 3: while loop for repeated guessing.",
       "dateAdded": "2026-01-07T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 70,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "A loop that only ends on success needs a way to end on failure",
+      "`\"_\" not in display` is how you ask 'are there any blanks left?'"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 15 = 70%**\n\n**What is right**\n\nThe loop is right, and it is the loop that makes hangman a game rather than a script. `end_of_game = False`, then `while not end_of_game:`, and the reveal inside it walks the word and replaces the blank at the matching position.\n\nAnd the exit condition is exactly right: `if \"_\" not in display:` — the underscore is the marker, so *are there any blanks left* is the whole win test. I ran it and it revealed correctly: with the word `baboon` and the guess `a`, the display went to `['_', 'a', '_', '_', '_', '_']` — the letter in the right place, every other letter still blank.\n\nThe end flag is also set at the moment of winning, so the loop stops rather than asking one more time.\n\n**What is not**\n\n**The game cannot be lost.** There is no life count, no wrong-guess branch, and nothing that ends the loop except solving the word. Guess `z` a hundred times and the game just keeps asking. That is the missing piece of step three, and it is the piece that turns a loop into a game.\n\n**The answer is printed at the top.** `print(f\"Pssst, the solution is {chosen_word}\")` — the word, in plain text, before the first guess.\n\nAnd there is one more thing worth catching, because it is a classic: `display += \"_\"` works here **only because `\"_\"` is a single character**. `list += str` extends the list with the characters of the string, so `display += \"_\"` happens to add one underscore. The moment the string is longer — `display += \"__\"` — it adds two characters and the display no longer matches the word length. `display.append(\"_\")` says what you mean and cannot go wrong.\n\n**The one thing to fix first**\n\nThe wrong-guess branch that ends the game:\n\n```python\nlives = 6\n...\n        if guess not in chosen_word:\n            lives -= 1\n            if lives == 0:\n                end_of_game = True\n                print(\"You lose. The word was:\", chosen_word)\n```\n\nand `display.append(\"_\")` in place of `display += \"_\"`.\n"
+  }
 }

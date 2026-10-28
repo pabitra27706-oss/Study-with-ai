@@ -25,6 +25,7 @@ export default function ArchivePage() {
   const days = archiveDaysLearning(index.metadata.firstEntryDate);
   const languages = index.metadata.languages.length;
   const graded = index.topics.filter((topic) => topic.source === "engine").length;
+  const judged = index.topics.filter((topic) => topic.verdict).length;
   const pending = getArchivePending();
 
   /* The newest thing in the archive. Not the first in the catalogue — the
@@ -73,13 +74,17 @@ export default function ArchivePage() {
         )}
         <Card className="p-5">
           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-faint">
-            Waiting to be judged
+            {pending.count > 0 ? "Waiting to be judged" : "Nothing waiting"}
           </p>
           <p className="mt-2 text-[16px] font-medium text-ink">
-            {pending.count} topic{pending.count === 1 ? "" : "s"}
+            {pending.count > 0
+              ? `${pending.count} topic${pending.count === 1 ? "" : "s"}`
+              : "Every topic has been read"}
           </p>
           <p className="mt-1.5 text-[12.5px] leading-relaxed text-muted">
-            Real code with no review yet. Not broken — just not read.
+            {pending.count > 0
+              ? "Real code with no review yet. Not broken — just not read."
+              : "Real code, read, run and reviewed. The queue is empty — and it refills the moment new work lands."}
           </p>
           {pending.count > 0 && (
             <Link
@@ -100,7 +105,13 @@ export default function ArchivePage() {
         <Stat
           label="Days learning"
           value={days}
-          hint={graded ? `${graded} topic${graded === 1 ? "" : "s"} graded by the engine.` : undefined}
+          hint={
+            judged
+              ? `${judged} topic${judged === 1 ? "" : "s"} judged${
+                  graded ? `, ${graded} straight from the engine` : ""
+                }.`
+              : undefined
+          }
         />
       </section>
 

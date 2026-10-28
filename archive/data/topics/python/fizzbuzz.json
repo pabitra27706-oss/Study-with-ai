@@ -15,9 +15,9 @@
     ],
     "description": "The classic FizzBuzz challenge: print Fizz for multiples of 3, Buzz for multiples of 5, FizzBuzz for both, and the number otherwise. Tests logical condition ordering.",
     "learningNotes": {
-      "whatILearned": "Checking combined conditions first (both 3 and 5) before individual ones. Using the modulo operator in a loop.",
-      "challenges": "Condition order matters — the combined check must come before individual checks.",
-      "nextSteps": "Try FizzBuzzBang for multiples of 7, or generalize with a dictionary."
+      "whatILearned": "FizzBuzz: multiples of three are Fizz, multiples of five are Buzz, and multiples of both are FizzBuzz.",
+      "challenges": "Nothing is broken. The file has no comment explaining why the order of the branches matters.",
+      "nextSteps": "Write down the one thing that makes it work: the most specific case is tested first."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "FizzBuzz from 1 to 100.",
       "dateAdded": "2026-01-06T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 80,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "`and` in the first condition is what makes 15 come out as FizzBuzz instead of Fizz",
+      "The order of the branches matters - test the most specific case first, or it never gets reached"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 10 = 80%**\n\n**What is right**\n\nIt is right. I ran it and it printed 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz … all the way to 100, with no gaps and nothing doubled.\n\nAnd the one line that people most often get wrong is right:\n\n```python\nif number % 3 == 0 and number % 5 == 0:\n```\n\nThe `and` is what makes 15, 30, 45, 60, 75 and 90 come out as `FizzBuzz` instead of stopping at `Fizz`. With an `or` there instead, every multiple of three would print Fizz and the BuzzBuzz case would never exist.\n\nThe `elif` chain is right too — a number can only be printed once.\n\n**What is not**\n\n**There is no comment at all**, in the one file where the order of the branches *is* the lesson.\n\nThe thing that makes this program work is not the modulo — it is that the most specific case is tested first. `15` is a multiple of three and a multiple of five; if the `Fizz` branch came first, `15` would print `Fizz` and the `FizzBuzz` branch would be dead code that could never run. That is a one-line comment and it is worth more than the rest of the file put together:\n\n```python\nif number % 3 == 0 and number % 5 == 0:  # most specific case first, or 15 would print Fizz\n```\n\nTwo small things. `range(1, 101)` counts to 100 ✓, which is right, but it is worth a comment because `range(1, 100)` would stop at 99 and that is the classic FizzBuzz off-by-one. And the banner `print('Welcome to FizzBuzz!!!!')` is four exclamation marks, which is a small piece of the file's personality and fine.\n\n**The one thing to fix first**\n\nThe comment that names the rule:\n\n```python\nif number % 3 == 0 and number % 5 == 0:  # Test the most specific case first - 15 must reach here.\n```\n"
+  }
 }

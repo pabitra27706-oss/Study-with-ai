@@ -16,9 +16,9 @@
     ],
     "description": "A True/False quiz game built with OOP across four files: Question model, QuizBrain controller, question data, and main entry point. Demonstrates real multi-file Python project structure.",
     "learningNotes": {
-      "whatILearned": "Organising code across multiple files, using classes to manage application state, and having objects reference each other (QuizBrain holds a list of Question objects).",
-      "challenges": "Keeping import paths correct across files and ensuring QuizBrain properly iterates and scores the questions.",
-      "nextSteps": "Add more categories, a timer per question, and a graphical interface with tkinter."
+      "whatILearned": "A true/false quiz split into four files: the questions, the question object, the quiz brain, and the entry point.",
+      "challenges": "The four files only work together. Copy `main(1).py` on its own and it cannot find its own modules.",
+      "nextSteps": "Rename `main(1).py` to `main.py`, and write one comment on each file saying what that file is responsible for."
     }
   },
   "files": [
@@ -50,5 +50,23 @@
       "description": "Question dataset as a list of dictionaries.",
       "dateAdded": "2026-01-19T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 85,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "Splitting a program into files is not organisation for its own sake - each file here has exactly one job, and that is the reason to split",
+      "A file called `main(1).py` is a download, not a name you chose"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 15 = 85%**\n\n**What is right**\n\nThis is the most *program*-like thing in the archive so far, and it works. I ran it: it prints `Q.1: A slug's blood is green. (True/False):` and waits for an answer.\n\nThe structure is the standard one and you got it right. `question_model.py` holds a `Question` class that keeps the text and the answer together as one object. `data.py` is the list of question dictionaries. `quiz_brain.py` owns the state — the current question number and the score — and asks the questions. `main(1).py` is the wiring: it builds a list of `Question` objects out of the raw data, hands it to `QuizBrain`, and loops while there are questions left.\n\n**What is not**\n\n**The file name.** `main(1).py` is what a download called \"main\" gets called when it is saved a second time — the `(1)` is the browser's numbering, not your name. It also means the entry point of the project is called `main(1)` while the file it imports is called `main` somewhere else in most tutorials, and that mismatch will confuse you later.\n\nThe comment on the while loop is a note to yourself — *FIX: Added '()' to call the method, correctly ending the quiz when no questions remain.* That is worth keeping as a comment, but it should say *why* the parentheses matter: `still_has_question` is a method, so without the parentheses Python hands you the method itself, which is always truthy, and the loop never ends.\n\nThere are no comments anywhere else, and in a four-file project the comments are how a reader knows which file to open.\n\n**The one thing to fix first**\n\nRename `main(1).py` to `main.py`, and put one line at the top of each file saying what it owns:\n\n```python\n# main.py - the entry point: builds the questions, runs the quiz, prints the score.\n```\n\nFour files, four one-line explanations, and the next person to open this — you in three months — will know where to look.\n"
+  }
 }

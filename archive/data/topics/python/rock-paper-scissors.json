@@ -15,9 +15,9 @@
     ],
     "description": "A text-based Rock Paper Scissors game against the computer with ASCII art displays. Consolidates conditionals, random choice, and user input handling.",
     "learningNotes": {
-      "whatILearned": "Using random.randint to simulate computer choice, handling all win/draw/lose conditions, and validating user input.",
-      "challenges": "Covering all 9 possible outcome combinations without missing a case.",
-      "nextSteps": "Add a score tracker and best-of-five mode."
+      "whatILearned": "Rock, paper, scissors with ASCII art for all three, a random computer move and the three win conditions.",
+      "challenges": "An invalid choice is reported as a loss, so the player is told they lost when nobody played.",
+      "nextSteps": "Separate 'that was not a move' from 'you lost', and move the import to the top of the file."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Rock Paper Scissors with ASCII art for each move.",
       "dateAdded": "2026-01-06T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 80,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "Rock beats scissors, scissors beats paper, paper beats rock - all three conditions have to be written out",
+      "An `import` belongs at the top of the file, not inside the branch where it happens to be needed"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 10 = 80%**\n\n**What is right**\n\nIt runs and it plays correctly. The three ASCII drawings are good — real art, aligned, and each one is the right shape. The win conditions are all there and they are right:\n\n```python\nif u_input == 0 and c_input == 2:   # rock beats scissors\nelif u_input == 1 and c_input == 0: # paper beats rock\nelif u_input == 2 and c_input == 1: # scissors beats paper\n```\n\nAll three, no more and no less. A draw is checked first, so a draw is never reported as a win or a loss. And the computer's move really is random: `random.randint(0, 2)`.\n\nI ran it with an invalid choice and with a valid one, and both paths behave.\n\n**What is not**\n\n**An invalid move is announced as a loss.**\n\n```python\nif u_input < 0 or u_input > 2:\n    print('You lose. Invalid move...')\n```\n\nNobody lost — the game never happened. *That is not a move* and *you lost* are different facts, and mixing them teaches the player the wrong thing about the rules. The invalid case should also stop the round rather than fall through to play on.\n\n**`import random` is inside the `else:` branch.** It works, because the branch always runs before the random call — but an import is a declaration of what the file needs, and declarations belong at the top. As it stands, the file's dependency is hidden inside a game branch, and moving the branch would break it.\n\n**The computer's choice is not named.** The player sees the computer's ASCII art and has to recognise which of the three it is. Printing the name costs one line and makes the game readable.\n\nAnd there are no comments on the win conditions — the three `elif` lines are the file's real content and they read as pure magic without a word of explanation.\n\n**The one thing to fix first**\n\nThe invalid case, and the import:\n\n```python\nimport random   # at the top, where every other language puts it\n\nu_input = int(input('What is your choice? 0 for ROCK, 1 for PAPER, 2 for SCISSORS: '))\nif u_input not in (0, 1, 2):\n    print('That is not a move - pick 0, 1 or 2.')\nelse:\n    ...\n```\n\nand one comment on the first win condition:\n\n```python\nelif u_input == 0 and c_input == 2:  # rock beats scissors\n```\n"
+  }
 }

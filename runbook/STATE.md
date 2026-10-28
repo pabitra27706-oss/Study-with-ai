@@ -1,6 +1,6 @@
 # State
 
-**Written: 2026-10-28. Last updated: 2026-10-29, after the first real topic pack shipped and the demo pack was retired.**
+**Written: 2026-10-28. Last updated: 2026-10-29, after the whole archive backlog was judged — 74 topics, every one read, run where it could be run, and reviewed.**
 Update this file when something *decides* something. A merge on its own is
 not worth an edit — the live ledger is `gh pr list --state all`, and the
 append-only record is [`HISTORY.md`](HISTORY.md).
@@ -22,7 +22,7 @@ append-only record is [`HISTORY.md`](HISTORY.md).
 | This site | `https://pabitra27706-oss.github.io/Study-with-ai/` |
 | The learn route | `https://pabitra27706-oss.github.io/Study-with-ai/learn` |
 | One topic | `https://pabitra27706-oss.github.io/Study-with-ai/learn/data-structures-c` |
-| The archive | `https://pabitra27706-oss.github.io/Study-with-ai/archive` — 74 topics, 86 files |
+| The archive | `https://pabitra27706-oss.github.io/Study-with-ai/archive` — 74 topics, 87 files |
 | The progress map | `https://pabitra27706-oss.github.io/Study-with-ai/progress` |
 | The Learning Archive | `https://pabitra27706-oss.github.io/Study-with-ai/archive` — now part of this site |
 | CodeC (Pages) | `https://pabi277.github.io/CodeC/` |
@@ -38,9 +38,9 @@ append-only record is [`HISTORY.md`](HISTORY.md).
 | Merged | **PR #16** — the archive becomes an input: files written into `archive/content/` are adopted, judged and shown; the code opens by default behind a box. `b57698e`. **PR #14** — the `publish-moved-notice` fix, the sitemap, and the empty-topic copy, `f454790`. **PR #13** — the journal-date formatting, `4617614`. **PR #12** — the archive comes home, `c26be05`. **PR #10** — the `data-structures-c` topic pack and the authoring system, `6b155ca`. **PR #8** — merged as `e6973cd`, deployed to Pages, green. **PR #6** — merged as `a8add89`. **PRs #1–#4** merged. |
 | Closed, do not merge | **PR #5** (duplicate of #6), **PR #7** (superseded), **PR #9** (its content is folded into #10), **PR #11** (superseded by #12). Never merge any of them. |
 | The live PR ledger | `gh pr list --state all --limit 30` — **the truth.** The table below records the decisions that matter: which PRs are in, and which ones must never be merged. There is deliberately **no "open" row** — a merge is not worth an edit, so a row that changed on every merge would only make this file wrong. |
-| Archive | `archive/` in this repository — **74 topics, 86 files**. Imported from `pabitra27706-oss/portfolio` with its history. The old repository still serves the original site; the branch `move/archive-into-the-learning-engine` carries the landing page and the pointer README, and **the owner has one tap left: open the pull request at `https://github.com/pabitra27706-oss/portfolio/pull/new/move/archive-into-the-learning-engine`** |
+| Archive | `archive/` in this repository — **74 topics, 87 files**. Imported from `pabitra27706-oss/portfolio` with its history. The old repository still serves the original site; the branch `move/archive-into-the-learning-engine` carries the landing page and the pointer README, and **the owner has one tap left: open the pull request at `https://github.com/pabitra27706-oss/portfolio/pull/new/move/archive-into-the-learning-engine`** |
 | The archive is an input too | The generator **adopts** any file written into `archive/content/<lang>/`: it finds the topic from the header the file carries, or gives it one, and it never overwrites an adopted topic afterwards. Five files were sitting there unseen — `functions.py`, `lists.py`, `arrays.js`, `dom-manipulation.js`, `ticket-price-calculator.c` — and all five are topics now, with verdicts, scores and notes. |
-| The pending queue | `archive/data/archive-pending.json` — every topic that has code and **no verdict yet**. New work first, the older backlog after it. `node runner/brief.mjs --pending` prints it; `scripts/check.sh` prints it before the brief; the archive's own pages say *waiting to be judged* instead of showing nothing. |
+| The pending queue | `archive/data/archive-pending.json` — every topic that has code and **no verdict yet**. **It is empty.** The whole backlog has been read, run and reviewed: 13 C topics, 43 Python topics and the 5 adopted files, all with a verdict, a score, notes and a review. 73 of the 74 topics carry a verdict; the 74th is the engine's own `data-structures-c`, which is waiting for the learner's first file. The queue refills by itself the moment new work lands in `archive/content/`. `node runner/brief.mjs --pending` prints whatever is waiting. |
 | The archive's shape | `/archive` is **one page of cards that open in place**: the notes, the verdict, the misconceptions and the code, with the code **open by default**. `/archive/<topic>` is still a real page and is still what you share. The control that hides the code is a **box**, not a line of words. |
 | Deploy | Pages workflow committed by the owner at `414c6fe`; the hardened copy lives at `scripts/deploy-workflow.yml` |
 
@@ -103,7 +103,9 @@ node scripts/check-topic.mjs --deep       # every topic pack
 - `node runner/evidence.mjs` — `data-structures-c  0/8 tasks · comments 0/100 · answers 0%`. An untouched topic honestly reads zero.
 - `node runner/evidence.mjs` against the reference folder — all 8 tasks pass, comments 100/100.
 - `node scripts/build-archive.mjs --check` — *the archive is in step with the engine*, and a second run is a no-op. The generator is deterministic: timestamps come from the source data, never the clock.
-- `NEXT_OUTPUT=export npm run build` — **91 static pages**, including `/archive`, 74 `/archive/<topic>` pages and `/progress`. Every archive download resolves, and every topic's JSON is reachable at the path the browser asks for.
+- `NEXT_OUTPUT=export npm run build` — **94 static pages**, including `/archive`, 74 `/archive/<topic>` pages, `/archive/pending` and `/progress`. Every archive download resolves, and every topic's JSON is reachable at the path the browser asks for.
+- **The whole backlog was judged.** 74 topics, every one read in full, run where it could be run, and reviewed on the archive rubric (40 does it run · 30 is it right · 30 does it explain itself). `node scripts/build-archive.mjs --check` reports *the archive is in step with the engine* and the pending queue is **empty**.
+- **The ghost topic is gone.** The catalogue used to point *If-Else Statement in C* at a cloned topic file that held a different topic's id and no code, so the card opened to nothing and the same program was listed twice. The pointer now names the right file, the clone is deleted, and the repair no longer empties a topic to fix a duplicate — a file shared by two topics stays with both, and the generator says which file and which topics.
 - `node runner/brief.mjs data-structures-c --task t1` — the brief renders with the prompt, the tests and the rules.
 - PR #8 merged to `main` as `e6973cd`; the Pages deployment for it returned `success`.
 - The learner's own `t2.c` was judged end to end: brief → sensor → verdict → apply. The verdict (20%) and the machine score (19%) agree, and both are far above the old seeded 28% once the shipped example was removed from the graded folder.

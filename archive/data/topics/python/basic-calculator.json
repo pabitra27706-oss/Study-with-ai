@@ -15,9 +15,9 @@
     ],
     "description": "A simple four-operation calculator using functions stored in a dictionary. Demonstrates how to map operators to functions for clean dispatch logic.",
     "learningNotes": {
-      "whatILearned": "Defining functions for each arithmetic operation and using a dictionary to select the right function based on operator input.",
-      "challenges": "Handling division by zero and invalid operator inputs gracefully.",
-      "nextSteps": "Add a loop for continuous calculation and support for more operations."
+      "whatILearned": "A calculator: four operations as separate functions, held in a dictionary, and the operation is chosen by symbol.",
+      "challenges": "The dictionary lookup is unguarded, so an unexpected symbol ends the program with a stack trace.",
+      "nextSteps": "Check the symbol before the lookup, and decide what dividing by zero should do."
     }
   },
   "files": [
@@ -28,5 +28,23 @@
       "description": "Four-operation calculator with dictionary dispatch.",
       "dateAdded": "2026-01-08T10:00:00Z"
     }
-  ]
+  ],
+  "engine": {
+    "topicId": null,
+    "minutes": null,
+    "points": 100,
+    "tasks": 1,
+    "verdict": {
+      "status": "mostly-correct",
+      "score": 80,
+      "by": "Claude",
+      "at": "2026-10-29T00:00:00.000Z"
+    },
+    "machine": null,
+    "misconceptions": [
+      "A dictionary can hold functions as well as values - that is what makes a dispatch table",
+      "A KeyError is Python saying 'I looked for that key and it was not there'"
+    ],
+    "review": "**The rubric I used**\n\nThere is no task sheet for this one — it was written before the engine\nexisted, so there was nothing to grade it against. I graded the file on the\nthree things that have always mattered here:\n\n- **40 — it runs.** It compiles or interprets without an error.\n- **30 — it is right.** The output is what it claims to produce.\n- **30 — it explains itself.** Comments say *why*, not *what*.\n\n**40 + 30 + 10 = 80%**\n\n**What is right**\n\nThe idea behind this file is better than the file that usually gets written for this exercise. Instead of a long `if / elif / elif` chain, each operation is its own function and a dictionary maps the symbol to the function:\n\n```python\noperations = {\"+\": add, \"-\": Subtraction, \"*\": Multipeication, \"/\": Devide}\n```\n\nThen one line does all the dispatching: `calculation_function = operations[operations_symbol]` and `answer = calculation_function(num1, n2)`. No branches at all. I ran it — `10 * 2 = 20` ✓, and the addition and subtraction are right too.\n\nThe output line is also good: `f\"{num1} {operations_symbol} {num2} = {answer}\"` shows the calculation, not just the number.\n\n**What is not**\n\n**The lookup can crash.** `operations[operations_symbol]` raises a `KeyError` if the player types anything that is not exactly `+`, `-`, `*` or `/` — a typo, a full word, or an empty line ends the program with a stack trace on screen. The guard belongs before the lookup:\n\n```python\nif operations_symbol not in operations:\n    print(\"I do not know that operation.\")\nelse:\n    ...\n```\n\n**Dividing by zero is not handled.** `10 / 0` raises a `ZeroDivisionError`. It is a legitimate question — what *should* a calculator say? — and the answer is not \"print a traceback\".\n\nThe comments are labels rather than explanations: `#Addition`, `#Subtraction`, `#Multipeication`, `#Devide`. Two of them are misspelled, and all four tell you what you can already see from the function name. The comment worth writing is the one about the dictionary: that it is a *dispatch table*, and that this is why there are no `if`s in the program.\n\nSmall one: the functions are `add`, `Subtraction`, `Multipeication`, `Devide` — four names for four operations, two of them capitalised and two of them misspelled. Pick one style: `add`, `subtract`, `multiply`, `divide`.\n\n**The one thing to fix first**\n\nThe guard, and the comment that earns its place:\n\n```python\noperations_symbol = input(\"Pick an operation: \").strip()\nif operations_symbol not in operations:   # A dispatch table: check the key before you look it up.\n    print(\"I do not know that operation.\")\nelse:\n    calculation_function = operations[operations_symbol]\n    answer = calculation_function(num1, num2)\n```\n"
+  }
 }

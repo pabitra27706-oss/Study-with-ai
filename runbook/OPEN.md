@@ -29,7 +29,8 @@ can do it now. "Owner" means only the user can.
 | 20 | ~~Apply the "moved" notice to the old `portfolio` repository~~ | **Done** — the branch `move/archive-into-the-learning-engine` is pushed to `portfolio`, carrying the landing page and the pointer README. Only the pull request is left to open, on the phone: **https://github.com/pabitra27706-oss/portfolio/pull/new/move/archive-into-the-learning-engine** | Owner |
 | 21 | ~~Judge the archive's own files~~ | **Done** — the five adopted files were judged and carry a verdict, a score and notes. The queue that keeps it going is `archive/data/archive-pending.json`; `node runner/brief.mjs --pending` prints it. | — |
 | 22 | ~~Re-push the pointer README to `portfolio`~~ | **Needed** — the published copy carried a mistyped account name, so its links pointed at an account that does not exist. The corrected file is `archive/legacy/moved-page/README.md`; it has to be pushed to the old repository again. | Owner |
-| 23 | Judge the 67 topics in the backlog | The archive holds 67 topics with real code that has never been judged. Each one is a run, a review and a score. The queue is `archive/data/archive-pending.json`, newest first. | Claude, on request |
+| 23 | ~~Judge the 67 topics in the backlog~~ | **Done** — every topic in the archive now carries a verdict, a score and a review. 74 topics judged: 13 C, 43 Python, 5 adopted, plus the rest. `archive/data/archive-pending.json` is empty. | — |
+| 24 | The eleven turtle files can never run on the phone | `tkinter` does not exist on Termux, and the eleven turtle files need it. They are judged by reading and they say so. Decide what happens to them: keep them as a "needs a desktop" shelf, or replace the turtle work with a drawing library that runs on the phone. | Owner |
 
 ## Not to be done without being asked
 
