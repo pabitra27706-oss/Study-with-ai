@@ -1,7 +1,9 @@
 # State
 
 **Written: 2026-10-28. Last updated: 2026-10-29, after the first real topic pack shipped and the demo pack was retired.**
-Update this file whenever something in it changes.
+Update this file when something *decides* something. A merge on its own is
+not worth an edit — the live ledger is `gh pr list --state all`, and the
+append-only record is [`HISTORY.md`](HISTORY.md).
 
 ## The two accounts
 
