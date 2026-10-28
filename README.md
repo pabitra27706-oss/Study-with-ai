@@ -29,7 +29,7 @@ Actions is the build machine.
 | `cards/` | Spaced-repetition cards, curated by hand from mistakes. |
 | [`AGENTS.md`](AGENTS.md) | The contract for any AI working in this repo. Read it before touching anything. |
 | `scripts/` | `termux-setup.sh` (one-command deploy from Android), `termux-build.sh` (optional on-device build), `stats.mjs`, `serve-static.mjs`. |
-| `docs/` | The **built site**, committed so GitHub Pages can serve it straight from `main`. Regenerate with `npm run build:pages`. |
+| `scripts/deploy-workflow.yml` | The canonical Pages workflow. Copy it into `.github/workflows/deploy.yml` and push — that is what makes every push to `main` redeploy the site. |
 | [`DEPLOY.md`](DEPLOY.md) | How to build and deploy the site (GitHub Pages, Vercel, Netlify, Cloudflare) — including the Termux walkthrough. |
 
 > **JELET is deliberately a separate repository.** This repo is skill-readiness
@@ -97,12 +97,22 @@ NEXT_OUTPUT=export npm run build
 
 The live URL is **`https://pabitra27706-oss.github.io/Study-with-ai/`**.
 
-1. Repo → **Settings** → **Pages** → Source: **Deploy from a branch** →
-   **main** / **/docs** → Save. (The built site is already committed in
-   `docs/`.)
-2. For automatic deploys on every push instead, commit
-   `.github/workflows/deploy.yml` and switch the Pages source to **GitHub
-   Actions**. See [`DEPLOY.md`](DEPLOY.md).
+**You are already live** at that URL, with Pages set to **GitHub Actions** —
+every push to `main` rebuilds and redeploys automatically.
+
+If you ever need to reinstall the workflow (it lives at
+`scripts/deploy-workflow.yml`):
+
+```bash
+mkdir -p .github/workflows
+cp scripts/deploy-workflow.yml .github/workflows/deploy.yml
+git add .github/workflows/deploy.yml
+git commit -m "Add GitHub Pages deploy workflow"
+git push
+```
+
+See [`DEPLOY.md`](DEPLOY.md) for the Vercel / Netlify / Cloudflare paths and the
+full Termux walkthrough.
 
 **From a phone (Termux on Android), one command does it all:**
 

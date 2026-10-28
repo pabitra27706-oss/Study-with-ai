@@ -150,6 +150,14 @@ The script:
 gh run watch
 ```
 
+**Rebuild without pushing anything** (handy when you only want to check that
+`main` still builds):
+
+```bash
+gh workflow run deploy.yml
+gh run watch
+```
+
 **Live URL** (about two minutes after the build turns green):
 
 ```
@@ -180,29 +188,34 @@ change on the phone.
 
 ---
 
-## Path B — deploy the built folder (live today, one click)
+## Path B — deploy the built folder (a fallback, not the default)
 
-The **built site is already committed in `docs/`**. GitHub Pages can serve a
-folder from a branch directly, with no workflow and no CI.
+GitHub Pages can also serve a folder straight from a branch, with no workflow
+and no CI.
 
 **One step:**
 
 Repo → **Settings** → **Pages** → **Build and deployment** → Source:
 **Deploy from a branch** → Branch: **main**, Folder: **/docs** → Save.
 
-The site goes live at the URL above within a minute or two.
+**You are currently on Path A** (Source: *GitHub Actions*, build type
+`workflow`), which is why the `docs/` folder is **no longer committed**. It was
+removed from version control on 28 October 2026: it was never served, it drifted
+from what CI actually deployed (the hashed asset names differ between the two
+builds), and it turned every content change into a ~67-file diff in a
+repository whose whole premise is *one commit = one decision*.
 
-**Downside:** the site only changes when the `docs/` folder changes. To publish
-an update, rebuild and commit:
+If you ever need Path B, rebuild and force-add it:
 
 ```bash
-npm run build:pages   # builds with the right basePath straight into docs/
-git add docs
-git commit -m "Update published site"
+npm run build:pages          # builds with the right basePath into ./docs
+git add -f docs              # -f because docs/ is gitignored
+git commit -m "Published site snapshot"
+git push
 ```
 
-Once you are on **Path A**, stop rebuilding by hand — delete `docs/` and let
-the workflow own it.
+**Path B is strictly worse.** It needs a laptop, it needs a manual rebuild, and
+it cannot be triggered from a phone. Prefer Path A.
 
 ---
 

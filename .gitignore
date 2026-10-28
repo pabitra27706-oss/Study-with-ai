@@ -8,6 +8,9 @@ node_modules/
 /out/
 next-env.d.ts
 
+# published site (built by CI, deployed by the Pages workflow)
+/docs/
+
 # production
 build/
 
