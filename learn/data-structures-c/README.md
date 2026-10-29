@@ -17,9 +17,9 @@ trick with a different rule about which end you work at. It also covers the
 two things C makes you do by hand that no other language makes you do at all:
 `malloc` and `free`.
 
-If pointers are still shaky, watch the pointer course first. It is the one
-prerequisite, and it is 5.88 million views of people learning it, so you are
-in good company.
+Before starting this topic, complete **`c-foundations`**. It covers the C syntax,
+arrays, pointers, structs, and memory ownership that linked lists, stacks and
+queues depend on. This topic is now the next step in that sequence.
 
 ## The teaching material
 

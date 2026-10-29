@@ -1,0 +1,41 @@
+{
+  "topic": {
+    "id": "c-foundations",
+    "title": "C Foundations for Data Structures",
+    "language": "C",
+    "category": "Programming Foundations",
+    "difficulty": "beginner",
+    "dateCreated": "2026-10-29T00:00:00Z",
+    "lastUpdated": "2026-10-29T00:00:00Z",
+    "tags": [
+      "c",
+      "variables",
+      "control-flow",
+      "functions",
+      "arrays",
+      "strings",
+      "pointers",
+      "structs",
+      "memory"
+    ],
+    "description": "Learn the C fundamentals needed before data structures: control flow, functions, arrays, pointers, structs, and careful manual memory ownership.",
+    "learningNotes": {
+      "whatILearned": "",
+      "challenges": "",
+      "nextSteps": ""
+    },
+    "source": "engine",
+    "curriculumId": "c-foundations"
+  },
+  "files": [],
+  "engine": {
+    "topicId": "c-foundations",
+    "minutes": 240,
+    "points": 100,
+    "tasks": 6,
+    "verdict": null,
+    "machine": null,
+    "misconceptions": [],
+    "review": ""
+  }
+}

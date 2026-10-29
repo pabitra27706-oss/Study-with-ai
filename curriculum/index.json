@@ -2,12 +2,37 @@
   "metadata": {
     "siteName": "AI Curriculum",
     "lastUpdated": "2026-10-29T00:00:00Z",
-    "totalTopics": 1,
+    "totalTopics": 2,
     "languages": [
       "C"
     ]
   },
   "topics": [
+    {
+      "id": "c-foundations",
+      "title": "C Foundations for Data Structures",
+      "language": "C",
+      "category": "Programming Foundations",
+      "difficulty": "beginner",
+      "dateCreated": "2026-10-29",
+      "lastUpdated": "2026-10-29",
+      "minutes": 240,
+      "points": 100,
+      "tags": [
+        "c",
+        "variables",
+        "control-flow",
+        "functions",
+        "arrays",
+        "strings",
+        "pointers",
+        "structs",
+        "memory"
+      ],
+      "description": "Learn the C fundamentals needed before data structures: control flow, functions, arrays, pointers, structs, and careful manual memory ownership.",
+      "topicFile": "curriculum/topics/c-foundations.json",
+      "learnDir": "learn/c-foundations"
+    },
     {
       "id": "data-structures-c",
       "title": "Data Structures in C: linked lists, stacks, queues",

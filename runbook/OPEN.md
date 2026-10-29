@@ -20,7 +20,7 @@ can do it now. "Owner" means only the user can.
 | 11 | Check the open issues on CodeC | Three open issues on a starred repository is three chances to make it better. | Owner |
 | 12 | ~~The learner's `t2.c` is recursion, not a loop~~ | **Superseded** — `c-loops` is retired and the work is archived at `learn/archive/c-loops/`. The lesson (recursion in a loops topic) is written into the review that is still there. | — |
 | 13 | ~~The four written answers are still the shipped examples~~ | **Superseded** — archived with the topic. The new topic ships with `answers.json` empty, so the "answers" score is the learner's from the first submission. | — |
-| 14 | **The learner starts `data-structures-c`** | Write `t1.c` in CodeC, push it, and say "check data-structures-c". Until then the topic honestly reads 0%. | Owner |
+| 14 | **The learner starts `c-foundations`** | Begin with `learn/c-foundations/solutions/t1.c`, then say "check c-foundations" when ready. Complete this C prerequisite before moving on to `data-structures-c`. | Owner |
 | 15 | Merge PR #9, and the PR that carries the new topic | Both are open and clean. **Merging is forbidden until the owner says the word.** | Owner |
 | 16 | Re-measure the video numbers before the topic is taught | The numbers were read on 2026-10-29 and they only go up. A stale number is still a true number, but say when it was read. | Claude |
 | 17 | The next topic: trees and BSTs in C | It is the natural follow-on — MyCodeSchool's same course covers it next, and it reuses the node struct the learner will have just built. | Claude, on request |

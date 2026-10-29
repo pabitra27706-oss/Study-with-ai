@@ -1,10 +1,209 @@
 {
-  "generatedAt": "2026-10-28T18:57:34.889Z",
+  "generatedAt": "2026-10-29T04:38:07.122Z",
   "compiler": {
     "bin": "gcc",
     "version": "gcc (Debian 12.2.0-14+deb12u1) 12.2.0"
   },
   "topics": {
+    "c-foundations": {
+      "id": "c-foundations",
+      "title": "C Foundations for Data Structures",
+      "language": "C",
+      "submitted": 0,
+      "tasks": {
+        "t1": {
+          "id": "t1",
+          "title": "Read, calculate, print",
+          "status": "not-submitted",
+          "passed": 0,
+          "total": 3,
+          "points": 0,
+          "maxPoints": 12,
+          "compileError": null,
+          "failing": [],
+          "explain": null
+        },
+        "t2": {
+          "id": "t2",
+          "title": "Classify a number",
+          "status": "not-submitted",
+          "passed": 0,
+          "total": 3,
+          "points": 0,
+          "maxPoints": 14,
+          "compileError": null,
+          "failing": [],
+          "explain": null
+        },
+        "t3": {
+          "id": "t3",
+          "title": "Sum a counted range",
+          "status": "not-submitted",
+          "passed": 0,
+          "total": 3,
+          "points": 0,
+          "maxPoints": 15,
+          "compileError": null,
+          "failing": [],
+          "explain": null
+        },
+        "t4": {
+          "id": "t4",
+          "title": "Swap through pointers",
+          "status": "not-submitted",
+          "passed": 0,
+          "total": 3,
+          "points": 0,
+          "maxPoints": 17,
+          "compileError": null,
+          "failing": [],
+          "explain": null
+        },
+        "t5": {
+          "id": "t5",
+          "title": "Find the array's extremes",
+          "status": "not-submitted",
+          "passed": 0,
+          "total": 3,
+          "points": 0,
+          "maxPoints": 18,
+          "compileError": null,
+          "failing": [],
+          "explain": null
+        },
+        "t6": {
+          "id": "t6",
+          "title": "Allocate an array of structs",
+          "status": "not-submitted",
+          "passed": 0,
+          "total": 3,
+          "points": 0,
+          "maxPoints": 24,
+          "compileError": null,
+          "failing": [],
+          "explain": null
+        }
+      },
+      "code": {},
+      "answers": {},
+      "learnerNotes": {},
+      "written": {
+        "score": 0,
+        "answered": 0,
+        "total": 5,
+        "perQuestion": [
+          {
+            "id": "q1",
+            "q": "Why does `scanf(\"%d\", &number)` need `&number`, but `printf(\"%d\", number)` does not?",
+            "answered": false,
+            "score": 0,
+            "hits": [],
+            "missing": [
+              "address",
+              "write",
+              "value",
+              "display"
+            ],
+            "feedback": "Not answered yet."
+          },
+          {
+            "id": "q2",
+            "q": "What is the difference between `pointer` and `*pointer`, and when is dereferencing unsafe?",
+            "answered": false,
+            "score": 0,
+            "hits": [],
+            "missing": [
+              "address",
+              "object",
+              "NULL",
+              "live"
+            ],
+            "feedback": "Not answered yet."
+          },
+          {
+            "id": "q3",
+            "q": "Why should an array-walking function receive the array length as well as its pointer?",
+            "answered": false,
+            "score": 0,
+            "hits": [],
+            "missing": [
+              "length",
+              "valid indices",
+              "bounds",
+              "pointer"
+            ],
+            "feedback": "Not answered yet."
+          },
+          {
+            "id": "q4",
+            "q": "After `malloc` succeeds, who is responsible for calling `free`, and why must the data not be used after that?",
+            "answered": false,
+            "score": 0,
+            "hits": [],
+            "missing": [
+              "owner",
+              "free",
+              "exactly once",
+              "use-after-free"
+            ],
+            "feedback": "Not answered yet."
+          },
+          {
+            "id": "q5",
+            "q": "What does C do with `7 / 2` when both operands are integers, and what can happen if a signed int exceeds its range?",
+            "answered": false,
+            "score": 0,
+            "hits": [],
+            "missing": [
+              "integer division",
+              "3",
+              "overflow",
+              "undefined behavior"
+            ],
+            "feedback": "Not answered yet."
+          }
+        ]
+      },
+      "notes": {
+        "score": 0,
+        "filledCount": 0,
+        "total": 3,
+        "perField": [
+          {
+            "field": "whatILearned",
+            "label": "What I learned",
+            "filled": false,
+            "tooLong": false,
+            "chars": 0,
+            "text": "",
+            "feedback": "Empty — fill this in."
+          },
+          {
+            "field": "challenges",
+            "label": "What broke",
+            "filled": false,
+            "tooLong": false,
+            "chars": 0,
+            "text": "",
+            "feedback": "Empty — fill this in."
+          },
+          {
+            "field": "nextSteps",
+            "label": "What is next",
+            "filled": false,
+            "tooLong": false,
+            "chars": 0,
+            "text": "",
+            "feedback": "Empty — fill this in."
+          }
+        ]
+      },
+      "explain": {
+        "score": 0,
+        "flags": [],
+        "perFile": []
+      }
+    },
     "data-structures-c": {
       "id": "data-structures-c",
       "title": "Data Structures in C: linked lists, stacks, queues",

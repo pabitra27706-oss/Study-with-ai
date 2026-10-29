@@ -3,7 +3,7 @@
     "siteName": "Learning Archive",
     "lastUpdated": "2026-10-29",
     "firstEntryDate": "2026-01-08",
-    "totalTopics": 74,
+    "totalTopics": 75,
     "totalFiles": 87,
     "languages": [
       "C",
@@ -12,6 +12,32 @@
     ]
   },
   "topics": [
+    {
+      "id": "c-foundations",
+      "title": "C Foundations for Data Structures",
+      "language": "C",
+      "dateCreated": "2026-10-29",
+      "lastUpdated": "2026-10-29",
+      "fileCount": 0,
+      "tags": [
+        "c",
+        "variables",
+        "control-flow",
+        "functions",
+        "arrays",
+        "strings",
+        "pointers",
+        "structs",
+        "memory"
+      ],
+      "description": "Learn the C fundamentals needed before data structures: control flow, functions, arrays, pointers, structs, and careful manual memory ownership.",
+      "topicFile": "data/topics/c/c-foundations.json",
+      "source": "engine",
+      "curriculumId": "c-foundations",
+      "verdict": null,
+      "score": null,
+      "langSlug": "c"
+    },
     {
       "id": "python-lists",
       "title": "Python Lists - deep dive",

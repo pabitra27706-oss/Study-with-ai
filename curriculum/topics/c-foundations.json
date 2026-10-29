@@ -1,0 +1,389 @@
+{
+  "topic": {
+    "id": "c-foundations",
+    "title": "C Foundations for Data Structures",
+    "language": "C",
+    "category": "Programming Foundations",
+    "difficulty": "beginner",
+    "dateCreated": "2026-10-29T00:00:00Z",
+    "lastUpdated": "2026-10-29T00:00:00Z",
+    "tags": [
+      "c",
+      "variables",
+      "control-flow",
+      "functions",
+      "arrays",
+      "strings",
+      "pointers",
+      "structs",
+      "memory"
+    ],
+    "description": "Learn the C fundamentals needed before data structures: control flow, functions, arrays, pointers, structs, and careful manual memory ownership.",
+    "learningNotes": {
+      "whatILearned": "",
+      "challenges": "",
+      "nextSteps": ""
+    }
+  },
+  "files": [],
+  "curriculum": {
+    "summary": "Before building data structures in C, get comfortable with how C represents values and memory. This pack moves from input, types, decisions and loops to functions, arrays, pointers, structs and malloc/free, then asks you to use those ideas in six small programs. The central rule is to track both the value and the object or memory location it belongs to. This is a focused prerequisite for linked lists, stacks and queues—not a claim that every corner of C has been covered.",
+    "prerequisites": [],
+    "estimatedMinutes": 240,
+    "rules": {
+      "writingMaxChars": 220,
+      "commentPolicy": "Every non-obvious loop, pointer operation, allocation, bounds decision, or ownership decision needs a WHY comment. A comment that restates the syntax does not count.",
+      "notePolicy": "Write three lines maximum: what I learned, what challenged me, and what I need next. Keep each line under 220 characters."
+    },
+    "explanation": [
+      {
+        "h": "1. Why C before data structures?",
+        "md": "C makes several things visible that other languages often hide: a value has a type, an array has a fixed extent, a function receives values, and a pointer is an address you can use deliberately. Data structures in C are built from those pieces. This unit is a bridge, not a full language reference: its goal is that you can read and write small C programs, trace arrays and pointers, and explain who owns dynamically allocated memory.\n\nA useful mental model is: **types describe the values and operations; variables hold values; pointers hold addresses; structs group fields.** DSA then combines those pieces into nodes and operations. You do not need to memorize every library call before starting."
+      },
+      {
+        "h": "2. A C program is compiled, then run",
+        "md": "A C source file is translated by a compiler into a program the machine can execute. The entry point is `main`; `#include <stdio.h>` makes declarations for standard input/output available; `printf` writes text and `scanf` reads values. A small program has a predictable shape:\n\n```c\n#include <stdio.h>\n\nint main(void) {\n    int count;\n    if (scanf(\"%d\", &count) != 1) return 1;\n    printf(\"%d\\n\", count);\n    return 0;\n}\n```\n\nThe format specifier must match the pointed-to type: `%d` with `int *`, `%ld` with `long *`, `%lld` with `long long *`, and `%lf` with `double *` for `scanf` (whereas `printf` uses `%f` for a `double`). Check that `scanf` read what you expected when input may be malformed. The beginner tasks specify valid input, but the habit matters."
+      },
+      {
+        "h": "3. Types, ranges, and expressions",
+        "md": "A type tells C how to interpret stored bits and which operations are valid. Use `int` for the small whole-number ranges these exercises specify, `long long` when a sum can outgrow `int`, and `double` for approximate real-number calculations. Exact widths are implementation-dependent; use `sizeof` or the limits in `<limits.h>` rather than promising that every `int` is exactly 32 bits.\n\nInteger division discards the fractional part: `7 / 2` is `3` when both operands are integers. A cast changes the type used in an expression, but it does not recover information already discarded. Signed integer overflow is not a safe wraparound operation in C; choose a sufficiently wide type and input bounds. The central bug to watch for is a correct-looking formula evaluated in the wrong type."
+      },
+      {
+        "h": "4. Decisions and loops",
+        "md": "Use `if`/`else` when a decision selects one path; use `switch` when one expression is matched against several constant cases. A `for` loop is convenient when a counter has a clear start and end; a `while` loop fits a condition that controls repetition. In every loop, identify three things before you run it: the initial state, the condition that keeps it going, and the update that makes progress.\n\n```c\nlong long total = 0;\nfor (int i = 1; i <= n; ++i) {\n    total += i;\n}\n```\n\nThe classic off-by-one error is choosing `< n` when the problem includes `n`, or `<= n` when it does not. Trace the first and last iteration on paper. In C, zero is false and every nonzero integer is true; comparison operators produce either 0 or 1."
+      },
+      {
+        "h": "5. Functions keep work small and explicit",
+        "md": "A function gives a named operation a clear input and result. Its declaration (prototype) tells callers the parameter and return types before the body is seen. C passes ordinary arguments by value: the function receives a copy. Returning a result is usually the simplest way to communicate a calculation back.\n\n```c\nint square(int value);\n\nint square(int value) {\n    return value * value;\n}\n```\n\nWhen a function must change the caller's object, pass its address as a pointer. This is not a separate pass-by-reference feature: the pointer value is copied, and dereferencing that copy accesses the same object. Keep each function focused so it is possible to test and reason about one operation at a time."
+      },
+      {
+        "h": "6. Arrays are contiguous and have fixed bounds",
+        "md": "An array holds several values of one element type in adjacent storage. Its valid indices are `0` through `length - 1`; C does not check whether an index is in range. An invalid index is not a harmless mistake: it can read or overwrite another object's memory. Keep the length beside the array and make loops respect it.\n\n```c\nint values[4] = { 8, -2, 5, 11 };\nfor (int i = 0; i < 4; ++i) {\n    printf(\"%d\\n\", values[i]);\n}\n```\n\nAn array is not a resizable list. When an array is passed to a function, the parameter behaves as a pointer to its first element, so the function also needs the length. This is one reason the DSA unit will make node links and allocation explicit."
+      },
+      {
+        "h": "7. Character strings are arrays with a sentinel",
+        "md": "C has no built-in string object. A string is a sequence of `char` values ending with the special null character `\\0`. The terminator is part of the storage: the word `cat` needs at least four characters of space. A character array without a terminator is not a C string, and functions such as `printf(\"%s\", text)` will keep reading beyond it.\n\nUse a width limit when scanning into a fixed-size character array, and ensure space remains for `\\0`. For the core DSA work, numeric arrays are enough; this section is here so you can recognize the representation and avoid treating a string as a magical primitive. Do not use unsafe unbounded input for a fixed buffer."
+      },
+      {
+        "h": "8. Pointers: an address with a type",
+        "md": "A pointer stores the address of an object. `&value` obtains an object's address; `*pointer` accesses the object at that address. The pointer type matters because it tells C what kind of object is there and how pointer arithmetic is scaled.\n\n```c\nint value = 7;\nint *address = &value;\n*address = 9;  /* value is now 9 */\n```\n\nA pointer is safe to dereference only when it points to a live object of the right type. Initialize pointers, use `NULL` to represent no valid target, and test for `NULL` before dereferencing when failure is possible. Never return the address of a local variable: its lifetime ends when the function returns. The most common beginner mistake is confusing the address (`pointer`) with the value at the address (`*pointer`)."
+      },
+      {
+        "h": "9. Structs group related fields",
+        "md": "A `struct` makes one value out of related fields that may have different types. The `.` operator accesses a field through a struct object; `->` accesses it through a pointer to a struct.\n\n```c\nstruct Reading {\n    int value;\n};\nstruct Reading sample = { .value = 12 };\nstruct Reading *where = &sample;\nprintf(\"%d\\n\", where->value);\n```\n\nA struct describes a shape; it does not allocate a variable by itself. A local struct variable has automatic storage duration, while a struct obtained through `malloc` must be released with `free`. This distinction prepares you to understand a linked-list node without asking the pointer syntax to do magic."
+      },
+      {
+        "h": "10. Dynamic memory has an owner",
+        "md": "`malloc` requests a block of bytes at run time and returns a pointer to the start, or `NULL` if it cannot satisfy the request. Ask for the size of the object, not a guessed byte count: `malloc(count * sizeof *items)` tracks the pointed-to type if it changes. The returned storage is uninitialized, so assign every field before reading it.\n\nThere is one owner responsible for releasing each successful allocation with `free`. Do not use the pointer after `free`, do not free it twice, and do not lose the only pointer before freeing it. A data structure often has several allocations, so ownership and link updates are core correctness questions, not cleanup details. This unit stops at allocating a bounded array of structs; linked-list operations belong to the next topic."
+      },
+      {
+        "h": "11. A compiler warning is useful evidence",
+        "md": "Compile with warnings enabled, for example `gcc -std=c17 -Wall -Wextra program.c -o program`, then fix warnings rather than hiding them. Warnings often catch a format mismatch, an uninitialized value, or a suspicious conversion before tests do. The exercises use standard C features and should not need compiler-specific extensions.\n\nWhen a program fails, reduce it to the smallest input that still exposes the failure. Trace variable values, array indices, and pointer targets. A compiler can tell you what it observed; you still have to explain why the program did it. That is the same distinction between a machine test and a reasoned review used throughout this learning system."
+      }
+    ],
+    "videos": [
+      {
+        "title": "C Programming Full Course for free ⚙️",
+        "url": "https://www.youtube.com/watch?v=87SH2Cn0s9A",
+        "channel": "Bro Code",
+        "length": "4:05:00",
+        "minutes": 245,
+        "views": 4606672,
+        "likes": 137848,
+        "published": "2021-10-07",
+        "measuredOn": "2026-10-29",
+        "why": "This is the main guided tour of C syntax. Watch the chapters on variables and types (19:39–38:16), input and operators (38:16–1:02:40), decisions and functions (1:02:40–1:45:57), strings and loops (1:45:57–2:06:53), arrays (2:09:14–2:25:58), structs (2:38:47–2:46:31), and addresses/pointers (3:20:55–3:35:59). Skip setup and projects if short on time; write the exercises instead of copying the demos.",
+        "order": 1
+      },
+      {
+        "title": "Pointers in C for Absolute Beginners – Full Course",
+        "url": "https://www.youtube.com/watch?v=MIL2BK02X8A",
+        "channel": "freeCodeCamp.org",
+        "length": "2:04:28",
+        "minutes": 124,
+        "views": 378964,
+        "likes": 10837,
+        "published": "2023-06-15",
+        "measuredOn": "2026-10-29",
+        "why": "Use only the selected foundations chapters: memory and variables (0:19:17–0:28:05), pointer-based swap (0:28:05–0:45:26), and why malloc helps (1:00:14–1:09:09). This is a C-focused explanation that makes addresses and dereferencing visual; skip void pointers, pointer-to-pointer and function-pointer material for now.",
+        "order": 2
+      },
+      {
+        "title": "C Programming | In One Video",
+        "url": "https://www.youtube.com/watch?v=3lQEunpmtRA",
+        "channel": "Giraffe Academy",
+        "length": "25:41",
+        "minutes": 26,
+        "views": 334826,
+        "likes": 8760,
+        "published": "2017-12-05",
+        "measuredOn": "2026-10-29",
+        "why": "Use this as a short syntax recap after the explanations, not as the main lesson: the instructor says it is aimed at people who already know programming concepts. Its quick pass over input, arrays, functions, decisions and loops is useful for checking vocabulary before the tasks.",
+        "order": 3
+      }
+    ],
+    "references": [
+      {
+        "title": "cppreference — C language reference",
+        "url": "https://en.cppreference.com/w/c",
+        "why": "A detailed reference for syntax and library behavior once the beginner explanation is clear. Use it to verify a specific question, not to read from beginning to end."
+      },
+      {
+        "title": "GNU C Library — Input/Output on Streams",
+        "url": "https://www.gnu.org/software/libc/manual/html_node/I_002fO-on-Streams.html",
+        "why": "Look up standard input/output behavior and formatted I/O when printf or scanf details are uncertain; the exercises intentionally keep formats simple."
+      },
+      {
+        "title": "learn-c.org — C tutorial",
+        "url": "https://www.learn-c.org/",
+        "why": "An interactive browser-based place to practice small C snippets and compare a mental trace with the program's output."
+      }
+    ],
+    "tasks": [
+      {
+        "id": "t1",
+        "title": "Read, calculate, print",
+        "points": 12,
+        "prompt": "Read two integers a and b, each in the range -1,000,000 to 1,000,000. Print their sum on the first line and a - b on the second line. The inputs are valid.",
+        "starter": "#include <stdio.h>\n\nint main(void) {\n    /* your code here */\n    return 0;\n}\n",
+        "solutionFile": "curriculum/reference/c-foundations/t1.c",
+        "explainTarget": "Add a WHY comment explaining why the integer type is safe for these stated bounds.",
+        "hints": [
+          "Read both values before calculating; printf can print one result per line.",
+          "The largest possible sum or difference has magnitude at most 2,000,000."
+        ],
+        "tests": [
+          {
+            "stdin": "8 3\n",
+            "stdout": "11\n5",
+            "public": true
+          },
+          {
+            "stdin": "-7 12\n",
+            "stdout": "5\n-19",
+            "public": false
+          },
+          {
+            "stdin": "0 0\n",
+            "stdout": "0\n0",
+            "public": false
+          }
+        ]
+      },
+      {
+        "id": "t2",
+        "title": "Classify a number",
+        "points": 14,
+        "prompt": "Read one integer n in the range -1,000,000 to 1,000,000. Print POSITIVE, NEGATIVE, or ZERO on the first line, then EVEN or ODD on the second line. Zero is EVEN. The input is valid.",
+        "starter": "#include <stdio.h>\n\nint main(void) {\n    /* your code here */\n    return 0;\n}\n",
+        "solutionFile": "curriculum/reference/c-foundations/t2.c",
+        "explainTarget": "Add a WHY comment explaining how the branch order prevents zero from being mislabeled.",
+        "hints": [
+          "Handle the three sign cases explicitly; parity is a separate decision.",
+          "The remainder n % 2 is zero for even values, including negative even values and zero."
+        ],
+        "tests": [
+          {
+            "stdin": "7\n",
+            "stdout": "POSITIVE\nODD",
+            "public": true
+          },
+          {
+            "stdin": "-8\n",
+            "stdout": "NEGATIVE\nEVEN",
+            "public": false
+          },
+          {
+            "stdin": "0\n",
+            "stdout": "ZERO\nEVEN",
+            "public": false
+          }
+        ]
+      },
+      {
+        "id": "t3",
+        "title": "Sum a counted range",
+        "points": 15,
+        "prompt": "Read one integer n (0 <= n <= 100,000). Print the sum of all integers from 1 through n inclusive. For n = 0, the sum is 0. The input is valid.",
+        "starter": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    /* your code here */\n    return 0;\n}\n",
+        "solutionFile": "curriculum/reference/c-foundations/t3.c",
+        "explainTarget": "Add a WHY comment explaining the loop's endpoint and why the accumulator uses a wider type than the input.",
+        "hints": [
+          "Start the accumulator at zero; when n is zero, the loop should run zero times.",
+          "A long long can hold the sum through 100,000; the final included value is n."
+        ],
+        "tests": [
+          {
+            "stdin": "5\n",
+            "stdout": "15",
+            "public": true
+          },
+          {
+            "stdin": "0\n",
+            "stdout": "0",
+            "public": false
+          },
+          {
+            "stdin": "100\n",
+            "stdout": "5050",
+            "public": false
+          }
+        ]
+      },
+      {
+        "id": "t4",
+        "title": "Swap through pointers",
+        "points": 17,
+        "prompt": "Read two integers a and b, each between -1,000,000 and 1,000,000. Implement `void swap_values(int *left, int *right)` so it exchanges the caller's values. Print the values after the call, one per line. The input is valid.",
+        "starter": "#include <stdio.h>\n\nvoid swap_values(int *left, int *right) {\n    /* your code here */\n}\n\nint main(void) {\n    int a, b;\n    /* your code here */\n    return 0;\n}\n",
+        "solutionFile": "curriculum/reference/c-foundations/t4.c",
+        "explainTarget": "Add a WHY comment explaining why the function receives addresses rather than ordinary integer copies.",
+        "hints": [
+          "A normal int parameter is a copy, so changing it would not update main's variables.",
+          "Save one pointed-to value before writing either location, then write both through `*`."
+        ],
+        "tests": [
+          {
+            "stdin": "4 9\n",
+            "stdout": "9\n4",
+            "public": true
+          },
+          {
+            "stdin": "-3 12\n",
+            "stdout": "12\n-3",
+            "public": false
+          },
+          {
+            "stdin": "5 5\n",
+            "stdout": "5\n5",
+            "public": false
+          }
+        ]
+      },
+      {
+        "id": "t5",
+        "title": "Find the array's extremes",
+        "points": 18,
+        "prompt": "Read N (1 <= N <= 100), followed by N integers in the range -1,000,000 to 1,000,000. Store them in an integer array. Print the minimum on the first line and maximum on the second. The input is valid.",
+        "starter": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    int values[100];\n    /* your code here */\n    return 0;\n}\n",
+        "solutionFile": "curriculum/reference/c-foundations/t5.c",
+        "explainTarget": "Add a WHY comment explaining why the initial minimum and maximum come from the first actual array element, not zero.",
+        "hints": [
+          "Zero is not a safe initial extreme when every input can be negative or every input can be positive.",
+          "Read values[0], use it to initialize both answers, then scan the remaining indices."
+        ],
+        "tests": [
+          {
+            "stdin": "5\n6 -2 9 4 0\n",
+            "stdout": "-2\n9",
+            "public": true
+          },
+          {
+            "stdin": "1\n-17\n",
+            "stdout": "-17\n-17",
+            "public": false
+          },
+          {
+            "stdin": "4\n-8 -3 -12 -5\n",
+            "stdout": "-12\n-3",
+            "public": false
+          }
+        ]
+      },
+      {
+        "id": "t6",
+        "title": "Allocate an array of structs",
+        "points": 24,
+        "prompt": "Define `struct Reading { int value; };`. Read N (1 <= N <= 100), then N integers in the range -1,000,000 to 1,000,000. Allocate space for N struct Reading objects with malloc, store the inputs in their value fields, and print the largest value. If allocation fails, return a nonzero status without printing an answer. Free the allocation before a successful return. The input is valid.",
+        "starter": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Reading {\n    int value;\n};\n\nint main(void) {\n    int n;\n    /* your code here */\n    return 0;\n}\n",
+        "solutionFile": "curriculum/reference/c-foundations/t6.c",
+        "explainTarget": "Add WHY comments explaining the allocation size, the NULL check, and why the memory is freed after the last read.",
+        "hints": [
+          "Allocate `n` objects, not `n` bytes; `sizeof *readings` follows the pointed-to struct type.",
+          "Initialize the maximum from the first stored value, compare every remaining value, then free the one owned allocation."
+        ],
+        "tests": [
+          {
+            "stdin": "4\n3 11 -2 8\n",
+            "stdout": "11",
+            "public": true
+          },
+          {
+            "stdin": "1\n-9\n",
+            "stdout": "-9",
+            "public": false
+          },
+          {
+            "stdin": "5\n-8 -3 -12 -5 -4\n",
+            "stdout": "-3",
+            "public": false
+          }
+        ]
+      }
+    ],
+    "rubric": {
+      "written": [
+        {
+          "id": "q1",
+          "q": "Why does `scanf(\"%d\", &number)` need `&number`, but `printf(\"%d\", number)` does not?",
+          "a": "scanf needs the address so it can write the input into the existing int object; printf only needs the int value to format and display it.",
+          "keywords": [
+            "address",
+            "write",
+            "value",
+            "display"
+          ],
+          "partial": "Distinguishes scanf writing into a variable from printf reading its value."
+        },
+        {
+          "id": "q2",
+          "q": "What is the difference between `pointer` and `*pointer`, and when is dereferencing unsafe?",
+          "a": "pointer is an address; *pointer accesses the object at that address. Dereferencing is unsafe if the pointer is NULL, uninitialized, dangling, or does not point to a live object of the expected type.",
+          "keywords": [
+            "address",
+            "object",
+            "NULL",
+            "live"
+          ],
+          "partial": "Explains address versus pointed-to value and names one invalid-pointer case."
+        },
+        {
+          "id": "q3",
+          "q": "Why should an array-walking function receive the array length as well as its pointer?",
+          "a": "When an array is passed to a function the parameter does not carry its element count; the function needs the length to stay within valid indices and avoid out-of-bounds access.",
+          "keywords": [
+            "length",
+            "valid indices",
+            "bounds",
+            "pointer"
+          ],
+          "partial": "Says the function cannot discover the original array length from its pointer alone."
+        },
+        {
+          "id": "q4",
+          "q": "After `malloc` succeeds, who is responsible for calling `free`, and why must the data not be used after that?",
+          "a": "The code that owns the allocation must ensure it is freed exactly once when it is no longer needed. After free the storage is no longer a live object the program may access, so using its old pointer is a use-after-free bug.",
+          "keywords": [
+            "owner",
+            "free",
+            "exactly once",
+            "use-after-free"
+          ],
+          "partial": "Names the owner’s cleanup responsibility and says the pointer must not be used after free."
+        },
+        {
+          "id": "q5",
+          "q": "What does C do with `7 / 2` when both operands are integers, and what can happen if a signed int exceeds its range?",
+          "a": "Integer division discards the fractional part, so 7 / 2 produces 3. Signed integer overflow is undefined behavior in C; use bounds and a wider type when needed.",
+          "keywords": [
+            "integer division",
+            "3",
+            "overflow",
+            "undefined behavior"
+          ],
+          "partial": "Identifies integer truncation and recognizes that signed overflow is not a safe wraparound."
+        }
+      ]
+    }
+  }
+}
