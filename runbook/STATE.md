@@ -21,8 +21,9 @@ append-only record is [`HISTORY.md`](HISTORY.md).
 |---|---|
 | This site | `https://pabitra27706-oss.github.io/Study-with-ai/` |
 | The learn route | `https://pabitra27706-oss.github.io/Study-with-ai/learn` |
-| One topic | `https://pabitra27706-oss.github.io/Study-with-ai/learn/data-structures-c` |
-| The archive | `https://pabitra27706-oss.github.io/Study-with-ai/archive` — 74 topics, 87 files |
+| C prerequisite | `https://pabitra27706-oss.github.io/Study-with-ai/learn/c-foundations` |
+| DSA topic | `https://pabitra27706-oss.github.io/Study-with-ai/learn/data-structures-c` |
+| The archive | `https://pabitra27706-oss.github.io/Study-with-ai/archive` — 75 topics, 87 files |
 | The progress map | `https://pabitra27706-oss.github.io/Study-with-ai/progress` |
 | The Learning Archive | `https://pabitra27706-oss.github.io/Study-with-ai/archive` — now part of this site |
 | CodeC (Pages) | `https://pabi277.github.io/CodeC/` |
@@ -34,13 +35,13 @@ append-only record is [`HISTORY.md`](HISTORY.md).
 |---|---|
 | Clone | `https://github.com/pabitra27706-oss/Study-with-ai.git` |
 | Canonical branch | `main` |
-| Working branch | `arena/0912db37-study-with-ai` (this session) |
+| Working branch | `arena/c210dad0-study-with-ai` (this session) |
 | Merged | **PR #16** — the archive becomes an input: files written into `archive/content/` are adopted, judged and shown; the code opens by default behind a box. `b57698e`. **PR #14** — the `publish-moved-notice` fix, the sitemap, and the empty-topic copy, `f454790`. **PR #13** — the journal-date formatting, `4617614`. **PR #12** — the archive comes home, `c26be05`. **PR #10** — the `data-structures-c` topic pack and the authoring system, `6b155ca`. **PR #8** — merged as `e6973cd`, deployed to Pages, green. **PR #6** — merged as `a8add89`. **PRs #1–#4** merged. |
 | Closed, do not merge | **PR #5** (duplicate of #6), **PR #7** (superseded), **PR #9** (its content is folded into #10), **PR #11** (superseded by #12). Never merge any of them. |
 | The live PR ledger | `gh pr list --state all --limit 30` — **the truth.** The table below records the decisions that matter: which PRs are in, and which ones must never be merged. There is deliberately **no "open" row** — a merge is not worth an edit, so a row that changed on every merge would only make this file wrong. |
-| Archive | `archive/` in this repository — **74 topics, 87 files**. Imported from `pabitra27706-oss/portfolio` with its history. The old repository still serves the original site; the branch `move/archive-into-the-learning-engine` carries the landing page and the pointer README, and **the owner has one tap left: open the pull request at `https://github.com/pabitra27706-oss/portfolio/pull/new/move/archive-into-the-learning-engine`** |
+| Archive | `archive/` in this repository — **75 topics, 87 files** (including the new C foundations topic). Imported from `pabitra27706-oss/portfolio` with its history. The old repository still serves the original site; the branch `move/archive-into-the-learning-engine` carries the landing page and the pointer README, and **the owner has one tap left: open the pull request at `https://github.com/pabitra27706-oss/portfolio/pull/new/move/archive-into-the-learning-engine`** |
 | The archive is an input too | The generator **adopts** any file written into `archive/content/<lang>/`: it finds the topic from the header the file carries, or gives it one, and it never overwrites an adopted topic afterwards. Five files were sitting there unseen — `functions.py`, `lists.py`, `arrays.js`, `dom-manipulation.js`, `ticket-price-calculator.c` — and all five are topics now, with verdicts, scores and notes. |
-| The pending queue | `archive/data/archive-pending.json` — every topic that has code and **no verdict yet**. **It is empty.** The whole backlog has been read, run and reviewed: 13 C topics, 43 Python topics and the 5 adopted files, all with a verdict, a score, notes and a review. 73 of the 74 topics carry a verdict; the 74th is the engine's own `data-structures-c`, which is waiting for the learner's first file. The queue refills by itself the moment new work lands in `archive/content/`. `node runner/brief.mjs --pending` prints whatever is waiting. |
+| The pending queue | `archive/data/archive-pending.json` — every topic that has code and **no verdict yet**. **It is empty.** The historical backlog has been read, run and reviewed: 13 C topics, 43 Python topics and the 5 adopted files, all with a verdict, a score, notes and a review. 73 of the 75 topics carry a verdict; the two engine topics, `c-foundations` and `data-structures-c`, are waiting for the learner's first files. The queue refills by itself the moment new work lands in `archive/content/`. `node runner/brief.mjs --pending` prints whatever is waiting. |
 | The archive's shape | `/archive` is **one page of cards that open in place**: the notes, the verdict, the misconceptions and the code, with the code **open by default**. `/archive/<topic>` is still a real page and is still what you share. The control that hides the code is a **box**, not a line of words. |
 | Deploy | Pages workflow committed by the owner at `414c6fe`; the hardened copy lives at `scripts/deploy-workflow.yml` |
 
@@ -48,20 +49,22 @@ append-only record is [`HISTORY.md`](HISTORY.md).
 
 | | |
 |---|---|
-| Topic | **`data-structures-c`** — "Data Structures in C: linked lists, stacks, queues". The first real topic pack. |
-| The learner's work | **Nothing yet.** `learn/data-structures-c/` is scaffolded and empty: `answers.json` is `{}`, `solutions/` holds only a `.gitkeep`. |
-| Where it stands | **0%** — 0/8 tasks, comments 0/100, answers 0%. That is the honest number for a topic nobody has touched. |
-| Why it starts at 0 | The previous pack shipped a finished example inside the graded folder, which inflated it to 29%. The rule now: a topic the learner has not touched is 0%, and it says 0%. |
+| Topic sequence | **`c-foundations` → `data-structures-c`**. The learner asked to build essential C skills before continuing with DSA. |
+| C prerequisite | `c-foundations` — 11 explanation sections, 3 measured video recommendations, 6 tasks over 100 points, and 6 reference solutions. `node scripts/check-topic.mjs c-foundations --deep` passes. |
+| DSA topic | **`data-structures-c`** — linked lists, stacks and queues. It now names `c-foundations` as its prerequisite. |
+| The learner's work | **Nothing yet.** Both `learn/c-foundations/` and `learn/data-structures-c/` have empty answers and solution folders. |
+| Where it stands | Both topics honestly start at **0%** until the learner submits work. |
+| Why topics start at 0 | The previous pack shipped a finished example inside the graded folder, which inflated it to 29%. The rule now: a topic the learner has not touched is 0%, and it says 0%. |
 | The retired pack | `c-loops` — the demo. Pack and reference solutions removed; the learner's work archived at `learn/archive/c-loops/` with a note explaining what it was and what they got out of it. |
 | What the learner did in `c-loops` | `t2.c` — a recursive factorial. Every value correct (5! = 120, 0! = 1, 10! = 3628800, 20! = 2432902008176640000), all four test cases passing, clean under `-Wall -Wextra`. Verdict `mostly-correct`, **45%** (machine 30%). |
-| What is next | The learner writes `t1.c` in CodeC, pushes, and says **"check data-structures-c"**. |
+| What is next | Start with `learn/c-foundations/solutions/t1.c`; after completing the C prerequisite, continue to **`data-structures-c`**. |
 
 ## The learning engine
 
 | Piece | Path | Role |
 |---|---|---|
-| Topic packs | `curriculum/topics/*.json` | The teaching half. One topic: `data-structures-c`. |
-| Reference solutions | `curriculum/reference/data-structures-c/` | 8 worked examples, one per task, all with why-comments. |
+| Topic packs | `curriculum/topics/*.json` | The teaching half. `c-foundations` is the C prerequisite; `data-structures-c` follows it. |
+| Reference solutions | `curriculum/reference/<topic>/` | One worked example per task; both topic packs validate all examples against their tests and the why-comment check. |
 | The learner's work | `learn/<topic>/solutions/*.c`, `learn/<topic>/answers.json` | Written in CodeC, pushed by the learner. |
 | The sensor | `runner/evidence.mjs` | Compile, hidden test cases, comment check. Measures. Never judges. |
 | The brief | `runner/brief.mjs` | Everything needed to judge. **This is what Claude reads.** |
@@ -97,13 +100,14 @@ node scripts/check-topic.mjs --deep       # every topic pack
 ## What is verified
 
 - `npm run typecheck`, `npm run lint` — clean.
-- `NEXT_OUTPUT=export npm run build` — 18 routes, `/learn` and `/learn/data-structures-c` prerendered.
+- `NEXT_OUTPUT=export npm run build` — **96 static pages**, including `/learn/c-foundations` and `/learn/data-structures-c`.
+- `node scripts/check-topic.mjs c-foundations --deep` — **PASS**: 3 measured videos, 11 sections, 6 tasks, 100 points, and 6 reference solutions that compile, pass every test, and score 100 on the comment check.
 - `node scripts/check-topic.mjs data-structures-c --deep` — **PASS**: 16 videos, lowest 535,687 views, 14 sections, 8 tasks, 100 points, 8 reference solutions that all compile, pass 4/4 of their own tests and score 100 on the comment check.
 - The validator was tested against a deliberately broken copy: it **failed** it with *"video 3 has 327 views, below the 1,00,000 floor"* and *"task t4 has 0 hidden tests"* and exited 1. It catches the exact mistake that shipped the old pack.
-- `node runner/evidence.mjs` — `data-structures-c  0/8 tasks · comments 0/100 · answers 0%`. An untouched topic honestly reads zero.
+- `node runner/evidence.mjs` — both topics honestly start at zero: `c-foundations 0/6 tasks` and `data-structures-c 0/8 tasks`, comments 0/100 and answers 0%.
 - `node runner/evidence.mjs` against the reference folder — all 8 tasks pass, comments 100/100.
 - `node scripts/build-archive.mjs --check` — *the archive is in step with the engine*, and a second run is a no-op. The generator is deterministic: timestamps come from the source data, never the clock.
-- `NEXT_OUTPUT=export npm run build` — **94 static pages**, including `/archive`, 74 `/archive/<topic>` pages, `/archive/pending` and `/progress`. Every archive download resolves, and every topic's JSON is reachable at the path the browser asks for.
+- `NEXT_OUTPUT=export npm run build` — **96 static pages**, including `/archive`, 75 `/archive/<topic>` pages, `/archive/pending` and `/progress`. Every archive download resolves, and every topic's JSON is reachable at the path the browser asks for.
 - **The whole backlog was judged.** 74 topics, every one read in full, run where it could be run, and reviewed on the archive rubric (40 does it run · 30 is it right · 30 does it explain itself). `node scripts/build-archive.mjs --check` reports *the archive is in step with the engine* and the pending queue is **empty**.
 - **The ghost topic is gone.** The catalogue used to point *If-Else Statement in C* at a cloned topic file that held a different topic's id and no code, so the card opened to nothing and the same program was listed twice. The pointer now names the right file, the clone is deleted, and the repair no longer empties a topic to fix a duplicate — a file shared by two topics stays with both, and the generator says which file and which topics.
 - `node runner/brief.mjs data-structures-c --task t1` — the brief renders with the prompt, the tests and the rules.

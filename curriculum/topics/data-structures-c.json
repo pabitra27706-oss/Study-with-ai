@@ -31,8 +31,7 @@
   "curriculum": {
     "summary": "A linked list, a stack and a queue are one idea in three costumes: a structure that owns its own memory and decides where the next thing goes. In C that means a pointer inside a struct. This topic starts from that node and builds the whole family up — malloc, the head pointer, insert at the front, insert at a position, delete (two jobs, not one), traverse, reverse, then the stack (LIFO) and the queue (FIFO) on both an array and a list. Every video is measured: the numbers next to each one are the real views, likes, length and channel, read off the watch page, not a guess. The lowest reach of any video in this pack is 535,687 views; the one that was rejected when this topic was written had 327.",
     "prerequisites": [
-      "c-basics",
-      "pointers-c"
+      "c-foundations"
     ],
     "estimatedMinutes": 240,
     "rules": {
@@ -43,7 +42,7 @@
     "explanation": [
       {
         "h": "1. Why this topic starts with pointers",
-        "md": "A linked list, a stack and a queue are the same idea wearing different clothes: **a structure that owns its own memory and decides where the next thing goes.** In C, \"decides where the next thing goes\" means *a pointer inside a struct*. If pointers are still shaky, this topic will be noise. So watch the pointer course first, and if `malloc` still feels like magic, watch its dynamic memory chapter before you write anything.\n\nOne C fact to hold onto for the whole topic: **C has no garbage collector.** Every byte you ask for with `malloc`, you give back with `free`, by hand. That single fact explains most of the bugs in this topic."
+        "md": "A linked list, a stack and a queue are the same idea wearing different clothes: **a structure that owns its own memory and decides where the next thing goes.** In C, \"decides where the next thing goes\" means *a pointer inside a struct*. Before this pack, complete **`c-foundations`**. It teaches the C syntax, arrays, pointers, structs, and memory ownership this topic relies on. If `malloc` still feels like magic after that, revisit the dynamic-memory chapter linked below before you write anything.\n\nOne C fact to hold onto for the whole topic: **C has no garbage collector.** Every byte you ask for with `malloc`, you give back with `free`, by hand. That single fact explains most of the bugs in this topic."
       },
       {
         "h": "2. What a data structure actually is",
